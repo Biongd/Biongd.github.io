@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="爬虫," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="豆瓣top250”网页数据的爬虫项目学习，已经忘记了80%，现在拿出来重新盘一下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫_douban">
+<meta property="og:url" content="http://yoursite.com/2020/07/11/%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="豆瓣top250”网页数据的爬虫项目学习，已经忘记了80%，现在拿出来重新盘一下">
+<meta property="article:published_time" content="2020-07-11T01:26:42.000Z">
+<meta property="article:modified_time" content="2021-01-02T11:56:36.380Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/11/爬虫豆瓣/"/>
+
+
+
+
+
+  <title>爬虫_douban | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/11/%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">爬虫_douban</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T09:26:42+08:00">
+                2020-07-11
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-01-02T19:56:36+08:00" content="2021-01-02">
+                          2021-01-02
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python%E5%AE%9E%E6%88%98-%E8%84%9A%E6%9C%AC-%E7%88%AC%E8%99%AB-douban/" itemprop="url" rel="index">
+                    <span itemprop="name">python实战-脚本.爬虫(douban)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>豆瓣top250”网页数据的爬虫项目学习，已经忘记了80%，现在拿出来重新盘一下</p>
+<a id="more"></a>
+<h1 id="一：发送请求"><a href="#一：发送请求" class="headerlink" title="一：发送请求"></a>一：发送请求</h1><h2 id="1-cookie"><a href="#1-cookie" class="headerlink" title="1.cookie"></a>1.cookie</h2><p>没登录情况下京东仍能保存收藏夹数据，126邮箱可以10天免登录？</p>
+<p>说明信息不在服务器而是在本地，而且重启后仍有，说明信息存在硬盘上。</p>
+<p>Cookie:93年网景（Netscape）公司发明的网络会话状态跟踪的技术 </p>
+<blockquote>
+<p>会话是由一组请求与响应组成，是围绕着一件相关事情进行的请求与响应。所以这些请求与响应之间一定需要有数据传递的，即是需要进行会话跟踪的。然而HTTP协议是一种无状态协议，在不同的请求间是无法进行数据传递的。此时就需要一种可以进行请求间数据传递的会话跟踪技术，即cookie！cookie是由服务器生成的，保存在客户端的一种信息载体。这个载体中存放着用户访问该站点的会话状态信息。只要cookie没被清空，或cookie没失效，保存在其中的会话状态就有效。用户提交第一次请求后，由服务器生成cookie，并将其封装到响应头中，以响应的形式发送给客户端。客户端接收到这个响应后，将cookie保存到本地。当客户端再发送同类请求后，在请求中会携带保存在客户端的cookie数据，发送到服务端，由服务器对会话进行跟踪。cookie是由若干键值对构成，cookie中的键值对均为字符串。</p>
+</blockquote>
+<p>不同的浏览器，cookie的保存位置及查看方式不同。删除了某一浏览器下的cookie，不会影响其他浏览器中cookie浏览器选项—隐私—cookie—管理数据</p>
+<h2 id="2-headers"><a href="#2-headers" class="headerlink" title="2.headers"></a>2.headers</h2><p>包含很多在向服务器提交请求时所附带的信息</p>
+<p><strong><em>\</em>request headers：**</strong></p>
+<p>user agent：包含客户端的配置信息和浏览器版本等，让服务器判断请求的网页能不能兼容。即浏览器的身份。</p>
+<p>Cookie：本地记录的浏览信息，包括登录信息，浏览信息，点击或由什么网页跳转过来等等。要是想做一些登录后才能看到的内容进行爬取，就需要用到存储和读取cookie。</p>
+<p><strong><em>\</em>Response headers：**</strong></p>
+<p>服务器返回的信息，包括提交请求的时间等</p>
+<h2 id="3-HTTP和HTTPS协议"><a href="#3-HTTP和HTTPS协议" class="headerlink" title="3.HTTP和HTTPS协议"></a>3.HTTP和HTTPS协议</h2><p>原文链接：<a href="https://blog.csdn.net/xiaoming100001/article/details/81109617" target="_blank" rel="noopener">https://blog.csdn.net/xiaoming100001/article/details/81109617</a></p>
+<p>内容相当详细，这里不再赘述</p>
+<h2 id="4-get和post两种请求方法的区别"><a href="#4-get和post两种请求方法的区别" class="headerlink" title="4.get和post两种请求方法的区别"></a>4.get和post两种请求方法的区别</h2><p>GET和POST是HTTP请求的两种基本方法，要说它们的区别，接触过WEB开发的人都能说出一二。 </p>
+<p>最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。</p>
+<p>你可能自己写过无数个GET和POST请求，或者已经看过很多权威网站总结出的他们的区别，你非常清楚知道什么时候该用什么。</p>
+<p>当你在面试中被问到这个问题，你的内心充满了自信和喜悦。 </p>
+<p>你轻轻松松的给出了一个“标准答案”：</p>
+<ul>
+<li>GET在浏览器回退时是无害的，而POST会再次提交请求。 </li>
+<li>GET产生的URL地址可以被Bookmark，而POST不可以。</li>
+<li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
+<li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
+<li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
+<li>GET请求在URL中传送的参数是有长度限制的，而POST么有。</li>
+<li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
+<li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
+<li>GET参数通过URL传递，POST放在Request body中。</li>
+</ul>
+<p>（本标准答案参考自w3schools）</p>
+<p>很遗憾，这不是我们要的回答！”</p>
+<p>请告诉我真相。。。</p>
+<p>如果我告诉你GET和POST本质上没有区别你信吗？</p>
+<p>让我们扒下GET和POST的外衣，坦诚相见吧！</p>
+<p>GET和POST是什么？HTTP协议中的两种发送请求的方法。</p>
+<p>HTTP是什么？HTTP是基于TCP/IP的关于数据如何在万维网中如何通信的协议。</p>
+<p>HTTP的底层是TCP/IP。所以GET和POST的底层也是TCP/IP，也就是说，GET/POST都是TCP链接。GET和POST能做的事情是一样一样的。你要给GET加上request body，给POST带上url参数，技术上是完全行的通的。 </p>
+<p><strong>那么，“标准答案”里的那些区别是怎么回事？</strong></p>
+<blockquote>
+<p>在我大万维网世界中，TCP就像汽车，我们用TCP来运输数据，它很可靠，从来不会发生丢件少件的现象。但是如果路上跑的全是看起来一模一样的汽车，那这个世界看起来是一团混乱，送急件的汽车可能被前面满载货物的汽车拦堵在路上，整个交通系统一定会瘫痪。为了避免这种情况发生，交通规则HTTP诞生了。HTTP给汽车运输设定了好几个服务类别，有GET, POST, PUT,  DELETE等等，HTTP规定，当执行GET请求的时候，要给汽车贴上GET的标签（设置method为GET），而且要求把传送的数据放在车顶上（url中）以方便记录。如果是POST请求，就要在车上贴上POST的标签，并把货物放在车厢里。当然，你也可以在GET的时候往车厢内偷偷藏点货物，但是这是很不光彩；也可以在POST的时候在车顶上也放一些数据，让人觉得傻乎乎的。HTTP只是个行为准则，而TCP才是GET和POST怎么实现的基本。</p>
+</blockquote>
+<p><strong>但是，我们只看到HTTP对GET和POST参数的传送渠道（url还是requrest body）提出了要求。“标准答案”里关于参数大小的限制又是从哪来的呢？</strong></p>
+<blockquote>
+<p>在我大万维网世界中，还有另一个重要的角色：运输公司。不同的浏览器（发起http请求）和服务器（接受http请求）就是不同的运输公司。  虽然理论上，你可以在车顶上无限的堆货物（url中无限加参数）。但是运输公司可不傻，装货和卸货也是有很大成本的，他们会限制单次运输量来控制风险，数据量太大对浏览器和服务器都是很大负担。业界不成文的规定是，（大多数）浏览器通常都会限制url长度在2K个字节，而（大多数）服务器最多处理64K大小的url。超过的部分，恕不处理。如果你用GET服务，在request body偷偷藏了数据，不同服务器的处理方式也是不同的，有些服务器会帮你卸货，读出数据，有些服务器直接忽略，所以，虽然GET可以带request body，也不能保证一定能被接收到哦。</p>
+</blockquote>
+<p>好了，现在你知道，GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。 </p>
+<p>你以为本文就这么结束了？</p>
+<p>我们的大BOSS还等着出场呢。。。</p>
+<p>这位BOSS有多神秘？当你试图在网上找“GET和POST的区别”的时候，那些你会看到的搜索结果里，从没有提到他。他究竟是什么呢。。。</p>
+<p>GET和POST还有一个重大区别，简单的说：</p>
+<p>GET产生一个TCP数据包；POST产生两个TCP数据包。</p>
+<p>长的说：</p>
+<p>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；</p>
+<p>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</p>
+<p>也就是说，GET只需要汽车跑一趟就把货送到了，而POST得跑两趟，第一趟，先去和服务器打个招呼“嗨，我等下要送一批货来，你们打开门迎接我”，然后再回头把货送过去。</p>
+<p>因为POST需要两步，时间上消耗的要多一点，看起来GET比POST更有效。因此Yahoo团队有推荐用GET替换POST来优化网站性能。但这是一个坑！跳入需谨慎。为什么？</p>
+<ol>
+<li><p>GET与POST都有自己的语义，不能随便混用。</p>
+</li>
+<li><p>据研究，在网络环境好的情况下，发一次包的时间和发两次包的时间差别基本可以无视。而在网络环境差的情况下，两次包的TCP在验证数据包完整性上，有非常大的优点。</p>
+</li>
+<li><p>并不是所有浏览器都会在POST中发送两次包，Firefox就只发送一次。</p>
+<p>现在，当面试官再问你“GET与POST的区别”的时候，你的内心是不是这样的？</p>
+<p>结束！！！</p>
+</li>
+</ol>
+<p>原文:<a href="https://www.cnblogs.com/logsharing/p/8448446.html" target="_blank" rel="noopener">https://www.cnblogs.com/logsharing/p/8448446.html</a></p>
+<h1 id="二：数据清洗"><a href="#二：数据清洗" class="headerlink" title="二：数据清洗"></a>二：数据清洗</h1><h2 id="1-urllib的使用方法"><a href="#1-urllib的使用方法" class="headerlink" title="1.urllib的使用方法"></a>1.urllib的使用方法</h2><p><strong><em>\</em>获取get请求：**</strong></p>
+<p>from urllib import request</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Response = request.urlopen(“www.baidu.com”)</span><br><span class="line">Print(Response.read().decode(UTF<span class="number">-8</span>))</span><br><span class="line"><span class="comment">#response是对象类型，通过read（）读取对象内容，decode（）实现对网页源码的以UTF-8解码</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>\</em>获取post请求：**</strong></p>
+<p>from urllib import parse</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#填写一个键值对并转为二进制编码作为表单</span></span><br><span class="line">Data = bytes(parse.urlencode(&#123;“hellow”:”world”&#125;,encoding=”utf<span class="number">-8</span>”))</span><br><span class="line"><span class="comment">#提交post时附上表单内容，真正要实现代替浏览器登录的话有时还需要cookie内容</span></span><br><span class="line">response = request.urlopen(‘http://httpbin.org/post’,data=Data)</span><br><span class="line">print(response.read().decode(UTF<span class="number">-8</span>))</span><br></pre></td></tr></table></figure>
+<p><strong><em>\</em>超时处理：**</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#引入异常处理，当网页由于各种原因无法访问时，需要设置延迟时间并制定下一步动作</span></span><br><span class="line"><span class="keyword">try</span>：</span><br><span class="line">response =  request.urlopen(‘http://httpbin.org/get’,timeout=<span class="number">0.1</span>）</span><br><span class="line">print(response.read().decode(UTF<span class="number">-8</span>))</span><br><span class="line"><span class="keyword">except</span> urllib.error.UTLError <span class="keyword">as</span> e:</span><br><span class="line"><span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>\</em>反反爬第一步 (error418)如何解决：**</strong></p>
+<p>Response = request.urlopen(“www.douban.com”)会报错，是因为直接使用该方法时，请求头中的</p>
+<p>user-agent：python；解决方法就是要模拟浏览器登录。</p>
+<p>复制消息头-请求头中的use-agent数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入请求头信息</span></span><br><span class="line">header=&#123;“use-agent”：“Mozilla/<span class="number">5.0</span>..........”) Gecko/<span class="number">20100101</span> Firefox/<span class="number">77.0</span>”&#125;</span><br><span class="line"><span class="comment">#在获取请求时构造请求头信息</span></span><br><span class="line">Req = request.Request(url=””, date=””, headers=header, method=”post”)</span><br><span class="line"><span class="comment">#method 默认是get请求</span></span><br><span class="line">Reponse = request.urlopen(Req)</span><br></pre></td></tr></table></figure>
+<p>此时打印Reponse就能看到网页代码</p>
+<h2 id="2-如何获取网页源码（单个网页）"><a href="#2-如何获取网页源码（单个网页）" class="headerlink" title="2.如何获取网页源码（单个网页）"></a>2.如何获取网页源码（单个网页）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义获取单个网页的函数，将被访问的url作为参数传入</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">askurl</span><span class="params">(need_url)</span>:</span></span><br><span class="line">	<span class="comment">#复制本机用户代理信息</span></span><br><span class="line">    header=&#123;“use-agent”：“Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">6.1</span>; Win64; x64; rv:<span class="number">77.0</span>) Gecko/<span class="number">20100101</span> 		Firefox/<span class="number">77.0</span>”&#125;</span><br><span class="line">    <span class="comment">#添加请求头和请求方法</span></span><br><span class="line">	req = request.Request(url = need_url,headers = header,method = <span class="string">'post'</span>)</span><br><span class="line">	response = request.openurl(req)	</span><br><span class="line">	<span class="comment">#也可以引入异常处理机制</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">    	respones = request.urlopen(req)</span><br><span class="line">	    html = respones.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line">	<span class="keyword">except</span> u.error.URLError <span class="keyword">as</span> e:</span><br><span class="line">    	<span class="keyword">if</span> hasattr(e,<span class="string">"code"</span>):</span><br><span class="line">        	print(e.code)</span><br><span class="line">    	<span class="keyword">if</span> hasattr(e,<span class="string">"reason"</span>):</span><br><span class="line">        	print(e.reason)</span><br><span class="line">    <span class="comment">#返回网页源码</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br></pre></td></tr></table></figure>
+<h2 id="3-如何从html中获得需要信息"><a href="#3-如何从html中获得需要信息" class="headerlink" title="3.如何从html中获得需要信息"></a>3.如何从html中获得需要信息</h2><p>需要用到的库beautifulsoup+re：</p>
+<p>Beautiful Soup :是一个HTML/XML的解析器，主要的功能也是如何解析和提取 HTML/XML 数据。</p>
+<p>re:是Python的标准库，主要通过正则表达式实现字符串匹配。</p>
+<p>1.先将html文件通过BeautifulSoup解析，返回一个解析后的对象</p>
+<p>2.调用该对象的find_all方法，通过标签名，id，类名等得到我们想要的模块</p>
+<p>3.将得到的模块转换成字符串格式</p>
+<p>4.正则提取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.定义获取数据信息的函数，以网页源码html作为参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getdata</span><span class="params">(html)</span>：</span></span><br><span class="line"><span class="function">	#定义空列表盛放全部电影的数据</span></span><br><span class="line">	datalist = []               </span><br><span class="line">	<span class="comment">#2.找到需要的信息模块(通过网页代码看到item包含了我们需要的信息)</span></span><br><span class="line">	bs = BeautifulSoup(html, <span class="string">"html.parser"</span>)</span><br><span class="line">	<span class="keyword">for</span> items <span class="keyword">in</span> bs.find_all(<span class="string">"div"</span>,class_= <span class="string">"item"</span>):</span><br><span class="line">		<span class="comment">#更改为字符串格式，方便正则提取</span></span><br><span class="line">		items = str(items)</span><br><span class="line">        <span class="comment">#3.先看下面的通过正则定义提取哪些变量“定义变量的正则格式：”</span></span><br><span class="line">        <span class="comment">#4.正则提取所需信息，注意！！findall()返回列表，且有些内容可能为空，需要检测</span></span><br><span class="line">        name = re.findall(moviename,items)</span><br><span class="line">        print(len(name)）<span class="comment">#可以看到有1个或者2个（有的还带外文名，又是一个span）</span></span><br><span class="line">        <span class="keyword">if</span> len(name) == <span class="number">1</span>：</span><br><span class="line">			chname = name[<span class="number">0</span>]</span><br><span class="line">            abname = <span class="string">' '</span>                            <span class="comment">#空格号填充</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            chname = name[<span class="number">0</span>]</span><br><span class="line">            abname = name[<span class="number">1</span>]</span><br><span class="line">        othername = re.findall(othername,items)[<span class="number">0</span>]</span><br><span class="line">        imglink = re.findall(img,items)[<span class="number">0</span>]</span><br><span class="line">        link = re.findall(infolink,items)[<span class="number">0</span>]</span><br><span class="line">        cast = re.findall(cast, item)[<span class="number">0</span>]</span><br><span class="line">        score = re.findall(score, item)[<span class="number">0</span>]</span><br><span class="line">        count = re.findall(num, item)[<span class="number">0</span>]</span><br><span class="line">        inq = re.findall(comment, item)</span><br><span class="line">            <span class="keyword">if</span> len(inq) == <span class="number">0</span>:</span><br><span class="line">                inq = <span class="string">' '</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                inq = inq[<span class="number">0</span>].replace(<span class="string">'。'</span>,<span class="string">''</span>）</span><br><span class="line">        data = []                                  <span class="comment">#定义空列表盛放单个电影的数据</span></span><br><span class="line">        <span class="comment">#5.将本次循环的单个电影的参数放入data，下次循环data又为空</span></span><br><span class="line">        data.extend([chname,abname,othername,imglink,link,cast,score,count,ing])</span><br><span class="line">        <span class="comment">#先打印出来预览一下，有乱码的部分还要修改，见线面“根据展示的结果进行相应修改”</span></span><br><span class="line">        <span class="comment">#将data放入datalist，每次循环放入一个电影的data</span></span><br><span class="line">        datalist.append(data)   </span><br><span class="line">    <span class="comment">#获得一个html文件的全部需要数据</span></span><br><span class="line">	<span class="keyword">return</span> datalist</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#根据展示的结果进行相应修改</span></span><br><span class="line">abname = name[<span class="number">1</span>].replace(<span class="string">'/'</span>,<span class="string">''</span>)        <span class="comment">#字符串的替换</span></span><br><span class="line">abname = re.sub(<span class="string">'\s'</span>,<span class="string">''</span>,abname,<span class="number">2</span>)       <span class="comment">#替换abname的内容，前两个空格去电</span></span><br><span class="line">othername = re.sub(<span class="string">'\s'</span>,<span class="string">''</span>,othername)       <span class="comment">#去除空格</span></span><br><span class="line">othername = re.sub(<span class="string">'/'</span>,<span class="string">''</span>,othername,<span class="number">1</span>)      <span class="comment">#去除第一个斜杠</span></span><br><span class="line">cast = re.sub(<span class="string">'&lt;br(\s*)?/(\s*)?&gt;'</span>, <span class="string">''</span>, cast).strip()  <span class="comment">#先替换内容，再把首位空格或功能符都删了</span></span><br><span class="line">cast = re.sub(<span class="string">'\s'</span>,<span class="string">''</span>,cast)                 <span class="comment">#删除全部的空格</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义变量的正则格式：</span></span><br><span class="line"><span class="comment">#1.电影名：</span></span><br><span class="line">moviename = re.compile(<span class="string">r'&lt;span class="title"&gt;(.*)&lt;/span&gt;'</span>)</span><br><span class="line"><span class="comment">#不带‘？’，非贪婪模式，满足&lt;span class="title"&gt;(.*)&lt;/span&gt;的我都要</span></span><br><span class="line"><span class="comment">#2.别名：</span></span><br><span class="line">othername = re.compile(<span class="string">r'&lt;span class="other"&gt;(.*?)&lt;/span&gt;'</span>)</span><br><span class="line"><span class="comment">#带‘？’，贪婪模式，满足&lt;span class="title"&gt;(.*)&lt;/span&gt;的我只要第一个</span></span><br><span class="line"><span class="comment">#3.详情链接：</span></span><br><span class="line">infolink = re.compile(<span class="string">r'&lt;a href="(.*?)"&gt;'</span>)</span><br><span class="line"><span class="comment">#4.海报图片：</span></span><br><span class="line">img = re.compile(<span class="string">r'&lt;img alt=".*" class="" src="(.*?)" width="100"/&gt;'</span>,re.S)</span><br><span class="line"><span class="comment">#5.演员阵容：</span></span><br><span class="line">cast = re.compile(<span class="string">r'&lt;p class=""&gt;(.*?)&lt;/p&gt;'</span>, re.S)</span><br><span class="line"><span class="comment">#6.评分：</span></span><br><span class="line">score = re.compile(<span class="string">r'&lt;span class="rating_num" property="v:average"&gt;(.*?)&lt;/span&gt;'</span>)</span><br><span class="line"><span class="comment">#7.评价人数：</span></span><br><span class="line">num = re.compile(<span class="string">r'&lt;span&gt;(\d*人评价)&lt;/span&gt;'</span>)</span><br><span class="line"><span class="comment">#8.评语：</span></span><br><span class="line">comment = re.compile(<span class="string">r'&lt;span class="inq"&gt;(.*?)&lt;/span&gt;'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="4-循环所有网页"><a href="#4-循环所有网页" class="headerlink" title="4.循环所有网页"></a>4.循环所有网页</h2><p><strong>循环所有网页，获取每页的html，对每次得到的html文件执行getdata（）函数，放入alldata列表。</strong></p>
+<p>首先要找出我们需要爬取的网页有哪些共同点，即如何设计循环：豆瓣250的每次翻页，改变的都是一个数字，这就是切入点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在上一基础上定义获取全部网页源码的函数，以baseurl作为参数，方便复用，再次调用函数只需要改变循环方式即可</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(baseurl)</span>:</span></span><br><span class="line">    dataall = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        url = baseurl + str(i*<span class="number">25</span>)</span><br><span class="line">        html = askurl(url)</span><br><span class="line">        datalist = getdata(html)</span><br><span class="line">        <span class="comment">#将一个网页中的每个data放入dataall</span></span><br><span class="line">        dataall.extend(datalist)</span><br><span class="line">    <span class="keyword">return</span> dataall</span><br></pre></td></tr></table></figure>
+<h1 id="三：数据保存"><a href="#三：数据保存" class="headerlink" title="三：数据保存"></a>三：数据保存</h1><h2 id="1-excel表格"><a href="#1-excel表格" class="headerlink" title="1.excel表格"></a>1.excel表格</h2><p>使用的第三方库：xlwt，实现对excel表格的写入</p>
+<p>步骤：</p>
+<p>1.以utf-8编码格式，创建一个xls工作文件（内存）</p>
+<p><code>excelbook = xlwt.Workbook(encoding = &quot;utf-8&quot;)</code></p>
+<p>2.在工作文件内创建工作表</p>
+<p><code>excelsheet = excelbook.add_sheet(&quot;sheet1&quot;)</code></p>
+<p>3.向工作表内写入数据</p>
+<p><code>excelsheet.write(y, x, &quot;data&quot;)</code></p>
+<p>y决定纵轴的位置，x决定横轴的位置，即将data即写入第y行x列。</p>
+<p>4.保存工作表到本地</p>
+<p><code>excelbook.save(&quot;d:\..\..\..\movie250.xls&quot;)</code></p>
+<p><strong>具体代码如何将datalist中的每个data放入对应位置呢？</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">book = xlwt.Workbook(encoding = <span class="string">'utf-8'</span>)</span><br><span class="line">sheet = book.add_sheet(<span class="string">"sheet1"</span>)</span><br><span class="line">title = [<span class="string">'chname'</span>, <span class="string">'abname'</span>, <span class="string">'othername'</span>, <span class="string">'imglink'</span>, <span class="string">'link'</span>, <span class="string">'cast'</span>, <span class="string">'score'</span>, <span class="string">'count'</span>,<span class="string">'ing'</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">	sheet.write(i,<span class="number">0</span>,title[i])</span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(len(datalist)):</span><br><span class="line">		sheet.write(i,j+<span class="number">1</span>,datalist[j][i])</span><br><span class="line">book.save(<span class="string">"movie250.xls"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="2-sqlite数据库"><a href="#2-sqlite数据库" class="headerlink" title="2.sqlite数据库"></a>2.sqlite数据库</h2><p>使用第三方库：sqlite3，实现导入数据库，后续数据库学习-MySQLite</p>
+<p>辅助工具：Database Navigator，实现数据库预览和编辑，类似excel。<a href="https://www.cnblogs.com/mashuqi/p/10469206.html" target="_blank" rel="noopener">社区版安装方法</a></p>
+<p>步骤：</p>
+<h3 id="2-1初始化数据库（title）"><a href="#2-1初始化数据库（title）" class="headerlink" title="2.1初始化数据库（title）"></a>2.1初始化数据库（title）</h3><p>1.链接数据库，没有就新建一个</p>
+<p>con = sqlite3.connect(path)</p>
+<p>2.创建光标</p>
+<p>cur = con.cursor()</p>
+<p>3.sql语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">'''</span></span><br><span class="line"><span class="string">	create table movie250                   #创建新表单（类似于sheet）</span></span><br><span class="line"><span class="string">    id int primary key autoincrement        #标签，primary key：组件，autoincrement：自增长</span></span><br><span class="line"><span class="string">    chname varchar,                         #变长字符串，可排序</span></span><br><span class="line"><span class="string">    abname varchar,                      </span></span><br><span class="line"><span class="string">    othername varchar,</span></span><br><span class="line"><span class="string">    imglink varchar,</span></span><br><span class="line"><span class="string">    link varchar,</span></span><br><span class="line"><span class="string">    cast varchar,</span></span><br><span class="line"><span class="string">    score varchar,</span></span><br><span class="line"><span class="string">    count text,</span></span><br><span class="line"><span class="string">    ing varchar,    </span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>4.执行语句并提交到本地</p>
+<p>data = cur.execute(sql)</p>
+<p>con.commit()</p>
+<p>5.关闭连接</p>
+<p>cur.close()</p>
+<p>con.close()</p>
+<h3 id="2-2将内容填入"><a href="#2-2将内容填入" class="headerlink" title="2.2将内容填入"></a>2.2将内容填入</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_sqlite</span><span class="params">(dataall,path)</span>:</span></span><br><span class="line">    init_sqlite(path)</span><br><span class="line">    con = sqlite3.connect(path)</span><br><span class="line">    cur = con.cursor()</span><br><span class="line">    <span class="comment">#同样是遍历dataall，操作每个电影的data</span></span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> dataall:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):</span><br><span class="line">            data[i] = <span class="string">'"'</span>+data[i]+<span class="string">'"'</span></span><br><span class="line">        data = <span class="string">','</span>.join(data)           <span class="comment">#！！！！！字符串拼接打法，只要是多个元素的对象都能拼</span></span><br><span class="line">        sql = <span class="string">f'''</span></span><br><span class="line"><span class="string">            insert into movie250 (chname, abname, othername, img, link, cast, score, 					count, inq)</span></span><br><span class="line"><span class="string">            values(<span class="subst">&#123;data&#125;</span>)</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        cur.execute(sql)</span><br><span class="line">    con.commit()</span><br><span class="line">    cur.close()</span><br><span class="line">    con.close()</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-database-navigator预览"><a href="#2-3-database-navigator预览" class="headerlink" title="2.3 database navigator预览"></a>2.3 database navigator预览</h3><p>1.社区版安装完成后，顶部工具栏出现DB Navigator选项</p>
+<p>2.Database Browser可以打开预览侧边栏</p>
+<p>3.点击“+”，选择SQLite数据库打开，在database files处选择db文件路径</p>
+<p>4.通过这一工具也可以增加或删减行</p>
+<h1 id="四：数据可视化"><a href="#四：数据可视化" class="headerlink" title="四：数据可视化"></a>四：数据可视化</h1><h2 id="1-html表格"><a href="#1-html表格" class="headerlink" title="1.html表格"></a>1.html表格</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.py: 从数据库中遍历数据，作为参数传入html文件</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,render_template</span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="meta">@app.route('/movie') def movie():             #分配路由+定义函数</span></span><br><span class="line">con = sqlite3.connect(<span class="string">"豆瓣电影top250.db"</span>)          <span class="comment">#连接数据库 </span></span><br><span class="line">cur = con.cursor()                    <span class="comment">#创建光标</span></span><br><span class="line">sql = <span class="string">'''</span></span><br><span class="line"><span class="string">	select * from movie250            #从数据库表单中调取所有数据</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">data = cur.execute(sql)           <span class="comment">#执行数据库命令将数据拿出，不然关闭数据库的时候从内存删除了</span></span><br><span class="line"><span class="comment">#将data从对象转成列表</span></span><br><span class="line">datalist = []</span><br><span class="line"><span class="keyword">for</span> items <span class="keyword">in</span> data：              </span><br><span class="line">	datalist = datalist.append(items)       </span><br><span class="line">cur.close()</span><br><span class="line">con.close()</span><br><span class="line"><span class="keyword">return</span> render_template(<span class="string">"movie.html"</span>,movies = datalist)<span class="comment">#选择需要渲染的网页，将参数传递到html</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.html: 通过循环将信息填入，将信息展示出来</span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">	&#123;% for movie in &#123;&#123;movies&#125;&#125; %&#125;      //对传入的电影信息遍历，获得单个电影列表</span><br><span class="line">    将每个电影的信息填入表格</span><br><span class="line">	<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;movie[1]&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;movie[2]&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;movie[3]&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-Echarts统计图"><a href="#2-Echarts统计图" class="headerlink" title="2.Echarts统计图"></a>2.Echarts统计图</h2><blockquote>
+<p>就是通过引入别人设计好的 js 模板，再把我们已有的数据传入,生成图表</p>
+</blockquote>
+<h3 id="2-1-安装：Echarts官网进入下载页"><a href="#2-1-安装：Echarts官网进入下载页" class="headerlink" title="2.1.安装：Echarts官网进入下载页"></a>2.1.安装：<a href="https://echarts.apache.org/zh/index.html" target="_blank" rel="noopener">Echarts官网</a>进入下载页</h3><p>我是选择方法一，进入github链接，找到文件所在仓库，直接clone到本地</p>
+<p>方法三提供了在线定制的选项，可以直接选择自己需要的图形样式进行下载</p>
+<h3 id="2-2使用：5-分钟上手-ECharts"><a href="#2-2使用：5-分钟上手-ECharts" class="headerlink" title="2.2使用：5 分钟上手 ECharts"></a>2.2使用：<a href="https://echarts.apache.org/zh/tutorial.html" target="_blank" rel="noopener">5 分钟上手 ECharts</a></h3><p>官方提供了实例模板，CV大法拷贝到本地运行看能不能出来效果，实际使用时注意将html文件和需要用到的js文件分别放入指定文件夹templates和static，并且修改html文件中链接js文件的相对地址</p>
+<p>将html文件中的标题，横轴，纵轴等参数进行修改就能得到我们想要的图标样式</p>
+<h3 id="3-3将数据库信息通过图标呈现"><a href="#3-3将数据库信息通过图标呈现" class="headerlink" title="3.3将数据库信息通过图标呈现"></a>3.3将数据库信息通过图标呈现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.py：</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,render_template</span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="meta">@app.route('/score') def movie():             #分配路由+定义函数</span></span><br><span class="line">con = sqlite3.connect(<span class="string">"movie250.db"</span>)          <span class="comment">#连接数据库 </span></span><br><span class="line">cur = con.cursor()                    <span class="comment">#创建光标</span></span><br><span class="line">sql = <span class="string">'''</span></span><br><span class="line"><span class="string">	#从数据库表单中调取评分和对应评分下的电影数量，按照评分进行分组</span></span><br><span class="line"><span class="string">	select score,count(score) from movie250 group by score</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">data = cur.execute(sql)           <span class="comment">#执行数据库命令将数据拿出，不然关闭数据库的时候从内存删除了</span></span><br><span class="line">score = []</span><br><span class="line">count = []</span><br><span class="line"><span class="keyword">for</span> items <span class="keyword">in</span> data：               <span class="comment">#此时每次遍历的items就是“评分”和“电影数”组成的一个列表</span></span><br><span class="line">	score.append(items[<span class="number">0</span>])       <span class="comment">#把评分提取组成列表，作为横轴</span></span><br><span class="line">    count.append(items[<span class="number">1</span>])       <span class="comment">#对应电影数组成列表，作为纵轴</span></span><br><span class="line">cur.close()</span><br><span class="line">con.close()</span><br><span class="line"><span class="keyword">return</span> render_template(<span class="string">"movie.html"</span>,score=score,count=count)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">.html:</span><br><span class="line">头部引入js文件：<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"static/assets/js/echarts.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 基于准备好的dom，初始化echarts实例</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>));</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 指定图表的配置项和数据</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> option = &#123;</span></span><br><span class="line">            title: &#123;</span><br><span class="line"><span class="actionscript">                text: <span class="string">'评分'</span></span></span><br><span class="line">            &#125;,</span><br><span class="line">            tooltip: &#123;&#125;,</span><br><span class="line">            legend: &#123;</span><br><span class="line"><span class="actionscript">                data:[<span class="string">'电影数'</span>]</span></span><br><span class="line">            &#125;,</span><br><span class="line">            xAxis: &#123;</span><br><span class="line"><span class="handlebars"><span class="xml">                data: </span><span class="template-variable">&#123;&#123;score|tojson&#125;&#125;</span><span class="xml">  </span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">//不加|tojson可以看到网页源码这里的数据就是一串乱码，加上就能识别为字符串格式</span></span></span><br><span class="line">            &#125;,</span><br><span class="line">            yAxis: &#123;&#125;,</span><br><span class="line">            series: [&#123;</span><br><span class="line"><span class="actionscript">                name: <span class="string">'数量'</span>,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">'bar'</span>,</span></span><br><span class="line"><span class="handlebars"><span class="xml">                data: </span><span class="template-variable">&#123;&#123;count&#125;&#125;</span></span></span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="actionscript">        <span class="comment">// 使用刚指定的配置项和数据显示图表。</span></span></span><br><span class="line">        myChart.setOption(option);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>报错1：第一次直接写的</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;score&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>网页不显示图形：</p>
+<p>解决：查看网页源码，发现横轴data对应的数据是一串乱码，改为</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;score|tojson&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>后乱码消失</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"># 爬虫</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/10/python%E5%BA%93%E7%9A%84%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/" rel="next" title="python库的安装及失败解决">
+                <i class="fa fa-chevron-left"></i> python库的安装及失败解决
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/12/%E9%95%9C%E5%83%8F%E8%B5%84%E6%BA%90%E6%90%9C%E9%9B%86/" rel="prev" title="资源链接">
+                资源链接 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一：发送请求"><span class="nav-text">一：发送请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-cookie"><span class="nav-text">1.cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-headers"><span class="nav-text">2.headers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-HTTP和HTTPS协议"><span class="nav-text">3.HTTP和HTTPS协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-get和post两种请求方法的区别"><span class="nav-text">4.get和post两种请求方法的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二：数据清洗"><span class="nav-text">二：数据清洗</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-urllib的使用方法"><span class="nav-text">1.urllib的使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-如何获取网页源码（单个网页）"><span class="nav-text">2.如何获取网页源码（单个网页）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-如何从html中获得需要信息"><span class="nav-text">3.如何从html中获得需要信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-循环所有网页"><span class="nav-text">4.循环所有网页</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三：数据保存"><span class="nav-text">三：数据保存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-excel表格"><span class="nav-text">1.excel表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-sqlite数据库"><span class="nav-text">2.sqlite数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1初始化数据库（title）"><span class="nav-text">2.1初始化数据库（title）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2将内容填入"><span class="nav-text">2.2将内容填入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-database-navigator预览"><span class="nav-text">2.3 database navigator预览</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四：数据可视化"><span class="nav-text">四：数据可视化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-html表格"><span class="nav-text">1.html表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Echarts统计图"><span class="nav-text">2.Echarts统计图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-安装：Echarts官网进入下载页"><span class="nav-text">2.1.安装：Echarts官网进入下载页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2使用：5-分钟上手-ECharts"><span class="nav-text">2.2使用：5 分钟上手 ECharts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3将数据库信息通过图标呈现"><span class="nav-text">3.3将数据库信息通过图标呈现</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

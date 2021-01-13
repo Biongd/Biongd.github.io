@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="terahertz," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在对超表面相位异变的问题上仍存在疑惑，尝试以RLC谐振电路为突破口，看能不能更好的理解spp对相位的影响 typora的markdown插入公式方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RLC谐振原理">
+<meta property="og:url" content="http://yoursite.com/2020/08/14/RLC%E8%B0%90%E6%8C%AF%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="在对超表面相位异变的问题上仍存在疑惑，尝试以RLC谐振电路为突破口，看能不能更好的理解spp对相位的影响 typora的markdown插入公式方法">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201120201523.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201121170637.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201122140342.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201122142139.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201122142336.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201122142514.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201122142729.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201122143044.png">
+<meta property="og:image" content="c:/Users/terahertz/AppData/Roaming/Typora/typora-user-images/image-20201123142010747.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123142555.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123154446.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123154905.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123155148.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123160104.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123160237.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123160624.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123210054.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201123210406.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201124191028.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201124191351.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201124192005.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201126200428.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201126200626.png">
+<meta property="article:published_time" content="2020-08-14T01:09:12.000Z">
+<meta property="article:modified_time" content="2021-01-02T11:56:36.466Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="terahertz">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20201120201523.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/14/RLC谐振原理/"/>
+
+
+
+
+
+  <title>RLC谐振原理 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/14/RLC%E8%B0%90%E6%8C%AF%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RLC谐振原理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-14T09:09:12+08:00">
+                2020-08-14
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-01-02T19:56:36+08:00" content="2021-01-02">
+                          2021-01-02
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%B5%E7%A3%81%E5%9C%BA-RLC%E8%B0%90%E6%8C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">电磁场-RLC谐振</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在对超表面相位异变的问题上仍存在疑惑，尝试以RLC谐振电路为突破口，看能不能更好的理解spp对相位的影响</p>
+<p>typora的markdown插入公式方法</p>
+<a id="more"></a>
+<h1 id="1-参考方向（重要）"><a href="#1-参考方向（重要）" class="headerlink" title="1. 参考方向（重要）"></a>1. 参考方向（重要）</h1><p>为什么需要参考方向？</p>
+<ul>
+<li>有的支路无法确定电流方向</li>
+<li>电压或电流是时变的</li>
+</ul>
+<p>就是对于复杂电路，甭管实际电流或电压的方向而给他设定一个参考的电流/电压方向，计算结果为负就是相反的。</p>
+<h1 id="1-电路原件"><a href="#1-电路原件" class="headerlink" title="1.电路原件"></a>1.电路原件</h1><h2 id="1-1电阻"><a href="#1-1电阻" class="headerlink" title="1.1电阻"></a>1.1电阻</h2><p>分类：贴片电阻（功率小），金属膜电阻（精度高），高功率电阻</p>
+<p>功率计算：无论是关联参考方向还是非关联参考方向，计算结果都是吸收</p>
+<p>关联参考方向：$P=Ui=R<em>i</em>i=Ri^2$ </p>
+<p>非关联参考方向：</p>
+<ol>
+<li><p>释放的功率：$P=Ui=R(-i)*i=-Ri^2$ 结果为负，也就是吸收功率</p>
+</li>
+<li><p>吸收的功率：$P=U(-i)=Ri^2$</p>
+</li>
+</ol>
+<h2 id="1-2独立电源"><a href="#1-2独立电源" class="headerlink" title="1.2独立电源"></a>1.2独立电源</h2><p><strong>独立电压源</strong></p>
+<p>特征：</p>
+<p>1.独立性：电压独立于其他元件</p>
+<p>2.流过其内部的电流由外电路决定</p>
+<p>零值电阻在电气特性上等效为零值电压源</p>
+<p><strong>独立电流源</strong></p>
+<p>其特性就是电流额定，电压由外电路决定</p>
+<p>开路电阻在电气特性上等效为零值电流源</p>
+<p><strong>思考1？</strong>电流源开路和电压源短路？？</p>
+<p>实际的电源：</p>
+<p>实际电压源：理想电压源和电阻的串联</p>
+<p>实际电流源：理想电流源和电阻的并联</p>
+<p><strong>思考2？</strong>电流源怎么得到呢</p>
+<h1 id="2-抽象概念"><a href="#2-抽象概念" class="headerlink" title="2.抽象概念"></a>2.抽象概念</h1><h2 id="2-1关联和非关联参考方向"><a href="#2-1关联和非关联参考方向" class="headerlink" title="2.1关联和非关联参考方向"></a>2.1关联和非关联参考方向</h2><p>对于某一器件或某一段电路而言，参考电流方向由正端流入，由负端流出即为关联参考方向</p>
+<p>此时通过$P=U*I$计算出的是吸收功率，比如电阻器件</p>
+<p>而反过来，参考电流方向与正负电位方向相反，则为非关联参考方向</p>
+<p>此时通过$P=U*I$计算出的是释放功率，比如电源器件</p>
+<h2 id="2-2端口"><a href="#2-2端口" class="headerlink" title="2.2端口"></a>2.2端口</h2><p>从一个接线端流入的电流，等于从另一个接线端流出的电流，这两个接线端就构成了一个端口</p>
+<p>对于非常复杂的电路网络，往往只关心端口上的电压电流关系</p>
+<p><strong>有源和无源的划分</strong></p>
+<p>在任意t&gt;0的时刻，端口吸收的瞬时功率的积分大于等于0——-无源一端口网络</p>
+<p>在任意t&gt;0的时刻，端口吸收的瞬时功率的积分小于0——-有源一端口网络</p>
+<p>也即关联参考方向=无源符号约定</p>
+<p>非关联参考方向=有源符号约定</p>
+<h1 id="3-基尔霍夫定律（拓扑约束）"><a href="#3-基尔霍夫定律（拓扑约束）" class="headerlink" title="3. 基尔霍夫定律（拓扑约束）"></a>3. 基尔霍夫定律（拓扑约束）</h1><ul>
+<li>支路：若干彼此相连同时又没有分叉的元件的整体</li>
+<li>结点：连接3个或更多支路的点</li>
+<li>路径：两个结点之间的支路</li>
+<li>回路：起点和终点相重合的闭合路径</li>
+<li>网格：和支路没有相交的回路</li>
+</ul>
+<h2 id="3-1-KCL（电流定律）"><a href="#3-1-KCL（电流定律）" class="headerlink" title="3.1 KCL（电流定律）"></a>3.1 KCL（电流定律）</h2><p>任意结点流入/流出电流代数之和为0，也就是流入的电流等于流出的电流</p>
+<h2 id="3-2-KVL（电压定律）"><a href="#3-2-KVL（电压定律）" class="headerlink" title="3.2 KVL（电压定律）"></a>3.2 KVL（电压定律）</h2><p>任意回路上的电压降的代数和为0。  任意两点之间的电压和路径无关。</p>
+<h2 id="3-3-求解电路的完整方程（2b法）"><a href="#3-3-求解电路的完整方程（2b法）" class="headerlink" title="3.3 求解电路的完整方程（2b法）"></a>3.3 求解电路的完整方程（2b法）</h2><p>对于有b个支路的电路而言，可以通过列出2b个方程求解出b个电流和b个电压。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201120201523.png" alt="image-20201120201523830"></p>
+<p>支路数b = 6 ， 结点数n = 4：</p>
+<ul>
+<li><p>通过每个支路上的元件约束，可以得到右侧的6个欧姆定律的计算公式</p>
+</li>
+<li><p>根据结点数和回路数所求得的KVL方程和KCL方程应该有4个，但总有一个是可以通过前面3个公式推导出的。</p>
+</li>
+<li><p>具体KCL和KVL能得到的公式数如图中黄色部分所示。不过这一方法过于复杂，不适用于实际应用，主要存在于理论意义。</p>
+</li>
+</ul>
+<h1 id="4-等效"><a href="#4-等效" class="headerlink" title="4. 等效"></a>4. 等效</h1><h2 id="4-1-电路的串并联"><a href="#4-1-电路的串并联" class="headerlink" title="4.1 电路的串并联"></a>4.1 电路的串并联</h2><p>串联：元件之间的链接没有任何分叉</p>
+<p>并联：并联的元件之间有公共的结点</p>
+<h2 id="4-2-复杂电路串并联的判断方法"><a href="#4-2-复杂电路串并联的判断方法" class="headerlink" title="4.2 复杂电路串并联的判断方法"></a>4.2 复杂电路串并联的判断方法</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20201121170637.png" alt="image-20201121170630602"></p>
+<ul>
+<li>移动结点：将电路改画一下</li>
+<li>从端口往里看：看某一电阻是串联在接线端上还是并联在接线端上</li>
+</ul>
+<h2 id="4-3-平衡电桥"><a href="#4-3-平衡电桥" class="headerlink" title="4.3 平衡电桥"></a>4.3 平衡电桥</h2><ul>
+<li><p>桥式电路的应用</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201122140342.png" alt="image-20201122140342571"></p>
+<p>当$R1<em>R4 = R2</em>R3$时，$U_a = U_b$ ,此时就是一个平衡电桥，R5上没有电流。所以平衡电桥的一个应用就是实现对电阻阻值的检测。</p>
+</li>
+</ul>
+<h2 id="4-4-三角变换"><a href="#4-4-三角变换" class="headerlink" title="4.4 三角变换"></a>4.4 三角变换</h2><ul>
+<li><p>$Y-T网络和\Delta-\Pi网络$ </p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201122142139.png" alt="image-20201122142139305"></p>
+</li>
+</ul>
+<p>两者可以等效：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201122142336.png" alt="image-20201122142336841"></p>
+<p>其通过KCL和KVL得到的方程可以化为相同形式的公式，当两者的电阻满足一定条件时就可以等效。<img src="https://gitee.com/biongd/img/raw/master/img/20201122142514.png" alt="image-20201122142514728"></p>
+<p>特殊的：当R1=R2=R3=R时，R12=R23=R31=3R；</p>
+<p>​                当R12=R23=R31时，R1=R2=R3=1/3R。</p>
+<p>如何用星三角变换解决平衡电桥的电路分析问题</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201122142729.png" alt="image-20201122142729835"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201122143044.png" alt="image-20201122143044798"></p>
+<h2 id="4-5-二端网络的等效电阻"><a href="#4-5-二端网络的等效电阻" class="headerlink" title="4.5 二端网络的等效电阻"></a>4.5 二端网络的等效电阻</h2><p>前提是无独立源二端网络，加流求压和加压求流</p>
+<p>———————————————-分割线</p>
+<p>以上的串并联——平衡点桥——三角变换——二端网络就对应了任意不含独立源一端口网络的求解方法顺序</p>
+<p>———————————————-分割线</p>
+<h2 id="4-6-电源的等效变换"><a href="#4-6-电源的等效变换" class="headerlink" title="4.6 电源的等效变换"></a>4.6 电源的等效变换</h2><ul>
+<li><p>理想独立源的串并联</p>
+<p>多个电压源串联：总电压等于各电压源电压和</p>
+<p>理想电流源和理想电压源串联：对外电流为电流源决定，等效为理想电流源</p>
+<p>多个电流源串联</p>
+<p>理想电流源和理想电压源并联：对外等效为那个电压源</p>
+</li>
+<li><p>实际独立源</p>
+<p>电压源和电阻的串联可以等效为电流源和电阻（/电导）的并联：</p>
+<ul>
+<li>等效的核心条件：当串联和并联的电阻阻值相同，且$U_s = I_s*R_s$</li>
+</ul>
+<p><img src="C:/Users/terahertz/AppData/Roaming/Typora/typora-user-images/image-20201123142010747.png" alt="image-20201123142010747" style="zoom: 67%;" /></p>
+</li>
+</ul>
+<h1 id="5-最大功率传输"><a href="#5-最大功率传输" class="headerlink" title="5. 最大功率传输"></a>5. 最大功率传输</h1><p><img src="https://gitee.com/biongd/img/raw/master/img/20201123142555.png" alt="image-20201123142555178" style="zoom:67%;" /></p>
+<ul>
+<li>最大功率输出：电阻和内阻值相等，可以联想到电路中常提到的负载匹配。此时的传输效率是50%</li>
+<li>最大效率：毫无疑问是RL无穷大时</li>
+<li>最大电压：毫无疑问是RL无穷大时</li>
+</ul>
+<h1 id="6-二端口网络"><a href="#6-二端口网络" class="headerlink" title="6. 二端口网络"></a>6. 二端口网络</h1><p>并不是任意两个端点都可以成为端口，端口条件为：从一个端点流入的电流等于从另一个端点流出的电流。</p>
+<p>二端口网络：通过两个端口和外界相连的网络，且这里讨论的是线性二端口，即只包含线性电阻和线性受控源。不含独立源和非线性元</p>
+<h2 id="6-1-求解二端口网络G参数"><a href="#6-1-求解二端口网络G参数" class="headerlink" title="6.1 求解二端口网络G参数"></a>6.1 求解二端口网络G参数</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20201123154446.png" alt="image-20201123154446256"></p>
+<p>很明显可以看出上面的公式可以写成指数相乘的形式</p>
+<h2 id="6-2-二端口网络的连接"><a href="#6-2-二端口网络的连接" class="headerlink" title="6.2 二端口网络的连接"></a>6.2 二端口网络的连接</h2><h3 id="级联"><a href="#级联" class="headerlink" title="级联"></a>级联</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20201123154905.png" alt="image-20201123154905679" style="zoom:67%;" /></p>
+<p>​    如图所示：即新的二端口网络的系数矩阵等于原有系数矩阵的乘积。</p>
+<h3 id="并联"><a href="#并联" class="headerlink" title="并联"></a>并联</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20201123155148.png" alt="image-20201123155148768" style="zoom:67%;" /></p>
+<p>注意：二端口网络的并联连接可能会破坏原有的二端口网络端口条件，此时也谈不上由原有二端口网络退出新的二端口网络的参数矩阵</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201123160104.png" alt="image-20201123160104590" style="zoom:67%;" /></p>
+<p>???   如何保证二端口网络的端口并联连接不会被坏原有端口条件：正规连接（都有公共端且公共端互联）</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201123160237.png" alt="image-20201123160237469" style="zoom:67%;" /></p>
+<h3 id="串联"><a href="#串联" class="headerlink" title="串联"></a>串联</h3><p> <img src="https://gitee.com/biongd/img/raw/master/img/20201123160624.png" alt="image-20201123160624849" style="zoom:67%;" /></p>
+<p>注意：同二端口网络的并联，串联同样会破坏端口条件，方法也就是将公共端串联起来</p>
+<h1 id="7-电路的系统化求解方法"><a href="#7-电路的系统化求解方法" class="headerlink" title="7. 电路的系统化求解方法"></a>7. 电路的系统化求解方法</h1><p>等效法都是针对特定的电路结构而言的，对于求解复杂电路，尤其是使用计算机进行求解时就力不从心了。</p>
+<h2 id="7-1-支路电流法（b个方程）"><a href="#7-1-支路电流法（b个方程）" class="headerlink" title="7.1 支路电流法（b个方程）"></a>7.1 支路电流法（b个方程）</h2><ul>
+<li>确定每一个支路电流的参考方向</li>
+<li>选择n-1个独立的节点列写KCL方程</li>
+<li>选择b-n+1个独立回路列写KVL方程，对于平面电路而言，可以直接通过网孔列写方程</li>
+<li>连列方程，得到b条支路上的电流</li>
+</ul>
+<h2 id="7-2-节点电压法（n-1个方程）"><a href="#7-2-节点电压法（n-1个方程）" class="headerlink" title="7.2 节点电压法（n-1个方程）"></a>7.2 节点电压法（n-1个方程）</h2><p>节点数减一，基于n-1个节点的KCL方程</p>
+<ul>
+<li>选取一个节点为参考节点（一般是支路数较多的），其余节点为独立节点，将独立节点电压作为未知量，方向指向参考节点，标出各节点电压的序号</li>
+<li>按节点电压的一般形式列出n-1个独立节点的kcl方程</li>
+</ul>
+<h2 id="7-3-环路电流法（b-n-1个方程）"><a href="#7-3-环路电流法（b-n-1个方程）" class="headerlink" title="7.3 环路电流法（b-n+1个方程）"></a>7.3 环路电流法（b-n+1个方程）</h2><p>独立回路的数目，基于每个网孔的KVL方程</p>
+<ul>
+<li><p>选定回路电流（实际并不存在，认为设置的变量）</p>
+</li>
+<li><p>按回路电流的绕行方向，列出KVL方程</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201123210054.png" alt="image-20201123210054494" style="zoom:67%;" /></p>
+</li>
+</ul>
+<p>R2被称为互电阻，所以在方程中取负值，R22，R33为回路的自电阻，即回路电流所在回路电压的总和</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201123210406.png" alt="image-20201123210406259"></p>
+<p>如果我们选取网孔作为回路，则该方法又被称为网孔电流法</p>
+<h3 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h3><ul>
+<li><p>电路中含独立电流源的支路</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201124191028.png" alt="image-20201124191027918"></p>
+</li>
+</ul>
+<p><strong>方法1：</strong>因为计算是基于回路的KVL，需要预设未知量Is两端的电压为U。这是基于原本的方程就是3个方程，4个未知量，多出来的就要根据电流源的特性列出。</p>
+<p><strong>方法2：</strong></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201124191351.png" alt="image-20201124191351845"></p>
+<p>巧妙选择独立回路，使得电流源所在支路只有一个未知的预设电流，此时我的预设电流就等于电流源上的电流，这一个方程就不用解了。</p>
+<ul>
+<li>包含受控源</li>
+</ul>
+<p>同上面的方法1，无非就是将受控源两端电压用器件和预设电流表示。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201124192005.png" alt="image-20201124192005627"></p>
+<h1 id="8-叠加和戴维南"><a href="#8-叠加和戴维南" class="headerlink" title="8. 叠加和戴维南"></a>8. 叠加和戴维南</h1><p><strong>线性系统：</strong></p>
+<h2 id="8-1-叠加定理"><a href="#8-1-叠加定理" class="headerlink" title="8.1 叠加定理"></a>8.1 叠加定理</h2><p>将电路视作一个独立源单独作用，其他独立源置0，将所有独立源的相应结果通过系数累加起来就对应所有独立源共同作用的结果</p>
+<p>为什么要将所有独立源拆分呢？</p>
+<p>单个独立源的电路可能会带来计算的便捷</p>
+<p>如何将独立源置0呢?</p>
+<p>0值电压源等效为0值电阻，等效为短路</p>
+<p>0值电流源等效为无穷大电阻，等效为开路</p>
+<h2 id="8-2-戴维南和诺顿定理"><a href="#8-2-戴维南和诺顿定理" class="headerlink" title="8.2 戴维南和诺顿定理"></a>8.2 戴维南和诺顿定理</h2><p>任意复杂的线性一端口网络（包含独立源，受控源，电阻），都可以等效为一个电阻和一个电压源（1端口网络的开路电压）的串联</p>
+<h1 id="9-电容和电感"><a href="#9-电容和电感" class="headerlink" title="9. 电容和电感"></a>9. 电容和电感</h1><h2 id="9-1-电容"><a href="#9-1-电容" class="headerlink" title="9.1 电容"></a>9.1 电容</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20201126200428.png" alt="image-20201126200421658"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201126200626.png" alt="image-20201126200626427"></p>
+<p>由公式可以看出，电压可以记住0时刻的电压，同时又根据电流的变化而产生变化</p>
+<ul>
+<li><p>电容的并联</p>
+<p>C1和C2两电容并联的等效电容C = C1+C2</p>
+</li>
+<li><p>电容的串联</p>
+<p>�串联</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/terahertz/" rel="tag"># terahertz</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/05/linux%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" rel="next" title="linux磁盘管理">
+                <i class="fa fa-chevron-left"></i> linux磁盘管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/14/typora%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/" rel="prev" title="typora插入公式">
+                typora插入公式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-参考方向（重要）"><span class="nav-text">1. 参考方向（重要）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-电路原件"><span class="nav-text">1.电路原件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1电阻"><span class="nav-text">1.1电阻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2独立电源"><span class="nav-text">1.2独立电源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-抽象概念"><span class="nav-text">2.抽象概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1关联和非关联参考方向"><span class="nav-text">2.1关联和非关联参考方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2端口"><span class="nav-text">2.2端口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-基尔霍夫定律（拓扑约束）"><span class="nav-text">3. 基尔霍夫定律（拓扑约束）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-KCL（电流定律）"><span class="nav-text">3.1 KCL（电流定律）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-KVL（电压定律）"><span class="nav-text">3.2 KVL（电压定律）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-求解电路的完整方程（2b法）"><span class="nav-text">3.3 求解电路的完整方程（2b法）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-等效"><span class="nav-text">4. 等效</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-电路的串并联"><span class="nav-text">4.1 电路的串并联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-复杂电路串并联的判断方法"><span class="nav-text">4.2 复杂电路串并联的判断方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-平衡电桥"><span class="nav-text">4.3 平衡电桥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-三角变换"><span class="nav-text">4.4 三角变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-二端网络的等效电阻"><span class="nav-text">4.5 二端网络的等效电阻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-电源的等效变换"><span class="nav-text">4.6 电源的等效变换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-最大功率传输"><span class="nav-text">5. 最大功率传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-二端口网络"><span class="nav-text">6. 二端口网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-求解二端口网络G参数"><span class="nav-text">6.1 求解二端口网络G参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-二端口网络的连接"><span class="nav-text">6.2 二端口网络的连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#级联"><span class="nav-text">级联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并联"><span class="nav-text">并联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串联"><span class="nav-text">串联</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-电路的系统化求解方法"><span class="nav-text">7. 电路的系统化求解方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-支路电流法（b个方程）"><span class="nav-text">7.1 支路电流法（b个方程）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-节点电压法（n-1个方程）"><span class="nav-text">7.2 节点电压法（n-1个方程）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-环路电流法（b-n-1个方程）"><span class="nav-text">7.3 环路电流法（b-n+1个方程）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊情况"><span class="nav-text">特殊情况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-叠加和戴维南"><span class="nav-text">8. 叠加和戴维南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-叠加定理"><span class="nav-text">8.1 叠加定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-戴维南和诺顿定理"><span class="nav-text">8.2 戴维南和诺顿定理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-电容和电感"><span class="nav-text">9. 电容和电感</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-电容"><span class="nav-text">9.1 电容</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

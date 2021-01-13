@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在算法题的刷题过程中发现集合框架和数据结构的使用息息相关，经常因为对集合框架不甚了解导致代码bug无法解决，耽误时间，遂系统学习归纳，以观成效。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-集合框架&#x2F;String&#x2F;数组专题">
+<meta property="og:url" content="http://yoursite.com/2020/12/09/java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81String%E4%B8%93%E9%A2%98/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="在算法题的刷题过程中发现集合框架和数据结构的使用息息相关，经常因为对集合框架不甚了解导致代码bug无法解决，耽误时间，遂系统学习归纳，以观成效。">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201209165238.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201209180508.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201210153031.png">
+<meta property="article:published_time" content="2020-12-09T08:44:15.000Z">
+<meta property="article:modified_time" content="2021-01-05T11:14:26.998Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20201209165238.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/12/09/java-集合框架、数组、String专题/"/>
+
+
+
+
+
+  <title>java-集合框架/String/数组专题 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/09/java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81String%E4%B8%93%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java-集合框架/String/数组专题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-09T16:44:15+08:00">
+                2020-12-09
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-01-05T19:14:26+08:00" content="2021-01-05">
+                          2021-01-05
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-%E4%BA%8C%E7%BA%A7-%E6%A6%82%E5%BF%B5-spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习-二级.概念...spring框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在算法题的刷题过程中发现集合框架和数据结构的使用息息相关，经常因为对集合框架不甚了解导致代码bug无法解决，耽误时间，遂系统学习归纳，以观成效。</p>
+<a id="more"></a>
+<h1 id="1-HashMap"><a href="#1-HashMap" class="headerlink" title="1. HashMap"></a>1. HashMap</h1><h2 id="1-1-什么是哈希表"><a href="#1-1-什么是哈希表" class="headerlink" title="1.1 什么是哈希表"></a>1.1 什么是哈希表</h2><p>​        数据结构的物理存储结构只有两种：<strong>顺序存储结构</strong>和<strong>链式存储结构</strong>（像栈，队列，树，图等是从逻辑结构去抽象的，映射到内存中，也这两种物理组织形式），而在上面我们提到过，在数组中根据下标查找某个元素，一次定位就可以达到，哈希表利用了这种特性，<strong>哈希表的主干就是数组</strong>。</p>
+<p>​        <strong>比如我们要新增或查找某个元素，我们通过把当前元素的关键字 通过某个函数映射到数组中的某个位置，通过数组下标一次定位就可完成操作。</strong></p>
+<p>​        这个函数可以简单描述为：<strong>存储位置 = f(关键字)</strong> ，这个函数f一般称为哈希函数，这个函数的设计好坏会直接影响到哈希表的优劣。举个例子，比如我们要在哈希表中执行插入操作：<br> 插入过程如下图所示</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201209165238.png" alt="哈希表数据插入过程" style="zoom:67%;" /></p>
+<p>查找操作同理，先通过哈希函数计算出实际存储地址，然后从数组中对应地址取出即可。</p>
+<h2 id="1-2-哈希碰撞"><a href="#1-2-哈希碰撞" class="headerlink" title="1.2 哈希碰撞"></a>1.2 哈希碰撞</h2><p>然而万事无完美，<strong>如果两个不同的元素，通过哈希函数得出的实际存储地址相同怎么办</strong>？也就是说，当我们对某个元素进行哈希运算，得到一个存储地址，然后要进行插入的时候，发现已经被其他元素占用了，其实这就是所谓的<strong>哈希冲突</strong>，也叫<strong>哈希碰撞</strong>。前面我们提到过，哈希函数的设计至关重要，好的哈希函数会尽可能地保证  计算简单和散列地址分布均匀,但是，我们需要清楚的是，数组是一块连续的固定长度的内存空间，再好的哈希函数也不能保证得到的存储地址绝对不发生冲突。那么哈希冲突如何解决呢？哈希冲突的解决方案有多种:开放定址法（发生冲突，继续寻找下一块未被占用的存储地址），再散列函数法，链地址法，而HashMap即是采用了<strong>链地址法</strong>，也就是<strong>数组+链表</strong>的方式。</p>
+<h2 id="1-3-哈希map的实现原理"><a href="#1-3-哈希map的实现原理" class="headerlink" title="1.3 哈希map的实现原理"></a>1.3 哈希map的实现原理</h2><h3 id="1-3-1-哈希表架构（table）"><a href="#1-3-1-哈希表架构（table）" class="headerlink" title="1.3.1 哈希表架构（table）"></a>1.3.1 哈希表架构（table）</h3><p>HashMap的主干是一个Entry数组。Entry是HashMap的基本组成单元，每一个Entry包含一个key-value键值对。（其实所谓Map其实就是保存了两个对象之间的映射关系的一种集合）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//HashMap的主干数组，可以看到就是一个Entry数组，初始值为空数组&#123;&#125;，主干数组的长度一定是2的次幂。</span></span><br><span class="line"><span class="comment">//至于为什么这么做，后面会有详细分析。</span></span><br><span class="line"><span class="keyword">transient</span> Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;</span><br></pre></td></tr></table></figure>
+<p>Entry是HashMap中的一个静态内部类。代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    V value;</span><br><span class="line">    Entry&lt;K,V&gt; next;<span class="comment">//存储指向下一个Entry的引用，单链表结构</span></span><br><span class="line">    <span class="keyword">int</span> hash;<span class="comment">//对key的hashcode值进行hash运算后得到的值，存储在Entry，避免重复计算</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates new entry.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    Entry(<span class="keyword">int</span> h, K k, V v, Entry&lt;K,V&gt; n) &#123;</span><br><span class="line">        value = v;</span><br><span class="line">        next = n;</span><br><span class="line">        key = k;</span><br><span class="line">        hash = h;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>所以，HashMap的总体结构如下：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201209180508.png" alt="在这里插入图片描述" style="zoom: 50%;" /></p>
+<p>简单来说，<strong>HashMap由数组+链表组成的</strong>，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的，如果定位到的数组位置不含链表（当前entry的next指向null）,那么查找，添加等操作很快，仅需一次寻址即可；如果定位到的数组包含链表，对于添加操作，其时间复杂度为O(n)，首先遍历链表，存在即覆盖，否则新增；对于查找操作来讲，仍需遍历链表，然后通过key对象的equals方法逐一比对查找。所以，性能考虑，<strong>HashMap中的链表出现越少，性能才会越好。</strong></p>
+<h3 id="1-3-2-其他几个重要字段"><a href="#1-3-2-其他几个重要字段" class="headerlink" title="1.3.2 其他几个重要字段"></a>1.3.2 其他几个重要字段</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**实际存储的key-value键值对的个数*/</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**阈值，当table == &#123;&#125;时，该值为初始容量（初始容量默认为16）；当table被填充了，也就是为table分配内存空间后，</span></span><br><span class="line"><span class="comment">threshold一般为 capacity*loadFactory。HashMap在进行扩容时需要参考threshold，后面会详细谈到*/</span></span><br><span class="line"><span class="keyword">int</span> threshold;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**负载因子，代表了table的填充度有多少，默认是0.75</span></span><br><span class="line"><span class="comment">加载因子存在的原因，还是因为减缓哈希冲突，如果初始桶为16，等到满16个元素才扩容，某些桶里可能就有不止一个元素了。</span></span><br><span class="line"><span class="comment">所以加载因子默认为0.75，也就是说大小为16的HashMap，到了第13个元素，就会扩容成32。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">float</span> loadFactor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**HashMap被改变的次数，由于HashMap非线程安全，在对HashMap进行迭代时，</span></span><br><span class="line"><span class="comment">如果期间其他线程的参与导致HashMap的结构发生变化了（比如put，remove等操作），</span></span><br><span class="line"><span class="comment">需要抛出异常ConcurrentModificationException*/</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> modCount;</span><br></pre></td></tr></table></figure>
+<p>HashMap有4个构造器，其他构造器如果用户没有传入initialCapacity 和loadFactor这两个参数，会使用默认值</p>
+<p>initialCapacity默认为16，loadFactory默认为0.75</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">　　　　　<span class="comment">//此处对传入的初始容量进行校验，最大不能超过MAXIMUM_CAPACITY = 1&lt;&lt;30(230)</span></span><br><span class="line">        <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal initial capacity: "</span> +</span><br><span class="line">                                               initialCapacity);</span><br><span class="line">        <span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</span><br><span class="line">            initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">        <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor))</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal load factor: "</span> +</span><br><span class="line">                                               loadFactor);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">        threshold = initialCapacity;</span><br><span class="line">　　　　　</span><br><span class="line">        init();<span class="comment">//init方法在HashMap中没有实际实现，不过在其子类如 linkedHashMap中就会有对应实现</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-3-put方法"><a href="#1-3-3-put方法" class="headerlink" title="1.3.3 put方法"></a>1.3.3 put方法</h3><p>从上面这段代码我们可以看出，在常规构造器中，没有为数组table分配内存空间（有一个入参为指定Map的构造器例外），<strong>而是在执行put操作的时候才真正构建table数组</strong></p>
+<p>OK,接下来我们来看看put操作的实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//如果table数组为空数组&#123;&#125;，进行数组填充（为table分配实际内存空间），入参为threshold，</span></span><br><span class="line">        <span class="comment">//此时threshold为initialCapacity 默认是1&lt;&lt;4(24=16)</span></span><br><span class="line">        <span class="keyword">if</span> (table == EMPTY_TABLE) &#123;</span><br><span class="line">            inflateTable(threshold);</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="comment">//如果key为null，存储位置为table[0]或table[0]的冲突链上</span></span><br><span class="line">        <span class="keyword">if</span> (key == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> putForNullKey(value);</span><br><span class="line">        <span class="keyword">int</span> hash = hash(key);<span class="comment">//对key的hashcode进一步计算，确保散列均匀</span></span><br><span class="line">        <span class="keyword">int</span> i = indexFor(hash, table.length);<span class="comment">//获取在table中的实际位置</span></span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != <span class="keyword">null</span>; e = e.next) &#123;</span><br><span class="line">        <span class="comment">//如果该对应数据已存在，执行覆盖操作。用新value替换旧value，并返回旧value</span></span><br><span class="line">            Object k;</span><br><span class="line">            <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123;</span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                e.value = value;</span><br><span class="line">                e.recordAccess(<span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        modCount++;<span class="comment">//保证并发访问时，若HashMap内部结构发生变化，快速响应失败</span></span><br><span class="line">        addEntry(hash, key, value, i);<span class="comment">//新增一个entry</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>put功能总而言之：传入的key，value有旧的值，就返回就得，没有就信增一个entry，返回null</p>
+<h3 id="1-3-4-inflateTable方法"><a href="#1-3-4-inflateTable方法" class="headerlink" title="1.3.4 inflateTable方法"></a>1.3.4 inflateTable方法</h3><p>inflateTable这个方法用于为主干数组table在内存中分配存储空间，通过roundUpToPowerOf2(toSize)可以确保capacity为大于或等于toSize的最接近toSize的二次幂，比如toSize=13,则capacity=16;to_size=16,capacity=16;to_size=17,capacity=32.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inflateTable</span><span class="params">(<span class="keyword">int</span> toSize)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> capacity = roundUpToPowerOf2(toSize);<span class="comment">//capacity一定是2的次幂</span></span><br><span class="line">        <span class="comment">/**此处为threshold赋值，取capacity*loadFactor和MAXIMUM_CAPACITY+1的最小值，</span></span><br><span class="line"><span class="comment">        capaticy一定不会超过MAXIMUM_CAPACITY，除非loadFactor大于1 */</span></span><br><span class="line">        threshold = (<span class="keyword">int</span>) Math.min(capacity * loadFactor, MAXIMUM_CAPACITY + <span class="number">1</span>);</span><br><span class="line">        table = <span class="keyword">new</span> Entry[capacity];</span><br><span class="line">        initHashSeedAsNeeded(capacity);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>roundUpToPowerOf2中的这段处理使得数组长度一定为2的次幂，Integer.highestOneBit是用来获取最左边的bit（其他bit位为0）所代表的数值.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">roundUpToPowerOf2</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// assert number &gt;= 0 : "number must be non-negative";</span></span><br><span class="line">       <span class="keyword">return</span> number &gt;= MAXIMUM_CAPACITY</span><br><span class="line">               ? MAXIMUM_CAPACITY</span><br><span class="line">               : (number &gt; <span class="number">1</span>) ? Integer.highestOneBit((number - <span class="number">1</span>) &lt;&lt; <span class="number">1</span>) : <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-5-hash函数"><a href="#1-3-5-hash函数" class="headerlink" title="1.3.5 hash函数"></a>1.3.5 hash函数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**这是一个神奇的函数，用了很多的异或，移位等运算</span></span><br><span class="line"><span class="comment">对key的hashcode进一步进行计算以及二进制位的调整等来保证最终获取的存储位置尽量分布均匀*/</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h = hashSeed;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0</span> != h &amp;&amp; k <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">            <span class="keyword">return</span> sun.misc.Hashing.stringHash32((String) k);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        h ^= k.hashCode();</span><br><span class="line"></span><br><span class="line">        h ^= (h &gt;&gt;&gt; <span class="number">20</span>) ^ (h &gt;&gt;&gt; <span class="number">12</span>);</span><br><span class="line">        <span class="keyword">return</span> h ^ (h &gt;&gt;&gt; <span class="number">7</span>) ^ (h &gt;&gt;&gt; <span class="number">4</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>以上hash函数计算出的值，通过indexFor进一步处理来获取实际的存储位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回数组下标</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">indexFor</span><span class="params">(<span class="keyword">int</span> h, <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>h&amp;（length-1）保证获取的index一定在数组范围内，举个例子，默认容量16，length-1=15，h=18,转换成二进制计算为index=2。位运算对计算机来说，性能更高一些（HashMap中有大量位运算）。</p>
+<h3 id="1-3-6-由key到下标的最终流程"><a href="#1-3-6-由key到下标的最终流程" class="headerlink" title="1.3.6 由key到下标的最终流程"></a>1.3.6 由key到下标的最终流程</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20201210153031.png" alt="HashMap如何确定元素位置"></p>
+<h1 id="2-字符串（String、StringBuffer、StringBuilder）"><a href="#2-字符串（String、StringBuffer、StringBuilder）" class="headerlink" title="2. 字符串（String、StringBuffer、StringBuilder）"></a>2. 字符串（String、StringBuffer、StringBuilder）</h1><ul>
+<li><p>String类由final修饰，不可继承</p>
+</li>
+<li><p><strong>双引号直接写的字符串在常量池中，new的不在池中！</strong></p>
+<p>eg：String s = new String(“xyz”);创建几个String对象？</p>
+<p>答：2！“xyz”作为字符串文字，编译阶段进入文字池，运行时文字池并入常量池，这个池中的所有字符串常量占用一个空间（地址）。</p>
+<p>new String则在堆上创建了一个对象，两者指向不同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"hello"</span>; <span class="comment">//str1指向静态区</span></span><br><span class="line">String str2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);  <span class="comment">//str2指向堆上的对象</span></span><br><span class="line">String str3 = <span class="string">"hello"</span>;</span><br><span class="line">String str4 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line">System.out.println(str1.equals(str2)); <span class="comment">//true</span></span><br><span class="line">System.out.println(str2.equals(str4)); <span class="comment">//true</span></span><br><span class="line">System.out.println(str1 == str3); <span class="comment">//true</span></span><br><span class="line">System.out.println(str1 == str2); <span class="comment">//false</span></span><br><span class="line">System.out.println(str2 == str4); <span class="comment">//false</span></span><br><span class="line">System.out.println(str2 == <span class="string">"hello"</span>); <span class="comment">//false</span></span><br><span class="line">str2 = str1;</span><br><span class="line">System.out.println(str2 == <span class="string">"hello"</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-1-比较"><a href="#2-1-比较" class="headerlink" title="2.1 比较"></a>2.1 比较</h2><ul>
+<li>==表示内容和地址均相等，如果均为引用类型，则为同一对象</li>
+<li>equals只表示内容相同</li>
+<li>equalsIgnoreCase(String str)：忽略大小写后看是否相同</li>
+</ul>
+<h2 id="2-2-获取参数"><a href="#2-2-获取参数" class="headerlink" title="2.2 获取参数"></a>2.2 获取参数</h2><ul>
+<li><code>public int length()</code>：字符串长度</li>
+<li><code>public String concat(String str)</code>：将当前字符串和参数字符串拼接</li>
+<li><code>public char charAt(int index)</code>：获取 index处的字符（索引从0开始）</li>
+<li><code>public int indexOf(String str)</code>：查找字符串str在原字符串中第一次出现的索引值，没有返回-1</li>
+</ul>
+<h2 id="2-3-截取（substring）"><a href="#2-3-截取（substring）" class="headerlink" title="2.3 截取（substring）"></a>2.3 <a name="2.3">截取（substring）</a></h2><ul>
+<li><code>public String substring(int index)</code>：截取从参数位置开始到字符串结尾，返回新字符串</li>
+<li><code>public String substring(int begin, int end)</code>：从begin到end，左闭右开，包含begin，不含end</li>
+</ul>
+<h2 id="2-4-转换"><a href="#2-4-转换" class="headerlink" title="2.4 转换"></a>2.4 转换</h2><ul>
+<li><p><strong>string转int</strong>：Integer.valueOf(“12”)||Integer.parseInt(“12”)</p>
+<p><strong>int转string</strong>：String.valueOf(12)</p>
+</li>
+<li><p><strong>String转char</strong>：</p>
+<ul>
+<li><code>public char[] toCharArray()</code>：将当前字符串拆分为字符数组作为返回值，然后用for-each遍历</li>
+</ul>
+<p><strong>char转String</strong>：</p>
+<ul>
+<li>String类：String.valueOf()</li>
+<li>StringBuffer类：StringBuffer.append()</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//String</span></span><br><span class="line"><span class="keyword">char</span> myChar = <span class="string">'m'</span>;</span><br><span class="line">String str = String.valueOf(myChar);</span><br><span class="line"><span class="comment">//StringBuffer</span></span><br><span class="line"><span class="keyword">char</span> myChar = <span class="string">'m'</span>;</span><br><span class="line">StringBuffer str = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">str.append(myChar);</span><br><span class="line">String s = StringBuffer.toString();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>String转ASCII码：</strong><code>public byte[] getBytes()</code>：获得当前字符串底层的字节数组（Ascii值）</p>
+</li>
+</ul>
+<h2 id="2-5-分割字符串"><a href="#2-5-分割字符串" class="headerlink" title="2.5 分割字符串"></a>2.5 分割字符串</h2><ul>
+<li><p><code>public String[] split(String regex)</code>：按照参数的规则，将字符串切分为若干部分</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"aaa,ccc,bbb"</span>;</span><br><span class="line">String[] array1 = str1.split(<span class="string">","</span>);</span><br><span class="line"><span class="comment">//注意：对于按"." 进行字符串切分，需要split("\\.")</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-6-判断"><a href="#2-6-判断" class="headerlink" title="2.6 判断"></a>2.6 判断</h2><ul>
+<li><code>public boolean isEmpty()</code>：字符串长度是否为0；</li>
+<li><code>public boolean contains(String str)</code>：是否包含目标字符串；</li>
+<li><code>publci boolean startsWith(String str, int toffset)</code>：是否以指定的前缀开始</li>
+<li><code>publci boolean endsWith(String str)</code>：是否以指定的后缀结束</li>
+</ul>
+<h2 id="2-7-遍历"><a href="#2-7-遍历" class="headerlink" title="2.7 遍历"></a>2.7 遍历</h2><ul>
+<li>toCharArray()</li>
+<li>.length()，charAt()</li>
+<li>.length()，substring(i,i+1)</li>
+</ul>
+<h2 id="2-8-增"><a href="#2-8-增" class="headerlink" title="2.8 增"></a>2.8 增</h2><ul>
+<li>直接”+”相加：str1+str2；</li>
+<li>StringBuffer类方法：<code>str1.append()</code>括号内可以是字符串，int或char</li>
+<li>String类方法：<code>public String join(String method, String a, String b,...)</code>：通过某种方式实现字符串拼接</li>
+</ul>
+<h2 id="2-9-删"><a href="#2-9-删" class="headerlink" title="2.9 删"></a>2.9 删</h2><ul>
+<li><strong>删除指定位置字符或字符串！</strong>StringBuffer类方法：<ul>
+<li>delete（int begin, int end）;</li>
+<li>deleteCharAt(int index)；</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-10-改"><a href="#2-10-改" class="headerlink" title="2.10 改"></a>2.10 改</h2><ul>
+<li><strong>用新字符串替换老字符串：</strong><code>public String replace(CharSequence oldString, CharSequence newString)</code></li>
+<li><strong>大小写转换：</strong><code>toLowerCase</code>：字符串转小写<code>toUpperCase</code>：字符串转大写</li>
+</ul>
+<h2 id="2-11-查"><a href="#2-11-查" class="headerlink" title="2.11 查"></a>2.11 查</h2><ul>
+<li>对应索引位置处的字符：<code>str.charAt(int index)</code>;</li>
+<li><a href="#2.3">索引区间内的字符串</a></li>
+</ul>
+<h1 id="3-集合框架"><a href="#3-集合框架" class="headerlink" title="3 . 集合框架"></a>3 . 集合框架</h1><h2 id="3-1lists-add-list-和lists-add-new-ArrayList-lt-gt-list-的区别"><a href="#3-1lists-add-list-和lists-add-new-ArrayList-lt-gt-list-的区别" class="headerlink" title="3.1lists.add(list)和lists.add(new ArrayList&lt;&gt;(list))的区别"></a>3.1lists.add(list)和lists.add(new ArrayList&lt;&gt;(list))的区别</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种情况：</span></span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">List&lt;Integer&gt; row = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">  row.add(i);</span><br><span class="line">  res.add(row);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//结果：res: [[1,2,3],[1,2,3],[1,2,3]]</span></span><br><span class="line"><span class="comment">//只创建了两个对象，res和row，最后添加进res的是三个同样的对象row的引用。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第二种情况：</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">  row.add(i);</span><br><span class="line">  res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(row));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//结果：res: [[1],[1,2],[1,2,3]]</span></span><br><span class="line"><span class="comment">//创建了5个对象，res,row以及row的三个不同时刻的拷贝。</span></span><br></pre></td></tr></table></figure>
+<p>总而言之，列表中存储的只是对象或者引用类型，</p>
+<h2 id="1-HashMap的API"><a href="#1-HashMap的API" class="headerlink" title="1. HashMap的API"></a>1. HashMap的API</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/30/%E4%BA%8C%E5%8F%89%E6%A0%91_%E5%9B%BE_bfs_dfs/" rel="next" title="树/图及bfs/dfs">
+                <i class="fa fa-chevron-left"></i> 树/图及bfs/dfs
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/12/13/%E6%89%93%E5%AD%97%E6%97%B6%E5%BF%AB%E9%80%9F%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87/" rel="prev" title="打字时快速移动光标">
+                打字时快速移动光标 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-HashMap"><span class="nav-text">1. HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是哈希表"><span class="nav-text">1.1 什么是哈希表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-哈希碰撞"><span class="nav-text">1.2 哈希碰撞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-哈希map的实现原理"><span class="nav-text">1.3 哈希map的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-哈希表架构（table）"><span class="nav-text">1.3.1 哈希表架构（table）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-其他几个重要字段"><span class="nav-text">1.3.2 其他几个重要字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-put方法"><span class="nav-text">1.3.3 put方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-inflateTable方法"><span class="nav-text">1.3.4 inflateTable方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-5-hash函数"><span class="nav-text">1.3.5 hash函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-6-由key到下标的最终流程"><span class="nav-text">1.3.6 由key到下标的最终流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-字符串（String、StringBuffer、StringBuilder）"><span class="nav-text">2. 字符串（String、StringBuffer、StringBuilder）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-比较"><span class="nav-text">2.1 比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-获取参数"><span class="nav-text">2.2 获取参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-截取（substring）"><span class="nav-text">2.3 截取（substring）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-转换"><span class="nav-text">2.4 转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-分割字符串"><span class="nav-text">2.5 分割字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-判断"><span class="nav-text">2.6 判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-遍历"><span class="nav-text">2.7 遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-增"><span class="nav-text">2.8 增</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-删"><span class="nav-text">2.9 删</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-改"><span class="nav-text">2.10 改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-查"><span class="nav-text">2.11 查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-集合框架"><span class="nav-text">3 . 集合框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1lists-add-list-和lists-add-new-ArrayList-lt-gt-list-的区别"><span class="nav-text">3.1lists.add(list)和lists.add(new ArrayList&lt;&gt;(list))的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HashMap的API"><span class="nav-text">1. HashMap的API</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

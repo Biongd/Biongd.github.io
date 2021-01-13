@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="git/github," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天尝试用gitee进行两台电脑上的笔记的同步，在实验室尝试将笔记内容上传到gitee，结果因为git基本功不扎实又对git进行了系统的学习，记录一下在实际操作中碰到的分支问题和我自己的理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git实操">
+<meta property="og:url" content="http://yoursite.com/2020/07/22/git%E5%AE%9E%E6%93%8D/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="今天尝试用gitee进行两台电脑上的笔记的同步，在实验室尝试将笔记内容上传到gitee，结果因为git基本功不扎实又对git进行了系统的学习，记录一下在实际操作中碰到的分支问题和我自己的理解">
+<meta property="article:published_time" content="2020-07-22T06:05:50.000Z">
+<meta property="article:modified_time" content="2021-01-02T11:56:36.399Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="git&#x2F;github">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/22/git实操/"/>
+
+
+
+
+
+  <title>git实操 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/22/git%E5%AE%9E%E6%93%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">git实操</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-22T14:05:50+08:00">
+                2020-07-22
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-01-02T19:56:36+08:00" content="2021-01-02">
+                          2021-01-02
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git-github-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E8%BF%9C%E7%A8%8B-%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%8F%8A%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9-%E5%88%B6%E4%BD%9C%E5%9B%BE%E5%BA%8A/" itemprop="url" rel="index">
+                    <span itemprop="name">git/github-使用教程.远程.博客部署及主题修改...制作图床</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天尝试用gitee进行两台电脑上的笔记的同步，在实验室尝试将笔记内容上传到gitee，结果因为git基本功不扎实又对git进行了系统的学习，记录一下在实际操作中碰到的分支问题和我自己的理解</p>
+<a id="more"></a>
+<h1 id="1-本地在经过两次提交后和推到远端后"><a href="#1-本地在经过两次提交后和推到远端后" class="headerlink" title="1.本地在经过两次提交后和推到远端后"></a>1.本地在经过两次提交后和推到远端后</h1><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git log</span><br><span class="line">commit <span class="number">78</span>a5b31d3ba4e4faabc7f3acd7ad138fc8de4b12 (HEAD -&gt; master, origin/master)</span><br><span class="line">Author: Biongd &lt;<span class="symbol">xv06125231@</span><span class="number">126.</span>com&gt;</span><br><span class="line">Date:   Wed Jul <span class="number">22</span> <span class="number">10</span>:<span class="number">51</span>:<span class="number">30</span> <span class="number">2020</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    修改内容</span><br><span class="line"></span><br><span class="line">commit <span class="number">87</span>c8dc246891d19ac931e7d736a4d0cd18e7876e</span><br><span class="line">Author: Biongd &lt;<span class="symbol">xv06125231@</span><span class="number">126.</span>com&gt;</span><br><span class="line">Date:   Wed Jul <span class="number">22</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">20</span> <span class="number">2020</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    全部提交</span><br></pre></td></tr></table></figure>
+<h1 id="2-我手贱尝试了下git-reset-hard-HEAD"><a href="#2-我手贱尝试了下git-reset-hard-HEAD" class="headerlink" title="2.我手贱尝试了下git reset --hard HEAD^"></a>2.我手贱尝试了下<code>git reset --hard HEAD^</code></h1><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git log</span><br><span class="line">commit <span class="number">87</span>c8dc246891d19ac931e7d736a4d0cd18e7876e (HEAD -&gt; master)</span><br><span class="line">Author: Biongd &lt;<span class="symbol">xv06125231@</span><span class="number">126.</span>com&gt;</span><br><span class="line">Date:   Wed Jul <span class="number">22</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">20</span> <span class="number">2020</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    全部提交</span><br></pre></td></tr></table></figure>
+<p>果然修改内容的版本没了</p>
+<h1 id="3-然后我又对文件“git和github教程”进行了修改"><a href="#3-然后我又对文件“git和github教程”进行了修改" class="headerlink" title="3.然后我又对文件“git和github教程”进行了修改"></a>3.然后我又对文件“git和github教程”进行了修改</h1><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git commit -m <span class="string">"对git有了更系统的认识"</span></span><br><span class="line">[master <span class="number">9659097</span>] 对git有了更系统的认识</span><br><span class="line"> <span class="number">1</span> file <span class="section">changed</span>, <span class="number">117</span> insertions(+), <span class="number">57</span> deletions(-)</span><br></pre></td></tr></table></figure>
+<p>推到远端毫无疑问的报错了</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git push origin master</span><br><span class="line">To gitee.<span class="keyword">com</span>:biongd/NOTEBOOK.git</span><br><span class="line"> ! [rejected]        master -&gt; master (non-fast-forward)</span><br><span class="line">error: failed <span class="keyword">to</span> push some refs <span class="keyword">to</span> <span class="string">'gitee.com:biongd/NOTEBOOK.git'</span></span><br><span class="line">hin<span class="variable">t:</span> Updates were rejected because the tip of your current branch <span class="keyword">is</span> behind</span><br><span class="line">hin<span class="variable">t:</span> its remote counterpart. Integrate the remote <span class="keyword">changes</span> (<span class="keyword">e</span>.g.</span><br><span class="line">hin<span class="variable">t:</span> <span class="string">'git pull ...'</span>) before pushing again.</span><br><span class="line">hin<span class="variable">t:</span> See the <span class="string">'Note about fast-forwards'</span> in <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
+<p>原因：</p>
+<p>本地：全部提交–<del>内容修改</del>–对git有了更系统的认识，即A–C</p>
+<p>远程：全部提交–内容修改，即A–B</p>
+<p>关键是B和C的共有文件夹“git和github教程”发生改变了啊！！！合并必然报错啊！！！但是懵懂的我并不知道是这个原因。。。。。。。。。。。。</p>
+<h1 id="4-然后习惯性的执行了git-pull"><a href="#4-然后习惯性的执行了git-pull" class="headerlink" title="4.然后习惯性的执行了git pull"></a>4.然后习惯性的执行了git pull</h1><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git pull <span class="comment">--rebase origin master</span></span><br><span class="line"><span class="keyword">From</span> gitee.com:biongd/NOTEBOOK</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">error: could <span class="keyword">not</span> apply <span class="number">9659097.</span>.. 对git有了更系统的认识</span><br><span class="line">Resolve <span class="keyword">all</span> conflicts manually, mark them <span class="keyword">as</span> resolved <span class="keyword">with</span></span><br><span class="line">"git add/rm &lt;conflicted_files&gt;", <span class="keyword">then</span> run "git rebase --continue".</span><br><span class="line">You can <span class="keyword">instead</span> skip this <span class="keyword">commit</span>: run "git rebase --skip".</span><br><span class="line"><span class="keyword">To</span> <span class="keyword">abort</span> <span class="keyword">and</span> <span class="keyword">get</span> back <span class="keyword">to</span> the state <span class="keyword">before</span> "git rebase", run "git rebase --abort".</span><br><span class="line">Could <span class="keyword">not</span> apply <span class="number">9659097.</span>.. 对git有了更系统的认识</span><br><span class="line">Auto-merging git和github教程.md</span><br><span class="line"><span class="keyword">CONFLICT</span> (content): Merge <span class="keyword">conflict</span> <span class="keyword">in</span> git和github教程.md</span><br></pre></td></tr></table></figure>
+<p>没疑问的报了冲突。</p>
+<p>可以看到本地分支的变化</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">原来：terahertz<span class="meta">@DESKTOP</span>-R5AO72E MINGW64 <span class="regexp">/d/</span>biongd<span class="regexp">/blog/</span>source/_posts (master)</span><br><span class="line"></span><br><span class="line">现在：terahertz<span class="meta">@DESKTOP</span>-R5AO72E MINGW64 <span class="regexp">/d/</span>biongd<span class="regexp">/blog/</span>source<span class="regexp">/_posts (master|REBASE 1/</span><span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<p>由于执行rebase导致，（master|REBASE 1/1）表示分支当前的冲突等待处理</p>
+<p>可以执行的操作</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1.</span>git rebase --<span class="keyword">continue</span> 手动解决冲突后继续执行</span><br><span class="line"><span class="number">2.</span>git rebase --abort    放弃解决冲突</span><br></pre></td></tr></table></figure>
+<p>但是作为一个傻白甜的萌新怎么可能知道这些，我学着用git diff查看冲突内容，然后按q退出了</p>
+<p>之后原本的文件就多了许多的提示冲突的内容。</p>
+<p>之后的状态就变成了：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">terahertz@DESKTOP-R5AO72E MINGW64 /d/biongd/blog/source/_posts (master|REBASE 1/1)</span><br><span class="line">$ git status</span><br><span class="line">interactive rebase in progress; onto 78a5b31</span><br><span class="line">Last command done (1 command done):</span><br><span class="line">   pick 9659097 对git有了更系统的认识</span><br><span class="line">No commands remaining.</span><br><span class="line">You are currently editing a <span class="keyword">commit</span> <span class="keyword">while</span> rebasing branch <span class="string">'master'</span> <span class="keyword">on</span> <span class="string">'78a5b31'</span>.</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git commit --amend"</span> <span class="keyword">to</span> amend the <span class="keyword">current</span> <span class="keyword">commit</span>)</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git rebase --continue"</span> once you <span class="keyword">are</span> satisfied <span class="keyword">with</span> your changes)</span><br><span class="line"></span><br><span class="line">Changes <span class="keyword">to</span> be committed:</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git restore --staged &lt;file&gt;..."</span> <span class="keyword">to</span> unstage)</span><br><span class="line">        modified:   git和github教程.md</span><br></pre></td></tr></table></figure>
+<h1 id="5-回溯-重新提交"><a href="#5-回溯-重新提交" class="headerlink" title="5.回溯+重新提交"></a>5.回溯+重新提交</h1><p>灵机一动，通过git reset HEAD来回溯commit不就可以找回文件了吗，而且还能将本地的“内容修改”，也就是例子中的B找回来，</p>
+<p>这样本地分支和远程分支的路径也就不会冲突了。可以直接push。</p>
+<p>事实证明这是科学的，也是可行的，但是前提是从(master|REBASE 1/1)状态退出</p>
+<p>但是我木有，我直接在这种状态下push，结果。。。。。</p>
+<p>还是一样的错误！！！！</p>
+<p>然后我又一次：git pull </p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git pull <span class="comment">--rebase origin master</span></span><br><span class="line">From gitee.com:biongd/NOTEBOOK</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">fatal: It seems that there is already <span class="keyword">a</span> rebase-<span class="built_in">merge</span> <span class="built_in">directory</span>, <span class="keyword">and</span></span><br><span class="line">I wonder <span class="keyword">if</span> you are <span class="keyword">in</span> <span class="keyword">the</span> <span class="keyword">middle</span> <span class="keyword">of</span> another rebase.  If that is <span class="keyword">the</span></span><br><span class="line"><span class="keyword">case</span>, please <span class="keyword">try</span></span><br><span class="line">        git rebase (<span class="comment">--continue | --abort | --skip)</span></span><br><span class="line">If that is <span class="keyword">not</span> <span class="keyword">the</span> <span class="keyword">case</span>, please</span><br><span class="line">        rm -fr <span class="string">".git/rebase-merge"</span></span><br><span class="line"><span class="keyword">and</span> run me again.  I am stopping <span class="keyword">in</span> <span class="keyword">case</span> you still have something</span><br><span class="line">valuable there.</span><br></pre></td></tr></table></figure>
+<p>你看，人家都把路给我指明了(–continue | –abort | –skip)</p>
+<p>但是我硬生生的选择了rm -fr “.git/rebase-merge”</p>
+<p>OK，接下来在仓库中再次执行git pull ：(杠上了)</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git pull</span><br><span class="line">You are <span class="keyword">not</span> currently <span class="keyword">on</span> <span class="title">a</span> <span class="title">branch</span>.</span><br><span class="line">Please specify which branch you want <span class="built_in">to</span> <span class="built_in">merge</span> <span class="keyword">with</span>.</span><br><span class="line">See git-pull(<span class="number">1</span>) <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
+<p>没错，我有仓库但是没分支啦。。HEAD处于游离态。。</p>
+<p>执行git status也是：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git status</span><br><span class="line">Not currently <span class="keyword">on</span> any branch.</span><br><span class="line">Changes <span class="keyword">to</span> be committed:</span><br><span class="line">  (use <span class="string">"git restore --staged &lt;file&gt;..."</span> <span class="keyword">to</span> unstage)</span><br><span class="line">        modified:   git和github教程.md</span><br></pre></td></tr></table></figure>
+<h1 id="6-重新回到分支"><a href="#6-重新回到分支" class="headerlink" title="6.重新回到分支"></a>6.重新回到分支</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git checkout -b <span class="literal">master</span></span><br><span class="line">fatal: A branch named '<span class="literal">master</span>' already exists.</span><br></pre></td></tr></table></figure>
+<p>想新建并回到master分支，但人家提醒有过了，看来分支并不会消除，只是HEAD丢了啊</p>
+<p>重新给当前仓库定位分支：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git checkout master</span><br><span class="line">Warning: you are leaving <span class="number">3</span> commits behind, <span class="keyword">not</span> connected <span class="built_in">to</span></span><br><span class="line"><span class="keyword">any</span> <span class="keyword">of</span> your branches:</span><br><span class="line"></span><br><span class="line">  <span class="number">54</span>d4213 尝试</span><br><span class="line">  d3df77b 对git有了更系统的认识</span><br><span class="line">  <span class="number">78</span>a5b31 修改内容</span><br><span class="line"></span><br><span class="line">If you want <span class="built_in">to</span> keep them <span class="keyword">by</span> creating <span class="keyword">a</span> <span class="built_in">new</span> branch, this may be <span class="keyword">a</span> good <span class="built_in">time</span></span><br><span class="line"><span class="built_in">to</span> <span class="built_in">do</span> so <span class="keyword">with</span>:</span><br><span class="line"></span><br><span class="line"> git branch &lt;<span class="built_in">new</span>-branch-name&gt; <span class="number">54</span>d4213</span><br><span class="line"></span><br><span class="line">Switched <span class="built_in">to</span> branch <span class="string">'master'</span></span><br><span class="line">Your branch is up <span class="built_in">to</span> <span class="built_in">date</span> <span class="keyword">with</span> <span class="string">'origin/master'</span>.</span><br></pre></td></tr></table></figure>
+<p>到这我已经懒得去调整他的提交顺序了，因为对分支的含义已经理解的差不多了</p>
+<p>于是，重建新的远程仓库+重新提交，一切都非常完美，本地master和origin/master都回到了正规。</p>
+<h1 id="7-思考"><a href="#7-思考" class="headerlink" title="7.思考"></a>7.思考</h1><p>这也意味着一个事实，我的每一次修改都必须提交并推到远端。否则在下次进行修改时就会显示：</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git pull --rebase origin master</span><br><span class="line"><span class="keyword">error: </span>cannot pull with rebase: You have unstaged changes.</span><br><span class="line"><span class="keyword">error: </span>please commit or stash them.</span><br></pre></td></tr></table></figure>
+<p>也就是你对工作区的修改没有提交导致的报错</p>
+<p>当然，可以在一天的工作完成后准备回寝室的时候统一git add . + 提交 + push</p>
+<h1 id="8-把远程的文件pull到本地"><a href="#8-把远程的文件pull到本地" class="headerlink" title="8.把远程的文件pull到本地"></a>8.把远程的文件pull到本地</h1><p>回到了寝室，直接把_post文件夹下的文件全部清空，然后进行git初始化仓库。直接</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin <span class="literal">master</span></span><br></pre></td></tr></table></figure>
+<p>可以看到</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git log</span><br><span class="line">commit <span class="number">15</span>d7ed4ecd2963baa495e4cb7a3bf8497767344c (HEAD -&gt; master, origin/master)</span><br><span class="line">Author: Biongd &lt;<span class="symbol">xv06125231@</span><span class="number">126.</span>com&gt;</span><br><span class="line">Date:   Wed Jul <span class="number">22</span> <span class="number">16</span>:<span class="number">55</span>:<span class="number">00</span> <span class="number">2020</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="number">2020</span><span class="number">-07</span><span class="number">-22</span></span><br><span class="line"></span><br><span class="line">commit <span class="number">96590977e10</span>c759b233e32e140e72757129f781d</span><br><span class="line">Author: Biongd &lt;<span class="symbol">xv06125231@</span><span class="number">126.</span>com&gt;</span><br><span class="line">Date:   Wed Jul <span class="number">22</span> <span class="number">13</span>:<span class="number">12</span>:<span class="number">32</span> <span class="number">2020</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    对git有了更系统的认识</span><br><span class="line"></span><br><span class="line">commit <span class="number">87</span>c8dc246891d19ac931e7d736a4d0cd18e7876e</span><br><span class="line">Author: Biongd &lt;<span class="symbol">xv06125231@</span><span class="number">126.</span>com&gt;</span><br><span class="line">Date:   Wed Jul <span class="number">22</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">20</span> <span class="number">2020</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    全部提交</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git-github/" rel="tag"># git/github</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/21/linux%E5%9F%BA%E7%A1%80/" rel="next" title="linux-文件和用户管理">
+                <i class="fa fa-chevron-left"></i> linux-文件和用户管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B/" rel="prev" title="操作系统-进程">
+                操作系统-进程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-本地在经过两次提交后和推到远端后"><span class="nav-text">1.本地在经过两次提交后和推到远端后</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-我手贱尝试了下git-reset-hard-HEAD"><span class="nav-text">2.我手贱尝试了下git reset --hard HEAD^</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-然后我又对文件“git和github教程”进行了修改"><span class="nav-text">3.然后我又对文件“git和github教程”进行了修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-然后习惯性的执行了git-pull"><span class="nav-text">4.然后习惯性的执行了git pull</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-回溯-重新提交"><span class="nav-text">5.回溯+重新提交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-重新回到分支"><span class="nav-text">6.重新回到分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-思考"><span class="nav-text">7.思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-把远程的文件pull到本地"><span class="nav-text">8.把远程的文件pull到本地</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

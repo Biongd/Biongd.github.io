@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="进程在并发概念的基础上建立，详细内容可以参照我的另一篇博客进程原理 这一部分内容也就对应了windows图形界面的任务管理器，任务计划程序等很多功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux进程管理">
+<meta property="og:url" content="http://yoursite.com/2020/07/21/linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="进程在并发概念的基础上建立，详细内容可以参照我的另一篇博客进程原理 这一部分内容也就对应了windows图形界面的任务管理器，任务计划程序等很多功能">
+<meta property="article:published_time" content="2020-07-21T00:46:32.000Z">
+<meta property="article:modified_time" content="2021-01-02T11:56:36.409Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/21/linux进程管理/"/>
+
+
+
+
+
+  <title>linux进程管理 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/21/linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux进程管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T08:46:32+08:00">
+                2020-07-21
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-01-02T19:56:36+08:00" content="2021-01-02">
+                          2021-01-02
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux-%E6%96%87%E4%BB%B6%E5%92%8C%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">linux-文件和用户管理.磁盘管理.进程管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>进程在并发概念的基础上建立，详细内容可以参照我的另一篇博客<a href="https://biongd.gitee.io/2020/07/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">进程原理</a></p>
+<p>这一部分内容也就对应了windows图形界面的任务管理器，任务计划程序等很多功能</p>
+<a id="more"></a>
+<h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><h2 id="1-进程的概念"><a href="#1-进程的概念" class="headerlink" title="1.进程的概念"></a>1.进程的概念</h2><p>进程是已启动的可执行程序的运行实例，进程有以下组成部分：</p>
+<ul>
+<li>一个文件</li>
+<li>被分配内存的地址空间</li>
+<li>有权限限制</li>
+<li>程序代码的一个或多个副本（也叫执行线程）</li>
+<li>像人一样拥有状态</li>
+<li>cpu和已花费的实际时间</li>
+<li>网络</li>
+<li>pid（进程的号码）  ppid</li>
+</ul>
+<h2 id="2-静态查看进程ps"><a href="#2-静态查看进程ps" class="headerlink" title="2.静态查看进程ps"></a>2.静态查看进程ps</h2><h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p> ps aux | head -2</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">USER  PID   %CPU   %MEM  VSZ    RSS  TTY  STAT  START  TIME  COMMAND </span><br><span class="line">root  <span class="number">1</span>      <span class="number">0.0</span>   <span class="number">0.6</span>   <span class="number">12809</span> <span class="number">5708</span>   ?    Ss   <span class="number">16</span>:<span class="number">20</span>  <span class="number">10</span>:<span class="number">0</span>1  /user/<span class="class"><span class="keyword">lib</span>/<span class="title">systemd</span>/<span class="title">systemd</span></span></span><br></pre></td></tr></table></figure>
+<p>第一列：USER：运行进程的用户</p>
+<p>第二列：PID：进程ID</p>
+<p>第五列：VSZ：占用虚拟内存(硬盘)</p>
+<p>第六列：RSS：占用实际内存</p>
+<p>第七列：TTY：进程状态</p>
+<p>第八列：STAT：进程状态</p>
+<p>第九列：TIME：进程启动时间</p>
+<p>第十列：COMMAND：进程文件，进程名</p>
+<p>参数：</p>
+<p>ps  a显示现行终端机下的所有程序</p>
+<p>ps  u以用户为主的格式来显示程序状况</p>
+<p>ps   x不以终端机来区分</p>
+<h3 id="进程排序"><a href="#进程排序" class="headerlink" title="进程排序"></a>进程排序</h3><p>语法：ps aux —sort%  cpu        以cpu占用来0排序</p>
+<p>进程的父子关系</p>
+<p>语法：ps  -ef（all processes全部进程）(full全格式)   PPID就是PID的父程序，通过杀死ppid就可以杀死pid进程</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UID         PID   PPID  C STIME TTY          TIME CMD</span><br><span class="line">root          <span class="number">3</span>      <span class="number">2</span>  <span class="number">0</span> <span class="number">15</span>:<span class="number">11</span> ?        <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> [rcu_gp]</span><br><span class="line">root          <span class="number">4</span>      <span class="number">2</span>  <span class="number">0</span> <span class="number">15</span>:<span class="number">11</span> ?        <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> [rcu_par_gp]</span><br></pre></td></tr></table></figure>
+<h3 id="自定义显示字段"><a href="#自定义显示字段" class="headerlink" title="自定义显示字段"></a>自定义显示字段</h3><p>ps  axo  user，pid,ppid,%mem | head -3</p>
+<h2 id="3-动态查看进程top"><a href="#3-动态查看进程top" class="headerlink" title="3.动态查看进程top"></a>3.动态查看进程top</h2><p>ps是静态的，是调用这一命令的那一时刻的资源占用等信息</p>
+<p>top是动态的，是实时的任务管理器</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">top - <span class="number">15</span>:<span class="number">40</span>:<span class="number">52</span> up <span class="number">29</span> min,  <span class="number">3</span> users,  load average: <span class="number">0.02</span>, <span class="number">0.01</span>, <span class="number">0.02</span></span><br><span class="line">Tasks: <span class="number">274</span> total,   <span class="number">1</span> running, <span class="number">273</span> sleeping,   <span class="number">0</span> stopped,   <span class="number">0</span> zombie</span><br><span class="line">%Cpu(s):  <span class="number">0.5</span> us,  <span class="number">1.5</span> sy,  <span class="number">0.0</span> ni, <span class="number">98.0</span> id,  <span class="number">0.0</span> wa,  <span class="number">0.0</span> hi,  <span class="number">0.0</span> si,  <span class="number">0.0</span> st</span><br><span class="line">MiB Mem :   <span class="number">1806.1</span> total,    <span class="number">110.6</span> free,   <span class="number">1076.1</span> used,    <span class="number">619.4</span> buff/cache</span><br><span class="line">MiB Swap:   <span class="number">2048.0</span> total,   <span class="number">2047.2</span> free,      <span class="number">0.8</span> used.    <span class="number">554.2</span> avail Mem </span><br><span class="line">-----------------------------------------------------------</span><br><span class="line">   PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND         </span><br><span class="line">   <span class="number">691</span> root      <span class="number">16</span>  <span class="number">-4</span>  <span class="number">149320</span>   <span class="number">2024</span>   <span class="number">1424</span> S   <span class="number">0.3</span>   <span class="number">0.1</span>   <span class="number">0</span>:<span class="number">00.70</span> auditd          </span><br><span class="line">  <span class="number">7209</span> root      <span class="number">20</span>   <span class="number">0</span>  <span class="number">666224</span>  <span class="number">23972</span>  <span class="number">18676</span> S   <span class="number">0.3</span>   <span class="number">1.3</span>   <span class="number">0</span>:<span class="number">00.17</span> gsd-color       </span><br><span class="line">  <span class="number">7781</span> root      <span class="number">20</span>   <span class="number">0</span>  <span class="number">159744</span>   <span class="number">6196</span>   <span class="number">4636</span> S   <span class="number">0.3</span>   <span class="number">0.3</span>   <span class="number">0</span>:<span class="number">05.92</span> sshd            </span><br><span class="line">     <span class="number">1</span> root      <span class="number">20</span>   <span class="number">0</span>  <span class="number">179004</span>  <span class="number">13924</span>   <span class="number">9104</span> S   <span class="number">0.0</span>   <span class="number">0.8</span>   <span class="number">0</span>:<span class="number">01.34</span> systemd         </span><br><span class="line">     <span class="number">2</span> root      <span class="number">20</span>   <span class="number">0</span>       <span class="number">0</span>      <span class="number">0</span>      <span class="number">0</span> S   <span class="number">0.0</span>   <span class="number">0.0</span>   <span class="number">0</span>:<span class="number">00.00</span> kthreadd</span><br></pre></td></tr></table></figure>
+<h3 id="上面部分：性能"><a href="#上面部分：性能" class="headerlink" title="上面部分：性能"></a>上面部分：性能</h3><p>第一行：程序的名称和时间</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">top - <span class="number">15</span>:<span class="number">40</span>:<span class="number">52</span> up <span class="number">29</span> min,  <span class="number">3</span> users,  load average: <span class="number">0.02</span>, <span class="number">0.01</span>, <span class="number">0.02</span></span><br><span class="line">程序名 系统时间    运行时间    登录用户数    cpu负载   ：三个时间点来呈现</span><br></pre></td></tr></table></figure>
+<p>第二行：个状态进程数</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Tasks: <span class="number">274</span> total,   <span class="number">1</span> running, <span class="number">273</span> sleeping,   <span class="number">0</span> stopped,   <span class="number">0</span> zombie</span><br><span class="line">总进程数             运行数       睡眠数<span class="number">175</span>        停止数        僵死数</span><br></pre></td></tr></table></figure>
+<p>第三行：cpu占用率百分比</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%Cpu(s):  <span class="number">0.5</span> us,  <span class="number">1.5</span> sy,  <span class="number">0.0</span> ni, <span class="number">98.0</span> id,   <span class="number">0.0</span> wa,  <span class="number">0.0</span> hi,  <span class="number">0.0</span> si,  <span class="number">0.0</span> st</span><br><span class="line">           用户    系统    ni优先级 |<span class="number">98</span>%闲着）ID空闲|等待     hi硬件   si软件    st虚拟机</span><br></pre></td></tr></table></figure>
+<p>第四行：实际内存</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MiB Mem :   <span class="number">1806.1</span> total,    <span class="number">110.6</span> free,   <span class="number">1076.1</span> used,    <span class="number">619.4</span> buff/cache</span><br><span class="line">             <span class="number">2</span>G 内存          <span class="number">0.1</span>G空闲</span><br></pre></td></tr></table></figure>
+<p>第五行：虚拟内存（交换分区）</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">MiB Swap:</span>   <span class="number">2048.0</span> <span class="string">total,</span>   <span class="number">2047.2</span> <span class="string">free,</span>      <span class="number">0.8</span> <span class="string">used.</span>    <span class="number">554.2</span> <span class="string">avail</span> <span class="string">Mem</span></span><br></pre></td></tr></table></figure>
+<h3 id="下面部分：进程"><a href="#下面部分：进程" class="headerlink" title="下面部分：进程"></a>下面部分：进程</h3><p>和静态查看进程同样的分析方法</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>top+回车立刻刷新。按z彩色显示，F通过光标设置</p>
+<p>，P按cpu占用排序，M按mem占用排序,k加回车杀死选中的进程号</p>
+<p>top   -d   3  -p  1,2,3</p>
+<p>查看1,2,3号进程，每过3秒刷新一下</p>
+<p>例子：通过vim命令编辑文档，查看这一进程的动态信息</p>
+<ol>
+<li>获取进程号：ps aux |grep vim   </li>
+<li>top查询：top  -d   2  -p  8788</li>
+</ol>
+<h2 id="4-信号控制进程运行"><a href="#4-信号控制进程运行" class="headerlink" title="4.信号控制进程运行"></a>4.信号控制进程运行</h2><p>给进程发送信号：（kill   -l列出所有支持的信号）</p>
+<p>编号  |  信号名</p>
+<p>1            SIGHUP重新加载配置（重启）</p>
+<p>2            SIGINT键盘中断CTRL+C</p>
+<p>3            SIGQUIT键盘退出Ctrl+\，类似SIGINT</p>
+<p>9            SIGKILL强制终止，无条件（杀死）</p>
+<p>15          SIGTERM终止（正常关闭），缺省信号</p>
+<p>例子1：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kill <span class="number">-15</span> <span class="number">8317</span>     <span class="comment">//给开的8317号vim进程发送-15信号</span></span><br><span class="line">结果：</span><br><span class="line">Vim: Caught deadly signal TERM</span><br><span class="line">Vim: Finished.</span><br><span class="line">已终止</span><br><span class="line">[<span class="symbol">root@</span>localhost ~]#</span><br></pre></td></tr></table></figure>
+<p>例子2：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill <span class="number">-9</span> <span class="number">9127</span>      <span class="comment">//给开的9127号vim进程发送-15信号</span></span><br><span class="line">结果：</span><br><span class="line"><span class="number">11111111111</span>已杀死</span><br></pre></td></tr></table></figure>
+<h2 id="5-进程优先级nice"><a href="#5-进程优先级nice" class="headerlink" title="5.进程优先级nice"></a>5.进程优先级nice</h2><p>值越大优先级越低</p>
+<h3 id="优先级的范围和特性（-20-19）"><a href="#优先级的范围和特性（-20-19）" class="headerlink" title="优先级的范围和特性（-20-19）"></a>优先级的范围和特性（-20-19）</h3><p>top中显示的优先级有两个，PR和nice</p>
+<p>系统自身的调整范围PR：-99-39</p>
+<p>nice调整的优先级范围只是系统范围的一部分，nice的值再加上20才能对应系统的PR值</p>
+<h3 id="查看不同nice级别的进程"><a href="#查看不同nice级别的进程" class="headerlink" title="查看不同nice级别的进程"></a>查看不同nice级别的进程</h3><p>语法：ps   axo   pid，command，nice —sort=- nice      //将进程按nice值排序</p>
+<h3 id="查看进程的PR值（真正优先级）"><a href="#查看进程的PR值（真正优先级）" class="headerlink" title="查看进程的PR值（真正优先级）"></a>查看进程的PR值（真正优先级）</h3><p>通过top查询可以看到</p>
+<h3 id="调整优先级"><a href="#调整优先级" class="headerlink" title="调整优先级"></a>调整优先级</h3><ol>
+<li>启动时设置优先级：nice -n  -5  sleep  500  &amp;</li>
+<li>修改运行着的优先级：renice  -20   3881</li>
+</ol>
+<h2 id="6-作业控制"><a href="#6-作业控制" class="headerlink" title="6.作业控制"></a>6.作业控制</h2><h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><p>foreground：前台进程，是在终端中运行的命令，占领终端</p>
+<p>background：后台进程，没有控制终端，他不需要终端的交互。看不见，但是在运行</p>
+<p>如sleep  200，当前终端就已经无法注入命令。</p>
+<p>sleep   200  &amp; ，该命令就在后台运行。终端可以继续操作</p>
+<h3 id="查看后台进程"><a href="#查看后台进程" class="headerlink" title="查看后台进程"></a>查看后台进程</h3><p>jobs</p>
+<p>第一列，进程打开的顺序</p>
+<p>第二列，运行中</p>
+<p>第三列：执行语句</p>
+<h3 id="调动后台进程至前台"><a href="#调动后台进程至前台" class="headerlink" title="调动后台进程至前台"></a>调动后台进程至前台</h3><p>fg  4</p>
+<p>将4号后台进程调至前台执行。</p>
+<p>ctrl   z</p>
+<p>键盘中止，使当前进程暂停</p>
+<p>bg  4</p>
+<p>又能将该进程进程调至后台执行。</p>
+<h3 id="消灭后台进程"><a href="#消灭后台进程" class="headerlink" title="消灭后台进程"></a>消灭后台进程</h3><p>kill    %1</p>
+<p>注意：kill 1和kill  1%不同</p>
+<p>前者为终止PID为1的进程（就把系统进程给干掉了）</p>
+<p>后者杀死作业序号为1的后台程序</p>
+<h2 id="7-虚拟文件系统"><a href="#7-虚拟文件系统" class="headerlink" title="7.虚拟文件系统"></a>7.虚拟文件系统</h2><p>采集服务器自身内核、进程运行的状态信息</p>
+<p>cpu： /proc/cpuinfo</p>
+<p>内存：/proc/meminfo</p>
+<p>内核：/proc/cmdline </p>
+<h2 id="8-管道和重定向"><a href="#8-管道和重定向" class="headerlink" title="8.管道和重定向"></a>8.管道和重定向</h2><h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><blockquote>
+<p>（覆盖）   &gt;&gt;（追加）    &lt;       &lt;&lt;</p>
+</blockquote>
+<p>​    对程序的输出进行引导</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">mkdir</span> <span class="selector-tag">dec1</span> &gt; <span class="selector-tag">dec1</span><span class="selector-class">.txt</span></span><br><span class="line"><span class="selector-tag">dec1</span>目录被创建，但是<span class="selector-tag">dec1</span><span class="selector-class">.txt</span>并没有信息</span><br><span class="line"><span class="selector-tag">mkdir</span> <span class="selector-tag">-v</span> <span class="selector-tag">dec1</span> &gt; <span class="selector-tag">dec1</span><span class="selector-class">.txt</span></span><br><span class="line"><span class="selector-tag">dec1</span><span class="selector-class">.txt</span>显示目录创建信息</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>FD简介：（范围0-255）</p>
+<p>file descriptors，FD，文件描述符，文件句柄进程使用文件描述符来管理打开的文件。</p>
+<p>总而言之：FD就是一堆数字，是已打开文件的代号，由这些代号在程序中引用文件。就是一个通向文件的链接。</p>
+<p>0号：标准输入，例如键盘输入就存储在/dev/stdin，再通过FD进入程序</p>
+<p>1.2号：终端，可以理解为屏幕？dev/pst/0  、1</p>
+<p>1号：标准输出</p>
+<p>2号：标准错误输出</p>
+<p>3+：普通文件</p>
+</li>
+<li><p>输出正确重定向：</p>
+<p>1&gt; 就等价于 &gt;        1&gt;1.txt     将本来应该输出到终端上的内容重定向到1.TXT中。</p>
+<p>1&gt;&gt; 就等价于 &gt;&gt;</p>
+<p>输出错误重定向：</p>
+<p>2&gt;     2&gt;&gt;</p>
+<p>输出不管正确与否都对其执行重定向：<br>ls /home/   /aaaaaaa        1&gt; yes.txt      2&gt;no.txt</p>
+<p>ls /home/   /aaaaaaa      &amp;&gt;   /dev/null        引导至垃圾桶</p>
+</li>
+<li><p>输入重定向</p>
+<p>例1</p>
+<p>发送邮件：</p>
+<p>mail -s “test01” alice  +  邮件内容</p>
+<p>mail -s “test01” alice  &lt;  word.text</p>
+<p>例2</p>
+<p>看看文件内容</p>
+<p>cat  &lt;   /etc/hosts</p>
+</li>
+<li><p>重定向总结：</p>
+<p>执行程序都写在左侧</p>
+<p>输出重定向就是将程序执行结果引导至别的文件;相当于有return结果的方法进行复制  </p>
+<p>ls -l file1 1&gt;  a.txt   即return到终端上的结果赋值给了a.txt</p>
+<p>输入重定向就是给可执行程序一个输入；类似于给方法传参</p>
+<p>cat  &lt;  /etc/hosts    就是给读文件方法传入了一个参数</p>
+</li>
+</ol>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><ol>
+<li><p>进程管道Piping</p>
+<p>管道命令可以将多条命令组合起来，一次性完成复杂的处理任务</p>
+<p>语法：command1 | command2 | command3 |…</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | <span class="type">grep</span> <span class="string">"root"</span> | <span class="type">head</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tee管道</p>
+<p>类似三通，在执行管道命令的同时将输出保存在文件中</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd |<span class="type">tee</span> file1.txt | <span class="type">head</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数传递（xargs）</p>
+<p>转换。cp，rm等一些特殊命令不遵守管道命令</p>
+</li>
+</ol>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> file1 | <span class="keyword">rm</span> -rvf  并不能执行删除命令</span><br><span class="line"><span class="keyword">cat</span> file1 | xargs <span class="keyword">rm</span> -rvf 这时候就可以执行了（v是可视的意思）</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/18/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" rel="next" title="类和对象">
+                <i class="fa fa-chevron-left"></i> 类和对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/21/linux%E5%9F%BA%E7%A1%80/" rel="prev" title="linux-文件和用户管理">
+                linux-文件和用户管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程管理"><span class="nav-text">进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-进程的概念"><span class="nav-text">1.进程的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-静态查看进程ps"><span class="nav-text">2.静态查看进程ps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解释"><span class="nav-text">解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程排序"><span class="nav-text">进程排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义显示字段"><span class="nav-text">自定义显示字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-动态查看进程top"><span class="nav-text">3.动态查看进程top</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上面部分：性能"><span class="nav-text">上面部分：性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下面部分：进程"><span class="nav-text">下面部分：进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-信号控制进程运行"><span class="nav-text">4.信号控制进程运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-进程优先级nice"><span class="nav-text">5.进程优先级nice</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优先级的范围和特性（-20-19）"><span class="nav-text">优先级的范围和特性（-20-19）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看不同nice级别的进程"><span class="nav-text">查看不同nice级别的进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看进程的PR值（真正优先级）"><span class="nav-text">查看进程的PR值（真正优先级）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调整优先级"><span class="nav-text">调整优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-作业控制"><span class="nav-text">6.作业控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后台运行"><span class="nav-text">后台运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看后台进程"><span class="nav-text">查看后台进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调动后台进程至前台"><span class="nav-text">调动后台进程至前台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消灭后台进程"><span class="nav-text">消灭后台进程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-虚拟文件系统"><span class="nav-text">7.虚拟文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-管道和重定向"><span class="nav-text">8.管道和重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向"><span class="nav-text">重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道"><span class="nav-text">管道</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

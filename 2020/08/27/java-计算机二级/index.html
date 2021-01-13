@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="又到了快要考计算机二级的日子，本来不想报名的，毕竟用处不大。但是犹豫再三还是报了名，就当做是弥补大学时的遗憾了。 目标：20天完成java基础的系统学习；教材：java核心技术（清华大学出版社）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-计算机二级">
+<meta property="og:url" content="http://yoursite.com/2020/08/27/java-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BA%8C%E7%BA%A7/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="又到了快要考计算机二级的日子，本来不想报名的，毕竟用处不大。但是犹豫再三还是报了名，就当做是弥补大学时的遗憾了。 目标：20天完成java基础的系统学习；教材：java核心技术（清华大学出版社）">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201103090237.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201103090345.png">
+<meta property="article:published_time" content="2020-08-27T01:39:24.000Z">
+<meta property="article:modified_time" content="2021-01-02T11:56:36.389Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20201103090237.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/27/java-计算机二级/"/>
+
+
+
+
+
+  <title>java-计算机二级 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/27/java-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BA%8C%E7%BA%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java-计算机二级</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-27T09:39:24+08:00">
+                2020-08-27
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-01-02T19:56:36+08:00" content="2021-01-02">
+                          2021-01-02
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-%E4%BA%8C%E7%BA%A7-%E6%A6%82%E5%BF%B5-spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习-二级.概念...spring框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>又到了快要考计算机二级的日子，本来不想报名的，毕竟用处不大。但是犹豫再三还是报了名，就当做是弥补大学时的遗憾了。</p>
+<p>目标：20天完成java基础的系统学习；教材：java核心技术（清华大学出版社）</p>
+<a id="more"></a>
+<h1 id="1-考试大纲"><a href="#1-考试大纲" class="headerlink" title="1.考试大纲"></a>1.考试大纲</h1><h2 id="1-1要求"><a href="#1-1要求" class="headerlink" title="1.1要求"></a>1.1要求</h2><ol>
+<li>掌握 java语言的特点、实现机制和体系结构。</li>
+<li>掌握java语言中面向对象的特性。  </li>
+<li>掌握java语言提供的数据类型和结构。</li>
+<li>掌握 java语言编程的基本技术。</li>
+<li>会编写java用户界面程序。 </li>
+<li>会编写 java简单应用程序。 </li>
+<li>会编写 java小应用程序（applet）。 </li>
+<li>了解java语言的广泛应用。</li>
+</ol>
+<h2 id="1-2内容"><a href="#1-2内容" class="headerlink" title="1.2内容"></a>1.2内容</h2><ol>
+<li><p><strong>java语言特点和实现机制</strong></p>
+</li>
+<li><p><strong>java体系结构</strong></p>
+<ul>
+<li><p>java程序结构</p>
+</li>
+<li><p>java类库结构</p>
+</li>
+<li><p>java程序开发环境结构</p>
+</li>
+</ul>
+</li>
+<li><p><strong>java面向对象的特性</strong></p>
+<ul>
+<li>面向对象编程的基本概念和特征。 </li>
+<li>类的基本组成和使用。 </li>
+<li>对象的生成、使用和删除。 </li>
+<li>包与接口。 </li>
+<li>java类库的常用类和接口。</li>
+</ul>
+</li>
+<li><p><strong>java语言的基本数据类型和运算</strong></p>
+<ul>
+<li>变量和常量。 </li>
+<li>基本数据类型及转换。 </li>
+<li>类库中对基本数据类型的类包装。</li>
+<li>运算符和表达式运算。 </li>
+<li>字符串和数组。 </li>
+</ul>
+</li>
+<li><strong>java语言的基本语句</strong><ul>
+<li>条件语句。 </li>
+<li>循环语句。 </li>
+<li>注释语句。 </li>
+<li>异常处理语句。 </li>
+<li>表达式语句。</li>
+</ul>
+</li>
+<li><strong>java编程基本技术</strong><ul>
+<li>输入输出流及文件操作。 </li>
+<li>线程的概念和使用。 </li>
+<li>程序的同步与共享。 </li>
+<li>语言的继承、多态和高级特性。 </li>
+<li>异常处理和断言概念。 </li>
+<li>语言的集合（collections）框架和泛型概念。 </li>
+</ul>
+</li>
+<li><p><strong>编写用户界面程序</strong></p>
+<ul>
+<li>用 ＡＷＴ 编写图形用户界面的基本技术。</li>
+<li>用 Swing 编写图形用户界面的特点。 </li>
+<li>Swing 的事件处理机制。</li>
+</ul>
+</li>
+<li><p><strong>编写小应用程序</strong>（Applet）</p>
+<ul>
+<li>Applet 类的API基本知识。 </li>
+<li>Applet编写步骤及特点。 </li>
+<li>基于AWT和 Swing 编写用户界面。 </li>
+<li>Applet 的多媒体支持和通信。</li>
+</ul>
+</li>
+<li>JDK的下载和安装</li>
+</ol>
+<h1 id="2-java语言概述"><a href="#2-java语言概述" class="headerlink" title="2. java语言概述"></a>2. java语言概述</h1><h2 id="2-1-java技术"><a href="#2-1-java技术" class="headerlink" title="2.1 java技术"></a>2.1 java技术</h2><p><strong>包括java语言和java平台</strong></p>
+<h3 id="2-1-1-java语言"><a href="#2-1-1-java语言" class="headerlink" title="2.1.1 java语言"></a>2.1.1 java语言</h3><ol>
+<li><p>简单性：不使用指针并提供自动垃圾收集功能，程序员不必为内存管理担忧。</p>
+</li>
+<li><p>面向对象性：提供类，接口和继承等原语。</p>
+</li>
+<li>分布式(Distributed)：在基本java应用编程接口中有一个网络应用编程接口（java net），它提供了用于网络应用编程的类库，包括URL,URLConnection，Socket，ServeSocket等。</li>
+<li><p>多线程(Multithreaded)：线程是一种特殊的对象，它的活动由一组方法来控制。线程的解释</p>
+</li>
+<li><p>动态性(Dynamic)：java类能够动态的载入到运行环境，也可以通过网络载入需要的类，有利于软件的升级</p>
+</li>
+<li>体系结构的中立性(Architecture Neutral)：程序在java平台被编译为体系结构中立的字节码格式，然后可以在装有java平台的任何系统中运行。这种途径适于异构的网络环境和软件的开发。</li>
+<li>可移植性(Portable)：本身中立，规定了各基本数据类型的长度</li>
+<li>高性能(High Performance)：与普通的解释型高级脚本语言相比，java的却是高性能的。</li>
+<li>健壮性(Robust)：通过强类型检查、异常处理、垃圾回收等机制实现健壮性</li>
+<li>安全性</li>
+</ol>
+<h3 id="2-2-2-java平台"><a href="#2-2-2-java平台" class="headerlink" title="2.2.2 java平台"></a>2.2.2 java平台</h3><p>由两部分组成：java虚拟机(JVM)和java应用程序接口（API）。</p>
+<p>java平台将java程序和硬件平台隔离开，实现一次编写，到处执行的特点。</p>
+<ol>
+<li><p>JVM</p>
+<p>运行java代码的虚拟计算机，是一台通过软件模拟实现的真是计算机系统。有自己的硬件，如处理器，堆栈，寄存器等；还有相应的指令系统，为java字节码程序提供了独立的运行环境。</p>
+<p>执行字节码时，JVM需要把字节码解释成具体平台上的机器指令执行。所以只要安装对应平台上的JVM，java代码畅行无阻</p>
+</li>
+<li><p>API</p>
+<p>java语言提供的组织成包接口的类和接口的集合（前接口非后接口），为开发者提供了各种有效的类和接口，并按照功能进行了分包存放。</p>
+</li>
+</ol>
+<h2 id="2-2-开发过程"><a href="#2-2-开发过程" class="headerlink" title="2.2 开发过程"></a>2.2 开发过程</h2><p>代码编写：文本编辑器或者集成开发环境（ide）</p>
+<p>程序编译：将java的源程序编译为字节码程序（编译方式应该与c类似，包接口和启动代码的引入）</p>
+<p>装载运行：区别于c，装载到JVM上运行，JVM又可以安装到任何系统上</p>
+<h2 id="2-3-基本输入输出"><a href="#2-3-基本输入输出" class="headerlink" title="2.3 基本输入输出"></a>2.3 基本输入输出</h2><h3 id="2-3-1-Scanner-类实现键盘输入"><a href="#2-3-1-Scanner-类实现键盘输入" class="headerlink" title="2.3.1 Scanner 类实现键盘输入"></a>2.3.1 Scanner 类实现键盘输入</h3><p>java.util.Scanner</p>
+<p>实例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestInpotScanner</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    	<span class="comment">//定义变量，接受用户输入</span></span><br><span class="line">        String key ;</span><br><span class="line">        <span class="keyword">int</span> keyInt;</span><br><span class="line">        <span class="keyword">float</span> keyFloat;</span><br><span class="line">        Scanner stdin = <span class="keyword">new</span> Scanner(System.in); <span class="comment">//创建一个扫描器stdin对象</span></span><br><span class="line">        System.out.println(<span class="string">"学生的姓名为："</span>);</span><br><span class="line">        key = stdin.nextLine();                 <span class="comment">//收集用户输入</span></span><br><span class="line">        System.out.println(<span class="string">"学生的姓名为:"</span>+key);</span><br><span class="line">        System.out.println(<span class="string">"学生的年龄为："</span>);</span><br><span class="line">        keyInt = stdin.nextInt();<span class="comment">//获取输入的整形</span></span><br><span class="line">        System.out.println(<span class="string">"学生的年龄为："</span>+keyInt);</span><br><span class="line">        System.out.println(<span class="string">"学生的成绩为："</span>);</span><br><span class="line">        keyFloat = stdin.nextFloat();</span><br><span class="line">        System.out.println(<span class="string">"学生的成绩为："</span>+keyFloat);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-2-JOptionPane对话框输入"><a href="#2-3-2-JOptionPane对话框输入" class="headerlink" title="2.3.2 JOptionPane对话框输入"></a>2.3.2 JOptionPane对话框输入</h3><p>JOptionPane是javax.swing中的类，是可视化的对话框。限制了只能输入字符串数据。</p>
+<p>实例：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package test01;</span><br><span class="line"><span class="keyword">import</span> javax.swing.JOptionpane;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestInputJoptionpane</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> testInt;</span><br><span class="line">		<span class="keyword">String</span> dataStr;</span><br><span class="line">		dataStr = JOptionpane.showInputDialog(<span class="string">"输入"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-流（java-io）"><a href="#3-流（java-io）" class="headerlink" title="3. 流（java.io）"></a>3. 流（java.io）</h1><h2 id="3-1-概念-p-277"><a href="#3-1-概念-p-277" class="headerlink" title="3.1 概念(p/277)"></a>3.1 概念(p/277)</h2><ul>
+<li><p>目的：越出JVM，或者说是内存，与外界进行数据交换。</p>
+<p>也就是将数据传输这一行为抽象为流这个概念，或者也可以具象的将流理解为数据的通道</p>
+</li>
+<li><p>分类：</p>
+<ul>
+<li><p>数据流动方向划分：</p>
+<p>输入流和输出流，输入流只能从流里读不能写，输出流只能往流里写写不能读</p>
+<p>流一般成对出现（输入和输出），但也有特例：java.io.RandomAccessFile流类，既是输入流，又是输出流</p>
+</li>
+<li><p>流的功能划分：</p>
+<p>节点流和功能流。节点流只能直接连接数据源，进行数据读写操作，功能流只能对已经存在的节点流进行连接和封装，通过封装增强流的读写功能和处理效率</p>
+</li>
+<li><p>按流操作的数据单位划分</p>
+<p>字节流和字符流，其中以InputStrame和OutputStrame结尾的流为字节流，以Reader或Writer结尾的流为字符流。通过流结尾单词即可区分字节流和字符流类型</p>
+</li>
+</ul>
+</li>
+<li><p>体系结构</p>
+<p>4个顶层流类（抽象类）：InputStream和OutputStrame是字节流，Reader和Writer是字符流。均作为最顶层的父类，其中的抽象方法在子类中进行分化和实现。每个类中也定义了常用的基本方法。</p>
+</li>
+</ul>
+<h2 id="3-2-流的使用"><a href="#3-2-流的使用" class="headerlink" title="3.2 流的使用"></a>3.2 流的使用</h2><p><strong>一、操作步骤</strong></p>
+<ol>
+<li><p>实例化流</p>
+<p>获得流对象，是进行流操作的前提。</p>
+</li>
+<li><p>包装流</p>
+<p>第一步实例化流对象用到的流类为节点流，构造流对象时和数据源建立连接。节点流处理效率较低，操作功能较弱，因此通过第一步获得的节点流对象使用功能流进行包装，以提高流的处理效率和增强流的功能。（p283，图10-8）</p>
+<p>我的理解：在硬盘和内存间加一个buffer功能流，避免总线占用，提高效率，再通过增加Data功能流，增加流对象能实现的作用。</p>
+<p>包装的方式就是给构造器传入节点流对象。</p>
+</li>
+<li><p>读写流</p>
+<p>即执行读或写操作</p>
+</li>
+<li><p>对流类型为输出流的流对象，清除缓存</p>
+<p>输出流类中的flush()方法可以强制输出buffer中缓存的内容，不过顶层输出类中该方法为抽象方法，只有实现该方法的流类实例对象才能调用该方法</p>
+</li>
+<li><p>关闭流</p>
+<p>释放系统资源，减轻内存压力</p>
+</li>
+</ol>
+<p><strong>二、字节流</strong></p>
+<p>节点流：FileInputStream/FileOutputStream，构造输入流对象时需要传入文件路径</p>
+<p>功能流：BufferedInputStream/BufferedOutputStream，增加缓冲功能</p>
+<p>​                DataInputStream/DataOutputStream，读取和写入java基本数据类型和String数据类型</p>
+<p>实例：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package test;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.nio.Buffer;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestInpotScanner</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"D:\\s\\123.txt"</span>);</span><br><span class="line">            BufferedInputStream bis = <span class="keyword">new</span> BufferedInputStream(fis);</span><br><span class="line">            FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"D:\\S\\456.txt"</span>);</span><br><span class="line">            BufferedOutputStream bos = <span class="keyword">new</span> BufferedOutputStream(fos);</span><br><span class="line">            <span class="keyword">int</span> <span class="built_in">read</span>;</span><br><span class="line"><span class="comment">//            while ((read = bis.read())!=-1)&#123;</span></span><br><span class="line"><span class="comment">//                bos.write(read);</span></span><br><span class="line">            <span class="keyword">int</span> len;</span><br><span class="line">            <span class="keyword">byte</span> [] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">while</span>((len= bis.<span class="built_in">read</span>(b))!=<span class="number">-1</span>) &#123;</span><br><span class="line">                bos.<span class="built_in">write</span>(b,<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            bis.<span class="built_in">close</span>();</span><br><span class="line">            bos.<span class="built_in">close</span>();</span><br><span class="line">        &#125;<span class="keyword">catch</span>(FileNotFoundException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>三、字符流</strong></p>
+<p>节点流：FileReader/FileWriter</p>
+<p>功能流：BufferReader/BufferWriter</p>
+<p>和上面的字节流的使用方式类似，区别只在于传输类型不同</p>
+<p>四、字节字符转换流</p>
+<p>InputStreamReader/OutputStreamWriter</p>
+<p><strong>五、随机读取文件流</strong></p>
+<p>RandomAccessFile：既是输入流，也是输出流，有点类似python的open方法</p>
+<p>提供文件指针，标志要进行㝍操作的下一数据的位置，可以在文件的任何位置读写数据。</p>
+<p><strong>六、标准IO</strong></p>
+<p>其实就是控制台输入输出<br>java.lang.System 的3个静态成员提供了标准输入输出的操作功能</p>
+<p>System.out：java.io.PrintStream类型，PrintStream类的write方法本来是写到输出流或数据源中，对于System.out，JVM启动时将其重定向在计算机的终端窗口</p>
+<p>System.in：java.io.InputStream类型，本来是从输入流或数据源中读数据，JVM启动时将其重定向在计算机键盘。</p>
+<h2 id="3-3对象序列化（p-292）"><a href="#3-3对象序列化（p-292）" class="headerlink" title="3.3对象序列化（p/292）"></a>3.3对象序列化（p/292）</h2><p>把java对象转换为字节序列，才能在网络上传送。把java对象转换为字节序列保存起来的过程称为对象的序列化，再将字节序列恢复为java对象的过程称为反序列化。这里的序列应该是指二进制序列。</p>
+<p>方法：</p>
+<p>对象要想能够实现序列化，其所属类型必须实现Serializable接口或Externalizable接口。对象序列化使用ObjectOutputStream/ObjectInputStream这一对流类，分别是writeObject()方法和readObject()方法</p>
+<p>规则：</p>
+<h2 id="3-4-文件操作（p-294-）"><a href="#3-4-文件操作（p-294-）" class="headerlink" title="3.4 文件操作（p/294 ）"></a>3.4 文件操作（p/294 ）</h2><p>java.io.File类，对应python的os库</p>
+<p>实现新建/删除目录，新建/删除文件，读取文件夹下的文件等功能</p>
+<h1 id="4-异常（java-lang，java-io。。。）"><a href="#4-异常（java-lang，java-io。。。）" class="headerlink" title="4. 异常（java.lang，java.io。。。）"></a>4. 异常（java.lang，java.io。。。）</h1><h2 id="4-1-概念"><a href="#4-1-概念" class="headerlink" title="4.1 概念"></a>4.1 概念</h2><p>Error：JVM错误，内存资源耗尽等严重情况，一旦发生不可恢复，只能终止</p>
+<p>Exception：由于编程错误或偶然因素引发的事件导致的一般性问题。</p>
+<p><strong>一、分类</strong></p>
+<p>java异常是异常类的对象，javaAPI中声明很多异常类，每个异常类都代表了一种运行错误，当java程序运行过程中发生一个可识别的运行错误时，系统都会产生一个相应的异常类对象，即产生一个异常</p>
+<ol>
+<li><p>运行时异常（未检查型异常）</p>
+<p>这类异常不要求必须捕获，不进行异常处理，因此需要开发者小心谨慎，避免异常发生的情况</p>
+</li>
+<li><p>非运行时异常（检查型异常）</p>
+<p>强制要求开发者必须捕获和处理，否则编译报错</p>
+</li>
+</ol>
+<h2 id="4-2-异常处理"><a href="#4-2-异常处理" class="headerlink" title="4.2 异常处理"></a>4.2 异常处理</h2><p><strong>一、异常的过程</strong></p>
+<p>抛出（throw）：生成异常对象并将其交给运行时系统的过程</p>
+<p>捕获（catch）：从生成异常的方法开始回溯，直到找到异常处理的代码为止</p>
+<p>处理：执行异常处理代码</p>
+<p>处理机制：</p>
+<ol>
+<li>就地处理，即捕获异常并处理异常；</li>
+<li>向上抛出，即不进行捕获和处理异常，向上抛出给方法调用者</li>
+</ol>
+<p><strong>二、捕获并处理异常</strong></p>
+<p>try——catch——finally（一般用于资源的释放）</p>
+<p>Exception类的getMessage（）获得异常的剪短信息；</p>
+<p>getCause（）方法获取异常产生的原因</p>
+<p>printStackTrace（）用来打印异常的发生点以及所有的调用点，即打印异常栈轨迹。该方法显示的错误信息比其他异常方法详细，指明了出错种类、具体位置和运行栈轨迹。</p>
+<p><strong>三、声明并抛出异常（消极的处理方式）</strong></p>
+<p>关键字：throws</p>
+<p>实例（p/268）：</p>
+<p>readFile()方法内没有进行异常处理，而是使用throws关键字抛出IOException类型异常。一旦声明即解除了自身异常处理的责任，无需使用try-catch-finally代码块。转由代码的调用者捕获并处理异常，即main方法处理异常。</p>
+<p>main（）方法同样可以消极处理。</p>
+<p>注意：子类重写父类方法时，声明抛出异常不能超过父类声明异常的范围</p>
+<p><strong>四、人工抛出异常</strong></p>
+<p>关键字：throw</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> Excpetion();</span><br><span class="line"><span class="comment">//或者：</span></span><br><span class="line">IOException e = <span class="keyword">new</span> IOException();</span><br><span class="line"><span class="keyword">throw</span> e;</span><br></pre></td></tr></table></figure>
+<h2 id="4-3-自定义异常（p-270）"><a href="#4-3-自定义异常（p-270）" class="headerlink" title="4.3 自定义异常（p/270）"></a>4.3 自定义异常（p/270）</h2><h1 id="5-集合框架（java-util包）"><a href="#5-集合框架（java-util包）" class="headerlink" title="5. 集合框架（java.util包）"></a>5. 集合框架（java.util包）</h1><h2 id="5-1-概念（p-200）"><a href="#5-1-概念（p-200）" class="headerlink" title="5.1 概念（p/200）"></a>5.1 概念（p/200）</h2><p><strong>一、集合：</strong></p>
+<p>存放一些互不相干的对象，但是实际开发中很少这么做。数组就是一种集合，不过数组中存放元素的类型必须相同，且可以存放基本数据类型和引用类型。集合中只能存放引用类型。</p>
+<p><strong><font color="red">相同点：集合和数组一样，保存的都是一个对象的引用，而不是真正的对象数据，可以实现增删改查等操作</font></strong></p>
+<p>不同点：数组长度固定，集合中元素个数不确定，元素频繁增删，使用“下标索引”之外的方式检索元素等问题时，数组很难实现</p>
+<p><strong>二、集合框架</strong></p>
+<p>早在 Java 2 中之前，Java 就提供了特设类。比如：Dictionary, Vector, Stack, 和 Properties 这些类用来存储和操作对象组。虽然这些类都非常有用，但是它们缺少一个核心的，统一的主题。由于这个原因，使用 Vector 类的方式和使用 Properties 类的方式有很大不同。</p>
+<p>集合框架被设计成要满足以下几个目标：</p>
+<ul>
+<li>该框架必须是高性能的。基本集合（动态数组，链表，树，哈希表）的实现也必须是高效的。</li>
+<li>该框架允许不同类型的集合，以类似的方式工作，具有高度的互操作性。</li>
+<li>对一个集合的扩展和适应必须是简单的。</li>
+</ul>
+<p>即围绕一组统一的标准接口设计框架。你可以直接使用这些接口的标准实现，诸如： <strong>LinkedList</strong>, <strong>HashSet</strong>, 和 <strong>TreeSet</strong> 等,除此之外你也可以通过这些接口实现自己的集合。（对接口的意义理解一下升华了）</p>
+<p>位置：集合相关的接口和类均处于java.util包下</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201103090237.png" alt="img" style="zoom: 80%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201103090345.png" alt=""></p>
+<h2 id="5-2-集合框架结构"><a href="#5-2-集合框架结构" class="headerlink" title="5.2 集合框架结构"></a>5.2 集合框架结构</h2><p>由于整个java集合框架的基础是集合接口，如Collection（单个元素）、Map（键值对）</p>
+<p>每一级子接口都是在继承上一级接口功能的基础上进行功能的增加，接口后面还有具体的实现类</p>
+<h3 id="5-2-1-Set（集）"><a href="#5-2-1-Set（集）" class="headerlink" title="5.2.1 Set（集）"></a>5.2.1 Set（集）</h3><p>模拟数学中集合的概念，是最简单的一种集合。</p>
+<p>特征：</p>
+<ul>
+<li>不允许出现重复的元素</li>
+<li>无序，无下标</li>
+</ul>
+<p>主要实现类：HashSet；子接口SortedSet的实现类：TreeSet</p>
+<p><strong>1.HashSet类</strong></p>
+<p>关键问题：</p>
+<p>HashSet添加自定义学生类对象时，所添加的5个对象中有两个对象的传入参数完全一致，但是遍历集合时都可以输出，因为HashSet集合中不能存放重复的元素，这意味着这两个元素并不被认为是相同的？？？</p>
+<p>理解：</p>
+<p>因为HashSet的底层是采用哈希表实现，向HashSet添加对象元素时，会根据对象的哈希码计算对象的存储位置，对象的哈希码通过Object类提供的hashCode（）方法获得，hashCode（）方法返回的对象值根据对象的内存地址得到哈希码。这两个对象通过new构造的地址不一样，得到的哈希码就不一样！！如果用HashSet存放自定义类型的对象时，一定要重写hashcode（）和equals（）这两种方法，保证两个对象相同时，返回的哈希码相同，并且利用两个对象用equals（）比较时返回true。</p>
+<p><strong>2.TreeSet类</strong></p>
+<p>相比HashSet只是增加了排序功能的集合。会按照一定的排序规则，将集合汇总的对象序列时刻按照<strong><font color = "red">“升序”</font></strong>排列。所以必须注意的一点是：</p>
+<ol>
+<li><p>向TreeSet添加的对象元素的类型必须实现处于java.lang包下的Comparable接口，否则程序运行时出现java.lang.ClassException异常。API中的String类，封装类都已实现该接口，这个接口只有一个抽象方法：<code>public int compareTo(Object o)</code>用来实现排序规则。</p>
+</li>
+<li><p>除了上面的类型，还可以使用定义比较器的方式实现定义排序规则。具体做法是：定义比较器类来实现java.util包下的Comparator接口，重写其中的compare（Object o1 , Object o2）方法来定义比较规则。然后在实例化TreeSet对象时调用TreeSet类的有参构造方法，向new的TreeSet对象传递一个比较器对象。</p>
+<p>例如“s.add（5）；”等价于“s.add(new Integer(5));”这中间发生了自动装箱，java API中的封装类实现了Comparable接口，即实现了比较规则。</p>
+</li>
+</ol>
+<p>综上：<br>TreeSet类不仅要满足HashSet的重写hashCode方法和equals方法，还有实现能够将集合内对象元素排序的接口。完整实例在书p212页。</p>
+<p>例如“s.add（5）；”等价于“s.add(new Integer(5));”这中间发生了自动装箱，java API中的封装类实现了Comparable接口，即实现了比较规则。</p>
+<h3 id="5-2-2-List（列表）"><a href="#5-2-2-List（列表）" class="headerlink" title="5.2.2 List（列表）"></a>5.2.2 List（列表）</h3><p>线性方式存放元素，具体表现为Array，Vector，LinkedList，Stack，Queue等</p>
+<p>特征：</p>
+<ul>
+<li>有序，有下标</li>
+<li>允许重复元素</li>
+</ul>
+<p>主要实现类：LinkedList(双向链表实现)、ArrayList(默认长度为10，不指定长度时也可以自动填充)、Vector（很少使用）</p>
+<p>遍历方式：</p>
+<p>索引位置、ForEach遍历、迭代器遍历（通用集合遍历方法，生成迭代器对象，调用next方法获取下一个元素）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//遍历全部元素</span></span><br><span class="line"><span class="comment">//1.根据索引位置遍历</span></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;a1.size();i++)&#123;</span><br><span class="line">    System.out.println(a1.get(i));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2.ForEach遍历</span></span><br><span class="line"><span class="keyword">for</span>(Object obj:a1)&#123;</span><br><span class="line">    System.out.println(obj);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//3.迭代器遍历</span></span><br><span class="line">Iterator&lt;?&gt; iter = a1.iterator();</span><br><span class="line"><span class="keyword">while</span>(iter.hasNext())&#123;</span><br><span class="line">    Object obj = iter.next();</span><br><span class="line">    System.out.println(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-3-Map（映射）"><a href="#5-2-3-Map（映射）" class="headerlink" title="5.2.3 Map（映射）"></a>5.2.3 Map（映射）</h3><p>存放键值对信息，</p>
+<ul>
+<li>不允许有重复的键</li>
+<li>每个键最多只能映射一个值</li>
+</ul>
+<p>主要实现类：HashTable，HashMap；子接口SortedMap的实现类：TreeMap</p>
+<p>关键问题：<br>在HashMap中判断键值是否重复的标准和Set中判断添加元素的标准完全一致。</p>
+<p>TreeMap又和TreeSet类似，在HashMap的基础上增加了对元素按照“键”进行升序排序的功能。</p>
+<p><strong>1.hashMap的API</strong></p>
+<ul>
+<li><p>getOrDefault()：获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值</p>
+<p>用法：<code>hashmap.get(Object key, V defaultValue)</code></p>
+</li>
+<li><p>entrySet()：返回映射中包含的映射的 Set 视图。<strong>注意：</strong>Set 视图意思是 HashMap 中所有的键值对都被看作是一个 set 集合。</p>
+<p>用法：<code>hashmap.entrySet()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建一个 HashMap</span></span><br><span class="line">        HashMap&lt;Integer, String&gt; sites = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">// 往 HashMap 添加一些元素</span></span><br><span class="line">        sites.put(<span class="number">1</span>, <span class="string">"Google"</span>);</span><br><span class="line">        sites.put(<span class="number">2</span>, <span class="string">"Runoob"</span>);</span><br><span class="line">        sites.put(<span class="number">3</span>, <span class="string">"Taobao"</span>);</span><br><span class="line">        System.out.println(<span class="string">"sites HashMap: "</span> + sites);</span><br><span class="line">        <span class="comment">// 返回映射关系中 set view</span></span><br><span class="line">        System.out.println(<span class="string">"Set View: "</span> + sites.entrySet());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HashMap: &#123;One=<span class="number">1</span>, Two=<span class="number">2</span>, Three=<span class="number">3</span>&#125;</span><br><span class="line">Entries: One=<span class="number">1</span>, Two=<span class="number">2</span>, Three=<span class="number">3</span>,</span><br></pre></td></tr></table></figure>
+<p>entrySet() 方法可以与 for-each 循环一起使用，用来遍历迭代 HashMap 中每一个映射项。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map.Entry;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建一个HashMap</span></span><br><span class="line">        HashMap&lt;String, Integer&gt; numbers = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        numbers.put(<span class="string">"One"</span>, <span class="number">1</span>);</span><br><span class="line">        numbers.put(<span class="string">"Two"</span>, <span class="number">2</span>);</span><br><span class="line">        numbers.put(<span class="string">"Three"</span>, <span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="string">"HashMap: "</span> + numbers);</span><br><span class="line">        <span class="comment">// 访问 HashMap 中的每一个映射项</span></span><br><span class="line">        System.out.print(<span class="string">"Entries: "</span>);</span><br><span class="line">        <span class="comment">// entrySet()返回了 HashMap 中所有映射项的一个 set 集合视图</span></span><br><span class="line">        <span class="comment">// for-each loop 在该视图中访问了每一映射项</span></span><br><span class="line">        <span class="keyword">for</span>(Entry&lt;String, Integer&gt; entry: numbers.entrySet()) &#123;</span><br><span class="line">            System.out.print(entry);</span><br><span class="line">            System.out.print(<span class="string">", "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//执行结果：</span></span><br><span class="line">HashMap: &#123;One=<span class="number">1</span>, Two=<span class="number">2</span>, Three=<span class="number">3</span>&#125;</span><br><span class="line">Entries: One=<span class="number">1</span>, Two=<span class="number">2</span>, Three=<span class="number">3</span>,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="5-3-集合框架方法"><a href="#5-3-集合框架方法" class="headerlink" title="5.3 集合框架方法"></a>5.3 集合框架方法</h2><h1 id="6-泛型"><a href="#6-泛型" class="headerlink" title="6. 泛型"></a>6. 泛型</h1><h2 id="6-1-存在意义"><a href="#6-1-存在意义" class="headerlink" title="6.1 存在意义"></a>6.1 存在意义</h2><p>书面：将原本确定不变的数据类型参数化。作为对原有Java类型体系的扩充，使用泛型可以提高Java应用程序的类型安全、可维护性、可靠性。</p>
+<p>实例：集合框架中常遇到的数据造型问题</p>
+<p>以Vector集合为例，从语法上讲，可以向其中添加任何类型的元素（基本类型数据会被自动封装为相应封装类的对象）。在JDK1.4以前，Vector添加元素的方法add()/addElement()的形参以及访问元素的方法get（）/elementAt（）的返回值均定义为Object类型，实际使用时，必须将从集合中读取的元素值再强制转换为所期望的类型，才能完全正常使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector v = <span class="keyword">new</span> Vector();</span><br><span class="line">v.addElement(<span class="keyword">new</span> Person(<span class="string">"tom"</span>,<span class="number">18</span>));</span><br><span class="line">Person p = (Person)v.elementAt(<span class="number">0</span>);</span><br><span class="line">p.showInfo();</span><br></pre></td></tr></table></figure>
+<p>实际开发中，向某个集合加入的元素通常都是同一种类型的数据，而不会将多种不同性质和用途的信息(如学生信息，考试题目，考试成绩，图书信息)保存到同一个集合中，这样检索会很困难。这种情况下，每次取用集合元素时的例行操作只是增加开发者编码负担，无法杜绝取用元素时可能出现类型转换异常问题，因为集合本身不会对添加到其中的元素类型进行限制。例如，向保存人员信息（Person对象）的集合中误加入一个其他类型的元素时，编译阶段无法发现，程序运行时才会报错。</p>
+<p>泛型的功能就是：允许编译器实施由开发者设定的附加约束类型，将类型检查从运行时挪到编译时运行，这样类型错误就可以在编译时暴露出来，而不是在运行时才发作。至于减少强制类型转换操作，只能算是泛型的一个附带好处。</p>
+<h2 id="6-2-使用"><a href="#6-2-使用" class="headerlink" title="6.2 使用"></a>6.2 使用</h2><p>1.集合框架中</p>
+<p>泛型声明格式：数据类型&lt;类型参数&gt;，类型参数限定了集合中允许加入的元素只能为该类型，违背约束条件的类型不能通过编译检查。</p>
+<p>例如<Integer ， Employee>就表示当前映射集合的元素只能以Integer作为键，元素值则必须是Employee类型。</p>
+<p>2.向后兼容</p>
+<p>就是可以写泛型，但是不写也没事。。存疑？</p>
+<h2 id="6-3-进阶"><a href="#6-3-进阶" class="headerlink" title="6.3 进阶"></a>6.3 进阶</h2><h3 id="6-3-1-类型参数"><a href="#6-3-1-类型参数" class="headerlink" title="6.3.1.类型参数"></a>6.3.1.类型参数</h3><p>例如<code>Vector&lt;String&gt;</code>尖括号括起来的部分称为类型参数，而这种由类型参数修饰的类型被称为泛型类。为了便于理解，可以将泛型类理解为一种新的构造类型，也一定属于引用类型。</p>
+<ul>
+<li>除了异常类型，枚举或匿名内部类，任何类型都可以有类型参数。</li>
+<li>类型参数在定义时是形式类型参数，在使用时需指定类型，称为实际类型参数；<strong>和方法的形参，实参概念类似。</strong></li>
+<li>如果使用泛型类时没有显式给出类型参数，则将默认作为Object类型处理。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> T secrecy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSsecrecy</span><span class="params">(T secrecy)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.secrecy = secrecy</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getSsecrecy</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> secrecy;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实例的person类中，当你传入一个String数据类型时，就相当于将类中声明的变量类型<code>secrecy</code>定义为Sting。</p>
+<p>与传参的区别：Java编码惯例，只使用少量的类型参数名称</p>
+<ul>
+<li>K：键，比如映射的键</li>
+<li>V：值，比如List和Set的内容</li>
+<li>E：元素，比如<code>Vector&lt;E&gt;</code></li>
+<li>T：泛型，比如上面的Person类</li>
+</ul>
+<h3 id="6-3-2-类型通配符"><a href="#6-3-2-类型通配符" class="headerlink" title="6.3.2.类型通配符"></a>6.3.2.类型通配符</h3><blockquote>
+<p>不懂得作者们为什么都喜欢铺垫着循序渐进的讲解，可能是怕我们看完一点一知半解的就以为自己懂了吧，但是把实际内容藏的太深也会让人失去兴趣啊。。。</p>
+</blockquote>
+<p>类型通配符，简而言之，就是一个”<code>？</code>“，这个问号配的谁？又为什么要用这个问号来作为通配符呢？</p>
+<p>让我们从泛型类的角度出发：同一个泛型类搭配不同的类型参数复合而成的类型（如<code>Person&lt;String&gt;</code>/<code>Person&lt;Double&gt;</code>）属于同一个类，确是不同的类型，这是一种新情况。</p>
+<p>泛型类可以和抽象类来类比：前者未确定的是其要处理的数据类型，后者未确定的则是其规划功能的具体实现。</p>
+<p><strong>注意：</strong>同一泛型类与不同的类型参数复合而成的类型间并不存在继承关系，即使是类型参数间存在继承关系也是如此。因为假如继承关系存在，父类和子类间无疑可以使用类型转换，即</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector&lt;String&gt; vs = <span class="keyword">new</span> Vector&lt;String&gt;;</span><br><span class="line">Vector&lt;Object&gt; vo = vs;</span><br><span class="line">vo.add(<span class="keyword">new</span> Integer(<span class="number">300</span>));</span><br></pre></td></tr></table></figure>
+<p><code>Vector&lt;String&gt;</code>集合对象中假如非String类型元素，破坏了类型安全性限制，这里的泛型使用毫无意义。</p>
+<p>泛型类可以“定型”为多种不同的具体类型，相互间又没有继承关系，这又会引发另一个问题，对于声明了形式类型参数的变量的方法无法通用。例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">overview</span><span class="params">(Vector&lt;String&gt; v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(String o:v)&#123;</span><br><span class="line"> 		System.out.println(o);       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>显然，这一方法只能传入类型参数为String的Vector集合，但是想要用相同方法处理<code>&lt;Person&gt;、&lt;Integer&gt;、&lt;Object&gt;</code>等类型的框架怎么办呢？<strong>直接使用<code>Vector&lt;?&gt;</code>解决问题。</strong></p>
+<ul>
+<li><p>Vector&lt;?&gt;是所有泛型Vector的父类型，可以将<code>Vector&lt;String&gt;</code>等作为实参传入。</p>
+</li>
+<li><p>Vector&lt;?&gt;调用方法时受到限制—凡是知道具体类型参数才能进行的操作均被禁止。如add（）方法，不知道元素类型咋添加啊。。</p>
+<p>但是检索操作（输出Object类型），移除元素操作remove，清空clear（）等方法都可用。</p>
+</li>
+</ul>
+<h3 id="6-3-3-泛型方法"><a href="#6-3-3-泛型方法" class="headerlink" title="6.3.3.泛型方法"></a>6.3.3.泛型方法</h3><p>声明方式与泛型类的声明类似：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt;<span class="function">T <span class="title">evaluate</span><span class="params">(T a, T b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a.equals(b))&#123;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时传入参数类型和返回类型都必须相同，且不遵从该约束传入参数将会报错。</p>
+<h3 id="6-3-4-受限制的类型参数"><a href="#6-3-4-受限制的类型参数" class="headerlink" title="6.3.4.受限制的类型参数"></a>6.3.4.受限制的类型参数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T X;</span><br><span class="line">    <span class="keyword">private</span> T Y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>java.lang.Number是所有数值型封装类（Integer，Double，Float）的父类，使用extends关键字来表明这种继承层次上的限制。即限制了泛型类Point的类型参数必须为Number或其子类类型。</p>
+<h1 id="7-GUI编程"><a href="#7-GUI编程" class="headerlink" title="7. GUI编程"></a>7. GUI编程</h1><p>GUI：Graphics User Interface（图形用户界面），区别于命令行窗口或控制台，与用户进行交互</p>
+<h2 id="7-1-基础"><a href="#7-1-基础" class="headerlink" title="7.1 基础"></a>7.1 基础</h2><p>概述</p>
+<p>三种GUI编程技术：Applet，AWT，Swing。使用Applet进行GUI编程，一般用于Web页面，目前很少使用，基本被Flash等技术取代。AWT不是甲骨文推荐的工具集，虽然在许多非桌面环境，如移动或嵌入式设备中有自己的优势，但是具有组件类型少，组件外观粗糙和以来本地操作系统等缺点。Swing是在AWT组件集的基础上进行的改进和升级，具有组件类型丰富，组件外形美观，与平台无关等优点。AWT：抽象窗口工具集，是JDK的一部分，也可以说是Java API的子集，包括组件、容器和布局管理器等GUI重要组件。AWT支持Java GUI事件处理机制。</p>
+<p>1.常用的Java API相关组件包：</p>
+<p><strong>java.awt包</strong>，使用不多，多被Swing取代；<strong>java.awt.event包</strong>，事件处理包，实现程序界面与用户的交互。<strong>javax.swing包</strong>，是图形界面组件升级包，是对java.awt.*包中的GUI组件的扩展和升级，提供种类丰富、外形美观的GUI组件，在目前的Java GUI开发中基本取代了大多数AWT组件，应用广泛。</p>
+<p>2.组件</p>
+<p>图形用户界面的基本组成元素，除了容器类组件外，其他组件不能单独显示，必须放在一个容器内才能显示。<code>java.awt.*</code>包定义了很多组件类：Frame、Button、Menu、Lable、TextField等。<code>java.awt.*</code>包中有一个抽象组件类java.awt.Component，是AWT组件中除了Menu类之外所有组件类的功能父类。</p>
+<p>3.容器</p>
+<p>容器（Container）本身也是一个组件，具有组件所具有的所有性质，只是容器组件可以容纳其他组件或容器，所以Container是Component的子类。所有容器都具有add（）方法，用于将其他组件添加到容器中。</p>
+<p>容器又分为可以独立存在的顶层容器和必须依附于其他容器存在的非顶层容器。java.awt.Window为顶层容器类，是可以自由停泊的。如Frame就是一个顶层容器。java.awt.Panel为非顶层容器，可以作为容器容纳其他组件，但不能独立存在。</p>
+<p>java.awt.Frame是最常见的顶层容器，其层次类型结构为</p>
+<pre class="mermaid">graph LR
+
+A[java.lang.Object] -->B[java.awt.Component]
+
+    B --> C[java.awt.Container]
+
+    C --> D[java.lang.Window]
+
+    D --> E[java.lang.Frame]</pre>
+
+<p>4.布局管理器</p>
+<p>控制组件的排列风格，包括组件位置和大小。其存在也是为了使GUI具有良好的平台无关性。java.awt.Window及其子类（Frame，Dialog）的默认布局管理器为BorderLayout，Panel及其子类（Applet）的默认布局管理器为FlowLayout，并且一个容器只能有一种排列风格，即一个布局管理器。</p>
+<p>常见的4中布局管理器：边界布局管理器（BorderLayout）、流式布局管理器（FlowLayout）、网格布局管理器（GridLayout）与卡片布局管理器（CardLayout）。</p>
+<p>5.容器嵌套</p>
+<p>因为一个容器只能使用一种布局管理方式，所以对于复杂的图形界面，往往需要进行多容器的嵌套。</p>
+<h2 id="7-2-GUI事件处理"><a href="#7-2-GUI事件处理" class="headerlink" title="7.2 GUI事件处理"></a>7.2 GUI事件处理</h2><p>交互的实现才是建立图形界面的根本目的</p>
+<p>1.事件对象</p>
+<p>事件被触发，组件就会产生对应的事件对象（有java语言直接提供，开发者很少构建事件对象类）。例如对按钮进行单击操作，按钮组件就会产生ActionEvent事件对象。</p>
+<p>2.事件源</p>
+<p>能够接收用户操作并产生事件对象的GUI组件</p>
+<p>3.事件监听器（p/162）</p>
+<p>对事件进行处理的对象，该对象定义了能够接受，解析和处理事件的方法，方法实现与用户的交互。每一种事件都对应专门的监听器中的某一方法，监听器中的方法负责接受和处理这种事件。</p>
+<p><strong>总结</strong>：GUI的开发分为以下4个步骤</p>
+<ul>
+<li><p>确定GUI界面的容器；</p>
+</li>
+<li><p>设置容器的布局管理器</p>
+</li>
+<li>向容器中添加需要的组件</li>
+<li>为组件添加事件处理</li>
+</ul>
+<p>4.GUI事件类型</p>
+<p>java.lang.Object—&gt;java.util.EventObject—&gt;java.awt.AwtEvent</p>
+<p>5.适配器类</p>
+<p>是对应大部分事件监听器接口定义的对应的实现类，只是所有方法都是空实现，即什么都不做。这样就可以通过继承适配器类，重写响应的事件监听代码，不需要像实现监听器接口一样写大量的空实现。</p>
+<p>又由于java不支持多继承，所以当有事件源需要绑定多个事件监听器时，就必然需要事件监听器接口了。</p>
+<h2 id="7-3-Swing编程"><a href="#7-3-Swing编程" class="headerlink" title="7.3 Swing编程"></a>7.3 Swing编程</h2><p>1.常用Swing组件</p>
+<ul>
+<li><p>JFrame组件</p>
+<p>JFrame：顶层容器，在操作系统和Swing组件间起着桥梁作用</p>
+</li>
+<li><p>JTextField组件</p>
+<p>实现文本框，接收用户输入的单行文本信息</p>
+</li>
+<li><p>JTextArea组件</p>
+<p>显示纯文本的多行区域。此外，Swing组件还有JTextPane和JEditorPane，具有更多功能。</p>
+</li>
+<li><p>JMenuBar，JMenu，JMenuItem组件</p>
+<p>用于给窗口添加菜单条，分别对应窗口的菜单条，菜单和菜单选项</p>
+</li>
+<li><p>Choice</p>
+<p>选择框包括单选框ChcekboxGroup、下拉框Choice、下拉列表List和复选框Checkbox</p>
+</li>
+<li><p>JDialog</p>
+<p>创建对话框窗口的主要类，可以使用此类创建自定义的对话框</p>
+</li>
+<li><p>JScrollPane</p>
+<p>滚动面板，可以建立一个带有上下和左右都能滚动的面板容器。</p>
+</li>
+<li><p>FileDialog</p>
+<p>文件对话框，比如点击另存为会弹出对话框</p>
+</li>
+</ul>
+<h1 id="8-数组"><a href="#8-数组" class="headerlink" title="8. 数组"></a>8. 数组</h1><p><strong><font color="red">首先回忆一下集合和数组的区别：</font></strong></p>
+<ul>
+<li>数组中存放的元素类型必须相同；集合中可以存放一些互不相干的对象，但是开发中一般不会这样做（不然为啥有泛型）</li>
+<li>数组中可以存放基本数据类型和引用类型；集合中只能存放引用类型</li>
+<li>最关键的一点，数组是定长的！集合可以调用方法增删元素！</li>
+</ul>
+<p>本质上作为一对元素的存储体，两者都只是存储了对象的引用，而非对象的实际数据。</p>
+<h2 id="8-1-数组的创建"><a href="#8-1-数组的创建" class="headerlink" title="8.1 数组的创建"></a>8.1 数组的创建</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.一维数组</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>声明：数据类型 [] 数组名称 ；或者：数据类型 数组名称[]</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>构建和初始化：</span><br><span class="line"></span><br><span class="line">  动态初始化：需要分两步完成，new构建+通过索引赋值</span><br><span class="line"></span><br><span class="line"><span class="bullet">  - </span>通过new构建：数据类型 [] 数组名称 =  <span class="code">`new`</span> 数据类型[长度]</span><br><span class="line"></span><br><span class="line"><span class="bullet">  - </span>数组名称[i] = n；</span><br><span class="line"></span><br><span class="line">  静态初始化（构建和初始化同时完成）：</span><br><span class="line"></span><br><span class="line"><span class="bullet">  - </span>简化格式：数据类型 数组名称 = &#123;值, 值,…&#125;</span><br><span class="line"><span class="bullet">  - </span>完整格式：数据类型 数组名称 = new 数据类型[] &#123;值, 值,…&#125;</span><br><span class="line"></span><br><span class="line">2.多维数组</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>声明：数据类型 [] [] [ [] [] [] ...] 多维数组变量名</span><br><span class="line"><span class="bullet">- </span>构建和初始化</span><br><span class="line"><span class="bullet">  - </span>数组的动态初始化：数据类型 对象数组[<span class="string"></span>][<span class="symbol"></span>] = new 数据类型[<span class="string">行个数</span>][<span class="symbol">列个数</span>];</span><br><span class="line"><span class="bullet">  - </span>数组的静态初始化：数据类型 对象数组[<span class="string"></span>][<span class="symbol"></span>] = new 数据类型[<span class="string">行个数</span>][<span class="symbol">列个数</span>]&#123;&#123;值, 值,…&#125;, &#123;值, 值,…&#125;,…&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="8-2-数组API的使用"><a href="#8-2-数组API的使用" class="headerlink" title="8.2 数组API的使用"></a>8.2 数组API的使用</h2><h2 id="8-2-1-复制"><a href="#8-2-1-复制" class="headerlink" title="8.2.1 复制"></a>8.2.1 复制</h2><p>复制数组中的部分或全部元素给另一个数组，通过赋值方式只能复制数组的引用，即浅拷贝，实际指向同一片堆空间。并没有实现数组内容的复制。</p>
+<p>Java的System类中提供了一个静态方法arraycopy，用来复制数组内容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] aArray = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] bArray = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">101</span>,<span class="number">102</span>,<span class="number">103</span>,<span class="number">104</span>&#125;;</span><br><span class="line">System.arraycopy(aArray,<span class="number">1</span>,bArray,<span class="number">2</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>表示从aArray的第1个位置开始，复制到bArray的第2个位置的后面，复制的元素个数是2个，最终的输出结果为[101,102,1,2]</p>
+<h2 id="8-1-2-排序"><a href="#8-1-2-排序" class="headerlink" title="8.1.2 排序"></a>8.1.2 排序</h2><p><strong>1.对常规整形数组进行排序</strong></p>
+<p>java的Arrays类（java.util包）中提供了排序的静态方法sort（）</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(bArray,<span class="number">0</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>注意第三个参数不是3，而是4。最终输出结果：[1,2,101,102]</p>
+<p><strong>2.通过实现Comparable或Comparator接口对对象或者引用进行排序</strong></p>
+<ul>
+<li><p>使用comparable接口：让待排序对象所在的类实现Comparable接口，并重写Comparable接口中的compareTo()方法；</p>
+<p>缺点是只能按照一种规则排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Person[] persons = <span class="keyword">new</span> Person[<span class="number">5</span>];</span><br><span class="line">		persons[<span class="number">0</span>] =<span class="keyword">new</span> Person(<span class="string">"tom"</span>,<span class="number">45</span>);</span><br><span class="line">		persons[<span class="number">1</span>] =<span class="keyword">new</span> Person(<span class="string">"jack"</span>,<span class="number">12</span>);</span><br><span class="line">		persons[<span class="number">2</span>] =<span class="keyword">new</span> Person(<span class="string">"bill"</span>,<span class="number">21</span>);</span><br><span class="line">		persons[<span class="number">3</span>] =<span class="keyword">new</span> Person(<span class="string">"kandy"</span>,<span class="number">34</span>);</span><br><span class="line">		persons[<span class="number">4</span>] =<span class="keyword">new</span> Person();</span><br><span class="line">		Arrays.sort(persons);<span class="comment">//实例自带排序方法，直接排序即可</span></span><br><span class="line">		<span class="keyword">for</span> (Person person:persons) &#123;</span><br><span class="line">			System.out.println(person);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Person</span>&gt;</span>&#123;  <span class="comment">//注意写法</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name,<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>(<span class="string">"unknown"</span>, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//重写该类的compareTo()方法，使其按照从小到大顺序排序</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Person o)</span> </span>&#123;</span><br><span class="line">		 <span class="keyword">return</span> age-o.age;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//重写Student类的toString()方法，在输入对象时按照以下方式输出</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;		</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Person[name:"</span>+name+<span class="string">",age:"</span>+age+<span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用Comparator接口：编写多个排序方式类实现Comparator接口，并重写新Comparator接口中的compare()方法；</p>
+<p>优点是可以按照多种方式排序，你要按照什么方式排序，就创建一个实现Comparator接口的排序方式类，然后将该排序类的对象传入到Arrays.sort(待排序对象，该排序方式类的对象)</p>
+<p>注意：comparator的泛型只能是引用类型（即compare方法的传入参数只能是引用类型），所以不能使用Arrays.sort()实现对整数类型数组的排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComparatorUse</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Student[] persons = <span class="keyword">new</span> Student[<span class="number">5</span>];</span><br><span class="line">		persons[<span class="number">0</span>] =<span class="keyword">new</span> Student(<span class="string">"tom"</span>,<span class="number">1</span>,<span class="number">88</span>,<span class="number">45</span>);</span><br><span class="line">		persons[<span class="number">1</span>] =<span class="keyword">new</span> Student(<span class="string">"jack"</span>,<span class="number">6</span>,<span class="number">80</span>,<span class="number">12</span>);</span><br><span class="line">		persons[<span class="number">2</span>] =<span class="keyword">new</span> Student(<span class="string">"bill"</span>,<span class="number">4</span>,<span class="number">68</span>,<span class="number">21</span>);</span><br><span class="line">		persons[<span class="number">3</span>] =<span class="keyword">new</span> Student(<span class="string">"kandy"</span>,<span class="number">2</span>,<span class="number">98</span>,<span class="number">34</span>);</span><br><span class="line">		persons[<span class="number">4</span>] =<span class="keyword">new</span> Student(<span class="string">"lily"</span>,<span class="number">5</span>,<span class="number">94</span>,<span class="number">20</span>);</span><br><span class="line">		System.out.println(<span class="string">"排序前的数据："</span>);</span><br><span class="line">		<span class="keyword">for</span> (Student student:persons) &#123;</span><br><span class="line">			System.out.println(student);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//创建SortByNumber对象，将其作为参数传入Arrays.sort(persons,sortByNumber)方法中</span></span><br><span class="line">		SortByNumber sortByNumber = <span class="keyword">new</span> SortByNumber();</span><br><span class="line">		Arrays.sort(persons,sortByNumber);</span><br><span class="line">		System.out.println(<span class="string">"根据学生编号由低到高排序："</span>);</span><br><span class="line">		<span class="keyword">for</span> (Student student:persons) &#123;</span><br><span class="line">			System.out.println(student);</span><br><span class="line">		&#125;</span><br><span class="line">		SortByScore sortByScore = <span class="keyword">new</span> SortByScore();</span><br><span class="line">		Arrays.sort(persons,sortByScore);</span><br><span class="line">		System.out.println(<span class="string">"根据学生成绩由高到低排序："</span>);</span><br><span class="line">		<span class="keyword">for</span> (Student student:persons) &#123;</span><br><span class="line">			System.out.println(student);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> number;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> score;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name,<span class="keyword">int</span> number,<span class="keyword">int</span> score,<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.number = number;</span><br><span class="line">		<span class="keyword">this</span>.score = score;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//重写Student类的toString()方法，在输入对象时按照以下方式输出</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;		</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Student[name:"</span>+name+<span class="string">",age:"</span>+age+<span class="string">",number:"</span>+number+<span class="string">",score:"</span>+score+<span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNumber</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.number = number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getScore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> score;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setScore</span><span class="params">(<span class="keyword">int</span> score)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.score = score;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//按照学号由低到高排列,创建SortByNumber类，该类实现Comparator，重写该接口的compare()</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SortByNumber</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Student</span>&gt;</span>&#123;</span><br><span class="line">	<span class="comment">//重写该接口的compare()使其按照学号由小到大排序（前者减去后者）</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> o1.getNumber()-o2.getNumber();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//按照分数由高到低排列，创建SortByScore类，该类实现Comparator，重写该接口的compare()</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SortByScore</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Student</span>&gt;</span>&#123;</span><br><span class="line">	<span class="comment">//重写该接口的compare()使其按照分数由高到低排序（后者减去前者）</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> o2.getScore()-o1.getScore();	</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="8-1-3-查找"><a href="#8-1-3-查找" class="headerlink" title="8.1.3 查找"></a>8.1.3 查找</h2><p>Arrays类中定义了一个二分查找的重载方法binarySearch（），从指定的数组范围中查找指定的值，<strong>返回其索引位置</strong>。二分查找的前提是数组必须有序。如果无序，必须先进行排序，再进行查找。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="module-access"><span class="module"><span class="identifier">Arrays</span>.</span></span>binary<span class="constructor">Search(<span class="params">bArray</span>,1)</span>;</span><br></pre></td></tr></table></figure>
+<p>即从bArray中找到元素1，并返回该元素的索引位置。�</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/20/%E9%80%92%E5%BD%92/" rel="next" title="递归">
+                <i class="fa fa-chevron-left"></i> 递归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B/" rel="prev" title="操作系统-线程">
+                操作系统-线程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-考试大纲"><span class="nav-text">1.考试大纲</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1要求"><span class="nav-text">1.1要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2内容"><span class="nav-text">1.2内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-java语言概述"><span class="nav-text">2. java语言概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-java技术"><span class="nav-text">2.1 java技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-java语言"><span class="nav-text">2.1.1 java语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-java平台"><span class="nav-text">2.2.2 java平台</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-开发过程"><span class="nav-text">2.2 开发过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-基本输入输出"><span class="nav-text">2.3 基本输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-Scanner-类实现键盘输入"><span class="nav-text">2.3.1 Scanner 类实现键盘输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-JOptionPane对话框输入"><span class="nav-text">2.3.2 JOptionPane对话框输入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-流（java-io）"><span class="nav-text">3. 流（java.io）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-概念-p-277"><span class="nav-text">3.1 概念(p&#x2F;277)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-流的使用"><span class="nav-text">3.2 流的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3对象序列化（p-292）"><span class="nav-text">3.3对象序列化（p&#x2F;292）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-文件操作（p-294-）"><span class="nav-text">3.4 文件操作（p&#x2F;294 ）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-异常（java-lang，java-io。。。）"><span class="nav-text">4. 异常（java.lang，java.io。。。）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-概念"><span class="nav-text">4.1 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-异常处理"><span class="nav-text">4.2 异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-自定义异常（p-270）"><span class="nav-text">4.3 自定义异常（p&#x2F;270）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-集合框架（java-util包）"><span class="nav-text">5. 集合框架（java.util包）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-概念（p-200）"><span class="nav-text">5.1 概念（p&#x2F;200）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-集合框架结构"><span class="nav-text">5.2 集合框架结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-1-Set（集）"><span class="nav-text">5.2.1 Set（集）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-2-List（列表）"><span class="nav-text">5.2.2 List（列表）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-3-Map（映射）"><span class="nav-text">5.2.3 Map（映射）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-集合框架方法"><span class="nav-text">5.3 集合框架方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-泛型"><span class="nav-text">6. 泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-存在意义"><span class="nav-text">6.1 存在意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-使用"><span class="nav-text">6.2 使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-进阶"><span class="nav-text">6.3 进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-1-类型参数"><span class="nav-text">6.3.1.类型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-2-类型通配符"><span class="nav-text">6.3.2.类型通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-3-泛型方法"><span class="nav-text">6.3.3.泛型方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-4-受限制的类型参数"><span class="nav-text">6.3.4.受限制的类型参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-GUI编程"><span class="nav-text">7. GUI编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-基础"><span class="nav-text">7.1 基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-GUI事件处理"><span class="nav-text">7.2 GUI事件处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-Swing编程"><span class="nav-text">7.3 Swing编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-数组"><span class="nav-text">8. 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-数组的创建"><span class="nav-text">8.1 数组的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-数组API的使用"><span class="nav-text">8.2 数组API的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-1-复制"><span class="nav-text">8.2.1 复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-2-排序"><span class="nav-text">8.1.2 排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-3-查找"><span class="nav-text">8.1.3 查找</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
