@@ -79,17 +79,23 @@
 
 
 
-<meta name="description" content="对题库中的java答题知识点进行梳理">
+<meta name="description" content="对于高级语言的使用确实有一种空中楼阁的感觉，只知道调用着实没啥技术含量，还是要从技术开始好好钻研啊!!">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java-二级设计题考查">
-<meta property="og:url" content="http://yoursite.com/2020/09/15/java-%E4%BA%8C%E7%BA%A7%E8%AE%BE%E8%AE%A1%E9%A2%98%E8%80%83%E6%9F%A5/index.html">
+<meta property="og:title" content="java-JVM">
+<meta property="og:url" content="http://yoursite.com/2021/02/15/java-JVM/index.html">
 <meta property="og:site_name" content="悦来客栈">
-<meta property="og:description" content="对题库中的java答题知识点进行梳理">
-<meta property="article:published_time" content="2020-09-15T02:14:30.000Z">
-<meta property="article:modified_time" content="2021-02-06T15:18:52.809Z">
+<meta property="og:description" content="对于高级语言的使用确实有一种空中楼阁的感觉，只知道调用着实没啥技术含量，还是要从技术开始好好钻研啊!!">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210215141042.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210215152014.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210215154512.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210215192534.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210215193008.png">
+<meta property="article:published_time" content="2021-02-15T04:00:30.000Z">
+<meta property="article:modified_time" content="2021-02-15T13:26:27.724Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210215141042.png">
 
 
 
@@ -119,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/09/15/java-二级设计题考查/"/>
+  <link rel="canonical" href="http://yoursite.com/2021/02/15/java-JVM/"/>
 
 
 
 
 
-  <title>java-二级设计题考查 | 悦来客栈</title>
+  <title>java-JVM | 悦来客栈</title>
   
 
 
@@ -286,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/java-%E4%BA%8C%E7%BA%A7%E8%AE%BE%E8%AE%A1%E9%A2%98%E8%80%83%E6%9F%A5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/15/java-JVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xujunjie'blog">
@@ -303,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java-二级设计题考查</h1>
+          <h1 class="post-title" itemprop="name headline">java-JVM</h1>
         
 
         <div class="post-meta">
@@ -316,15 +322,15 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-15T10:14:30+08:00">
-                2020-09-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-15T12:00:30+08:00">
+                2021-02-15
               </time>
             
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-02-06T23:18:52+08:00" content="2021-02-06">
-                          2021-02-06
+                     <time itemprop="dateUpdated" datetime="2021-02-15T21:26:27+08:00" content="2021-02-15">
+                          2021-02-15
                      </time>
                  </span>
              
@@ -347,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-%E4%BA%8C%E7%BA%A7-%E6%A6%82%E5%BF%B5-spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
-                    <span itemprop="name">java学习-二级.概念...spring框架</span>
+                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-JVM-%E6%A6%82%E5%BF%B5-%E4%BA%8C%E7%BA%A7-spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习-JVM.概念.二级..spring框架</span>
                   </a>
                 </span>
 
@@ -384,69 +390,108 @@
       
 
       
-        <p>对题库中的java答题知识点进行梳理</p>
+        <p>对于高级语言的使用确实有一种空中楼阁的感觉，只知道调用着实没啥技术含量，还是要从技术开始好好钻研啊!!</p>
 <a id="more"></a>
-<h1 id="综合题"><a href="#综合题" class="headerlink" title="综合题"></a>综合题</h1><h2 id="1-GUI设计题"><a href="#1-GUI设计题" class="headerlink" title="1.GUI设计题"></a>1.GUI设计题</h2><ul>
-<li><p>swing组件考查</p>
+<h1 id="下篇：内存与垃圾回收篇"><a href="#下篇：内存与垃圾回收篇" class="headerlink" title="下篇：内存与垃圾回收篇"></a>下篇：内存与垃圾回收篇</h1><h1 id="1-JVM与java体系结构"><a href="#1-JVM与java体系结构" class="headerlink" title="1. JVM与java体系结构"></a>1. JVM与java体系结构</h1><p><img src="https://gitee.com/biongd/img/raw/master/img/20210215141042.png" alt="image-20200727120903847" style="zoom:67%;" /></p>
+<h2 id="1-1-跨平台-跨语言"><a href="#1-1-跨平台-跨语言" class="headerlink" title="1.1 跨平台/跨语言"></a>1.1 跨平台/跨语言</h2><ul>
+<li>每个语言都需要转换成字节码文件，最后转换的字节码文件都能通过Java虚拟机进行运行和处理</li>
+<li>随着Java7的正式发布，Java虚拟机的设计者们通过JSR-292规范基本实现在Java虚拟机平台上运行非Java语言编写的程序。</li>
+<li>Java虚拟机根本不关心运行在其内部的程序到底是使用何种编程语言编写的，它只关心“字节码”文件。也就是说Java虚拟机拥有语言无关性，并不会单纯地与Java语言“终身绑定”，只要其他编程语言的编译结果满足并包含Java虚拟机的内部指令集、符号表以及其他的辅助信息，它就是一个有效的字节码文件，就能够被虚拟机所识别并装载运行。</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210215152014.png" alt="image-20200727121755076" style="zoom:67%;" /></p>
 <ul>
-<li><p>GUI继承顶层容器类java.swing.JFrame</p>
-<p>创建基于JFrame的框架类</p>
+<li><p>我们平时说的java字节码，指的是用java语言编译成的字节码。准确的说任何能在jvm平台上执行的字节码格式都是一样的。所以应该统称为：<code>jvm字节码</code>。</p>
 </li>
+<li><p>不同的编译器，可以编译出相同的字节码文件，字节码文件也可以在不同的JVM上运行。</p>
+</li>
+<li><p>Java虚拟机与Java语言并没有必然的联系，它只与特定的二进制文件格式——Class文件格式所关联，Class文件中包含了Java虚拟机指令集（或者称为字节码、Bytecodes）和符号表，还有一些其他辅助信息。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210215154512.png" alt="image-20200727121725188" style="zoom:67%;" /></p>
+</li>
+<li><p><code>Java平台上的多语言混合编程正成为主流，通过特定领域的语言去解决特定领域的问题是当前软件开发应对日趋复杂的项目需求的一个方向</code>。</p>
+</li>
+<li>试想一下，在一个项目之中，并行处理用Clojure语言编写，展示层使用JRuby/Rails，中间层则是Java，每个应用层都将使用不同的编程语言来完成，而且，接口对每一层的开发者都是透明的，各种语言之间的交互不存在任何困难，就像使用自己语言的原生API一样方便，因为它们最终都运行在一个虚拟机之上。</li>
+<li>对这些运行于Java虚拟机之上、Java之外的语言，来自系统级的、底层的支持正在迅速增强，以JSR-292为核心的一系列项目和功能改进（如DaVinci Machine项目、Nashorn引擎、InvokeDynamic指令、java.lang.invoke包等），<code>推动Java虚拟机从&quot;Java语言的虚拟机&quot;向&quot;多语言虚拟机&quot;的方向发展</code>。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java_3</span> <span class="keyword">extends</span> <span class="title">________</span> <span class="keyword">implements</span> <span class="title">ActionListener</span> </span>&#123;</span><br><span class="line">&#125;<span class="comment">//答案：JFrame</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FontFrame</span> <span class="title">_________</span> <span class="title">JFrame</span></span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="title">FontFrame</span><span class="params">()</span></span>&#123;</span><br><span class="line">         setTitle(<span class="string">"沁园春.雪"</span>);&#125;</span><br><span class="line">&#125;<span class="comment">//答案：extends</span></span><br></pre></td></tr></table></figure>
-<p>​        JFrame 释放</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">makeNewFrame</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">final</span> BlankFrame frame = <span class="keyword">new</span> BlankFrame();</span><br><span class="line">   frame.show();</span><br><span class="line">   ActionListener closeAllListener = <span class="keyword">new</span> ActionListener()&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent event)</span></span>&#123;</span><br><span class="line">         <span class="comment">//*********Found**********</span></span><br><span class="line">         frame.________();     <span class="comment">//使窗口隐藏或消除,答案：dispose，释放资源</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="comment">//*********Found**********</span></span><br><span class="line">   closeAllButton.addActionListener(closeAllListener);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​        JFrame 的实例化方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      JFrame jf=<span class="keyword">new</span> JFrame();</span><br><span class="line">      jf.setTile(<span class="string">"股票分析系统"</span>);    <span class="comment">//不在创建时命名也可以通过setTitle()命名</span></span><br><span class="line"><span class="comment">//此外还有setSize，setLayout，setVisible</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">___________</span><span class="params">(Graphics g)</span> </span>&#123;  <span class="comment">//答案:paint。每次执行repaint()方法，都会隐式调用paint()</span></span><br><span class="line">    <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">    <span class="keyword">super</span>.paint(g);</span><br><span class="line">    g.setColor(Color.red);</span><br><span class="line">    g.draw3DRect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="keyword">true</span>);</span><br><span class="line">    g.setColor(Color.green);</span><br><span class="line">    g.fillOval(<span class="number">50</span>,<span class="number">10</span>,<span class="number">60</span>,<span class="number">60</span>);</span><br><span class="line">     g.drawString(<span class="string">"A myFrame object"</span>, <span class="number">10</span>, <span class="number">50</span> );      <span class="comment">//drawString也是常考点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Java_3</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//*********Found********</span></span><br><span class="line">   ______( <span class="string">"示范异常"</span> );           <span class="comment">//答案：super。继承父类构造器，传入参数</span></span><br><span class="line">   Container c = getContentPane();</span><br><span class="line">   c.setLayout( <span class="keyword">new</span> GridLayout( <span class="number">3</span>, <span class="number">2</span> ) );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame.___________________().add(<span class="keyword">new</span> Change());<span class="comment">//答案：getContentPane</span></span><br></pre></td></tr></table></figure>
-<p>当创建一个 JFrame 类的实例化对象后，其他组件并不能够直接放到容器上面，需要将组件添加至内容窗格，而不是直接添加至 JFrame 对象。获得内容窗格对象的方法：getContentPane() </p>
+<h2 id="1-2-虚拟机介绍"><a href="#1-2-虚拟机介绍" class="headerlink" title="1.2 虚拟机介绍"></a>1.2 虚拟机介绍</h2><p>虚拟机分类：系统虚拟机和程序虚拟机</p>
 <ul>
-<li><p>JPanel面板</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FontPanel</span> <span class="keyword">extends</span> <span class="title">_____</span> //答案：<span class="title">JPanel</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paintComponent</span><span class="params">(Graphics g)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.paintComponent(g);&#125;</span><br></pre></td></tr></table></figure>
-<p>很明显是重写了父类方法，javax.swing包中除顶层容器外所有组件的基类都是JComponent，所以这个也可以作为万金油答案。当然最好是看到“-panel”，就继承JPanel类就可以了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FontPanel panel = <span class="keyword">new</span> FontPanel();</span><br><span class="line">Container contentPane = getContentPane(); <span class="comment">//*********Found********</span></span><br><span class="line">contentPane.add(___________________);<span class="comment">//答案：panel。</span></span><br></pre></td></tr></table></figure>
+<li><p>大名鼎鼎的Virtual Box，VMware就属于系统虚拟机，它们完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台。</p>
 </li>
-<li><p>文件选择器JFileChooser</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span></span>&#123;</span><br><span class="line">       fc=<span class="keyword">new</span> JFileChooser();</span><br><span class="line">       <span class="comment">//*********Found**********</span></span><br><span class="line">       <span class="keyword">int</span> selected=fc.______________(c); <span class="comment">//弹出打开文件对话框：showOpenDialog(Component parent)</span></span><br><span class="line">       <span class="keyword">if</span> (selected==JFileChooser.APPROVE_OPTION)&#123;</span><br><span class="line">           myFile=fc.getSelectedFile();</span><br><span class="line">           <span class="comment">//*********Found**********</span></span><br><span class="line">           ta.setText(<span class="string">"You have selected file: "</span>+myFile._____________());<span class="comment">//获取所选择文件的文件名，getNmae</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文本域组件JTextArea</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JTextArea result = <span class="keyword">new</span> JTextArea(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line"> result.___________________;  </span><br><span class="line"><span class="comment">//根据题目要求不可编辑：setEditable(false)</span></span><br><span class="line"><span class="comment">//向文本域添加内容：append(String str)</span></span><br><span class="line"><span class="comment">//设置文本域中的内容:setText(String str)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>单行文本框JTextField</p>
+<li><p>程序虚拟机的典型代表就是<code>Java虚拟机</code>，它专门为执行单个计算机程序而设计，在Java虚拟机中执行的指令我们称为Java字节码指令。</p>
 </li>
 </ul>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JTextField jt = <span class="keyword">new</span> <span class="constructor">JTextField(10)</span></span><br><span class="line">jt.get<span class="constructor">Text()</span>     <span class="comment">//获取文本框内输入的文本内容</span></span><br></pre></td></tr></table></figure>
+<p>无论是系统虚拟机还是程序虚拟机，在上面运行的软件都被限制于虚拟机提供的资源中</p>
+<p>java虚拟机</p>
+<ul>
+<li>Java虚拟机是一台执行Java字节码的虚拟计算机，它拥有独立的运行机制，其运行的Java字节码也未必由Java语言编译而成。</li>
+<li>JVM平台的各种语言可以共享Java虚拟机带来的跨平台性、优秀的垃圾回器，以及可靠的即时编译器。</li>
+<li>Java技术的核心就是Java虚拟机（JVM，Java Virtual Machine），因为所有的Java程序都运行在Java虚拟机内部。</li>
+<li>Java虚拟机就是二进制字节码的运行环境，负责装载字节码到其内部，解释/编译为对应平台上的机器指令执行。每一条Java指令，Java虚拟机规范中都有详细定义，如怎么取操作数，怎么处理操作数，处理结果放在哪里。</li>
+</ul>
+<h2 id="1-3-JVM的整体结构"><a href="#1-3-JVM的整体结构" class="headerlink" title="1.3 JVM的整体结构"></a>1.3 JVM的整体结构</h2><ul>
+<li><code>HotSpot VM</code>是目前市面上高性能虚拟机的代表作之一。</li>
+<li>它采用解释器与即时编译器并存的架构。</li>
+<li>在今天，Java程序的运行性能早已脱胎换骨，已经达到了可以和C/C++程序一较高下的地步。</li>
+<li>执行引擎包含三部分：<code>解释器</code>，<code>即时编译器</code>，<code>垃圾回收器</code></li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210215192534.png" alt="image-20200727132330682" style="zoom:67%;" /></p>
+<h2 id="1-4-java代码执行流程"><a href="#1-4-java代码执行流程" class="headerlink" title="1.4 java代码执行流程"></a>1.4 java代码执行流程</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210215193008.png" alt="image-20201118095710832" style="zoom: 50%;" /></p>
+<h2 id="1-5-JVM的架构模型"><a href="#1-5-JVM的架构模型" class="headerlink" title="1.5 JVM的架构模型"></a>1.5 JVM的架构模型</h2><p>Java编译器输入的指令流基本上是一种<code>基于栈的指令集架构</code>，另外一种指令集架构则是<code>基于寄存器的指令集架构</code>。具体来说：这两种架构之间的区别：</p>
+<ul>
+<li>基于栈式架构的特点   <ul>
+<li>设计和实现更简单，适用于资源受限的系统</li>
+<li>避开了寄存器的分配难题：使用零地址指令方式分配</li>
+<li>指令流中的指令大部分是零地址指令，其执行过程依赖于<code>操作栈</code>。<code>指令集更小，编译器容易实现</code></li>
+<li>不需要硬件支持，可移植性更好，更好<code>实现跨平台</code></li>
+</ul>
 </li>
-<li><p>异常处理try-catch结构（只需要填个try。。）</p>
-</li>
-<li><p>数字格式化类java.text.DecimalFormat</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DecimalFormat precision3 = <span class="keyword">new</span> DecimalFormat(<span class="number">0.000</span>);         </span><br><span class="line">number1 = Integer.parseInt( input1.getText() );</span><br><span class="line">number2 = Integer.parseInt( input2.getText() );</span><br><span class="line">result = quotient( number1, number2 );</span><br><span class="line"><span class="comment">//*********Found********</span></span><br><span class="line">output.setText(_______________________________);<span class="comment">//答案：precision3.format(result)</span></span><br></pre></td></tr></table></figure>
-<p>以圆周率pi为例，new DecimalFormat(0.0).format(pi) = 3.1;</p>
-<p>new DecimalFormat(0.00).format(pi) = 3.14;</p>
-<p>new DecimalFormat(00.00).format(pi) = 03.14;</p>
-</li>
-<li><p>布局管理器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BeijingPanel</span> <span class="keyword">extends</span> <span class="title">JPanel</span></span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="title">BeijingPanel</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">//*********Found*********</span></span><br><span class="line">          setLayout(_____________);<span class="comment">//很明显是调用父类方法，更改布局管理器，结合上下文，答案：BorderLayout</span></span><br><span class="line">          ImageIcon icon = <span class="keyword">new</span> ImageIcon(<span class="string">"tiantan.jpg"</span>);</span><br><span class="line">          <span class="comment">//*********Found*********</span></span><br><span class="line">          jLC = <span class="keyword">new</span> JLabel( _______________ );<span class="comment">//标签中传入图片，答案：icon</span></span><br><span class="line">          add(jLC, BorderLayout.CENTER);</span><br><span class="line">          lpanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">          jLS = <span class="keyword">new</span> JLabel(<span class="string">"The Temple of Heaven"</span>);</span><br><span class="line">          lpanel.add(jLS);</span><br><span class="line">          add(lpanel, BorderLayout.SOUTH);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加监听器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b.addActionListener(_________);<span class="comment">//答案：this；前提是这题的大类就继承了ActionListener接口，并在构造器中添加了GUI的构建方法，类内包含actionPerformed(ActionEvent e)方法。所以添加的监听器也是自己。</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span></span>&#123;</span><br><span class="line">  <span class="comment">//***************************Found*********************   </span></span><br><span class="line">    <span class="keyword">if</span> (e.getSource()==___________)&#123;         <span class="comment">//答案：calcbtn对应上文中的new JButton()按钮，即判断事件源是否是按钮</span></span><br><span class="line">...</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MouseMotion</span> <span class="keyword">extends</span> <span class="title">MouseMotionAdapter</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseMoved</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//*********Found**********</span></span><br><span class="line">            b.setText(<span class="string">" 鼠标当前位置: "</span>+ e.getX()+ <span class="string">" , "</span> + e.getY()); <span class="comment">//获取鼠标当前坐标</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">_______________</span><span class="params">(ActionEvent e)</span></span>&#123; <span class="comment">//actionPerformed</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">_______________</span><span class="params">(ItemEvent e)</span></span>&#123;  <span class="comment">//itemStateChanged</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">_______________</span><span class="params">(ActionEvent e)</span></span>&#123;</span><br></pre></td></tr></table></figure>
+<li>基于寄存器架构的特点   <ul>
+<li>典型的应用是x86的二进制指令集：比如传统的PC以及Android的Davlik虚拟机。</li>
+<li>指令集架构则<code>完全依赖硬件</code>，与硬件的耦合度高，<code>可移植性差</code></li>
+<li><code>性能优秀和执行更高效</code></li>
+<li>花费更少的指令去完成一项操作</li>
+<li>在大部分情况下，<code>基于寄存器架构的指令集往往都以一地址指令、二地址指令和三地址指令为主</code>，而基于栈式架构的指令集却是以零地址指令为主</li>
+</ul>
 </li>
 </ul>
-<h2 id="2-字符串api"><a href="#2-字符串api" class="headerlink" title="2.字符串api"></a>2.字符串api</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"adfadfadf"</span></span><br><span class="line"><span class="keyword">int</span> strLength = str.length();<span class="comment">//字符串长度</span></span><br><span class="line">str.charAt(<span class="number">3</span>) == a;<span class="comment">//字符串索引</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-流"><a href="#3-流" class="headerlink" title="3. 流"></a>3. 流</h2><ol>
-<li><p>获取用户当前工作目录</p>
-<p>因为所有在java.io中的类都是将相对路径名解释为起始于用户的当前工作目录，所以应该清楚当前的目录。</p>
-<p>获取目录的方法：System.getproperty(“user.dir”)</p>
+<p><strong>eg：同样执行2+3这种逻辑操作，其指令分别如下：</strong></p>
+<ul>
+<li><p>基于栈的计算流程（以Java虚拟机为例，可以通过将字节码文件反编译得到）</p>
+<p>IDEA的字节码文件路径：project的out文件夹子目录下；   反编译命令：javap -v  file（字节码文件名）</p>
 </li>
-<li></li>
-</ol>
-<h2 id="4-applet"><a href="#4-applet" class="headerlink" title="4. applet"></a>4. applet</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java_2</span> <span class="keyword">extends</span> <span class="title">_______________________</span>   //答案：<span class="title">applet</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    TextArea outputArea;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        setLayout(<span class="keyword">new</span> BorderLayout());</span><br><span class="line">        outputArea = <span class="keyword">new</span> TextArea();</span><br><span class="line">     <span class="comment">//*********Found********</span></span><br><span class="line">        ____________________( outputArea );</span><br></pre></td></tr></table></figure>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">iconst_2 <span class="comment">//常量2入栈</span></span><br><span class="line">istore_1</span><br><span class="line">iconst_3 <span class="comment">// 常量3入栈</span></span><br><span class="line">istore_2</span><br><span class="line">iload_1</span><br><span class="line">iload_2</span><br><span class="line">iadd <span class="comment">//常量2/3出栈，执行相加</span></span><br><span class="line">istore_0 <span class="comment">// 结果5入栈</span></span><br><span class="line"><span class="number">12345678</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>基于寄存器的计算流程</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov eax,<span class="number">2</span> <span class="comment">//将eax寄存器的值设为1</span></span><br><span class="line">add eax,<span class="number">3</span> <span class="comment">//使eax寄存器的值加3</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-5-1-总结"><a href="#1-5-1-总结" class="headerlink" title="1.5.1 总结"></a>1.5.1 总结</h3><ul>
+<li>由于跨平台性的设计，Java的指令都是根据栈来设计的。不同平台CPU架构不同，所以不能设计为基于寄存器的。优点是跨平台，指令集小，编译器容易实现，缺点是性能下降，实现同样的功能需要更多的指令</li>
+<li>时至今日，尽管嵌入式平台已经不是Java程序的主流运行平台了（准确来说应该是HotSpot VM的宿主环境已经不局限于嵌入式平台了），那么为什么不将架构更换为基于寄存器的架构呢？</li>
+<li>因为基于栈的架构跨平台性好、指令集小，虽然相对于基于寄存器的架构来说，基于栈的架构编译得到的指令更多，执行性能也不如基于寄存器的架构好，但考虑到其跨平台性与移植性，我们还是选用栈的架构</li>
+</ul>
+<blockquote>
+<p>栈：跨平台性、指令集小、指令多；执行性能比寄存器差</p>
+</blockquote>
+<h2 id="1-6-JVM的生命周期"><a href="#1-6-JVM的生命周期" class="headerlink" title="1.6 JVM的生命周期"></a>1.6 JVM的生命周期</h2><ul>
+<li>虚拟机的启动   <ul>
+<li>Java虚拟机的启动是通过<code>引导类加载器</code>（bootstrap class loader）创建一个初始类（initial class）来完成的，这个类是由虚拟机的具体实现指定的。</li>
+</ul>
+</li>
+<li>虚拟机的执行   <ul>
+<li>一个运行中的Java虚拟机有着一个清晰的任务：执行Java程序</li>
+<li>程序开始执行时他才运行，程序结束时他就停止</li>
+<li><code>执行一个所谓的Java程序的时候，真真正正在执行的是一个叫做Java虚拟机的进程</code></li>
+</ul>
+</li>
+<li>虚拟机的退出   <ul>
+<li>程序正常执行结束</li>
+<li>程序在执行过程中遇到了异常或错误而异常终止</li>
+<li>由于操作系统用现错误而导致Java虚拟机进程终止</li>
+<li>某线程调用Runtime类或<code>System类的exit( )</code>方法，或<code>Runtime类的halt( )</code>方法，并且Java安全管理器也允许这次exit( )或halt( )操作。</li>
+<li>除此之外，JNI（Java Native Interface）规范描述了用JNI Invocation API来加载或卸载 Java虚拟机时，Java虚拟机的退出情况。</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -477,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B/" rel="next" title="操作系统-线程">
-                <i class="fa fa-chevron-left"></i> 操作系统-线程
+              <a href="/2021/01/22/typora%E5%B0%8F%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" rel="next" title="typora小技巧汇总">
+                <i class="fa fa-chevron-left"></i> typora小技巧汇总
               </a>
             
           </div>
@@ -486,10 +531,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/10/06/IC%E9%AA%8C%E8%AF%81/" rel="prev" title="IC验证">
-                IC验证 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -625,7 +666,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#综合题"><span class="nav-text">综合题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GUI设计题"><span class="nav-text">1.GUI设计题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-字符串api"><span class="nav-text">2.字符串api</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-流"><span class="nav-text">3. 流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-applet"><span class="nav-text">4. applet</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下篇：内存与垃圾回收篇"><span class="nav-text">下篇：内存与垃圾回收篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-JVM与java体系结构"><span class="nav-text">1. JVM与java体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-跨平台-跨语言"><span class="nav-text">1.1 跨平台&#x2F;跨语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-虚拟机介绍"><span class="nav-text">1.2 虚拟机介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-JVM的整体结构"><span class="nav-text">1.3 JVM的整体结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-java代码执行流程"><span class="nav-text">1.4 java代码执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-JVM的架构模型"><span class="nav-text">1.5 JVM的架构模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-总结"><span class="nav-text">1.5.1 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-JVM的生命周期"><span class="nav-text">1.6 JVM的生命周期</span></a></li></ol></li></ol></div>
             
 
           </div>
