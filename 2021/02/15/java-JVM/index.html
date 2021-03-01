@@ -90,8 +90,17 @@
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210215154512.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210215192534.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210215193008.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218102626.jpeg">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218102828.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218103654.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218104749.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218105319.jpeg">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218105414.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218110517.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218111229.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218111856.png">
 <meta property="article:published_time" content="2021-02-15T04:00:30.000Z">
-<meta property="article:modified_time" content="2021-02-15T13:26:27.724Z">
+<meta property="article:modified_time" content="2021-03-01T12:24:32.502Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -329,8 +338,8 @@
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-02-15T21:26:27+08:00" content="2021-02-15">
-                          2021-02-15
+                     <time itemprop="dateUpdated" datetime="2021-03-01T20:24:32+08:00" content="2021-03-01">
+                          2021-03-01
                      </time>
                  </span>
              
@@ -353,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-JVM-%E6%A6%82%E5%BF%B5-%E4%BA%8C%E7%BA%A7-spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
-                    <span itemprop="name">java学习-JVM.概念.二级..spring框架</span>
+                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-JVM-%E6%A6%82%E5%BF%B5-%E5%9F%BA%E7%A1%80-%E9%9B%86%E5%90%88-%E6%95%B0%E7%BB%84-String%E4%B8%93%E9%A2%98-spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习-JVM.概念.基础.集合/数组/String专题.spring框架</span>
                   </a>
                 </span>
 
@@ -492,6 +501,95 @@
 </ul>
 </li>
 </ul>
+<h1 id="2-类加载子系统"><a href="#2-类加载子系统" class="headerlink" title="2. 类加载子系统"></a>2. 类加载子系统</h1><p><img src="https://gitee.com/biongd/img/raw/master/img/20210218102626.jpeg" alt="第02章_JVM架构-简图" style="zoom: 50%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210218102828.png" alt="image-20201118110635578" style="zoom: 67%;" /></p>
+<h2 id="2-1-类加载子系统的作用"><a href="#2-1-类加载子系统的作用" class="headerlink" title="2.1 类加载子系统的作用"></a>2.1 类加载子系统的作用</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210218103654.png" alt="image-20201118111616428" style="zoom:50%;" /></p>
+<ul>
+<li><code>类加载器子系统负责从文件系统或者网络中加载Class文件</code>，class文件在文件开头有特定的文件标识。</li>
+<li>ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine决定。</li>
+<li><code>加载的类信息存放于一块称为方法区的内存空间</code>。除了类的信息外，方法区中还会存放<strong>运行时常量池</strong>（之前将class文件反编译生成的指令文件中就包含常量池constant pool,加载到内存中就是运行时常量池了）信息，可能还包括字符串字面量和数字常量（这部分常量信息是Class文件中常量池部分的内存映射）</li>
+</ul>
+<h2 id="2-2-类加载器ClassLorder角色"><a href="#2-2-类加载器ClassLorder角色" class="headerlink" title="2.2 类加载器ClassLorder角色"></a>2.2 类加载器ClassLorder角色</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210218104749.png" alt="image-20201118115336469" style="zoom:67%;" /></p>
+<ul>
+<li>class file存在于本地硬盘上，可以理解为设计师画在纸上的模板，而最终这个模板在执行的时候是要加载到JVM当中来根据这个文件实例化出n个一模一样的实例。（class文件以二进制字节流的形式加载到内存）</li>
+<li>class file加载到JVM中，被称为<code>DNA元数据模板</code>，放在方法区。</li>
+<li>在<code>.class文件</code> –&gt; JVM –&gt; 最终成为元数据模板，此过程就要一个运输工具（类装载器Class Loader），扮演一个快递员的角色。</li>
+</ul>
+<h2 id="2-3-类的加载过程"><a href="#2-3-类的加载过程" class="headerlink" title="2.3 类的加载过程"></a>2.3 类的加载过程</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloLoader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"谢谢ClassLoader加载我...."</span>);</span><br><span class="line">        System.out.println(<span class="string">"你的大恩大德，我下辈子再报！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="number">123456789101112</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>它的加载过程是怎么样的呢?</p>
+</blockquote>
+<ul>
+<li>执行 main( ) 方法（静态方法）就需要先加载承载类 HelloLoader</li>
+<li>加载成功，则进行链接、初始化等操作，完成后调用 HelloLoader 类中的静态方法 main</li>
+<li>加载失败则抛出异常</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210218105319.jpeg" alt="第02章_类的加载过程" style="zoom:50%;" /></p>
+<ul>
+<li><p>完整的流程图如下所示：<code>加载 --&gt; 链接（验证 --&gt; 准备 --&gt; 解析） --&gt; 初始化</code></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210218105414.png" alt="image-20201118120201267" style="zoom:50%;" /></p>
+</li>
+</ul>
+<h3 id="2-3-1-加载-Loading-阶段"><a href="#2-3-1-加载-Loading-阶段" class="headerlink" title="2.3.1 加载(Loading)阶段"></a>2.3.1 加载(Loading)阶段</h3><blockquote>
+<p>加载</p>
+</blockquote>
+<ol>
+<li>通过一个类的全限定名获取定义此类的二进制字节流</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构</li>
+<li><code>在内存中生成一个代表这个类的java.lang.Class对象</code>，作为方法区这个类的各种数据的访问入口</li>
+</ol>
+<blockquote>
+<p>加载<code>.class文件</code>的方式</p>
+</blockquote>
+<ul>
+<li>从本地系统中直接加载</li>
+<li>通过网络获取，典型场景：Web Applet</li>
+<li>从zip压缩包中读取，成为日后<code>jar、war</code>格式的基础</li>
+<li>运行时计算生成，使用最多的是：<code>动态代理技术</code></li>
+<li>由其他文件生成，典型场景：JSP应用从专有数据库中提取<code>.class文件</code>，比较少见</li>
+<li>从加密文件中获取，典型的<code>防Class文件被反编译</code>的保护措施</li>
+</ul>
+<h3 id="2-3-2-链接-Linking-阶段"><a href="#2-3-2-链接-Linking-阶段" class="headerlink" title="2.3.2 链接(Linking)阶段"></a>2.3.2 链接(Linking)阶段</h3><blockquote>
+<p>链接分为三个子阶段：<code>验证 --&gt; 准备 --&gt; 解析</code></p>
+</blockquote>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210218110517.png" alt="20201118121444924" style="zoom:67%;" /></p>
+<blockquote>
+<p>验证(Verify)</p>
+</blockquote>
+<ul>
+<li>目的在于确保Class文件的字节流中包含信息符合当前虚拟机要求，保证被加载类的正确性，不会危害虚拟机自身安全</li>
+<li>主要包括四种验证，文件格式验证，元数据验证，字节码验证，符号引用验证。</li>
+<li>使用 <code>BinaryViewer</code> 查看<code>字节码文件</code>，其开头均为 <code>CAFE BABE</code> ，如果出现不合法的字节码文件，那么将会验证不通过</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210218111229.png" alt="d6915f36e33aa15cff784ef4d2092a97" style="zoom:50%;" /></p>
+<blockquote>
+<p>准备(Prepare)</p>
+</blockquote>
+<ul>
+<li>为类变量分配内存并且设置该类变量的<code>默认初始值</code>，即<code>零值</code></li>
+<li><code>这里不包含用final修饰的static，因为final在编译的时候就会分配好了默认值，准备阶段会显式初始化</code></li>
+<li>注意：<code>这里不会为实例变量分配初始化</code>，类变量会分配在方法区中，而实例变量是会随着对象一起分配到Java堆中</li>
+</ul>
+<blockquote>
+<p>举例：</p>
+</blockquote>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">变量a在准备阶段会赋初始值，但不是<span class="number">1</span>，而是<span class="number">0</span>，在初始化阶段会被赋值为 <span class="number">1</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">HelloApp</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> static <span class="built_in">int</span> a = <span class="number">1</span>;   <span class="comment">//prepare：a = 0 ---&gt; initial : a = 1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args) &#123;</span><br><span class="line">        System.<span class="keyword">out</span>.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解析(Resolve)</p>
+</blockquote>
+<ul>
+<li>将常量池内的符号引用转换为直接引用的过程</li>
+<li>事实上，解析操作往往会伴随着JVM在执行完初始化之后再执行</li>
+<li>符号引用就是一组符号来描述所引用的目标。符号引用的字面量形式明确定义在《java虚拟机规范》的class文件格式中。直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄</li>
+<li>解析动作主要针对类或接口、字段、类方法、接口方法、方法类型等。对应常量池中的CONSTANT Class info、CONSTANT Fieldref info、CONSTANT Methodref info等</li>
+</ul>
+<blockquote>
+<p>符号引用</p>
+</blockquote>
+<ul>
+<li>反编译 class 文件后可以查看符号引用</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210218111856.png" alt="image-20201118122836935" style="zoom:67%;" /></p>
 
       
     </div>
@@ -666,7 +764,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下篇：内存与垃圾回收篇"><span class="nav-text">下篇：内存与垃圾回收篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-JVM与java体系结构"><span class="nav-text">1. JVM与java体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-跨平台-跨语言"><span class="nav-text">1.1 跨平台&#x2F;跨语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-虚拟机介绍"><span class="nav-text">1.2 虚拟机介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-JVM的整体结构"><span class="nav-text">1.3 JVM的整体结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-java代码执行流程"><span class="nav-text">1.4 java代码执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-JVM的架构模型"><span class="nav-text">1.5 JVM的架构模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-总结"><span class="nav-text">1.5.1 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-JVM的生命周期"><span class="nav-text">1.6 JVM的生命周期</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下篇：内存与垃圾回收篇"><span class="nav-text">下篇：内存与垃圾回收篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-JVM与java体系结构"><span class="nav-text">1. JVM与java体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-跨平台-跨语言"><span class="nav-text">1.1 跨平台&#x2F;跨语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-虚拟机介绍"><span class="nav-text">1.2 虚拟机介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-JVM的整体结构"><span class="nav-text">1.3 JVM的整体结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-java代码执行流程"><span class="nav-text">1.4 java代码执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-JVM的架构模型"><span class="nav-text">1.5 JVM的架构模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-总结"><span class="nav-text">1.5.1 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-JVM的生命周期"><span class="nav-text">1.6 JVM的生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-类加载子系统"><span class="nav-text">2. 类加载子系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-类加载子系统的作用"><span class="nav-text">2.1 类加载子系统的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-类加载器ClassLorder角色"><span class="nav-text">2.2 类加载器ClassLorder角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-类的加载过程"><span class="nav-text">2.3 类的加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-加载-Loading-阶段"><span class="nav-text">2.3.1 加载(Loading)阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-链接-Linking-阶段"><span class="nav-text">2.3.2 链接(Linking)阶段</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

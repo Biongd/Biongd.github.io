@@ -89,8 +89,9 @@
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210104155331.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210211165445.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210211181758.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218160958.png">
 <meta property="article:published_time" content="2020-01-04T07:32:20.000Z">
-<meta property="article:modified_time" content="2021-02-15T13:20:18.961Z">
+<meta property="article:modified_time" content="2021-03-01T12:24:32.540Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -328,8 +329,8 @@
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-02-15T21:20:18+08:00" content="2021-02-15">
-                          2021-02-15
+                     <time itemprop="dateUpdated" datetime="2021-03-01T20:24:32+08:00" content="2021-03-01">
+                          2021-03-01
                      </time>
                  </span>
              
@@ -436,7 +437,8 @@
 <li>子问题</li>
 </ul>
 <h2 id="4-2-状态转移方程"><a href="#4-2-状态转移方程" class="headerlink" title="4.2 状态转移方程"></a>4.2 状态转移方程</h2><p>F[x] = min{F[X-1],F[X-2],F[X-5]}</p>
-<h2 id="4-3-初始条件和边界条件"><a href="#4-3-初始条件和边界条件" class="headerlink" title="4.3 初始条件和边界条件"></a>4.3 初始条件和边界条件</h2><h2 id="4-4-计算顺序"><a href="#4-4-计算顺序" class="headerlink" title="4.4 计算顺序"></a>4.4 计算顺序</h2><h2 id="5-坐标型动态规划"><a href="#5-坐标型动态规划" class="headerlink" title="5. 坐标型动态规划"></a>5. 坐标型动态规划</h2><h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><ol>
+<h2 id="4-3-初始条件和边界条件"><a href="#4-3-初始条件和边界条件" class="headerlink" title="4.3 初始条件和边界条件"></a>4.3 初始条件和边界条件</h2><h2 id="4-4-计算顺序"><a href="#4-4-计算顺序" class="headerlink" title="4.4 计算顺序"></a>4.4 计算顺序</h2><h2 id="4-5-空间优化"><a href="#4-5-空间优化" class="headerlink" title="4.5 空间优化"></a>4.5 空间优化</h2><p>对新开的dp数组进行压缩，以<code>f[i] = f[i-1]+1</code>为例，通过滚动的方式，只需要维持一个长度为2的数组就可以实现<code>f[i]</code>的更新</p>
+<h1 id="5-坐标型动态规划"><a href="#5-坐标型动态规划" class="headerlink" title="5. 坐标型动态规划"></a>5. 坐标型动态规划</h1><h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><ol>
 <li>最简单的动态规划类型</li>
 <li>给定一个序列或网格</li>
 <li>需要找到<strong>序列中某个/些子序列</strong>或<strong>网格中的某条路径</strong><ul>
@@ -452,7 +454,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="1-最长递增子序列"><a href="#1-最长递增子序列" class="headerlink" title="1. 最长递增子序列"></a>1. <a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">最长递增子序列</a></h4><ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="1-最长递增子序列"><a href="#1-最长递增子序列" class="headerlink" title="1. 最长递增子序列"></a>1. <a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">最长递增子序列</a></h3><ul>
 <li><p>确定状态：</p>
 <ul>
 <li><p>最后一步：对于最优的策略，一定有最后一个元素a[j]</p>
@@ -477,7 +479,89 @@
 <p>和硬币组合题不一样的是，最终答案并不一定是dp[n-1]，而是从dp数组中取最大值</p>
 </li>
 </ul>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLengthOfLCIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                dp[i] = dp[i-<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                dp[i] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dp[i]&gt;max) max = dp[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//空间优化</span></span><br><span class="line"><span class="keyword">int</span>[] dp  = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> old = now = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.length; ++i)&#123;</span><br><span class="line">    <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">        old = now;</span><br><span class="line">        now = <span class="number">1</span>-now;</span><br><span class="line">        dp[now] = dp[old]+<span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        dp[now] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dp[now]&gt;max) max = dp[now];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[now];</span><br></pre></td></tr></table></figure>
+<h3 id="2-最小路径和"><a href="#2-最小路径和" class="headerlink" title="2. 最小路径和"></a>2. <a href="https://leetcode-cn.com/problems/minimum-path-sum/" target="_blank" rel="noopener">最小路径和</a></h3><ul>
+<li><p>确定状态</p>
+<p>最优策略的路径总和最小</p>
+<ul>
+<li>若倒数第二部（i-2,j-1），则前面一定是从（0，0）到达（i-2,j-1）的最小路径</li>
+<li>倒数第二部（i-1,j-2）亦然</li>
+</ul>
+<p>子问题：从（0,0）走到（i,j）的路径最小数字总和<code>f[i][j]</code></p>
+</li>
+<li><p>状态转移方程：<code>f[i][j] = min{f[i-1][j], f[i][j-1]}</code></p>
+</li>
+<li><p>初始条件和状态转移方程：</p>
+<ul>
+<li>初始条件：<code>f[0][0] = grid[0][0]</code></li>
+<li>边界情况：<code>i=0或者j=0 , 则前一步只能有一个方向过来</code></li>
+</ul>
+</li>
+<li><p>计算顺序：</p>
+<p>计算第0行，计算第2行。。。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3-炸弹袭击"><a href="#3-炸弹袭击" class="headerlink" title="3. 炸弹袭击"></a>3. <a href="https://www.lintcode.com/problem/553/" target="_blank" rel="noopener">炸弹袭击</a></h3><p>求四个方向上一共能炸死多少人，可以拆分为单一方向然后求和，这样就可以应用动态规划求解，<strong><font color="red">以炸弹向上炸为例：</font></strong></p>
+<ul>
+<li><p>确定状态</p>
+<ul>
+<li><p>假设有敌人或有墙的地方也能放炸弹</p>
+</li>
+<li><p>有墙的格子：炸弹炸不到格子外面</p>
+</li>
+</ul>
+<p>在（i,j）格子放炸弹，能够炸到的最多人数：</p>
+<ul>
+<li>该格子是人：炸到的人数（i-1,j）+1，</li>
+<li>该格子是空：炸到的人不变(i-1,j)</li>
+<li>该格子是墙：0；</li>
+</ul>
+<p><strong>子问题：求<code>(i-1,j)</code>向上能炸到的最大人数</strong></p>
+<p><strong>状态：<code>up[i][j]</code>表示向上能炸到的最大人数</strong></p>
+</li>
+<li><p>状态转移方程</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210218160958.png" alt="image-20210218160958700" style="zoom:67%;" /></p>
+</li>
+<li><p>初始条件和边界情况：第0行的up值和格子内容相关</p>
+</li>
+<li><p>计算顺序，逐行计算</p>
+</li>
+</ul>
+<h1 id="6-序列-位操作型动态规划"><a href="#6-序列-位操作型动态规划" class="headerlink" title="6. 序列+位操作型动态规划"></a>6. 序列+位操作型动态规划</h1><h2 id="位操作型"><a href="#位操作型" class="headerlink" title="位操作型"></a>位操作型</h2><p>和位操作相关的动态规划一般用值做状态</p>
+<h3 id="1-比特位计数"><a href="#1-比特位计数" class="headerlink" title="1. 比特位计数"></a>1. <a href="https://leetcode-cn.com/problems/counting-bits/" target="_blank" rel="noopener">比特位计数</a></h3><ul>
+<li><p>确定状态</p>
+<p>最后一步：观察这个数最后一个二进制位（最低位），去掉它，看剩下多少个1</p>
+<p>要求N的二进制中有多少个1，将N的二进制去掉最后一位（N %2），设新的数是Y = N&gt;&gt;1</p>
+<p><strong>子问题：求Y得二进制有多少1</strong></p>
+<p><strong>状态：<code>f[i]</code>表示<code>i</code>的二进制表示中有多少位1</strong></p>
+</li>
+<li><p>状态转移方程</p>
+<p><code>f[i]</code> = <code>f[i&gt;&gt;1]</code>+<code>i%2</code></p>
+</li>
+<li><p>初始条件和边界条件：</p>
+<p><code>f[0] = 0</code></p>
+</li>
+<li><p>计算顺序0,1,2,3，。。。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] countBits(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[num+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=num;++i)&#123;</span><br><span class="line">            dp[i] = dp[i&gt;&gt;<span class="number">1</span>] + (i%<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="序列型"><a href="#序列型" class="headerlink" title="序列型"></a>序列型</h2><h3 id="和坐标型的比较"><a href="#和坐标型的比较" class="headerlink" title="和坐标型的比较"></a>和坐标型的比较</h3><ul>
+<li><p>状态</p>
+<p>序列型：动态规划方程<code>f[i]</code>中的下标i表示前i个元素<code>a[0],a[1],a[2],...a[i-1]</code>的某种性质</p>
+<p>坐标型：<code>f[i]</code>表示以<code>a[i]</code>结尾的某种性质，或者说与<code>a[i]</code>的性质有关，如</p>
+<ul>
+<li>最长递增子序列：考虑<code>nums[i]</code>是否比<code>nums[i-1]</code>大</li>
+<li>炸弹袭击：考虑<code>grid[i][j]</code>是人，空，还是墙</li>
+</ul>
+</li>
+<li><p>初始化</p>
+<p>序列型：<code>f[0]</code>表示空序列的性质</p>
+<p>坐标型：<code>f[0]</code>表示以$a_0$为结尾的某种性质，即$a_0$本身就是一个子序列</p>
+</li>
+</ul>
+<h3 id="1-粉刷房子"><a href="#1-粉刷房子" class="headerlink" title="1. 粉刷房子"></a>1. <a href="https://www.lintcode.com/problem/516/" target="_blank" rel="noopener">粉刷房子</a></h3><h3 id="2-打家劫舍-II"><a href="#2-打家劫舍-II" class="headerlink" title="2. 打家劫舍 II"></a>2. <a href="https://leetcode-cn.com/problems/house-robber-ii/" target="_blank" rel="noopener">打家劫舍 II</a></h3><h3 id="3-买卖股票的最佳时机-III"><a href="#3-买卖股票的最佳时机-III" class="headerlink" title="3. 买卖股票的最佳时机 III"></a>3. <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">买卖股票的最佳时机 III</a></h3><h3 id="4-买卖股票的最佳时机-IV"><a href="#4-买卖股票的最佳时机-IV" class="headerlink" title="4. 买卖股票的最佳时机 IV"></a>4. <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">买卖股票的最佳时机 IV</a></h3><h1 id="7-划分型"><a href="#7-划分型" class="headerlink" title="7.划分型"></a>7.划分型</h1><h2 id="1-完全平方数"><a href="#1-完全平方数" class="headerlink" title="1. 完全平方数"></a>1. <a href="https://leetcode-cn.com/problems/perfect-squares/" target="_blank" rel="noopener">完全平方数</a></h2><h2 id="2-分割回文串-II"><a href="#2-分割回文串-II" class="headerlink" title="2. 分割回文串 II"></a>2. <a href="https://leetcode-cn.com/problems/palindrome-partitioning-ii/" target="_blank" rel="noopener">分割回文串 II</a></h2><h1 id="延展：回文串的判断方法"><a href="#延展：回文串的判断方法" class="headerlink" title="* 延展：回文串的判断方法"></a>* 延展：回文串的判断方法</h1>
       
     </div>
     
@@ -651,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-题目特点"><span class="nav-text">1. 题目特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-与dfs的联系"><span class="nav-text">2. 与dfs的联系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-思想"><span class="nav-text">3. 思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-组成部分"><span class="nav-text">4. 组成部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-确定状态"><span class="nav-text">4.1 确定状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-状态转移方程"><span class="nav-text">4.2 状态转移方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-初始条件和边界条件"><span class="nav-text">4.3 初始条件和边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-计算顺序"><span class="nav-text">4.4 计算顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-坐标型动态规划"><span class="nav-text">5. 坐标型动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征"><span class="nav-text">特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-最长递增子序列"><span class="nav-text">1. 最长递增子序列</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-题目特点"><span class="nav-text">1. 题目特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-与dfs的联系"><span class="nav-text">2. 与dfs的联系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-思想"><span class="nav-text">3. 思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-组成部分"><span class="nav-text">4. 组成部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-确定状态"><span class="nav-text">4.1 确定状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-状态转移方程"><span class="nav-text">4.2 状态转移方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-初始条件和边界条件"><span class="nav-text">4.3 初始条件和边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-计算顺序"><span class="nav-text">4.4 计算顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-空间优化"><span class="nav-text">4.5 空间优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-坐标型动态规划"><span class="nav-text">5. 坐标型动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征"><span class="nav-text">特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-最长递增子序列"><span class="nav-text">1. 最长递增子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-最小路径和"><span class="nav-text">2. 最小路径和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-炸弹袭击"><span class="nav-text">3. 炸弹袭击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-序列-位操作型动态规划"><span class="nav-text">6. 序列+位操作型动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#位操作型"><span class="nav-text">位操作型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-比特位计数"><span class="nav-text">1. 比特位计数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列型"><span class="nav-text">序列型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#和坐标型的比较"><span class="nav-text">和坐标型的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-粉刷房子"><span class="nav-text">1. 粉刷房子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-打家劫舍-II"><span class="nav-text">2. 打家劫舍 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-买卖股票的最佳时机-III"><span class="nav-text">3. 买卖股票的最佳时机 III</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-买卖股票的最佳时机-IV"><span class="nav-text">4. 买卖股票的最佳时机 IV</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-划分型"><span class="nav-text">7.划分型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-完全平方数"><span class="nav-text">1. 完全平方数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-分割回文串-II"><span class="nav-text">2. 分割回文串 II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#延展：回文串的判断方法"><span class="nav-text">* 延展：回文串的判断方法</span></a></li></ol></div>
             
 
           </div>
