@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="好好学习基础，不积跬步无以至千里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法基础">
+<meta property="og:url" content="http://yoursite.com/2020/07/17/%E7%AE%97%E6%B3%95-%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="好好学习基础，不积跬步无以至千里">
+<meta property="article:published_time" content="2020-07-17T12:48:45.000Z">
+<meta property="article:modified_time" content="2021-03-14T08:14:26.564Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/17/算法-基础/"/>
+
+
+
+
+
+  <title>数据结构与算法基础 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/17/%E7%AE%97%E6%B3%95-%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构与算法基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-17T20:48:45+08:00">
+                2020-07-17
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-03-14T16:14:26+08:00" content="2021-03-14">
+                          2021-03-14
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D-dp%E4%B8%93%E9%A2%98-%E6%95%B0%E5%AD%A6-%E6%A0%91-%E5%9B%BE-bfs-dfs/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法-基础介绍.dp专题.数学.树/图/bfs/dfs.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>好好学习基础，不积跬步无以至千里</p>
+<a id="more"></a>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>数据结构包括：线性结构和非线性结构</p>
+<ul>
+<li><p>线性结构：</p>
+<ul>
+<li><p>最常用的数据结构</p>
+<p>特点是数据元素之间存在一对一的线性关系</p>
+</li>
+<li><p>又能分为两种不同的存储结构，顺序存储结构和链式存储结构。</p>
+<p>顺序存储的线性表为顺序表，顺序表中的存储元素是连续的。</p>
+<p>链式存储的线性表称为链表，链表中的存储元素不一定是连续的，元素节点中存放数据元素以及相邻元素的地址信息。</p>
+</li>
+<li><p>常见的数据结构：数组，队列，链表和栈</p>
+</li>
+</ul>
+</li>
+<li><p>非线性结构：</p>
+<ul>
+<li>包括：二维数组，多维数组，广义表，树结构，图结构</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-稀疏（sparsearray）数组"><a href="#1-稀疏（sparsearray）数组" class="headerlink" title="1.稀疏（sparsearray）数组"></a>1.稀疏（sparsearray）数组</h2><ul>
+<li>概念：当一个数组的大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。</li>
+<li>稀疏素组的处理方法：<ul>
+<li>记录数组一共有几行几列，有多少个不同的值</li>
+<li>把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序的规模</li>
+</ul>
+</li>
+</ul>
+<p>以五子棋程序为例，有存盘退出和续上盘的功能。</p>
+<p>分析问题：二位数组的很多值默认是0，因此记录了很多没意义的数据=&gt;稀疏数组</p>
+<p>例如：</p>
+<p>一个11行11列的棋盘，在1行2列有个黑旗，2行3列有个白旗，其转换的稀疏数组为</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>row</th>
+<th>column</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>11</td>
+<td>11</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>二维数组转稀疏数组的思路：</p>
+<ul>
+<li>遍历原始的二维数组，得到有效数据的个数</li>
+<li>根据sum就可以创建稀疏数组sparseArr <code>in[sum+1][3]</code></li>
+<li>将二维数组的有效数据存入到稀疏数组</li>
+</ul>
+<p>稀疏数组转二维数组的思路：</p>
+<ul>
+<li>先读取稀疏数组的第一行，根据第一行的数据，创建原始的二维数组，比如上面的<code>chessArr2=int[11][11]</code></li>
+<li>再读取稀疏数组后几行的数据，并赋给原始的二维数组即可</li>
+</ul>
+<p>生成数组：以4行3列为例</p>
+<ul>
+<li><p>```<br>b = [[0]*3 for i in range(4)]<br>b = numpy.array(b)</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+<p>numpy.zeros(shape(4,3),dtype = int)</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## <span class="number">2.</span>队列（queue）</span><br><span class="line"></span><br><span class="line">### <span class="number">2.1</span>队列的数组实现</span><br><span class="line"></span><br><span class="line">队列特性：先进先出</span><br><span class="line"></span><br><span class="line">与数组的对应关系，数组的<span class="number">0</span>即队列的<span class="number">1</span>，容量maxSize对应数组的最后一位参数为[maxSize<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">- 关键是三个参数，队列容量maxSize，头指针front，尾指针rear</span><br><span class="line"></span><br><span class="line">  头指针：初始front = <span class="number">-1</span>，队列每出一个数头指针后移一位，仍然指向当前队列头部的前一个位置，也就是指向我移除的数的位置</span><br><span class="line"></span><br><span class="line">  尾指针：初始rear=<span class="number">-1</span>，队列每进一个数尾指针后移一位，仍然指向队列尾部的那一个位置，也就是我这次要加入的数</span><br><span class="line"></span><br><span class="line">- 判断队列是否为空和是否已满</span><br><span class="line"></span><br><span class="line">  为空：front == rear，此时禁止从队列获取</span><br><span class="line"></span><br><span class="line">  已满：rear == maxSize - <span class="number">1</span>，此时禁止向队列添加</span><br><span class="line"></span><br><span class="line">- 问题：</span><br><span class="line"></span><br><span class="line">  此时实现的队列只能一次性使用，把队列填满，把数取完就不能用了</span><br><span class="line"></span><br><span class="line">### <span class="number">2.2</span>环形队列的数组实现</span><br><span class="line"></span><br><span class="line">通过指针的环形变化，可以解决队列的一次性使用问题</span><br><span class="line"></span><br><span class="line">如何变化？</span><br><span class="line"></span><br><span class="line">类似数电的进制转换，可以将环形队列视为模为maxSize的表盘，front和rear作为两个顺时针旋转（均执行+<span class="number">1</span>操作，也就是单向旋转）的指针。</span><br><span class="line"></span><br><span class="line">front到rear的顺时针距离也就对应当前队列的数据个数</span><br><span class="line"></span><br><span class="line">- 初始均指向<span class="number">0</span></span><br><span class="line"></span><br><span class="line">  front指向队列头部的那个数的位置，也就是下一个代取的数</span><br><span class="line"></span><br><span class="line">  rear指向队列尾部的后面一个位置，也就是下一个要填入的数</span><br><span class="line"></span><br><span class="line">  然后front和rear再都后移一位。</span><br><span class="line"></span><br><span class="line">- 判断队列书否为空或已满：</span><br><span class="line">  为空：front == rear</span><br><span class="line"></span><br><span class="line">  已满：（rear+<span class="number">1</span>）%maxSize == front</span><br><span class="line"></span><br><span class="line">  rear+<span class="number">1</span>对模取余也就对应rear+<span class="number">1</span>在表盘上的位置，表示rear和front顺时针距离为<span class="number">1</span>时未满</span><br><span class="line"></span><br><span class="line">  这也是为了避免和为空的判断重叠，牺牲了一个空间，也就是这个队列先入先出，但是有一个位置是一直空在最末端，程序使用者自然也不会发现。</span><br><span class="line"></span><br><span class="line">[java及python的实现代码](https:<span class="comment">//gitee.com/biongd/Data_sructure-and-Algorithm)</span></span><br><span class="line"></span><br><span class="line">## <span class="number">3.</span>链表</span><br><span class="line"></span><br><span class="line">### <span class="number">3.1</span>特点</span><br><span class="line"></span><br><span class="line">- 链表是以节点的方式来存储</span><br><span class="line">- 每个节点包含data域，next域：指向下一个节点</span><br><span class="line">- 链表的各节点不一定是连续存储</span><br><span class="line">- 链表分带头节点的链表和没有头节点的链表，根据实际的需求来确定</span><br><span class="line"></span><br><span class="line">### <span class="number">3.2</span>单链表创建</span><br><span class="line"></span><br><span class="line">- 在链表末尾添加新节点</span><br><span class="line"></span><br><span class="line">  <span class="number">1.</span> 先创建一个head头节点，作用就是表示单链表的头（空）</span><br><span class="line"></span><br><span class="line">  <span class="number">2.</span> 每添加一个节点，就直接加入到链表的最后遍历</span><br><span class="line"></span><br><span class="line">  <span class="number">3.</span> 通过一个辅助变量（节点对象），帮助遍历整个链表</span><br><span class="line"></span><br><span class="line">  总结：两个类：节点类和链表类</span><br><span class="line"></span><br><span class="line">  节点类包含节点对象的data和next，链表类包含链表应该执行的创建功能（即添加新节点）</span><br><span class="line"></span><br><span class="line">  就是通过一个链子将一个个零散的节点串起来，而next就是这个链子。</span><br><span class="line"></span><br><span class="line">  每一次添加节点其实就是让原本链表的最后一个节点的next=新节点，也就是每一个新建节点其实都是前一个节点的next属性。</span><br><span class="line"></span><br><span class="line">  temp作为一个辅助的临时指针，在每次需要添加的时候开始从头遍历链表</span><br><span class="line"></span><br><span class="line">- 按照序号插入新节点</span><br><span class="line"></span><br><span class="line">  在上一基础上增加两个判断就可以实现，定义一个布尔变量flag，默认为<span class="literal">false</span>，链表中节点已存在则为<span class="literal">true</span>。</span><br><span class="line"></span><br><span class="line">  <span class="number">1.</span> 遍历过程中判断temp.next是否为<span class="literal">null</span>，为<span class="literal">null</span>则跳出循环，</span><br><span class="line">  <span class="number">2.</span> 遍历过程中判断新节点的编号是否小于temp.next的编号，出现则跳出循环</span><br><span class="line">  <span class="number">3.</span> 遍历过程中判断新节点的编号是否等于temp.next的编号，出现则将flag= <span class="literal">true</span>，跳出循环</span><br><span class="line"></span><br><span class="line">  判断<span class="number">1</span>：说明没找到比新节点no大的节点，将新节点排在末尾（temp.next）</span><br><span class="line"></span><br><span class="line">  判断<span class="number">2</span>：说明新节点的编号比temp的编号大，比temp.next的编号小，应该插入两者中间。</span><br><span class="line"></span><br><span class="line">  现将新节点的next绑上temp.next      heronode.next = temp.next</span><br><span class="line"></span><br><span class="line">  再给temp的next绑上新节点：temp.next = heronode</span><br><span class="line"></span><br><span class="line">  这两条对新节点排在末尾（判断<span class="number">1</span>）也适用</span><br><span class="line"></span><br><span class="line">  判断<span class="number">3</span>：判断<span class="number">2</span>的例外情况就是temp.next和新节点的编号相同，也就是同<span class="number">1</span>节点，这时候就终止循环，弹出提示就好</span><br><span class="line"></span><br><span class="line">  除这<span class="number">3</span>种情况外，也就是新节点编号比temp.next大，这时候就执行循环，将temp后移就</span><br><span class="line"></span><br><span class="line">#### <span class="number">3.2</span><span class="number">.1</span>单链表面试题</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 求单链表中的节点个数</span><br><span class="line"></span><br><span class="line">   - temp = head.next（注意：此方法传入参数除链表对象外，还要传入链表的head对象）</span><br><span class="line"></span><br><span class="line">   - 如果temp == None,节点数为<span class="number">0</span></span><br><span class="line"></span><br><span class="line">   - 定义一个计数器count=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">     遍历条件：temp ！= None</span><br><span class="line"></span><br><span class="line">     每次执行循环count++</span><br><span class="line"></span><br><span class="line">     temp = temp.next</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 查看链表的倒数第k个节点</span><br><span class="line"></span><br><span class="line">   - 在上一基础上，得到链表的总结点数size，倒数第k个节点就是正数第size-k+<span class="number">1</span>个节点</span><br><span class="line"></span><br><span class="line">   - 定义temp = head.next</span><br><span class="line"></span><br><span class="line">     此时temp移动到size-k+<span class="number">1</span>个节点的位置需要移动size-k个</span><br><span class="line"></span><br><span class="line">   - 通过一个<span class="keyword">for</span>循环实现：</span><br><span class="line">     <span class="keyword">for</span>（i=<span class="number">0</span> ; i&lt;size-k ; i++）&#123;</span><br><span class="line"></span><br><span class="line">     ​	temp = temp.next</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line">   </span><br><span class="line"><span class="number">3.</span> 单链表进行反转</span><br><span class="line"></span><br><span class="line">   - 定义一个新的头节点reversehead</span><br><span class="line">   - 对原链表进行遍历，每一次temp移动，都将其添加到reversehead的后面</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   temp = head.next</span><br><span class="line">   <span class="keyword">while</span>(temp != None):</span><br><span class="line">   	next = temp.next            #next指针，指向老链表的下一个结点</span><br><span class="line">       temp.next = reversehead.next   #新链表插入temp</span><br><span class="line">       reversehead.next = temp</span><br><span class="line">       temp = next            #老链表向后移动一位</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再领head.next = reversehead.next</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>从尾到头打印单链表</p>
+<p> 思路一：先反转后打印，但是看上面的步骤，原有单链表的结构就被改变了</p>
+<p>思路二：将遍历的结点push到栈中，打印时再put出来</p>
+</li>
+</ol>
+<h4 id="3-2-2leetcode刷题的总结"><a href="#3-2-2leetcode刷题的总结" class="headerlink" title="3.2.2leetcode刷题的总结"></a>3.2.2leetcode刷题的总结</h4><p>链表题目的解题关键：</p>
+<ol>
+<li>灵活使用递归</li>
+<li>指针：考虑需要几个指针，指针如何移动，指针间的关系问题。</li>
+</ol>
+<p>在刷题过程中领悟到的一个问题：</p>
+<p>赋值语句只是对目标进行了浅拷贝，指向的是同一片内存空间，相同的内容。</p>
+<p>所以当我给链表中的节点添加指针的时候，指针的操作实际上也就是对应节点的操作。</p>
+<h3 id="3-3双向链表"><a href="#3-3双向链表" class="headerlink" title="3.3双向链表"></a>3.3双向链表</h3><ol>
+<li><p>单链表的缺陷：</p>
+<ul>
+<li>单向链表查找的方向只能是一个方向，双向链表可以向前或向后查找</li>
+<li>单向链表不能自我删除，要靠辅助接点，而双向链表则可以自我删除。</li>
+</ul>
+</li>
+<li><p>双链表的建立：</p>
+<p>在单链表的基础上添加一个pre指针，指向上一个节点</p>
+<ul>
+<li><p>末尾添加节点：遍历到最后一个节点（temp.next = None/Null）</p>
+<p>temp.next = newheronode();</p>
+<p>newheronode.pre = temp</p>
+</li>
+<li><p>中间插入节点：和单链表相同</p>
+<p>temp.no == newheronode.no;</p>
+<p>temp.next.pre = newheronode;</p>
+<p>newheronode.next = temp.next</p>
+<p>newheronode.pre = temp</p>
+<p>temp.next = newheronode</p>
+</li>
+<li><p>修改也和单链表一样</p>
+</li>
+<li><p>删除（可以直接删除）</p>
+<p>原本单链表是找到temp.next</p>
+<p>temp.next.no == no</p>
+<p>temp.next = temp.next.next</p>
+<p>双链表直接找到temp就行了</p>
+<p>temp.no == no</p>
+<p>temp.pre.next = temp.next</p>
+<p>temp.next.pre = temp.pre</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-4单向环形链表-约瑟夫问题"><a href="#3-4单向环形链表-约瑟夫问题" class="headerlink" title="3.4单向环形链表-约瑟夫问题"></a>3.4单向环形链表-约瑟夫问题</h3><p>约瑟夫问题：</p>
+<h2 id="4-栈（stack）"><a href="#4-栈（stack）" class="headerlink" title="4.栈（stack）"></a>4.栈（stack）</h2><h3 id="4-1-栈的概念"><a href="#4-1-栈的概念" class="headerlink" title="4.1 栈的概念"></a>4.1 栈的概念</h3><p>先入后出（FILO）的有序列表</p>
+<p>栈是限制线性表中元素的插入和删除只能在线性表的同一端进行的一种特殊线性表，允许插入和删除的一端，为变化的一端，称为栈顶，另一端为固定的一端，称为栈底</p>
+<h3 id="4-2栈的应用场景"><a href="#4-2栈的应用场景" class="headerlink" title="4.2栈的应用场景"></a>4.2栈的应用场景</h3><ol>
+<li>子程序的调用，在跳往子程序前，会先将下个指令的地址存到堆栈中，直到子程序执行完后再将地址取出，以回到原来的程序中</li>
+<li>处理递归调用：和子程序的调用类似，只是除了存储下一个指令的地址外，也将参数、区域变量等数据存入堆栈</li>
+<li>表达式的转换（中缀表达式转后缀表达式）与求值（实际解决）</li>
+<li>二叉树的遍历</li>
+<li>图形的深度优先（depth-first）搜索法</li>
+</ol>
+<h3 id="4-3-数组模拟栈的实现"><a href="#4-3-数组模拟栈的实现" class="headerlink" title="4.3 数组模拟栈的实现"></a>4.3 数组模拟栈的实现</h3><p>栈类的参数：</p>
+<ul>
+<li>栈的大小maxsize（传入）</li>
+<li>栈顶指针top</li>
+<li>初始化一个空数组，容量为maxsize</li>
+</ul>
+<p>应具备的函数：</p>
+<ul>
+<li>判断栈空，栈满</li>
+<li>栈push和栈pop</li>
+<li>展示栈内数据</li>
+</ul>
+<h3 id="4-4-实例：表达式的计算"><a href="#4-4-实例：表达式的计算" class="headerlink" title="4.4 实例：表达式的计算"></a>4.4 实例：表达式的计算</h3><p>栈完成四则运算表达式的思路：</p>
+<ul>
+<li>通过一个index索引值，遍历表达式</li>
+<li>如果index指向的是一个数字，压入数栈；如果index指向一个符号，压入符号栈</li>
+<li>每次在将符号入栈之前应该先进行优先级比较，如果当前符号优先级小于栈内符号优先级（因为每次都这么比，保证符号栈最上面的符号一定是优先级最高的），则先将栈内的符号（优先级高的）pop出来，再将栈内的两个数拿出来进行运算。运算结果压入栈。最后再把符号压入栈中。</li>
+</ul>
+<h2 id="5-树"><a href="#5-树" class="headerlink" title="5. 树"></a>5. 树</h2><p>根（树的最初节点）、度（节点拥有的子树数）、叶节点/终端节点（度为0的节点）、深度/高度（从根到叶的最大层次）、有序和无序（树中节点的各子树能否互换位置）</p>
+<h3 id="5-1-二叉树的概念"><a href="#5-1-二叉树的概念" class="headerlink" title="5.1 二叉树的概念"></a>5.1 二叉树的概念</h3><ol>
+<li>特点：<ul>
+<li>每个节点最多有两颗子树，不存在度大于2的节点</li>
+<li>左子树和右子树是有顺序的，不能颠倒</li>
+<li>即使树中的某节点只有一颗树，也要区分左子树还是右子树</li>
+</ul>
+</li>
+<li><p>5中基本形态：</p>
+<ul>
+<li>空二叉树</li>
+<li>只有一个根节点</li>
+<li>根节点只有左子树</li>
+<li>根节点只有右子树</li>
+<li>根节点既有左子树又有右子树</li>
+</ul>
+</li>
+<li><p>特殊二叉树</p>
+<ul>
+<li>斜树：只有左子树或只有右子树，线性表结构可以理解为树的一种极其特殊的表现形式。</li>
+<li>满二叉树：应有尽有</li>
+<li>完全二叉树：不满，但是存在的节点顺序都是按照满二叉树的顺序来的。</li>
+</ul>
+</li>
+<li><p>性质</p>
+<ul>
+<li><p>在二叉树的第i层上至多有$2^{i-1}$个节点</p>
+</li>
+<li><p>深度为k的二叉树至多$2^k-1$个节点</p>
+</li>
+<li><p>对任何一颗二叉树T，如果终端节点数为$n_0$，度为2的节点数为$n_2$，则$n_0=n_2+1$</p>
+</li>
+<li><p>具有n个节点的完全二叉树的深度为$[log_2n]+1$([X]表示不大于X的最大整数)</p>
+</li>
+<li><p>如果一颗有n个节点的完全二叉树（深度为$[log_2n]+1$）的节点按从上到下，从左到右的层序编号，对任意i号节点：</p>
+<p>i&gt;1：其双亲是节点[i/2]</p>
+<p>2i&gt;n：要么节点i无左孩子（节点i为叶子节点）；否则其左孩子是节点2i</p>
+<p>2i+1&gt;n：要么节点i无左孩子（节点i为叶子节点）；否则其左孩子是节点2i+1</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-2-顺序二叉树"><a href="#5-2-顺序二叉树" class="headerlink" title="5.2 顺序二叉树"></a>5.2 顺序二叉树</h3><p>1.从数据存储来看，数组存储方式和树的存储方式可以相互转换，即数组可以转换成树，反向亦可。</p>
+<ul>
+<li>树的结点可以保存到数组中</li>
+<li>数组中的元素可以前序中序和后序遍历</li>
+</ul>
+<p>2.顺序二叉树的特点：</p>
+<ul>
+<li><p>顺序二叉树通常只考虑完全二叉树</p>
+</li>
+<li><p>第n个元素的左子节点为2*n+1</p>
+</li>
+<li><p>第n个元素的右子结点为2*n+2</p>
+</li>
+<li><p>第n个元素的父结点为（n-1）/2</p>
+<p>n表示二叉树中的第几个元素（从0开始编号）</p>
+</li>
+</ul>
+<p>3.前中后序遍历</p>
+<ul>
+<li>前序遍历：先输出父节点，再遍历左子树和右子树</li>
+<li>中序遍历：先遍历左子树，再输出父节点，再遍历右子树</li>
+<li>后序遍历：先遍历左子树，再遍历右子树，最后输出父节点树均为二叉搜索树</li>
+</ul>
+<h2 id="6-图"><a href="#6-图" class="headerlink" title="6. 图"></a>6. 图</h2><h3 id="6-1-概念"><a href="#6-1-概念" class="headerlink" title="6.1 概念"></a>6.1 概念</h3><p>区别于线性表的一个前驱和一个后继，以及树的一个直接前驱（父节点），表示数据间的多对多关系</p>
+<p>常用概念：顶点，边，路径，无向图，有向图，带权图（边带权，也叫网）</p>
+<p>图的表示方式：</p>
+<ul>
+<li><p>二维数组表示（邻接矩阵）</p>
+<p>表示图形中顶点之间相邻关系的矩阵，对于n个顶点的图而言，矩阵的row和col表示1。。。n个点</p>
+<p>因为不存在的边也表示在矩阵中，所以会造成一定程度的空间浪费。</p>
+</li>
+<li><p>链表表示（邻接表）</p>
+<p>只关心存在的边，不关心不存在的边，因此没有空间浪费，邻接表由数组+链表组成。</p>
+</li>
+</ul>
+<h3 id="6-2-深度优先遍历"><a href="#6-2-深度优先遍历" class="headerlink" title="6.2 深度优先遍历"></a>6.2 深度优先遍历</h3><ul>
+<li><p>策略：</p>
+<p>从初始访问节点出发，初始访问节点可能有多个邻接节点，深度优先遍历的策略就是首先访问第一个邻接节点，然后再以这个被访问的邻接节点作为初始节点，访问它的第一个邻接节点，可以这样理解：每次都在访问完当前节点后首先访问当前节点的第一个邻接节点。</p>
+<p>访问策略总结：优先往纵向挖掘深入，而不是对一个节点的所有邻接节点进行横向访问。显然，这是一个递归的过程。</p>
+</li>
+<li><p>算法步骤：</p>
+<ul>
+<li>访问初始节点v，并标记节点v为已访问</li>
+<li>查找节点v的第一个邻接节点w</li>
+<li>如果w存在，则继续执行下一步，如果不存在，则返回第一步，从v的下一个节点继续</li>
+<li>若w未被访问，对w进行深度优先遍历递归（即把w当做另一个v，然后进行步骤123）</li>
+<li>查找节点v的w邻接节点的下一个邻接节点，转到步骤3</li>
+</ul>
+</li>
+</ul>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="1-排序"><a href="#1-排序" class="headerlink" title="1. 排序"></a>1. 排序</h2><h3 id="1-1-冒泡排序O-n-2"><a href="#1-1-冒泡排序O-n-2" class="headerlink" title="1.1 冒泡排序O($n^2$)"></a>1.1 冒泡排序O($n^2$)</h3><p><strong>规则：</strong></p>
+<ol>
+<li>进行数组size-1次大的循环</li>
+<li>每趟排序的次数逐渐减小</li>
+<li>某趟排序中顺序并没有发生变化，说明顺序正常，可以提前结束循环</li>
+</ol>
+<h3 id="1-2-归并排序O-nlogn"><a href="#1-2-归并排序O-nlogn" class="headerlink" title="1.2 归并排序O($nlogn$)"></a>1.2 归并排序O($nlogn$)</h3><p>将两个或两个以上的有序表合并成一个新的有序表</p>
+<p>通过递归实现链表归并排序，有以下两个环节：</p>
+<ul>
+<li><p>分割 cut 环节： 找到当前链表中点，并从中点将链表断开（以便在下次递归 cut 时，链表片段拥有正确边界）</p>
+<ul>
+<li>我们使用 fast,slow 快慢双指针法，奇数个节点找到中点，偶数个节点找到中心左边的节点。</li>
+<li>找到中点 slow 后，执行 slow.next = None 将链表切断。</li>
+<li>递归分割时，输入当前链表左端点 head 和中心节点 slow 的下一个节点 tmp(因为链表是从 slow 切断的)。</li>
+<li>cut 递归终止条件： 当head.next == None时，说明只有一个节点了，直接返回此节点。</li>
+</ul>
+</li>
+<li><strong>合并 merge 环节：</strong> 将两个排序链表合并，转化为一个排序链表。<ul>
+<li>双指针法合并，建立辅助ListNode h 作为头部。</li>
+<li>设置两指针 left, right 分别指向两链表头部，比较两指针处节点值大小，由小到大加入合并链表头部，指针交替前进，直至添加完两个链表。</li>
+<li>返回辅助ListNode h 作为头部的下个节点 h.next。</li>
+<li>时间复杂度 O(l + r)，l, r 分别代表两个链表长度</li>
+</ul>
+</li>
+</ul>
+<p><img src = "https://pic.leetcode-cn.com/8c47e58b6247676f3ef14e617a4686bc258cc573e36fcf67c1b0712fa7ed1699-Picture2.png" style="zoom: 50%;" ></p>
+<p>注意：奇数的情况比较难想，但是和偶数的情况差别不大，递的过程最终都是cut为单个节点，然后怎么cut的，归的过程中也就怎么merge，不过奇数的那一半顺序表的二叉树比另一半要多一层。</p>
+<h2 id="2-查找"><a href="#2-查找" class="headerlink" title="2. 查找"></a>2. 查找</h2><h3 id="2-0-顺序查找"><a href="#2-0-顺序查找" class="headerlink" title="2.0 顺序查找"></a>2.0 顺序查找</h3><p>直接循环遍历，时间复杂度：O(n)</p>
+<h3 id="2-1-二分查找"><a href="#2-1-二分查找" class="headerlink" title="2.1 二分查找"></a>2.1 二分查找</h3><p>时间复杂度：O(logn)</p>
+<p>$mid = \frac{1}{2}(left+right) = left+\frac{1}{2}(right-left)$</p>
+<h3 id="2-2-插值查找"><a href="#2-2-插值查找" class="headerlink" title="2.2 插值查找"></a>2.2 插值查找</h3><p>时间复杂度：O(logn)</p>
+<p>$mid = left+\alpha(right-left)$</p>
+<font size=5px>$\alpha = \frac{tar-arr[left]}{right-left}$</font>
+
+<p>插值查找算法和二分查找算法的区别主要就在于中间位置mid的确定，它们在终止条件和判断条件上都是相同。</p>
+<p>可以看到二分查找的中值确定为区间的中点位置，插值查找的中点位置由1/2变成了α。而α的值和目标的位置有关，tar越靠近区间最左侧的值arr[left]，α越小，反之越大。</p>
+<p>这里也可以看出该方法更适用于数值分布比较均匀的情况，此时的α要明显优于直接取中间值的简单粗暴。</p>
+<h3 id="2-3-斐波那契查找"><a href="#2-3-斐波那契查找" class="headerlink" title="2.3 斐波那契查找"></a>2.3 斐波那契查找</h3><p>时间复杂度：O(logn)</p>
+<p>同样类似于于二分查找，区别任然是中值mid的选取：$mid = left+F(k-1)-1$</p>
+<p>原理：</p>
+<ul>
+<li><p>将数组的长度对应于第k个位置的斐波那契数列的值-1：$arr.length = f(k)-1$</p>
+</li>
+<li><p>利用斐波那契数列的黄金分割特性：$arr.length = f(k)-1 = f(k-1)-1+”mid占的一个位置”+f(k-2)-1$这里数组就被分为了左右两边。</p>
+</li>
+<li><p>由于数组长度n不一定刚好为$f(k)-1$，所以需要将$f(k)-1$设置为刚好大于或等于n的值，用arr[right]将数组填充到$f(k)-1$的长度。<code>while(n&gt;f(k)-1)  k++;</code></p>
+</li>
+</ul>
+<h2 id="3-贪心算法"><a href="#3-贪心算法" class="headerlink" title="3. 贪心算法"></a>3. 贪心算法</h2><p><strong>目的：解决最优解问题</strong></p>
+<p>当一个问题的最优解包含其子问题的最优解时，它可能是动态规划问题或者是贪心算法问题。（最优子结构性质）。若整体最优解可以通过一系列局部最优的选择来达到，则为贪心算法问题。（贪心选择性质）</p>
+<pre class="mermaid">graph LR
+
+A[最优子结构] --> B(贪心选择)
+
+B --> C(贪心算法问题)
+
+A --> D(非贪心选择)
+D --> E(动态规划问题)</pre>
+
+<p>条件：由局部最优可以实现整体最优；无后效性；</p>
+<p>多数贪心问题可由DP求解，但不能说全部</p>
+<p><strong>贪心算法求解步骤</strong></p>
+<ol>
+<li>将问题分解为若干个子问题</li>
+<li>找出合适的贪心策略</li>
+<li>求解每一个子问题的最优解</li>
+<li>将局部最优解堆叠成全局最优解</li>
+</ol>
+<h3 id="刷题记录"><a href="#刷题记录" class="headerlink" title="刷题记录"></a>刷题记录</h3><p>leetcode406：<a href="https://leetcode-cn.com/problems/queue-reconstruction-by-height/" target="_blank" rel="noopener">根据身高重建队列</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] reconstructQueue(<span class="keyword">int</span>[][] people) &#123;</span><br><span class="line">        Arrays.sort(people, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] people1 , <span class="keyword">int</span>[] people2)</span></span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(people1[<span class="number">0</span>] != people2[<span class="number">0</span>])&#123;</span><br><span class="line">                    <span class="keyword">return</span> people2[<span class="number">0</span>] - people1[<span class="number">0</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> people1[<span class="number">1</span>]-people2[<span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        List&lt;<span class="keyword">int</span>[]&gt; peoplePro = <span class="keyword">new</span> ArrayList&lt;<span class="keyword">int</span>[]&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] person : people)&#123;</span><br><span class="line">            peoplePro.add(person[<span class="number">1</span>], person);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> peoplePro.toArray(<span class="keyword">new</span> <span class="keyword">int</span>[peoplePro.size()][]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>贪心目的：两种排序方式：高矮和前方人数</p>
+<p>子问题：将每个人都放到队列合适的位置！首先按高矮（person[0]）进行排序，问题变成第 $i$ 个人（$h_{i-1}$ , $k_i$）的位置的最优分配</p>
+<ul>
+<li><p>高矮按升序排序</p>
+<p>先看身高不同的：</p>
+<ul>
+<li>排在i前面的无论在放在队列的什么位置，都不会影响i的ki值</li>
+<li>排在i后面的，如果想要放在i前面，就一定会使ki的值发生改变</li>
+</ul>
+<p>所以i前面一定预留有ki个空位给比他高的人，也就意味着i可以占据第ki+1个空着的位置！</p>
+<p>再看看身高相同的情况：</p>
+<ul>
+<li>和前面一样需要遵循i给后面的人留位置的原则，因此相同身高的人，排在前面的是ki大的，需要给排在后面ki小的留位置，同样满足ki+1的原则！</li>
+</ul>
+</li>
+</ul>
+<p>总结：每个人只需要根据他的ki锁定他要占的空位就好！</p>
+<h2 id="4-DFS-回溯算法"><a href="#4-DFS-回溯算法" class="headerlink" title="4. DFS+回溯算法"></a>4. DFS+回溯算法</h2><h3 id="4-1-深度优先搜索（DFS）"><a href="#4-1-深度优先搜索（DFS）" class="headerlink" title="4.1 深度优先搜索（DFS）"></a>4.1 深度优先搜索（DFS）</h3><p>原理：</p>
+<p>求解结果遵循先后顺序，后一个结果多数取决于前一个结果的选取。此时就可以通过一个树模型来模拟结果的求解。</p>
+<p>例题：<a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46.全排列</a>树形图可以看做</p>
+<pre class="mermaid">graph LR
+A[1]-->B[2]
+A[1]-->C[3]
+B-->D[3]
+C-->E[2]</pre>
+
+<p>求解步骤：dfs()方法怎么写？</p>
+<p>大方向就是分层解决，dfs方法其实就是实现对每一层的处理，然后通过递归解决下一层，直到达到截止条件返回结果。</p>
+<ul>
+<li><p>截止条件dfs(index)：一共就3个数，遍历到第三层截止</p>
+</li>
+<li><p>候选人名单dfs(int p[])：[1,2,3]，每一层都对这三层进行遍历，选出一个之前没选过的，然后执行下一层，下一层执行结束之后再将该层恢复（以求回溯）</p>
+</li>
+<li>筛选条件dfs(bollean pb[])：[false; false; false]，对应候选人名单，选过的就将对应的pb值改为true，后面的层不能再选</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dfs</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[] p, <span class="keyword">boolean</span> pb[], index, <span class="keyword">int</span> res[])</span></span>&#123;</span><br><span class="line">		<span class="comment">//截止条件</span></span><br><span class="line">        <span class="keyword">if</span>(index == p.length+<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>深度优先搜索（DFS）的应用：</p>
+<p>以马踏棋盘游戏为例：棋盘为8*8的网格，棋子的行进路线为“日”字，如何让棋子能够走完整张棋盘的每个格子？</p>
+<p><strong>1.思路：</strong></p>
+<ol>
+<li>下一步：设置一个数组nextStep，存放当前棋子下一次可以移动到的格子的point</li>
+<li>已访问：从数组中取出一个点，移动棋子至该点，并将访问到的格子point设置为已访问（可以再定义一个数组visited，将visited[x*X+y]改为true）；</li>
+<li>继续1，已访问的跳跳过</li>
+<li>在循环while(!nextStep.isEmpty())中递归调用以上3步</li>
+</ol>
+<p><strong>2.总而言之：</strong></p>
+<ul>
+<li><p>将现在的位置视为原点，将下一步能走的点都放入队列，从队列头取出一个</p>
+</li>
+<li><p>走出这一步，再以这一步为原点，将下一步能走的点都放入队列，从队列头取出一个</p>
+<p>——深度优先由此而来</p>
+</li>
+<li><p>。。。。。。直到走到某个点，走到头了，没有下一步了</p>
+</li>
+<li><p>但是循环没结束呢，然后继续从队列中取点，又开始了上面的步骤</p>
+<p>——递归调用时访问队列中的全部点也就是回溯的过程</p>
+</li>
+</ul>
+<p><strong>3.2020-11-02：修正：以上思路存在问题</strong></p>
+<p>​    注意是<strong>递归调用</strong>，原有想法中的每次把能走的位置全部放入队列，然后每次把队列全部调用出来是错误的。调用next函数只需要考虑本    次的可行格子就可以。</p>
+<p>​    递归调用的方法是：<strong>“找到下一步的可行格子，判断格子是否走过，取出队列中的第一个格子，跳到这一格”。</strong></p>
+<ul>
+<li>在递的过程中执行的深度优先策略</li>
+<li>在归的过程中，他会将每一次未执行完的while循环继续执行</li>
+</ul>
+<p><strong>4.优化：贪心算法</strong></p>
+<p>注意到在“将下一步可行的格子放入数组”这一方法中，可以对格子加以排序，让棋子每次都按照<strong>“跳完这一步，下一步能跳的格子很少”</strong></p>
+<p>这一局部优化方式执行，这样它往回递归的次数无疑是会降低的。</p>
+<p>执行，这样它往回递归的次数无疑是会降低的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/17/%E7%A8%8B%E5%BA%8F%E8%B0%83%E8%AF%95%E5%85%A5%E9%97%A8/" rel="next" title="程序调试入门">
+                <i class="fa fa-chevron-left"></i> 程序调试入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/18/java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="prev" title="面向对象">
+                面向对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-稀疏（sparsearray）数组"><span class="nav-text">1.稀疏（sparsearray）数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2leetcode刷题的总结"><span class="nav-text">3.2.2leetcode刷题的总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3双向链表"><span class="nav-text">3.3双向链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4单向环形链表-约瑟夫问题"><span class="nav-text">3.4单向环形链表-约瑟夫问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-栈（stack）"><span class="nav-text">4.栈（stack）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-栈的概念"><span class="nav-text">4.1 栈的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2栈的应用场景"><span class="nav-text">4.2栈的应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-数组模拟栈的实现"><span class="nav-text">4.3 数组模拟栈的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-实例：表达式的计算"><span class="nav-text">4.4 实例：表达式的计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-树"><span class="nav-text">5. 树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-二叉树的概念"><span class="nav-text">5.1 二叉树的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-顺序二叉树"><span class="nav-text">5.2 顺序二叉树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-图"><span class="nav-text">6. 图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-概念"><span class="nav-text">6.1 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-深度优先遍历"><span class="nav-text">6.2 深度优先遍历</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-排序"><span class="nav-text">1. 排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-冒泡排序O-n-2"><span class="nav-text">1.1 冒泡排序O($n^2$)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-归并排序O-nlogn"><span class="nav-text">1.2 归并排序O($nlogn$)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-查找"><span class="nav-text">2. 查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-0-顺序查找"><span class="nav-text">2.0 顺序查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-二分查找"><span class="nav-text">2.1 二分查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-插值查找"><span class="nav-text">2.2 插值查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-斐波那契查找"><span class="nav-text">2.3 斐波那契查找</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-贪心算法"><span class="nav-text">3. 贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#刷题记录"><span class="nav-text">刷题记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-DFS-回溯算法"><span class="nav-text">4. DFS+回溯算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-深度优先搜索（DFS）"><span class="nav-text">4.1 深度优先搜索（DFS）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

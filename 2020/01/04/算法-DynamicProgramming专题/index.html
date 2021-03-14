@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="动态规划算法毫无疑问是算法题目中最具有挑战性且最常考的问题之一，本质是建立在dfs的思路基础上并对其加以优化。在此也对leetcode动态规划题加以梳理和总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DynamicProgramming专题">
+<meta property="og:url" content="http://yoursite.com/2020/01/04/%E7%AE%97%E6%B3%95-DynamicProgramming%E4%B8%93%E9%A2%98/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="动态规划算法毫无疑问是算法题目中最具有挑战性且最常考的问题之一，本质是建立在dfs的思路基础上并对其加以优化。在此也对leetcode动态规划题加以梳理和总结">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210104154447.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210104155331.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210211165445.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210211181758.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210218160958.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210304210241.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210307192818.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210307192914.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210307192924.png">
+<meta property="article:published_time" content="2020-01-04T07:32:20.000Z">
+<meta property="article:modified_time" content="2021-03-14T08:14:26.563Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210104154447.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/04/算法-DynamicProgramming专题/"/>
+
+
+
+
+
+  <title>DynamicProgramming专题 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/%E7%AE%97%E6%B3%95-DynamicProgramming%E4%B8%93%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DynamicProgramming专题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T15:32:20+08:00">
+                2020-01-04
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-03-14T16:14:26+08:00" content="2021-03-14">
+                          2021-03-14
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D-dp%E4%B8%93%E9%A2%98-%E6%95%B0%E5%AD%A6-%E6%A0%91-%E5%9B%BE-bfs-dfs/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法-基础介绍.dp专题.数学.树/图/bfs/dfs.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>动态规划算法毫无疑问是算法题目中最具有挑战性且最常考的问题之一，本质是建立在dfs的思路基础上并对其加以优化。在此也对leetcode动态规划题加以梳理和总结</p>
+<a id="more"></a>
+<h1 id="1-题目特点"><a href="#1-题目特点" class="headerlink" title="1. 题目特点"></a>1. 题目特点</h1><ol>
+<li>计数型<ul>
+<li>有多少种方式走到右下角</li>
+<li>有多少种方法选出k个数使得和是Sum</li>
+</ul>
+</li>
+<li>求最大最小值<ul>
+<li>从左上角走到右下角路径的最大数字和</li>
+<li>最长上升子序列长度</li>
+</ul>
+</li>
+<li>求存在性<ul>
+<li>取石子游戏，先手是否必胜</li>
+<li>能不能选出k个数使得和是Sum</li>
+</ul>
+</li>
+</ol>
+<p>出现这些题型，基本就是往动态规划的方向去想，当然还有类如贪心之类的算法</p>
+<p><strong><img src="https://gitee.com/biongd/img/raw/master/img/20210104154447.png" alt="image-20210104154440844"></strong></p>
+<p>比如出现题B这种问题类型，根本不用往动态规划上想</p>
+<h1 id="2-与dfs的联系"><a href="#2-与dfs的联系" class="headerlink" title="2. 与dfs的联系"></a>2. 与dfs的联系</h1><p>以<a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">509. 斐波那契数</a>为例：</p>
+<p>以递归的方式求解非常容易理解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> fib(n-<span class="number">1</span>)+fib(n-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>but!</strong> 有一个显而易见的问题！！ 即递归的指数爆炸式搜索！！</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210104155331.png" alt="image-20210104155331889"></p>
+<p>如图是想要求出x=5时的斐波那契数的递归过程，其实本质上也就是一棵树的dfs，可以看出fib（4）的左子树和fib（5）的右子树是重合的，fib（4）的右子树和fib（3）的左子树是重合的，这里进行的就是一次重复计算，也就是刚才提到的指数爆炸</p>
+<p>再来看dp的方式如何求解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    List&lt;Integer&gt; ans= <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    ans.add(<span class="number">0</span>);</span><br><span class="line">    ans.add(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">        ans.add(ans.get(i-<span class="number">1</span>)+ans.get(i-<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans.get(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-思想"><a href="#3-思想" class="headerlink" title="3. 思想"></a>3. 思想</h1><p><strong><font color="red" size="5">将多个决策划分为多次决策</font></strong></p>
+<pre class="mermaid">graph LR
+状态1-->|决策1|状态2-->|决策2|状态3-->|决策3|状态4</pre>
+
+<p>涉及到：状态、阶段、决策、状态转移方程，“最优值函数”。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210211165445.png" alt="image-20210211165438762" style="zoom:67%;" /></p>
+<p>这是最能体现多个决策与多步决策思想的题目：</p>
+<p>多个决策：将所有的路径暴力罗列，进行比较</p>
+<p>多步决策：按照图中所示进行分层，从左到右（或者从右到左），每层的最短路径都可以通过上一层的最短路径得到，这样一步一步的得到终点的最短路径</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210211181758.png" alt="image-20210211181757968" style="zoom:67%;" /></p>
+<h1 id="4-组成部分"><a href="#4-组成部分" class="headerlink" title="4. 组成部分"></a>4. 组成部分</h1><h2 id="4-1-确定状态"><a href="#4-1-确定状态" class="headerlink" title="4.1 确定状态"></a>4.1 确定状态</h2><p>简单的说就是，接动态规划的时候需要开一个数组，数组的每个元素<code>f[i]</code>或者<code>f[i][j]</code>代表什么</p>
+<p>确定状态需要两个意识：</p>
+<ul>
+<li>最后一步</li>
+<li>子问题</li>
+</ul>
+<h2 id="4-2-状态转移方程"><a href="#4-2-状态转移方程" class="headerlink" title="4.2 状态转移方程"></a>4.2 状态转移方程</h2><p>F[x] = min{F[X-1],F[X-2],F[X-5]}</p>
+<h2 id="4-3-初始条件和边界条件"><a href="#4-3-初始条件和边界条件" class="headerlink" title="4.3 初始条件和边界条件"></a>4.3 初始条件和边界条件</h2><h2 id="4-4-计算顺序"><a href="#4-4-计算顺序" class="headerlink" title="4.4 计算顺序"></a>4.4 计算顺序</h2><h2 id="4-5-空间优化"><a href="#4-5-空间优化" class="headerlink" title="4.5 空间优化"></a>4.5 空间优化</h2><p>对新开的dp数组进行压缩，以<code>f[i] = f[i-1]+1</code>为例，通过滚动的方式，只需要维持一个长度为2的数组就可以实现<code>f[i]</code>的更新</p>
+<h1 id="5-坐标型动态规划"><a href="#5-坐标型动态规划" class="headerlink" title="5. 坐标型动态规划"></a>5. 坐标型动态规划</h1><h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><ol>
+<li>最简单的动态规划类型</li>
+<li>给定一个序列或网格</li>
+<li>需要找到<strong>序列中某个/些子序列</strong>或<strong>网格中的某条路径</strong><ul>
+<li>某种性质最大/最小</li>
+<li>计数</li>
+<li>存在性</li>
+</ul>
+</li>
+<li>动态规划方程dp[i]中的下标i表示以$a_i$为结尾的满足条件的子序列的性质，<code>f[i][j]</code>中的下标i，j表示以格子（i，j）为结尾的满足条件的路径的性质<ul>
+<li>最大值/最小值</li>
+<li>个数</li>
+<li>是否存在</li>
+</ul>
+</li>
+</ol>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="1-最长递增子序列"><a href="#1-最长递增子序列" class="headerlink" title="1. 最长递增子序列"></a>1. <a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">最长递增子序列</a></h3><ul>
+<li><p>确定状态：</p>
+<ul>
+<li><p>最后一步：对于最优的策略，一定有最后一个元素a[j]</p>
+</li>
+<li><p>第一种情况：最优策略中最长连续上升子序列就是{a[j]}，答案是1</p>
+<p>第二种情况：子序列长度大于1，那么最优策略中a[j]前一个元素肯定是a[j-1]。这种情况一定值a[j-1]&lt;a[j]</p>
+</li>
+<li><p>因为是最优策略，那么选中的以a[j-1]结尾的连续上升子序列一定是最长的</p>
+</li>
+</ul>
+</li>
+<li><p>转移方程</p>
+<ul>
+<li><p>dp[j] = 以a[j]结尾的最长连续上升子序列的长度</p>
+<p>dp[j] = max{ 1, dp[j-1]+1 | ( j&gt;0 &amp;&amp; a[j-1]&lt;a[j] ) }</p>
+</li>
+</ul>
+</li>
+<li><p>边界情况如上，初始条件为1</p>
+</li>
+<li><p>计算顺序：0,1,2,3,4，。。。</p>
+<p>和硬币组合题不一样的是，最终答案并不一定是dp[n-1]，而是从dp数组中取最大值</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLengthOfLCIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                dp[i] = dp[i-<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                dp[i] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dp[i]&gt;max) max = dp[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//空间优化</span></span><br><span class="line"><span class="keyword">int</span>[] dp  = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> old = now = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.length; ++i)&#123;</span><br><span class="line">    <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">        old = now;</span><br><span class="line">        now = <span class="number">1</span>-now;</span><br><span class="line">        dp[now] = dp[old]+<span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        dp[now] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dp[now]&gt;max) max = dp[now];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[now];</span><br></pre></td></tr></table></figure>
+<h3 id="2-最小路径和"><a href="#2-最小路径和" class="headerlink" title="2. 最小路径和"></a>2. <a href="https://leetcode-cn.com/problems/minimum-path-sum/" target="_blank" rel="noopener">最小路径和</a></h3><ul>
+<li><p>确定状态</p>
+<p>最优策略的路径总和最小</p>
+<ul>
+<li>若倒数第二部（i-2,j-1），则前面一定是从（0，0）到达（i-2,j-1）的最小路径</li>
+<li>倒数第二部（i-1,j-2）亦然</li>
+</ul>
+<p>子问题：从（0,0）走到（i,j）的路径最小数字总和<code>f[i][j]</code></p>
+</li>
+<li><p>状态转移方程：<code>f[i][j] = min{f[i-1][j], f[i][j-1]}</code></p>
+</li>
+<li><p>初始条件和状态转移方程：</p>
+<ul>
+<li>初始条件：<code>f[0][0] = grid[0][0]</code></li>
+<li>边界情况：<code>i=0或者j=0 , 则前一步只能有一个方向过来</code></li>
+</ul>
+</li>
+<li><p>计算顺序：</p>
+<p>计算第0行，计算第2行。。。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3-炸弹袭击"><a href="#3-炸弹袭击" class="headerlink" title="3. 炸弹袭击"></a>3. <a href="https://www.lintcode.com/problem/553/" target="_blank" rel="noopener">炸弹袭击</a></h3><p>求四个方向上一共能炸死多少人，可以拆分为单一方向然后求和，这样就可以应用动态规划求解，<strong><font color="red">以炸弹向上炸为例：</font></strong></p>
+<ul>
+<li><p>确定状态</p>
+<ul>
+<li><p>假设有敌人或有墙的地方也能放炸弹</p>
+</li>
+<li><p>有墙的格子：炸弹炸不到格子外面</p>
+</li>
+</ul>
+<p>在（i,j）格子放炸弹，能够炸到的最多人数：</p>
+<ul>
+<li>该格子是人：炸到的人数（i-1,j）+1，</li>
+<li>该格子是空：炸到的人不变(i-1,j)</li>
+<li>该格子是墙：0；</li>
+</ul>
+<p><strong>子问题：求<code>(i-1,j)</code>向上能炸到的最大人数</strong></p>
+<p><strong>状态：<code>up[i][j]</code>表示向上能炸到的最大人数</strong></p>
+</li>
+<li><p>状态转移方程</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210218160958.png" alt="image-20210218160958700" style="zoom:67%;" /></p>
+</li>
+<li><p>初始条件和边界情况：第0行的up值和格子内容相关</p>
+</li>
+<li><p>计算顺序，逐行计算</p>
+</li>
+</ul>
+<h1 id="6-序列-位操作型动态规划"><a href="#6-序列-位操作型动态规划" class="headerlink" title="6. 序列+位操作型动态规划"></a>6. 序列+位操作型动态规划</h1><h2 id="位操作型"><a href="#位操作型" class="headerlink" title="位操作型"></a>位操作型</h2><p>和位操作相关的动态规划一般用值做状态</p>
+<h3 id="1-比特位计数"><a href="#1-比特位计数" class="headerlink" title="1. 比特位计数"></a>1. <a href="https://leetcode-cn.com/problems/counting-bits/" target="_blank" rel="noopener">比特位计数</a></h3><ul>
+<li><p>确定状态</p>
+<p>最后一步：观察这个数最后一个二进制位（最低位），去掉它，看剩下多少个1</p>
+<p>要求N的二进制中有多少个1，将N的二进制去掉最后一位（N %2），设新的数是Y = N&gt;&gt;1</p>
+<p><strong>子问题：求Y得二进制有多少1</strong></p>
+<p><strong>状态：<code>f[i]</code>表示<code>i</code>的二进制表示中有多少位1</strong></p>
+</li>
+<li><p>状态转移方程</p>
+<p><code>f[i]</code> = <code>f[i&gt;&gt;1]</code>+<code>i%2</code></p>
+</li>
+<li><p>初始条件和边界条件：</p>
+<p><code>f[0] = 0</code></p>
+</li>
+<li><p>计算顺序0,1,2,3，。。。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] countBits(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[num+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=num;++i)&#123;</span><br><span class="line">            dp[i] = dp[i&gt;&gt;<span class="number">1</span>] + (i%<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="序列型"><a href="#序列型" class="headerlink" title="序列型"></a>序列型</h2><h3 id="和坐标型的比较"><a href="#和坐标型的比较" class="headerlink" title="和坐标型的比较"></a>和坐标型的比较</h3><ul>
+<li><p>状态</p>
+<p>序列型：动态规划方程<code>f[i]</code>中的下标i表示前i个元素<code>a[0],a[1],a[2],...a[i-1]</code>的某种性质</p>
+<p>坐标型：<code>f[i]</code>表示以<code>a[i]</code>结尾的某种性质，或者说与<code>a[i]</code>的性质有关，如</p>
+<ul>
+<li>最长递增子序列：考虑<code>nums[i]</code>是否比<code>nums[i-1]</code>大</li>
+<li>炸弹袭击：考虑<code>grid[i][j]</code>是人，空，还是墙</li>
+</ul>
+</li>
+<li><p>初始化</p>
+<p>序列型：<code>f[0]</code>表示空序列的性质</p>
+<p>坐标型：<code>f[0]</code>表示以$a_0$为结尾的某种性质，即$a_0$本身就是一个子序列</p>
+</li>
+</ul>
+<h3 id="1-粉刷房子"><a href="#1-粉刷房子" class="headerlink" title="1. 粉刷房子"></a>1. <a href="https://www.lintcode.com/problem/516/" target="_blank" rel="noopener">粉刷房子</a></h3><h3 id="2-打家劫舍-II"><a href="#2-打家劫舍-II" class="headerlink" title="2. 打家劫舍 II"></a>2. <a href="https://leetcode-cn.com/problems/house-robber-ii/" target="_blank" rel="noopener">打家劫舍 II</a></h3><h3 id="3-买卖股票的最佳时机-III"><a href="#3-买卖股票的最佳时机-III" class="headerlink" title="3. 买卖股票的最佳时机 III"></a>3. <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">买卖股票的最佳时机 III</a></h3><h3 id="4-买卖股票的最佳时机-IV"><a href="#4-买卖股票的最佳时机-IV" class="headerlink" title="4. 买卖股票的最佳时机 IV"></a>4. <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">买卖股票的最佳时机 IV</a></h3><h1 id="7-划分型"><a href="#7-划分型" class="headerlink" title="7.划分型"></a>7.划分型</h1><h2 id="1-完全平方数"><a href="#1-完全平方数" class="headerlink" title="1. 完全平方数"></a>1. <a href="https://leetcode-cn.com/problems/perfect-squares/" target="_blank" rel="noopener">完全平方数</a></h2><h2 id="2-分割回文串-II"><a href="#2-分割回文串-II" class="headerlink" title="2. 分割回文串 II"></a>2. <a href="https://leetcode-cn.com/problems/palindrome-partitioning-ii/" target="_blank" rel="noopener">分割回文串 II</a></h2><h1 id="延展：回文串的判断方法"><a href="#延展：回文串的判断方法" class="headerlink" title="* 延展：回文串的判断方法"></a>* 延展：回文串的判断方法</h1><p><img src="https://gitee.com/biongd/img/raw/master/img/20210304210241.png" alt="image-20210304210241466" style="zoom:50%;" /></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span>[][] isPalin = <span class="keyword">new</span> <span class="keyword">boolean</span>[n][n];</span><br><span class="line"><span class="keyword">int</span> i, j, t;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> t=<span class="number">0</span>; t&lt;n; ++t)&#123;</span><br><span class="line">    <span class="comment">//奇数长度回文串的生长情况</span></span><br><span class="line">    i=j=t;</span><br><span class="line">    <span class="keyword">while</span>(i&gt;=<span class="number">0</span> &amp;&amp; j&lt;n &amp;&amp; str1[i]==str[j])&#123;</span><br><span class="line">        isPalin[i][j] = <span class="keyword">true</span>;</span><br><span class="line">        --i;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//偶数长度回文串的生长情况</span></span><br><span class="line">    i = t; j = t+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&gt;=<span class="number">0</span> &amp;&amp; j&lt;n &amp;&amp; str1[i]==str[j])&#123;</span><br><span class="line">        isPalin[i][j] = <span class="keyword">true</span>;</span><br><span class="line">        --i;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//isPalin[i][j]表示从第i个字符到第j个字符是回文串</span></span><br></pre></td></tr></table></figure>
+<h1 id="8-博弈型"><a href="#8-博弈型" class="headerlink" title="8. 博弈型"></a>8. 博弈型</h1><p>唯一一个不考虑最后一步，而是从第一步开始推算的类型</p>
+<h2 id="1-Coins-in-a-Line"><a href="#1-Coins-in-a-Line" class="headerlink" title="1. Coins in a Line"></a>1. <a href="https://www.lintcode.com/problem/394/" target="_blank" rel="noopener">Coins in a Line</a></h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210307192818.png" alt="image-20210307192814282" style="zoom: 80%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210307192914.png" alt="image-20210307192914209" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210307192924.png" alt="image-20210307192924112" style="zoom:67%;" /></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">firstWillWin</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span> || n == <span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[] b = <span class="keyword">new</span> <span class="keyword">boolean</span>[n+<span class="number">1</span>];</span><br><span class="line">        b[<span class="number">0</span>] = <span class="keyword">false</span>;</span><br><span class="line">        b[<span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line">        b[<span class="number">2</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>; i&lt;=n; ++i)&#123;</span><br><span class="line">            b[i] = (b[i-<span class="number">1</span>] == <span class="keyword">false</span>) || (b[i-<span class="number">2</span>] == <span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/08/%E7%AE%97%E6%B3%95-%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86/" rel="prev" title="算法题整理">
+                算法题整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-题目特点"><span class="nav-text">1. 题目特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-与dfs的联系"><span class="nav-text">2. 与dfs的联系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-思想"><span class="nav-text">3. 思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-组成部分"><span class="nav-text">4. 组成部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-确定状态"><span class="nav-text">4.1 确定状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-状态转移方程"><span class="nav-text">4.2 状态转移方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-初始条件和边界条件"><span class="nav-text">4.3 初始条件和边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-计算顺序"><span class="nav-text">4.4 计算顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-空间优化"><span class="nav-text">4.5 空间优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-坐标型动态规划"><span class="nav-text">5. 坐标型动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征"><span class="nav-text">特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-最长递增子序列"><span class="nav-text">1. 最长递增子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-最小路径和"><span class="nav-text">2. 最小路径和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-炸弹袭击"><span class="nav-text">3. 炸弹袭击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-序列-位操作型动态规划"><span class="nav-text">6. 序列+位操作型动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#位操作型"><span class="nav-text">位操作型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-比特位计数"><span class="nav-text">1. 比特位计数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列型"><span class="nav-text">序列型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#和坐标型的比较"><span class="nav-text">和坐标型的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-粉刷房子"><span class="nav-text">1. 粉刷房子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-打家劫舍-II"><span class="nav-text">2. 打家劫舍 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-买卖股票的最佳时机-III"><span class="nav-text">3. 买卖股票的最佳时机 III</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-买卖股票的最佳时机-IV"><span class="nav-text">4. 买卖股票的最佳时机 IV</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-划分型"><span class="nav-text">7.划分型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-完全平方数"><span class="nav-text">1. 完全平方数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-分割回文串-II"><span class="nav-text">2. 分割回文串 II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#延展：回文串的判断方法"><span class="nav-text">* 延展：回文串的判断方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-博弈型"><span class="nav-text">8. 博弈型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Coins-in-a-Line"><span class="nav-text">1. Coins in a Line</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
