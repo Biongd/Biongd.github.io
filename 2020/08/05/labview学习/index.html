@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="labview," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. labview编程环境1.1 VI文件的组成 前面板   程序框图   图标和连线板    1.2 菜单栏和工具栏 1.如何运行？2.循环体如何创建？3.如何给循环体设置终止条件？4.终止条件的返回值为true终止循环？5.端口描述为黑体就必须给以连接？6.等待时间模块的左端口就是黑体描述，必须给一个常量？7.灯泡表示测试功能，点击后输入和输出会缓慢变化   以上按钮分别为各个组件的分布，组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="labview实现自动测试">
+<meta property="og:url" content="http://yoursite.com/2020/08/05/labview%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="1. labview编程环境1.1 VI文件的组成 前面板   程序框图   图标和连线板    1.2 菜单栏和工具栏 1.如何运行？2.循环体如何创建？3.如何给循环体设置终止条件？4.终止条件的返回值为true终止循环？5.端口描述为黑体就必须给以连接？6.等待时间模块的左端口就是黑体描述，必须给一个常量？7.灯泡表示测试功能，点击后输入和输出会缓慢变化   以上按钮分别为各个组件的分布，组">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210528093148.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210528093253.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210528093432.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210528095946.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210528101341.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210528101352.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210609104046.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610135731.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610141040.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610143326.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210617104745.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611102429.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611102521.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611102606.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611104013.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611104332.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611104520.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611104604.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611104706.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611104953.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611105053.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611105400.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611105852.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611105912.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611110050.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611110107.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611110137.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611110259.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210611110322.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210612211433.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210612214323.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210612214833.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210612215606.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210612220516.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613105806.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613105952.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613105859.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613110107.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610143752.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610145147.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610145257.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610145534.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610145548.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610145554.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610150019.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610150342.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610150523.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210610150530.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613112256.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613113424.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613132040.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613132351.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613132602.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613164616.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210613164449.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210614094911.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210614095007.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210614111744.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210614111939.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210614112321.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210614112349.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210614112652.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210617104123.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210617104544.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621102014.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621101159.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621101509.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621101600.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621102816.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621102858.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621103016.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621103043.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621103359.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210621104313.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616102400.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210615093409.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616100711.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616102634.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616102715.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616103329.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616104042.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210615092813.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616105646.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616112519.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616115530.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210616120120.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210618151547.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210618183538.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210618145403.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210601103916.png">
+<meta property="article:published_time" content="2020-08-05T01:54:03.000Z">
+<meta property="article:modified_time" content="2021-06-24T08:50:01.418Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="labview">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210528093148.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/05/labview学习/"/>
+
+
+
+
+
+  <title>labview实现自动测试 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/05/labview%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">labview实现自动测试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-05T09:54:03+08:00">
+                2020-08-05
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-06-24T16:50:01+08:00" content="2021-06-24">
+                          2021-06-24
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/labview-%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">labview-开发.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-labview编程环境"><a href="#1-labview编程环境" class="headerlink" title="1. labview编程环境"></a>1. labview编程环境</h1><h2 id="1-1-VI文件的组成"><a href="#1-1-VI文件的组成" class="headerlink" title="1.1 VI文件的组成"></a>1.1 VI文件的组成</h2><ul>
+<li><p>前面板</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210528093148.png" alt="image-20210528093141105"></p>
+</li>
+<li><p>程序框图</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210528093253.png" alt="image-20210528093252932"></p>
+</li>
+<li><p>图标和连线板</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210528093432.png" alt="image-20210528093432321"></p>
+</li>
+</ul>
+<h2 id="1-2-菜单栏和工具栏"><a href="#1-2-菜单栏和工具栏" class="headerlink" title="1.2 菜单栏和工具栏"></a>1.2 菜单栏和工具栏</h2><blockquote>
+<p>1.如何运行？2.循环体如何创建？3.如何给循环体设置终止条件？4.终止条件的返回值为true终止循环？5.端口描述为黑体就必须给以连接？6.等待时间模块的左端口就是黑体描述，必须给一个常量？7.灯泡表示测试功能，点击后输入和输出会缓慢变化</p>
+</blockquote>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210528095946.png" alt="image-20210528095946258"></p>
+<p>以上按钮分别为各个组件的分布，组件的大小，以及最后一个（组合、移动和锁定）</p>
+<h2 id="1-3-3个选板"><a href="#1-3-3个选板" class="headerlink" title="1.3 3个选板"></a>1.3 3个选板</h2><p>每个选板的下拉菜单可以勾选相应模块到常用选拔</p>
+<ul>
+<li>前面板的控件选板</li>
+<li>后面板的函数选板</li>
+<li>工具选板（断点和检验点的设置是非常重要的工具）</li>
+</ul>
+<h2 id="1-4-数据流编程"><a href="#1-4-数据流编程" class="headerlink" title="1.4 数据流编程"></a>1.4 数据流编程</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210528101341.png" alt="image-20210528101341310"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210528101352.png" alt="image-20210528101352314"></p>
+<h2 id="1-5-控件与常量"><a href="#1-5-控件与常量" class="headerlink" title="1.5 控件与常量"></a>1.5 控件与常量</h2><h1 id="2-基本数据类型"><a href="#2-基本数据类型" class="headerlink" title="2. 基本数据类型"></a>2. 基本数据类型</h1><h2 id="2-1-数值"><a href="#2-1-数值" class="headerlink" title="2.1 数值"></a>2.1 数值</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210609104046.png" alt="image-20210609104039728"></p>
+<h2 id="2-2-布尔型"><a href="#2-2-布尔型" class="headerlink" title="2.2 布尔型"></a>2.2 布尔型</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210610135731.png" alt="image-20210610135731748"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610141040.png" alt="image-20210610141040692"></p>
+<h2 id="2-3-字符串类型"><a href="#2-3-字符串类型" class="headerlink" title="2.3 字符串类型"></a>2.3 字符串类型</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210610143326.png" alt="image-20210610143325962"></p>
+<h2 id="2-4-下拉列表和枚举"><a href="#2-4-下拉列表和枚举" class="headerlink" title="2.4* 下拉列表和枚举"></a>2.4* 下拉列表和枚举</h2><h3 id="2-4-1-概念"><a href="#2-4-1-概念" class="headerlink" title="2.4.1 概念"></a>2.4.1 概念</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210617104745.png" alt="image-20210617104745160" style="zoom:67%;" /></p>
+<h1 id="3-数组和簇"><a href="#3-数组和簇" class="headerlink" title="3. 数组和簇"></a>3. 数组和簇</h1><h2 id="3-1-数组"><a href="#3-1-数组" class="headerlink" title="3.1 数组"></a>3.1 数组</h2><ul>
+<li><p>定义：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611102429.png" alt="image-20210611102422411"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611102521.png" alt="image-20210611102521366"></p>
+</li>
+<li><p>创建</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611102606.png" alt="image-20210611102606292"></p>
+</li>
+<li><p>运算</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611104013.png" alt="image-20210611104013068"></p>
+<p>实例：<img src="https://gitee.com/biongd/img/raw/master/img/20210611104332.png" alt="image-20210611104332932">相同维度直接加，不同长度的，把多出来的长度省略</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611104520.png" alt="image-20210611104520650"></p>
+<h2 id="3-2-数组函数"><a href="#3-2-数组函数" class="headerlink" title="3.2 数组函数"></a>3.2 数组函数</h2><p>最关键的，数组索引位置！！！！</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611104604.png" alt="image-20210611104604279"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611104706.png" alt="image-20210611104706543"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611104953.png" alt="image-20210611104953348"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611105053.png" alt="image-20210611105053794"></p>
+<p>插入：一个索引（int），一个输入（int or array）</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611105400.png" alt="image-20210611105400505"></p>
+<p>删除: 两个控制位，长度和索引位置</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611105852.png" alt="image-20210611105852028"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611105912.png" alt="image-20210611105912287"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611110050.png" alt="image-20210611110050795"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611110107.png" alt="image-20210611110106964"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611110137.png" alt="image-20210611110137776"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611110259.png" alt="image-20210611110259435"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210611110322.png" alt="image-20210611110322750"></p>
+</li>
+</ul>
+<h2 id="3-2-簇"><a href="#3-2-簇" class="headerlink" title="3.2 簇"></a>3.2 簇</h2><h3 id="3-2-1-概念和创建"><a href="#3-2-1-概念和创建" class="headerlink" title="3.2.1 概念和创建"></a>3.2.1 概念和创建</h3><ul>
+<li><p>概念</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210612211433.png" alt="image-20210612211433494"></p>
+</li>
+<li><p>创建</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210612214323.png" alt="image-20210612214323328"></p>
+<h3 id="3-2-2-簇的样式"><a href="#3-2-2-簇的样式" class="headerlink" title="3.2.2 簇的样式"></a>3.2.2 簇的样式</h3><ul>
+<li>大小</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210612214833.png" alt="image-20210612214833569"></p>
+<ul>
+<li><p>顺序</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210612215606.png" alt="image-20210612215606159"></p>
+</li>
+</ul>
+<h3 id="3-2-3-簇的函数"><a href="#3-2-3-簇的函数" class="headerlink" title="3.2.3 簇的函数"></a>3.2.3 簇的函数</h3><ul>
+<li>解除捆绑</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210612220516.png" alt="image-20210612220516341"></p>
+<ul>
+<li><p>捆绑</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613105806.png" alt="image-20210613105759544"></p>
+</li>
+<li><p>按名称捆绑/解除捆绑</p>
+</li>
+<li><p><img src="https://gitee.com/biongd/img/raw/master/img/20210613105952.png" alt="image-20210613105952330"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613105859.png" alt="image-20210613105859852"></p>
+</li>
+<li><p>数组与簇转化</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613110107.png" alt="image-20210613110106978"></p>
+</li>
+</ul>
+<h1 id="4-图形显示器"><a href="#4-图形显示器" class="headerlink" title="4. 图形显示器"></a>4. 图形显示器</h1><h2 id="4-1-波形图表"><a href="#4-1-波形图表" class="headerlink" title="4.1 波形图表"></a>4.1 波形图表</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210610143752.png" alt="image-20210610143752505"></p>
+<ul>
+<li><strong>刷新模式：</strong></li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610145147.png" alt="image-20210610145147091"></p>
+<p>1.</p>
+<p>带状图表Strip Chart Mode：类似于纸带表记录器。<br>2.<br>示波器图表Scope Chart Mode： 类似于示波器。<br>3.<br>扫描图Sweep Chart Mode：类似于心电图仪。</p>
+<ul>
+<li><strong>可接收的数据类型</strong></li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610145257.png" alt="image-20210610145257247"></p>
+<ul>
+<li><strong>多曲线显示</strong></li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610145534.png" alt="image-20210610145534114"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610145548.png" alt="image-20210610145548699"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610145554.png" alt="image-20210610145554596"></p>
+<h2 id="4-2-波形图"><a href="#4-2-波形图" class="headerlink" title="4.2 波形图"></a>4.2 波形图</h2><h3 id="4-2-1-波形图的概念和组成"><a href="#4-2-1-波形图的概念和组成" class="headerlink" title="4.2.1 波形图的概念和组成"></a>4.2.1 波形图的概念和组成</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210610150019.png" alt="image-20210610150019558"></p>
+<ul>
+<li><strong>波形图的组成</strong></li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610150342.png" alt="image-20210610150342413"></p>
+<ul>
+<li><strong>波形图的可接收类型</strong></li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610150523.png" alt="image-20210610150523825"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210610150530.png" alt="image-20210610150530530"></p>
+<h3 id="4-2-2-波形图的特殊用法"><a href="#4-2-2-波形图的特殊用法" class="headerlink" title="4.2.2 波形图的特殊用法"></a>4.2.2 波形图的特殊用法</h3><h3 id="4-2-3-显示多条曲线"><a href="#4-2-3-显示多条曲线" class="headerlink" title="4.2.3 显示多条曲线"></a>4.2.3 显示多条曲线</h3><ul>
+<li>一维数组拼成二维数组，每一行是不同曲线（可以转置）</li>
+<li>可以先将两个一维数组转为簇，然后再转为二维数组（和上面相比，允许两条曲线可以有不同的点数）</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613112256.png" alt="image-20210613112256878"></p>
+<ul>
+<li><p>注意点：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613113424.png" alt="image-20210613113424756"></p>
+</li>
+<li><p>多个标尺的设定</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613132040.png" alt="image-20210613132040854"></p>
+</li>
+</ul>
+<h1 id="5-图标和连线板设计（子VI）"><a href="#5-图标和连线板设计（子VI）" class="headerlink" title="5. 图标和连线板设计（子VI）"></a>5. 图标和连线板设计（子VI）</h1><h2 id="5-1-子VI"><a href="#5-1-子VI" class="headerlink" title="5.1 子VI"></a>5.1 子VI</h2><ul>
+<li><p>VI在内存中的结构</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613132351.png" alt="image-20210613132350951" style="zoom:50%;" /></p>
+</li>
+<li><p>子VI的概念</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613132602.png" alt="image-20210613132602143" style="zoom: 67%;" /></p>
+</li>
+</ul>
+<h2 id="5-2-编辑图标"><a href="#5-2-编辑图标" class="headerlink" title="5.2 编辑图标"></a>5.2 编辑图标</h2><ul>
+<li><p>先创建图标的样式</p>
+<p>在VI文件的前面板或后面板的右上角点击一个图标就可以弹出下面的绘图框</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613164616.png" alt="image-20210613164616799" style="zoom:80%;" /></p>
+</li>
+<li><p>通过连线板对接口位置进行排布（让调用者更好理解）</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210613164449.png" alt="image-20210613164449671" style="zoom: 80%;" /></p>
+</li>
+</ul>
+<h2 id="5-3-创建子VI"><a href="#5-3-创建子VI" class="headerlink" title="5.3 创建子VI"></a>5.3 创建子VI</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210614094911.png" alt="image-20210614094911382" style="zoom:80%;" /></p>
+<p>对于选取代码做子VI时:</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210614095007.png" alt="image-20210614095007278" style="zoom:67%;" /></p>
+<h2 id="5-4-多态VI"><a href="#5-4-多态VI" class="headerlink" title="5.4 多态VI"></a>5.4 多态VI</h2><p>设计的目的：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210614111744.png" alt="image-20210614111743906" style="zoom:50%;" /></p>
+<p>创建步骤：<br><img src="https://gitee.com/biongd/img/raw/master/img/20210614111939.png" alt="image-20210614111939234"></p>
+<ul>
+<li><p>例子：</p>
+<p>一个二输入的加法器和一个二输入的与运算器，可以添加到一个多态VI中，此时这个多态VI就可以在给不同类型的输入时执行不同的功能！！！</p>
+</li>
+<li><p>注意：</p>
+<ul>
+<li>多态VI中的所有VI有相同的接线板模式</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210614112321.png" alt="image-20210614112321525"></p>
+</li>
+</ul>
+<h3 id="5-4-1-如何允许多态VI自动匹配输入数据类型"><a href="#5-4-1-如何允许多态VI自动匹配输入数据类型" class="headerlink" title="5.4.1 如何允许多态VI自动匹配输入数据类型"></a>5.4.1 如何允许多态VI自动匹配输入数据类型</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210614112349.png" alt=""></p>
+<h2 id="5-5-可重入子VI"><a href="#5-5-可重入子VI" class="headerlink" title="5.5 可重入子VI"></a>5.5 可重入子VI</h2><ul>
+<li><p>默认不可重入（即程序加锁，任意时刻只有一个线程可以调用）！！！</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210614112652.png" alt="image-20210614112652049"></p>
+</li>
+</ul>
+<h1 id="6-结构"><a href="#6-结构" class="headerlink" title="6. 结构"></a>6. 结构</h1><h2 id="6-1-条件结构"><a href="#6-1-条件结构" class="headerlink" title="6.1 条件结构"></a>6.1 条件结构</h2><h3 id="6-1-1-条件结构输入"><a href="#6-1-1-条件结构输入" class="headerlink" title="6.1.1 条件结构输入"></a>6.1.1 条件结构输入</h3><ul>
+<li><p>布尔类型（默认） </p>
+</li>
+<li><p>错误簇（条件划分为有错和无错）（可以直接新建模板中选择带错误处理的子VI）</p>
+</li>
+<li><p>数值型输入</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210617104123.png" alt="image-20210617104116156"></p>
+</li>
+<li><p>枚举型输入</p>
+</li>
+<li><p>下拉列表输入（==字符串输入）</p>
+</li>
+<li><p>字符串输入</p>
+</li>
+</ul>
+<h3 id="6-1-2-条件结构输出"><a href="#6-1-2-条件结构输出" class="headerlink" title="6.1.2 条件结构输出"></a>6.1.2 条件结构输出</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210617104544.png" alt="image-20210617104544477" style="zoom:67%;" /></p>
+<h2 id="6-2-循环结构"><a href="#6-2-循环结构" class="headerlink" title="6.2 循环结构"></a>6.2 循环结构</h2><h3 id="6-2-1-wihle"><a href="#6-2-1-wihle" class="headerlink" title="6.2.1 wihle"></a>6.2.1 wihle</h3><h3 id="6-2-2-for"><a href="#6-2-2-for" class="headerlink" title="6.2.2 for"></a>6.2.2 for</h3><h2 id="6-3-顺序结构"><a href="#6-3-顺序结构" class="headerlink" title="6.3 顺序结构"></a>6.3 顺序结构</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210621102014.png" alt="image-20210621102014718" style="zoom:67%;" /></p>
+<h3 id="6-3-1-两种顺序结构"><a href="#6-3-1-两种顺序结构" class="headerlink" title="6.3.1 两种顺序结构"></a>6.3.1 两种顺序结构</h3><p>labview中，程序的执行顺序不同于代码程序的顺序执行，由数据流推动，两个无关的程序框图是多线程并行执行的</p>
+<p>平铺式顺序结构和层叠式顺序结构可以将无关的程序框图以顺序方式执行，并且可以设置定时</p>
+<p>区别在于：</p>
+<ul>
+<li>顺序式更直观，层叠式占面积更小</li>
+</ul>
+<h3 id="6-3-2-顺序结构中，帧间的数据传递"><a href="#6-3-2-顺序结构中，帧间的数据传递" class="headerlink" title="6.3.2 顺序结构中，帧间的数据传递"></a>6.3.2 顺序结构中，帧间的数据传递</h3><blockquote>
+<p>问题：测试一段代码的运行时间</p>
+</blockquote>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210621101159.png" alt="image-20210621101152061" style="zoom: 67%;" />计算执行时间需要第三步获取到第一步的时间！即帧间数据传递</p>
+<ul>
+<li><p>平铺顺序式结构：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210621101509.png" alt="image-20210621101509660" style="zoom:67%;" />直接使用（ans=b-time()）</p>
+</li>
+<li><p>层叠式：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210621101600.png" alt="image-20210621101600320" style="zoom:67%;" />创建局部变量（int a=time()；ans=b-a;）</p>
+</li>
+</ul>
+<h3 id="6-3-3-顺序结构的优化"><a href="#6-3-3-顺序结构的优化" class="headerlink" title="6.3.3 顺序结构的优化"></a>6.3.3 顺序结构的优化</h3><p>核心：尽量减少顺序结构的使用或，使用范围</p>
+<p>实例：<img src="https://gitee.com/biongd/img/raw/master/img/20210621102816.png" alt="image-20210621102816344" style="zoom:67%;" /></p>
+<p>优化1：<img src="https://gitee.com/biongd/img/raw/master/img/20210621102858.png" alt="image-20210621102858686" style="zoom:67%;" />仅通过控制数据流控制执行顺序</p>
+<p>优化2：<img src="https://gitee.com/biongd/img/raw/master/img/20210621103016.png" alt="image-20210621103016109" style="zoom:50%;" /><img src="https://gitee.com/biongd/img/raw/master/img/20210621103043.png" alt="image-20210621103043890" style="zoom:67%;" /></p>
+<p>引入延时子VI，在无错时进入延时，有错时直接输出</p>
+<p>总结：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210621103359.png" alt="image-20210621103359759" style="zoom:67%;" /></p>
+<h1 id="7-变量"><a href="#7-变量" class="headerlink" title="7. 变量"></a>7. 变量</h1><h2 id="7-1-局部变量"><a href="#7-1-局部变量" class="headerlink" title="7.1 局部变量"></a>7.1 局部变量</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210621104313.png" alt="image-20210621104313137" style="zoom:50%;" /></p>
+<p>理解：</p>
+<ul>
+<li>字符串控件：如获取字符串长度，new String（”abc“).length()</li>
+<li>局部变量：String a = new String(“abc”)；a.length();</li>
+</ul>
+<h1 id="2-网口连接labview实例"><a href="#2-网口连接labview实例" class="headerlink" title="2. 网口连接labview实例"></a>2. 网口连接labview实例</h1><h2 id="2-1-入门范例（GPIB和VISA函数）"><a href="#2-1-入门范例（GPIB和VISA函数）" class="headerlink" title="2.1 入门范例（GPIB和VISA函数）"></a>2.1 入门范例（GPIB和VISA函数）</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210616102400.png" alt="image-20210616102400700" style="zoom:80%;" /></p>
+<ul>
+<li><p><strong>VISA打开：</strong>打开仪器资源的VISA会话句柄（即让仪器接收传入的控制指令！）</p>
+<p>我的理解：句柄就是程序INSTR的VISA指令开始地址</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210615093409.png" alt="image-20210615093409823"></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>打开超时</th>
+<th><strong>VISA打开超时</strong>指定“VISA打开”在返回错误前等待的最大超时值，以毫秒为单位。它不设置I/O超时。 <a href="lvinstio.chm::/VISA_Set_Timeout.html">VISA设置超时</a>指定VISA会话句柄之后的操作超时值。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>资源名称</td>
+<td><strong>VISA资源名称</strong>指定要打开的资源。<a href="VISA_Resource_Name_generic.html">VISA资源名称</a>控件也可指定会话句柄和类。</td>
+</tr>
+<tr>
+<td>会话句柄副本</td>
+<td>如<strong>会话句柄副本</strong>的值为TRUE，且当前存在对资源开放的会话句柄，可为资源打开另一个会话句柄。如<strong>会话句柄副本</strong>设置为FALSE，且存在对资源开放的会话句柄，可使用打开的会话句柄。  VISA会话句柄是VISA使用的唯一逻辑标识符，用于与资源通信。VISA会话句柄由<a href="VISA_Resource_Name_generic.html">VISA资源名称控件</a>保持，用户不能看见该控件。</td>
+</tr>
+<tr>
+<td>访问模式</td>
+<td><strong>访问模式</strong>指定如何访问设备。 该输入支持下列值。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p><strong>属性节点（property node）</strong></p>
+<p>通过右键连线可以常见instr类的属性节点，这里设置的是超时节点</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210616100711.png" alt="image-20210616100703910"></p>
+<ul>
+<li><p>属性节点的核心思想：</p>
+<p>对VI类的属性进行修改，如设置一个数值控件的visible属性节点，此时数值控件就是引用，可连可不连，可以将visible属性改为可以，此时就可以通过写入布尔型数据控制控件是否显示。</p>
+</li>
+</ul>
+</li>
+<li><p>格式化写入字符串</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210616102634.png" alt="image-20210616102634746"><img src="https://gitee.com/biongd/img/raw/master/img/20210616102715.png" alt="image-20210616102715874"></p>
+<p>| 输入1 | 输入2  | 格式字符串       | 返回字符串        | 说明                                                         |<br>| ——- | ——— | ———————— | ————————- | —————————————————————————————— |<br>| first | second | %s %s            | first second      | <strong>格式字符串</strong>并<em>未</em>使用$标识符，函数按顺序将输入值写入格式字符串。 |<br>| first | second | %2\$s %1\$s      | second first      | <strong>格式字符串</strong>使用$标识符按非默认顺序将输入写入格式字符串。  |<br>| first | second | %1\$s %1\$s %1$s | first first first | <strong>格式字符串</strong>使用标识符$多次使用第一个输入，而忽略第二个输入 |</p>
+<p>注意：这里的%意味着格式字符的开始，$符号是其中一种格式方式，别的还有很多！！！</p>
+</li>
+<li><p>VISA写入</p>
+<ul>
+<li>这里就涉及到了所谓的VISA+SCPI</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210616103329.png" alt="image-20210616103329485"></p>
+<ul>
+<li><p>VISA写入详细信息</p>
+<p>依据不同的平台，数据传输可为同步或异步。右键单击节点，在快捷菜单中选择<strong>同步I/O模式»同步</strong>，可同步写入数据。 </p>
+<p>硬件设备同步传输数据时，<a href="lvconcepts.chm::/LabVIEW_Threading_Model.html">调用线程</a>在数据传输期间处于锁定状态。依据传输的速度，该操作可阻止其他需要调用线程的进程。但是，如应用程序需尽可能快地传输数据，同步执行操作可独占调用线程。</p>
+</li>
+</ul>
+<p>| <strong>注：</strong> 在大多数应用程序中，与不多于4台仪器进行通行时使用同步调用可以获取更快的速度。与不少于5台仪器进行通信时，异步操作可使应用程序的速度显著提高。LabVIEW默认为异步I/O。 |<br>| —————————————————————————————— |</p>
+<p>​    可以看到不同的字符串指令不能通过格式化字符串同时传入，待证明！！！</p>
+</li>
+<li><p>VISA读取（和VISA写入同时使用）</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210616104042.png" alt="image-20210616104042614"></p>
+<p>读取缓冲区为字符串输出！！！</p>
+</li>
+</ul>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h2 id="2-2-3352X-Series"><a href="#2-2-3352X-Series" class="headerlink" title="2.2 3352X Series"></a>2.2 3352X Series</h2><h3 id="2-2-1-生成频率扫描"><a href="#2-2-1-生成频率扫描" class="headerlink" title="2.2.1 生成频率扫描"></a>2.2.1 生成频率扫描</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210615092813.png" alt="image-20210615092806818" style="zoom: 80%;" /></p>
+<h3 id="2-2-2仪器通用控件：初始化连接控件"><a href="#2-2-2仪器通用控件：初始化连接控件" class="headerlink" title="2.2.2仪器通用控件：初始化连接控件"></a>2.2.2仪器通用控件：初始化连接控件</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210616105646.png" alt="image-20210615092943320"></p>
+<ul>
+<li><p>第一步还是VISA打开，设置默认打开模式为0！！</p>
+</li>
+<li><p>第二步进行设备缓冲区清零!!</p>
+</li>
+<li><p>第三步同样是设置超时！！！这里设置10秒</p>
+</li>
+<li><p>条件选择器：通过外加的布尔开关进行控制，是否</p>
+</li>
+<li><p>*IDN? 指令：识别大多数仪器的查询指令。仪器会回应一个用于描述仪器的识别字符串。如果仪器不接受该指令，请在仪器手册中查询仪器能识别的指令列表。</p>
+</li>
+</ul>
+<ul>
+<li><p>匹配正则表达式</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210616112519.png" alt="image-20210616112519683"></p>
+</li>
+<li><p>匹配字符串</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210616115530.png" alt="image-20210616115530406"></p>
+<p>| 字符串     | <strong>字符串</strong>是要匹配<strong>字符串数组</strong>前缀的字符串。默认值为空字符串。 |<br>| ————— | —————————————————————————————— |<br>| 字符串数组 | <strong>字符串数组</strong>指定要与<strong>字符串</strong>匹配的字符串数组。  如函数在<strong>字符串数组</strong>中发现空字符串，函数将字符串视为匹配。 |<br>| 输出字符串 | <strong>输出字符串</strong>返回删除匹配前缀后的原有字符串。  如<strong>字符串</strong>的起始部分不匹配<strong>字符串数组</strong>中的任何字符串，<strong>输出字符串</strong>返回原有<strong>字符串</strong>。 |<br>| 索引       | <strong>索引</strong>返回匹配前缀在<strong>字符串数组</strong>中的索引。  如<strong>字符串</strong>的起始部分不匹配<strong>字符串数组</strong>中的任何字符串，<strong>索引</strong>为-1 |</p>
+</li>
+</ul>
+<h4 id="总结：-可以看出，初始化连接空间的本质就是判断仪表是否是安捷伦-是德的（3352X）系列仪表！！"><a href="#总结：-可以看出，初始化连接空间的本质就是判断仪表是否是安捷伦-是德的（3352X）系列仪表！！" class="headerlink" title="总结： 可以看出，初始化连接空间的本质就是判断仪表是否是安捷伦/是德的（3352X）系列仪表！！"></a>总结： 可以看出，初始化连接空间的本质就是判断仪表是否是安捷伦/是德的（3352X）系列仪表！！</h4><h3 id="2-2-3-配置标准波形"><a href="#2-2-3-配置标准波形" class="headerlink" title="2.2.3 配置标准波形"></a>2.2.3 配置标准波形</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210616120120.png" alt="image-20210616120120544"></p>
+<h3 id="2-2-4-测试中使用的不带频扫的标准波控件"><a href="#2-2-4-测试中使用的不带频扫的标准波控件" class="headerlink" title="2.2.4 测试中使用的不带频扫的标准波控件"></a>2.2.4 测试中使用的不带频扫的标准波控件</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210618151547.png" alt="image-20210618151547796" style="zoom:50%;" /></p>
+<p>个人思考的循环输入电压的方法：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210618183538.png" alt="image-20210618183538404"></p>
+<p>可以通过面板控制是否输出和采用手动还是自动模式</p>
+<h1 id="3-网口控制的步骤"><a href="#3-网口控制的步骤" class="headerlink" title="3. 网口控制的步骤"></a>3. 网口控制的步骤</h1><h2 id="3-1-33500B-Series（仪表型号：33522B-仪表驱动：3352X-series）"><a href="#3-1-33500B-Series（仪表型号：33522B-仪表驱动：3352X-series）" class="headerlink" title="3.1 33500B Series（仪表型号：33522B/仪表驱动：3352X series）"></a>3.1 33500B Series（仪表型号：33522B/仪表驱动：3352X series）</h2><ul>
+<li><p>安装系列软件：labview（NI-Max）+驱动（VISA+488.2）</p>
+</li>
+<li><p>配置IP地址：System/local，I/O config，LAN Settings，Modify Setting将DHCP自动分配切换到手动分配</p>
+</li>
+<li><p>本机IP地址不知道为啥好像不能修改（????），只能修改电脑IP和子网掩码</p>
+</li>
+<li><p>两端ping通后就可以在NI-Max中查看VISA资源了！！</p>
+</li>
+<li><p>需要注意一点：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210618145403.png" alt="image-20210618094525116" style="zoom: 80%;" /></p>
+<p>原来担心找不到地址，现在一下出来俩，这里就要选第一个！！！，第二个会一直报VISA读错误！！</p>
+</li>
+</ul>
+<h1 id="3-串口连接labview实例"><a href="#3-串口连接labview实例" class="headerlink" title="3. 串口连接labview实例"></a>3. 串口连接labview实例</h1><p><img src="https://gitee.com/biongd/img/raw/master/img/20210601103916.png" alt="image-20210601103909494"></p>
+<p>以上控件从instrument IO的串口空间中获取，通过输入A1指令控制继电器工作使灯打开</p>
+<ul>
+<li>这里的visa配置模块的两个输入分别是设备（源）名称，串口的话就是COM-。另一个就是波特率，由设备决定！</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/labview/" rel="tag"># labview</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/05/linux%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" rel="next" title="linux磁盘管理">
+                <i class="fa fa-chevron-left"></i> linux磁盘管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/14/RLC%E8%B0%90%E6%8C%AF%E5%8E%9F%E7%90%86/" rel="prev" title="RLC谐振原理">
+                RLC谐振原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-labview编程环境"><span class="nav-text">1. labview编程环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-VI文件的组成"><span class="nav-text">1.1 VI文件的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-菜单栏和工具栏"><span class="nav-text">1.2 菜单栏和工具栏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-3个选板"><span class="nav-text">1.3 3个选板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-数据流编程"><span class="nav-text">1.4 数据流编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-控件与常量"><span class="nav-text">1.5 控件与常量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-基本数据类型"><span class="nav-text">2. 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-数值"><span class="nav-text">2.1 数值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-布尔型"><span class="nav-text">2.2 布尔型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-字符串类型"><span class="nav-text">2.3 字符串类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-下拉列表和枚举"><span class="nav-text">2.4* 下拉列表和枚举</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-概念"><span class="nav-text">2.4.1 概念</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-数组和簇"><span class="nav-text">3. 数组和簇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-数组"><span class="nav-text">3.1 数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-数组函数"><span class="nav-text">3.2 数组函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-簇"><span class="nav-text">3.2 簇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-概念和创建"><span class="nav-text">3.2.1 概念和创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-簇的样式"><span class="nav-text">3.2.2 簇的样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-簇的函数"><span class="nav-text">3.2.3 簇的函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-图形显示器"><span class="nav-text">4. 图形显示器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-波形图表"><span class="nav-text">4.1 波形图表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-波形图"><span class="nav-text">4.2 波形图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-波形图的概念和组成"><span class="nav-text">4.2.1 波形图的概念和组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-波形图的特殊用法"><span class="nav-text">4.2.2 波形图的特殊用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-显示多条曲线"><span class="nav-text">4.2.3 显示多条曲线</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-图标和连线板设计（子VI）"><span class="nav-text">5. 图标和连线板设计（子VI）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-子VI"><span class="nav-text">5.1 子VI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-编辑图标"><span class="nav-text">5.2 编辑图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-创建子VI"><span class="nav-text">5.3 创建子VI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-多态VI"><span class="nav-text">5.4 多态VI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-1-如何允许多态VI自动匹配输入数据类型"><span class="nav-text">5.4.1 如何允许多态VI自动匹配输入数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-可重入子VI"><span class="nav-text">5.5 可重入子VI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-结构"><span class="nav-text">6. 结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-条件结构"><span class="nav-text">6.1 条件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-1-条件结构输入"><span class="nav-text">6.1.1 条件结构输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-2-条件结构输出"><span class="nav-text">6.1.2 条件结构输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-循环结构"><span class="nav-text">6.2 循环结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-1-wihle"><span class="nav-text">6.2.1 wihle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-2-for"><span class="nav-text">6.2.2 for</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-顺序结构"><span class="nav-text">6.3 顺序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-1-两种顺序结构"><span class="nav-text">6.3.1 两种顺序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-2-顺序结构中，帧间的数据传递"><span class="nav-text">6.3.2 顺序结构中，帧间的数据传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-3-顺序结构的优化"><span class="nav-text">6.3.3 顺序结构的优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-变量"><span class="nav-text">7. 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-局部变量"><span class="nav-text">7.1 局部变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-网口连接labview实例"><span class="nav-text">2. 网口连接labview实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-入门范例（GPIB和VISA函数）"><span class="nav-text">2.1 入门范例（GPIB和VISA函数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-3352X-Series"><span class="nav-text">2.2 3352X Series</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-生成频率扫描"><span class="nav-text">2.2.1 生成频率扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2仪器通用控件：初始化连接控件"><span class="nav-text">2.2.2仪器通用控件：初始化连接控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：-可以看出，初始化连接空间的本质就是判断仪表是否是安捷伦-是德的（3352X）系列仪表！！"><span class="nav-text">总结： 可以看出，初始化连接空间的本质就是判断仪表是否是安捷伦&#x2F;是德的（3352X）系列仪表！！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-配置标准波形"><span class="nav-text">2.2.3 配置标准波形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-测试中使用的不带频扫的标准波控件"><span class="nav-text">2.2.4 测试中使用的不带频扫的标准波控件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-网口控制的步骤"><span class="nav-text">3. 网口控制的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-33500B-Series（仪表型号：33522B-仪表驱动：3352X-series）"><span class="nav-text">3.1 33500B Series（仪表型号：33522B&#x2F;仪表驱动：3352X series）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-串口连接labview实例"><span class="nav-text">3. 串口连接labview实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

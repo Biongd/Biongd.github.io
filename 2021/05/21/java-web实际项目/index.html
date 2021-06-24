@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="通过项目的实现，贯穿前面所学的知识点，能够灵活应用所学知识，解决实际问题。知识点是固定的，但是实现思路是各有千秋的。 学习重点:  1.知识点的项目中的应用  2.功能实现的逻辑思路 知识点复习1.数据库 2.JDBC 3.html 4.servlet 5.JSP+EL+JSTL 6.AJAX 7.多表操作 项目实现过程1.分析静态页面，根据html或需求创建数据库 2.填写测试数据 3.创建项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-web实战1">
+<meta property="og:url" content="http://yoursite.com/2021/05/21/java-web%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="通过项目的实现，贯穿前面所学的知识点，能够灵活应用所学知识，解决实际问题。知识点是固定的，但是实现思路是各有千秋的。 学习重点:  1.知识点的项目中的应用  2.功能实现的逻辑思路 知识点复习1.数据库 2.JDBC 3.html 4.servlet 5.JSP+EL+JSTL 6.AJAX 7.多表操作 项目实现过程1.分析静态页面，根据html或需求创建数据库 2.填写测试数据 3.创建项目">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210430162136.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210430200926.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210503151209.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210517094427.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210517094326.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210517094542.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210517094911.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210520102006.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210520102720.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210523093147.png">
+<meta property="article:published_time" content="2021-05-21T04:12:12.000Z">
+<meta property="article:modified_time" content="2021-06-24T08:50:01.382Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210430162136.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/05/21/java-web实际项目/"/>
+
+
+
+
+
+  <title>java-web实战1 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/21/java-web%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java-web实战1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-21T12:12:12+08:00">
+                2021-05-21
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-06-24T16:50:01+08:00" content="2021-06-24">
+                          2021-06-24
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-JVM-IDEA-web-%E9%9B%86%E5%90%88-%E6%95%B0%E7%BB%84-String%E4%B8%93%E9%A2%98-%E5%89%8D%E7%AB%AF-web%E5%AE%9E%E6%88%98-%E5%9F%BA%E7%A1%80-%E6%A6%82%E5%BF%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习-JVM.IDEA.web.集合/数组/String专题.前端.web实战.基础.概念.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>通过项目的实现，贯穿前面所学的知识点，能够灵活应用所学知识，解决实际问题。知识点是固定的，但是实现思路是各有千秋的。</p>
+<p>学习重点:</p>
+<p> 1.知识点的项目中的应用</p>
+<p> 2.功能实现的逻辑思路</p>
+<h1 id="知识点复习"><a href="#知识点复习" class="headerlink" title="知识点复习"></a>知识点复习</h1><p>1.数据库</p>
+<p>2.JDBC</p>
+<p>3.html</p>
+<p>4.servlet</p>
+<p>5.JSP+EL+JSTL</p>
+<p>6.AJAX</p>
+<p>7.多表操作</p>
+<h1 id="项目实现过程"><a href="#项目实现过程" class="headerlink" title="项目实现过程"></a>项目实现过程</h1><p>1.分析静态页面，根据html或需求创建数据库</p>
+<p>2.填写测试数据</p>
+<p>3.创建项目，包结构(bean,dao.impl,servlet,service.impl,util)，修改html页面为jsp</p>
+<p>  html-&gt;jsp</p>
+<pre><code>       (1)在HTML中添加page指令
+
+       (2) 将html的后缀改成jsp
+</code></pre><p>4.填写内容(注意填写顺序)</p>
+<p>   bean:属性，封装方法，无参构造，全参构造</p>
+<p>​         <strong>表名=类名 ，列名=属性名</strong> </p>
+<p>   dao包：操作方法的接口,命名：实体类名+Dao，</p>
+<p>​          Dbutils(属性文件，*.properties)</p>
+<p>   impl包:命名: 接口名+Impl</p>
+<p>​         实现接口，继承Dbutils</p>
+<p>   service.impl</p>
+<p>​      service定义的是接口，接口中的方法和dao层接口中的方法一致</p>
+<p>​      impl ： 这层的实现类主要负责调取dao层方法</p>
+<p>  servlet：</p>
+<p>​       //1.接受参数</p>
+<p>​     //2.调取service层的方法，service又在调取dao层的方法</p>
+<p>​    //3.根据结果跳转页面</p>
+<p>  <strong>核心</strong>:jsp页面负责发送请求和展示数据</p>
+<h1 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h1><p>（1）通用分页</p>
+<p>​          定义分页工具类，简化分页代码</p>
+<p>（2）优化servlet</p>
+<p>​         实现同一个模块的请求走同一个servlet,减少定义servlet的个数</p>
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><h2 id="1-登录功能"><a href="#1-登录功能" class="headerlink" title="1. 登录功能"></a>1. 登录功能</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.接收参数</span></span><br><span class="line">String username = req.getParameter(<span class="string">"username"</span>);</span><br><span class="line">String password = req.getParameter(<span class="string">"password"</span>);</span><br><span class="line"><span class="comment">//2.调取service</span></span><br><span class="line">UsersService usersService = <span class="keyword">new</span> UsersServiceImpl();</span><br><span class="line">Users users = usersService.login(username, password);</span><br><span class="line"><span class="comment">//3.跳转页面</span></span><br><span class="line"><span class="keyword">if</span>(users==<span class="keyword">null</span>)&#123;</span><br><span class="line">    <span class="comment">//以弹窗方式提示用户，登录失败</span></span><br><span class="line">    resp.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">    PrintWriter writer = resp.getWriter();</span><br><span class="line">    writer.println(<span class="string">"&lt;script&gt;location.href='login.jsp';alert('用户名或密码不正确');&lt;/script&gt;"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//跳转到主页面</span></span><br><span class="line">    <span class="comment">//保存用户信息</span></span><br><span class="line">    req.getSession().setAttribute(<span class="string">"u1"</span>,users);</span><br><span class="line">    resp.sendRedirect(<span class="string">"index.jsp"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-退出功能"><a href="#2-退出功能" class="headerlink" title="2.  退出功能"></a>2.  退出功能</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">   <span class="comment">//清除session</span></span><br><span class="line">    req.getSession().invalidate();</span><br><span class="line">    <span class="comment">//跳转页面</span></span><br><span class="line">    <span class="comment">//resp.sendRedirect("/login.jsp");</span></span><br><span class="line">    resp.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">    resp.getWriter().println(<span class="string">"&lt;script&gt;alert('退出成功');top.location.href='login.jsp';&lt;/script&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：此处的页面跳转没有采用<code>resp.sendRedirect(&quot;login.jsp&quot;)</code>的重定向方法，而是使用给页面插入js语句的方式</p>
+<p>因为：<img src="https://gitee.com/biongd/img/raw/master/img/20210430162136.png" alt="image-20210430162129594"></p>
+<p>页面由三部分组成，退出按钮在head部分，只能对head部分进行跳转！！！</p>
+<p>对于<code>top.location.href=&#39;login.jsp&#39;</code>，没加top的话就和重定向方法一样，加了top就是回到整个框架的最外层</p>
+<h2 id="3-获取学生列表"><a href="#3-获取学生列表" class="headerlink" title="3. 获取学生列表"></a>3. 获取学生列表</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">@<span class="constructor">WebServlet(<span class="params">urlPatterns</span> = <span class="string">"/Educational/student/getStudentList"</span>)</span></span><br><span class="line">public <span class="keyword">class</span> GetStudentServlet extends HttpServlet &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">//1.获取参数</span></span><br><span class="line">        <span class="comment">//1.1 模糊查条件</span></span><br><span class="line">        String stuname = req.get<span class="constructor">Parameter(<span class="string">"stuname"</span>)</span>;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(stuname);</span><br><span class="line">        String stuno = req.get<span class="constructor">Parameter(<span class="string">"stuno"</span>)</span>;</span><br><span class="line">        String sex = req.get<span class="constructor">Parameter(<span class="string">"sex"</span>)</span>;</span><br><span class="line">        <span class="comment">//1.2 分页数据   limit 开始位置,显示条数</span></span><br><span class="line">        <span class="comment">//页码值(当前页码值)</span></span><br><span class="line">        String pageIndex = req.get<span class="constructor">Parameter(<span class="string">"pageIndex"</span>)</span>;</span><br><span class="line">        <span class="comment">//如果页面没有传入pageIndex的值，则认为默认查询第一页</span></span><br><span class="line">        <span class="built_in">int</span> index=pageIndex==null?<span class="number">1</span>:<span class="module-access"><span class="module"><span class="identifier">Integer</span>.</span></span>parse<span class="constructor">Int(<span class="params">pageIndex</span>)</span>;</span><br><span class="line">        <span class="comment">//2.调取service方法</span></span><br><span class="line">        StudentService service=<span class="keyword">new</span> <span class="constructor">StudentServiceImpl()</span>;</span><br><span class="line">        <span class="built_in">int</span> usex=(sex==null<span class="pattern-match"><span class="operator">||</span>sex.length()<span class="operator">==</span>0?-1:<span class="constructor">Integer</span>.parse<span class="constructor">Int(<span class="params">sex</span>)</span>);</span></span><br><span class="line"><span class="pattern-match">        <span class="constructor">List</span>&lt;<span class="constructor">Student</span>&gt; students =</span></span><br><span class="line"><span class="pattern-match">                service.get<span class="constructor">Students(<span class="params">stuname</span>,<span class="params">stuno</span>,<span class="params">usex</span>,<span class="params">index</span>,5)</span>;</span></span><br><span class="line"><span class="pattern-match">        <span class="operator">/</span><span class="operator">/</span>获取总页数=总条数%每页显示的条数&gt;0?总条数<span class="operator">/</span>每页显示条数+1:总条数<span class="operator">/</span>每页显示条数</span></span><br><span class="line"><span class="pattern-match">        <span class="built_in">int</span> total = service.total(stuname, stuno,usex);<span class="operator">/</span><span class="operator">/</span>总条数</span></span><br><span class="line"><span class="pattern-match">        <span class="built_in">int</span> total<span class="constructor">Pages</span>=total%5&gt;0?total<span class="operator">/</span>5+1:total<span class="operator">/</span>5;  <span class="operator">/</span><span class="operator">/</span>总页数</span></span><br><span class="line"><span class="pattern-match"></span></span><br><span class="line"><span class="pattern-match">        <span class="operator">/</span><span class="operator">/</span>3.跳转页面</span></span><br><span class="line"><span class="pattern-match">        <span class="operator">/</span><span class="operator">/</span>如果后台想给前台传数据，是一定要在后台存值的</span></span><br><span class="line"><span class="pattern-match">        req.set<span class="constructor">Attribute(<span class="string">"stulist"</span>,<span class="params">students</span>)</span>;</span></span><br><span class="line"><span class="pattern-match">        <span class="operator">/</span><span class="operator">/</span>存储模糊查条件</span></span><br><span class="line"><span class="pattern-match">        req.set<span class="constructor">Attribute(<span class="string">"stuname"</span>,<span class="params">stuname</span>)</span>;</span></span><br><span class="line"><span class="pattern-match">        req.set<span class="constructor">Attribute(<span class="string">"stuno"</span>,<span class="params">stuno</span>)</span>;</span></span><br><span class="line"><span class="pattern-match">        req.set<span class="constructor">Attribute(<span class="string">"sex"</span>,<span class="params">sex</span>)</span>;</span></span><br><span class="line"><span class="pattern-match">        <span class="operator">/</span><span class="operator">/</span>存储分页数据</span></span><br><span class="line"><span class="pattern-match">        req.set<span class="constructor">Attribute(<span class="string">"index"</span>,<span class="params">index</span>)</span>;</span></span><br><span class="line"><span class="pattern-match">        req.set<span class="constructor">Attribute(<span class="string">"size"</span>,5)</span>;</span></span><br><span class="line"><span class="pattern-match">        req.set<span class="constructor">Attribute(<span class="string">"total"</span>,<span class="params">total</span>)</span>;</span></span><br><span class="line"><span class="pattern-match">        req.set<span class="constructor">Attribute(<span class="string">"totalPages"</span>,<span class="params">totalPages</span>)</span>;</span></span><br><span class="line"><span class="pattern-match">        req.get<span class="constructor">RequestDispatcher(<span class="string">"list.jsp"</span>)</span>.forward(req,resp);</span></span><br><span class="line"><span class="pattern-match">    &#125;</span></span><br><span class="line"><span class="pattern-match">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 为什么这里的request地址用路径列表来表示</p>
+</blockquote>
+<p>答：<img src="https://gitee.com/biongd/img/raw/master/img/20210430200926.png" alt="image-20210430200926828"></p>
+<p>相对路径<code>/Educational/student</code>对url进行了自动补全，此时再要用转发或者重定向跳转到<code>list.jsp</code>时就只需要直接写本地路径下的页面！！</p>
+<h2 id="4-模糊查询-分页-Dao层"><a href="#4-模糊查询-分页-Dao层" class="headerlink" title="4. 模糊查询+分页(Dao层)"></a>4. 模糊查询+分页(Dao层)</h2><p>在简单的数据库查询基础上，用StringBuffer来拼接sql语句，如果有查询信息就拼接到sql语句中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getStudents</span><span class="params">(String name,String stuno,<span class="keyword">int</span> sex,<span class="keyword">int</span> pageIndex,<span class="keyword">int</span> pageSize)</span> </span>&#123;</span><br><span class="line">        List list= <span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">        List params=<span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            StringBuffer sqlbuf=<span class="keyword">new</span> StringBuffer(<span class="string">" select * from student where 1=1 and state!=4  "</span>);</span><br><span class="line">            <span class="keyword">if</span>(name!=<span class="keyword">null</span>&amp;&amp;name.length()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                sqlbuf.append(<span class="string">" and stuname like ? "</span>);</span><br><span class="line">                params.add(<span class="string">"%"</span>+name+<span class="string">"%"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(stuno!=<span class="keyword">null</span>&amp;&amp;stuno.length()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                sqlbuf.append(<span class="string">" and stuno=? "</span>);</span><br><span class="line">                params.add(stuno);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(sex!=-<span class="number">1</span>)&#123;</span><br><span class="line">                sqlbuf.append(<span class="string">" and sex=? "</span>);</span><br><span class="line">                params.add(sex);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//分页</span></span><br><span class="line">            sqlbuf.append(<span class="string">" limit ?,?"</span>);  <span class="comment">//1 5   limit 0,5</span></span><br><span class="line">            <span class="comment">// limit  (pageIndex-1)*pageSize,pageSize;</span></span><br><span class="line">            params.add((pageIndex-<span class="number">1</span>)*pageSize);</span><br><span class="line">            params.add(pageSize);</span><br><span class="line"></span><br><span class="line">            resultSet = query(sqlbuf.toString(), params);</span><br><span class="line">            <span class="keyword">while</span>(resultSet.next())&#123;</span><br><span class="line">                Student student = <span class="keyword">new</span> Student();</span><br><span class="line">                student.setStuId(resultSet.getInt(<span class="string">"stuid"</span>));</span><br><span class="line">                student.setStuNo(resultSet.getString(<span class="string">"stuno"</span>));</span><br><span class="line">                student.setStuName(resultSet.getString(<span class="string">"stuname"</span>));</span><br><span class="line">                student.setSex(resultSet.getInt(<span class="string">"sex"</span>));</span><br><span class="line">                student.setPhone(resultSet.getString(<span class="string">"phone"</span>));</span><br><span class="line">                student.setProfession(resultSet.getString(<span class="string">"profession"</span>));</span><br><span class="line">                student.setRegDate(resultSet.getDate(<span class="string">"regdate"</span>));</span><br><span class="line">                <span class="comment">//补全所有的列</span></span><br><span class="line">                list.add(student);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            closeAll();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-新增学生"><a href="#5-新增学生" class="headerlink" title="5. 新增学生"></a>5. 新增学生</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210503151209.png" alt="image-20210503151202615"></p>
+<h3 id="5-1-年级信息"><a href="#5-1-年级信息" class="headerlink" title="5.1 年级信息"></a>5.1 年级信息</h3><p>Grade类：gradeId和gradeName</p>
+<p>Grade类的Dao层</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GradeDaoImpl</span> <span class="keyword">extends</span> <span class="title">DBUtils</span> <span class="keyword">implements</span> <span class="title">GradeDao</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Grade&gt; <span class="title">getList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List gs=<span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String sql=<span class="string">"select * from grade"</span>;</span><br><span class="line">            resultSet  = query(sql, <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">while</span>(resultSet.next())&#123;</span><br><span class="line">                Grade grade = <span class="keyword">new</span> Grade();</span><br><span class="line">                grade.setGradeId(resultSet.getInt(<span class="string">"gradeid"</span>));</span><br><span class="line">                grade.setGradeName(resultSet.getString(<span class="string">"gradename"</span>));</span><br><span class="line">                gs.add(grade);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            closeAll();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> gs;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>web层</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/Educational/student/getGradeList"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GradeListServlet</span>  <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">          <span class="comment">//查询年级列表的方法</span></span><br><span class="line">        GradeService service=<span class="keyword">new</span> GradeServiceImpl();</span><br><span class="line">        List&lt;Grade&gt; list = service.getList();</span><br><span class="line">        req.setAttribute(<span class="string">"glist"</span>,list);</span><br><span class="line">        req.getRequestDispatcher(<span class="string">"add.jsp"</span>).forward(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如何将gradeName放到前端的<code>select标签</code>里面展示</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;select name=<span class="string">"gid"</span>&gt;</span><br><span class="line">    &lt;c:forEach items=<span class="string">"$&#123;glist&#125;"</span> <span class="keyword">var</span>=<span class="string">"g"</span>&gt;</span><br><span class="line">        &lt;option value="$&#123;g.gradeId&#125;"&gt;$&#123;g.gradeName&#125;&lt;/option&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p>通过java标准标签库的方式对列表进行循环，将所有年级对象的名称和对应的id填入，方便学生表和年级表的联查</p>
+<h3 id="5-2-学生对象"><a href="#5-2-学生对象" class="headerlink" title="5.2 学生对象"></a>5.2 学生对象</h3><p>直接将前端提交的信息存储到数据库中，通过<code>executeUpdate（）</code>方法的返回值（受影响行数）判断是否新增成功，新增成功则跳转至学生显示页面，没成功则弹框</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/Educational/student/addStu"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddStuServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">       req.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">        String stuNo = req.getParameter(<span class="string">"stuNo"</span>);</span><br><span class="line">        String stuname = req.getParameter(<span class="string">"stuName"</span>);</span><br><span class="line">        String gid = req.getParameter(<span class="string">"gid"</span>);</span><br><span class="line">        String sex = req.getParameter(<span class="string">"sex"</span>);</span><br><span class="line">        String email = req.getParameter(<span class="string">"email"</span>);</span><br><span class="line">        String phone = req.getParameter(<span class="string">"phone"</span>);</span><br><span class="line">        String registered = req.getParameter(<span class="string">"registered"</span>);</span><br><span class="line">        String address = req.getParameter(<span class="string">"address"</span>);</span><br><span class="line">        String politics = req.getParameter(<span class="string">"politics"</span>);</span><br><span class="line">        String idnumber = req.getParameter(<span class="string">"idNumber"</span>);</span><br><span class="line">        String profession = req.getParameter(<span class="string">"profession"</span>);</span><br><span class="line">        String introdction = req.getParameter(<span class="string">"introdction"</span>);</span><br><span class="line">        <span class="comment">//调取service</span></span><br><span class="line">        StudentService service=<span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">        <span class="comment">//将参数封装到学生对象中</span></span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        student.setStuNo(stuNo);</span><br><span class="line">        student.setStuName(stuname);</span><br><span class="line">        student.setGid(Integer.parseInt(gid));</span><br><span class="line">        student.setSex(Integer.parseInt(sex));</span><br><span class="line">        student.setEmail(email);</span><br><span class="line">        student.setPhone(phone);</span><br><span class="line">        student.setRegistered(registered);</span><br><span class="line">        student.setAddress(address);</span><br><span class="line">        student.setPolitics(politics);</span><br><span class="line">        student.setIdNumber(idnumber);</span><br><span class="line">        student.setProfession(profession);</span><br><span class="line">        student.setIntrodction(introdction);</span><br><span class="line">        <span class="keyword">int</span> i = service.insertStu(student);</span><br><span class="line">        resp.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">        PrintWriter writer = resp.getWriter();</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            writer.println(<span class="string">"&lt;script&gt;alert('新增成功');location.href='/Educational/student/getStudentList'&lt;/script&gt;"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            writer.println(<span class="string">"&lt;script&gt;alert('新增失败');location.href='/Educational/student/getGradeList'&lt;/script&gt;"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-主键查询对学生信息进行修改"><a href="#6-主键查询对学生信息进行修改" class="headerlink" title="6. 主键查询对学生信息进行修改"></a>6. 主键查询对学生信息进行修改</h2><p>通过“修改”项的a标签给后台传输主键id</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach items=<span class="string">"$&#123;stulist&#125;"</span> <span class="keyword">var</span>=<span class="string">"stu"</span> &gt;</span><br><span class="line">    &lt;tr id=<span class="string">"product1"</span>&gt;</span><br><span class="line">        &lt;!--显示数据库信息--&gt;</span><br><span class="line">        &lt;td align="center"&gt;$&#123;stu.stuNo&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td align="center"&gt;$&#123;stu.stuName&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td align="center"&gt;$&#123;stu.sex==1?'男':'女'&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td align="center"&gt;$&#123;stu.phone&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td align="center"&gt;$&#123;stu.profession&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td align="center"&gt;$&#123;stu.regDate&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td align=<span class="string">"center"</span>&gt;</span><br><span class="line">            &lt;!--在get请求中传输数据id--&gt;</span><br><span class="line">            &lt;a href="/Educational/student/findbyid?sid=$&#123;stu.stuId&#125;"&gt;修改&lt;/a&gt;</span><br><span class="line">            &lt;a href="/Educational/student/deletebyid?sid=$&#123;stu.stuId&#125;"&gt;删除&lt;/a&gt;</span><br><span class="line">        &lt;/td&gt; 				                    </span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
+<p>通过主键id获取学生信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/Educational/student/findbyid"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FindByIdServlet</span>  <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        String sid = req.getParameter(<span class="string">"sid"</span>);</span><br><span class="line">        <span class="comment">//根据主键查询学生信息</span></span><br><span class="line">        StudentService service=<span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">        Student student = service.findById(Integer.parseInt(sid));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//查询年级列表</span></span><br><span class="line">        GradeService gradeService=<span class="keyword">new</span> GradeServiceImpl();</span><br><span class="line">        List&lt;Grade&gt; list = gradeService.getList();</span><br><span class="line"></span><br><span class="line">        req.setAttribute(<span class="string">"glist"</span>,list);</span><br><span class="line">        req.setAttribute(<span class="string">"stu"</span>,student);</span><br><span class="line">        req.getRequestDispatcher(<span class="string">"edit.jsp"</span>).forward(req,resp);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击修改后需要先显示学生的原本信息：(这里仅以性别和年级为例)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;    &lt;td&gt;班级&lt;span style="color:red"&gt;*&lt;/span&gt;：&lt;/td&gt;    &lt;td&gt;        &lt;select name="gid"&gt;            &lt;c:forEach items="$&#123;glist&#125;" var="g"&gt;                &lt;option value="$&#123;g.gradeId&#125;"  $&#123;g.gradeId==stu.gid?'selected':''&#125;&gt;$&#123;g.gradeName&#125;&lt;/option&gt;            &lt;/c:forEach&gt;        &lt;/select&gt;    &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;    &lt;td&gt;性别&lt;span style="color:red"&gt;*&lt;/span&gt;：&lt;/td&gt;    &lt;td&gt;        &lt;input type="radio" name="sex" $&#123;stu.sex==1?'checked':''&#125; value="1" /&gt;男        &lt;input type="radio" name="sex" $&#123;stu.sex==0?'checked':''&#125; value="0"/&gt;女    &lt;/td&gt;&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="7-在6的基础上进行修改"><a href="#7-在6的基础上进行修改" class="headerlink" title="7. 在6的基础上进行修改"></a>7. 在6的基础上进行修改</h2><p>这里就和5新增学生差不多了，通过在sql语句中用加入id条件定位学生信息，对其进行update操作</p>
+<h2 id="8-删除学生"><a href="#8-删除学生" class="headerlink" title="8. 删除学生"></a>8. 删除学生</h2><p>和6中修改请求的提交内容相同</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href="/Educational/student/deletebyid?sid=$&#123;stu.stuId&#125;"&gt;删除&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>原理还是通过stuid删除数据库中的学生信息，将删除学生的state属性值设为4，通过受影响行数判断是否删除成功</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">delStu</span><span class="params">(String sid)</span> </span>&#123;        <span class="keyword">int</span> update = <span class="number">0</span>;        <span class="keyword">try</span> &#123;            String sql=<span class="string">"update student  set state=? where stuid=?"</span>;            List params=<span class="keyword">new</span> ArrayList();            <span class="comment">//通过枚举的方式记录学生状态值，下节介绍            params.add(StudentEnum.DELETE.type);            params.add(sid);            update = update(sql, params);        &#125; catch (Exception e) &#123;            e.printStackTrace();        &#125; finally &#123;            closeAll();        &#125;        return update;    &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除后重新跳转回显示界面，此时应对之前的搜寻学生的拼接sql语句（<code>getStudents()</code>和<code>total()</code>）进行更新</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sqlbuf=<span class="keyword">new</span> StringBuffer(<span class="string">" select count(*) from student where 1=1  and state!=4  "</span>);</span><br></pre></td></tr></table></figure>
+<p>保证只显示未删除的数据（此时删除数据仍存在于数据库）</p>
+</li>
+</ul>
+<h2 id="9-枚举值保存学生状态"><a href="#9-枚举值保存学生状态" class="headerlink" title="9. 枚举值保存学生状态"></a>9. 枚举值保存学生状态</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1表示在读  2 休学   3 退学  4  删除</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> StudentEnum &#123;</span><br><span class="line">    READING(<span class="number">1</span>,<span class="string">"在读"</span>),</span><br><span class="line">    SUSPENSION(<span class="number">2</span>,<span class="string">"休学"</span>),</span><br><span class="line">    DROPOUT(<span class="number">3</span>,<span class="string">"退学"</span>),</span><br><span class="line">    DELETE(<span class="number">4</span>,<span class="string">"删除"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> Integer type;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span>  String value;</span><br><span class="line">    StudentEnum(Integer type,String value)&#123;</span><br><span class="line">        <span class="keyword">this</span>.type=type;</span><br><span class="line">        <span class="keyword">this</span>.value=value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="10-使用过滤器处理乱码"><a href="#10-使用过滤器处理乱码" class="headerlink" title="10. 使用过滤器处理乱码"></a>10. 使用过滤器处理乱码</h2><p>详见filter章节，对所有的请求和响应统一设置编码</p>
+<h2 id="11-多个请求走同一个servlet"><a href="#11-多个请求走同一个servlet" class="headerlink" title="11. 多个请求走同一个servlet"></a>11. 多个请求走同一个servlet</h2><blockquote>
+<p> 对于学生操作的servlet类很多，如何可以将这些方法走同一个servlet呢</p>
+</blockquote>
+<p>对每一个request请求的内容做些修改</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href="/Educational/student/findbyid?sid=$&#123;stu.stuId&#125;"&gt;修改&lt;/a&gt;</span><br><span class="line">&lt;!--修改--&gt;</span><br><span class="line">&lt;a href="/Educational/student/studentServlet?method=update&amp;sid=$&#123;stu.stuId&#125;"&gt;修改&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>此时就可以将AddStuServlet、DeleteByIdServlet、GetStudentServlet、FindByIdServlet 、UpdateStuServlet可以合并为一个StudnetServlet</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    String method = req.getParameter(<span class="string">"method"</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"insert"</span>.equals(method))&#123;</span><br><span class="line">            insert(req,resp);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"update"</span>.equals(method))&#123;</span><br><span class="line">        update(req, resp);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"findbyid"</span>.equals(method))&#123;</span><br><span class="line">        findbyid(req, resp);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"delete"</span>.equals(method))&#123;</span><br><span class="line">        deletestu(req, resp);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        findlist(req, resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="12-分页工具类"><a href="#12-分页工具类" class="headerlink" title="12. 分页工具类"></a>12. 分页工具类</h2><p>和学生的枚举类类似，在代码直接出现state的数字或者说对每页size的定义都是很难让人理解的，通过一个额外的类对其进行整理是能极大的帮助数据的调整和别人的理解！！！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PageUtil</span> </span>&#123;    <span class="comment">//1.页码值 2.显示条数 3.查询结果列表 4，总条数  5.总页数    private Integer pageIndex;    private Integer pageSize=5;    private List dataList;    private Integer total;    private Integer totalPages;        public Integer getPageIndex() &#123;        return pageIndex;    &#125;    public void setPageIndex(Integer pageIndex) &#123;        this.pageIndex = pageIndex;    &#125;    public Integer getPageSize() &#123;        return pageSize;    &#125;    public void setPageSize(Integer pageSize) &#123;        this.pageSize = pageSize;    &#125;    public List getDataList() &#123;        return dataList;    &#125;    public void setDataList(List dataList) &#123;        this.dataList = dataList;    &#125;    public Integer getTotal() &#123;        return total;    &#125;    public void setTotal(Integer total) &#123;        this.total = total;    &#125;    public Integer getTotalPages() &#123;        return total%pageSize&gt;0? total/pageSize+1:total/pageSize;    &#125;    public void setTotalPages(Integer totalPages) &#123;        this.totalPages = totalPages;    &#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>此时就可以对前端传过来的数据进行封装，后端存储的数据也可以通过对象传到前端（显示的总数total会发生变化）</p>
+<h1 id="项目进阶-多表"><a href="#项目进阶-多表" class="headerlink" title="项目进阶-多表"></a>项目进阶-多表</h1><h2 id="1-数据库的多表合并"><a href="#1-数据库的多表合并" class="headerlink" title="1. 数据库的多表合并"></a>1. 数据库的多表合并</h2><p>表：grade，menu，middle（角色和菜单的中间表，关联两者），role，student，users</p>
+<p>用户表：通过外键关系（roleid）和角色表关联</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210517094427.png" alt="image-20210517094427779"></p>
+<p>角色表：状态1表示可用，0表示禁用</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210517094326.png" alt="image-20210517094326004"></p>
+<p>菜单表：upmenuid表示菜单等级，0表示最上级菜单，1表示教务中心的2级菜单，2表示权限管理的2级菜单</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210517094542.png" alt="image-20210517094542433"></p>
+<p>中间表：roleid为1表示管理员权限，对应菜单表的所有信息，roleid为2表示班主任，对应教务中心和学生管理两个信息</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210517094911.png" alt="image-20210517094911523"></p>
+<h2 id="2-实体类创建"><a href="#2-实体类创建" class="headerlink" title="2. 实体类创建"></a>2. 实体类创建</h2><p>注意在实体类中体现多表关系：</p>
+<ul>
+<li><p>用户表：一个用户对应一个角色</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Users</span></span>&#123;    <span class="keyword">private</span> Integer userId;    ...    <span class="keyword">private</span> Role role;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>角色表：一个角色可以有多个用户，一个角色也可以管理多个表单</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Role</span></span>&#123;    <span class="keyword">private</span> Integer roleId;    ...    <span class="keyword">private</span> List&lt;Users&gt; usersList;    <span class="keyword">private</span> List&lt;Menu&gt; menuList;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>菜单表：一个菜单可以由多个角色的管理者访问，一个菜单可能包含多个二级菜单</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Menu</span></span>&#123;    <span class="keyword">private</span> Integer menuId;    ...    <span class="keyword">private</span> List&lt;Role&gt; roleL;    <span class="keyword">private</span> List&lt;Menu&gt; secondMenuList; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-用户列表展示"><a href="#3-用户列表展示" class="headerlink" title="3. 用户列表展示"></a>3. 用户列表展示</h2><p>和上面的学生列表的展示方式差不多，通过在url中添加属性method，只需要一个servlet进行管理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">WebServlet(urlPatterns = &#123;<span class="string">"/power/user/users"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UsersServlet</span>  <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UsersService usersService=<span class="keyword">new</span> UsersServiceImpl();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String method = req.getParameter(<span class="string">"method"</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"select"</span>.equals(method))&#123;</span><br><span class="line">            select(req,resp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询数据（分页）</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">select</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">       <span class="comment">//1.接收参数(分页参数+模糊查参数)</span></span><br><span class="line">        String index = req.getParameter(<span class="string">"index"</span>);</span><br><span class="line">        <span class="keyword">int</span> pageIndex=(index==<span class="keyword">null</span>||index.length()==<span class="number">0</span>)?<span class="number">1</span>:Integer.parseInt(index);</span><br><span class="line">       <span class="comment">//2.调取service方法(1.查询数据列表的方法  2.查询总条数的方法)</span></span><br><span class="line">        PageUtil pageUtil = <span class="keyword">new</span> PageUtil();</span><br><span class="line">        List&lt;Users&gt; usersList = usersService.getUsersList(pageIndex, pageUtil.getPageSize());</span><br><span class="line">        <span class="keyword">int</span> total = usersService.total();</span><br><span class="line">        pageUtil.setTotal(total);</span><br><span class="line">        pageUtil.setPageIndex(pageIndex);</span><br><span class="line">        pageUtil.setDataList(usersList);</span><br><span class="line">        <span class="comment">//3.存值跳页面</span></span><br><span class="line">        req.setAttribute(<span class="string">"pi"</span>,pageUtil);</span><br><span class="line">        req.getRequestDispatcher(<span class="string">"list.jsp"</span>).forward(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Dao的逻辑代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Users <span class="title">login</span><span class="params">(String username, String password)</span> </span>&#123;</span><br><span class="line">    Users users= <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String sql=<span class="string">"select * from users where loginname=? and password=?"</span>;</span><br><span class="line">        ArrayList arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        arrayList.add(username);</span><br><span class="line">        arrayList.add(password);</span><br><span class="line">        resultSet = query(sql, arrayList);</span><br><span class="line">        <span class="keyword">if</span>(resultSet==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(resultSet.next())&#123;</span><br><span class="line">            users=<span class="keyword">new</span> Users();</span><br><span class="line">            users.setLoginName(username);</span><br><span class="line">            users.setRealName(resultSet.getString(<span class="string">"realname"</span>));</span><br><span class="line">            users.setUserId(resultSet.getInt(<span class="string">"userid"</span>));</span><br><span class="line">            users.setRoleId(resultSet.getInt(<span class="string">"roleid"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">        throwables.printStackTrace();</span><br><span class="line">    &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">        closeAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> users;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Users&gt; <span class="title">getUsersList</span><span class="params">(<span class="keyword">int</span> pageIndex, <span class="keyword">int</span> pageSize)</span> </span>&#123;</span><br><span class="line">    List&lt;Users&gt; usersList=<span class="keyword">new</span> ArrayList&lt;Users&gt;();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String sql=<span class="string">"select userid,loginname,realname,rolename from users u,role r where u.roleid=r.roleid  limit ?,?"</span>;</span><br><span class="line">        List params=<span class="keyword">new</span> ArrayList();</span><br><span class="line">        params.add((pageIndex-<span class="number">1</span>)*pageSize);</span><br><span class="line">        params.add(pageSize);</span><br><span class="line"></span><br><span class="line">        resultSet = query(sql, params);</span><br><span class="line">        <span class="keyword">while</span>(resultSet.next())&#123;</span><br><span class="line">            <span class="comment">//1.取出各表的数据</span></span><br><span class="line">            Users users = <span class="keyword">new</span> Users();</span><br><span class="line">            users.setUserId(resultSet.getInt(<span class="string">"userid"</span>));</span><br><span class="line">            users.setLoginName(resultSet.getString(<span class="string">"loginname"</span>));</span><br><span class="line">            users.setRealName(resultSet.getString(<span class="string">"realname"</span>));</span><br><span class="line"></span><br><span class="line">            Role role = <span class="keyword">new</span> Role();</span><br><span class="line">            role.setRoleName(resultSet.getString(<span class="string">"rolename"</span>));</span><br><span class="line">            <span class="comment">//2.建立关系</span></span><br><span class="line">            users.setRole(role);</span><br><span class="line">            usersList.add(users);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">        throwables.printStackTrace();</span><br><span class="line">    &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">        closeAll();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> usersList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">total</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> total=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String sql=<span class="string">"select count(1) from users u,role r where u.roleid=r.roleid "</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        resultSet = query(sql, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">while</span>(resultSet.next())&#123;</span><br><span class="line">          total=resultSet.getInt(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">        throwables.printStackTrace();</span><br><span class="line">    &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">        closeAll();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-新增人员思路"><a href="#4-新增人员思路" class="headerlink" title="4. 新增人员思路"></a>4. 新增人员思路</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210520102006.png" alt="image-20210520101959894"></p>
+<h2 id="5-角色的新增，删除，修改"><a href="#5-角色的新增，删除，修改" class="headerlink" title="5. 角色的新增，删除，修改"></a>5. 角色的新增，删除，修改</h2><ul>
+<li><p>新增：先将菜单列表的内容添加到html页面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = &#123;<span class="string">"/power/role/roles"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RoleServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> RoleService roleService=<span class="keyword">new</span> RoleServiceImpl();</span><br><span class="line">    <span class="keyword">private</span> MenuService menuService=<span class="keyword">new</span> MenuServiceImpl();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String method = req.getParameter(<span class="string">"method"</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"select"</span>.equals(method))&#123;</span><br><span class="line">            select(req,resp);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"selectmenus"</span>.equals(method))&#123;</span><br><span class="line">            selectmenus(req,resp);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"insert"</span>.equals(method))&#123;</span><br><span class="line">            insert(req,resp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//新增角色</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String rolename = req.getParameter(<span class="string">"rolename"</span>);</span><br><span class="line">        String state = req.getParameter(<span class="string">"state"</span>);</span><br><span class="line">        String[] menuids = req.getParameterValues(<span class="string">"menuid"</span>);</span><br><span class="line">        <span class="keyword">int</span> i = roleService.insertRole(rolename, state, menuids);</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            resp.sendRedirect(<span class="string">"/power/role/roles?method=select"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            resp.sendRedirect(<span class="string">"/power/role/roles?method=selectmenus"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//查询菜单列表</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">selectmenus</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1.接收参数</span></span><br><span class="line">        <span class="comment">//2.调取service方法</span></span><br><span class="line">        List&lt;Menu&gt; menuList = menuService.getMenuList();</span><br><span class="line">        req.setAttribute(<span class="string">"menulist"</span>,menuList);</span><br><span class="line">        req.getRequestDispatcher(<span class="string">"add.jsp"</span>).forward(req,resp);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询数据（分页）</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">select</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">       <span class="comment">//1.接收参数(分页参数+模糊查参数)</span></span><br><span class="line">        String index = req.getParameter(<span class="string">"index"</span>);</span><br><span class="line">        <span class="keyword">int</span> pageIndex=(index==<span class="keyword">null</span>||index.length()==<span class="number">0</span>)?<span class="number">1</span>:Integer.parseInt(index);</span><br><span class="line">       <span class="comment">//2.调取service方法(1.查询数据列表的方法  2.查询总条数的方法)</span></span><br><span class="line">        PageUtil pageUtil = <span class="keyword">new</span> PageUtil();</span><br><span class="line">        List&lt;Role&gt; roleList = roleService.getRoleList(pageIndex, pageUtil.getPageSize());</span><br><span class="line">        <span class="keyword">int</span> total = roleService.total();</span><br><span class="line">        pageUtil.setTotal(total);</span><br><span class="line">        pageUtil.setPageIndex(pageIndex);</span><br><span class="line">        pageUtil.setDataList(roleList);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.存值跳页面</span></span><br><span class="line">        req.setAttribute(<span class="string">"pi"</span>,pageUtil);</span><br><span class="line">        req.getRequestDispatcher(<span class="string">"list.jsp"</span>).forward(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210520102720.png" alt="image-20210520102720259"></p>
+</li>
+<li><p>删除</p>
+<p>注意点：先删除中间表，去除主外键关系后再删除角色表</p>
+</li>
+</ul>
+<h2 id="6-不同角色的菜单进行动态更新"><a href="#6-不同角色的菜单进行动态更新" class="headerlink" title="6. 不同角色的菜单进行动态更新"></a>6. 不同角色的菜单进行动态更新</h2><p>Dao层的用户类中，通过三表联查建立关系后的查询结果就是和用户权限菜单对应的结果，此时将菜单传到前端就可以了</p>
+<h1 id="3-快递站项目"><a href="#3-快递站项目" class="headerlink" title="3. 快递站项目"></a>3. 快递站项目</h1><p>整体框架的建立/整个项目的数据流向：</p>
+<ul>
+<li><p>MVC包：迎宾/前台</p>
+<ul>
+<li>ResponseType（枚举类型）：TEXT/VIEW，记录方法的处理对象是文本还是图像</li>
+<li><p>ResponseBody、ResponseView（注释）：通过注释名区分ResponseType，通过注释的value对应请求的url</p>
+</li>
+<li><p>DispatcherServlet类（HttpServlet实现类）：负责前端请求的接收和通信，在init方法中对初始化参数（application.properties文件）转换为输入流，通过反射获取其中的操作类（Controller）的带注释的操作方法</p>
+</li>
+<li>HandlerMapping类（映射池）：通过参数文件（application.properties接收操作类的类名），通过操作类的类名+反射获取到：方法的注释value（对应的请求url字符串）、方法（Method m）、ResponseType。用内部类MappingMVC接收（方法所在类Object，方法对象，响应类型），用<code>Map&lt;String,MVCMapping&gt; data</code>将请求URL和MappingMVC对应起来！！！！</li>
+</ul>
+<p>此时，通过<code>HandlerMapping.MVCMapping mapping = HandlerMapping.get(uri);</code>我就可以在servlet中获取到执行响应请求的方法。</p>
+</li>
+<li><p>controller包：包厢部/住房部主管</p>
+<ul>
+<li>AdminController和ExpressController：两个类分别保存了对应管理员请求和快递请求的处理方法；</li>
+</ul>
+<p>此时的controller为了获取到前端请求的数据，需要访问数据库，这是一个曲折个过程。。。</p>
+<p>首先访问service包</p>
+</li>
+<li><p>service包：服务员</p>
+<ul>
+<li>AdminService和ExpressService：包含了对数据库操作的意愿，但是它还碰不到数据库</li>
+</ul>
+<p>此时的service中的方法只是在调用dao包的抽象方法，具体的数据库操作还是得有dao层进行</p>
+</li>
+<li><p>Dao包：厨子</p>
+<ul>
+<li>impl包：实现类</li>
+<li>抽象类</li>
+</ul>
+</li>
+<li><p>工具（util包）和过滤器（filter包）：</p>
+<ul>
+<li>DateFormatUtil：时间格式转换</li>
+<li>DruidUtil：德鲁伊连接池</li>
+<li>JSONUtil：字符串转JSON</li>
+<li>RandomUtil：随机数生成</li>
+<li>UserUtil：通过session获取用户信息</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-1-编写MVC框架"><a href="#3-1-编写MVC框架" class="headerlink" title="3.1 编写MVC框架"></a>3.1 编写MVC框架</h2><p>核心：注解和反射</p>
+<ul>
+<li><p>MVC框架的意义：</p>
+<p>以注册，登录，用户信息获取等几个功能为例，每个功能的实现可能都需要一个servlet类进行处理。框架的存在就是在一个类中对所有功能的方法进行整合！！！</p>
+</li>
+<li><p>大概框架：</p>
+<p>在xml配置文件中对<code>*.do</code>的请求配置进入Servlet，在Servlet的init方法中：加载配置文件、建立映射地址的池（通过映射器来调用方法）</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210523093147.png" alt="image-20210523093140435"></p>
+<ul>
+<li><p>后台src中的文件：</p>
+<p>application.properties：配置用于处理请求的类，每个类可能包含0-n个用于处理请求的方法</p>
+</li>
+</ul>
+<h3 id="3-1-1-具体代码"><a href="#3-1-1-具体代码" class="headerlink" title="3.1.1 具体代码"></a>3.1.1 具体代码</h3><ul>
+<li><p>xml文件的配置:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.kaikeba.mvc.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contentConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>application.properties<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>0<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Servlet需要处理的信息：（初始化init后就是要对输入流is中的参数进行拆分获取【遍历类，类的反射对象，类中所有方法，按照方法注解的请求地址封装方法。。。】，处理完后才进行service编写）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DispatcherServlet</span> <span class="keyword">extends</span> <span class="title">javax</span>.<span class="title">servlet</span>.<span class="title">http</span>.<span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="comment">//初始化，加载配置文件（通过在xml中给配置文件起的名字获取）</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        String path = config.getInitParameter(<span class="string">"contentConfigLocation"</span>);</span><br><span class="line">        <span class="comment">//通过类加载器将配置文件转换为字节输入流</span></span><br><span class="line">        InputStream is = DispatcherServlet<span class="class">.<span class="keyword">class</span>.<span class="title">getClassLoader</span>().<span class="title">getResourceAsStream</span>(<span class="title">path</span>)</span>;</span><br><span class="line">        <span class="comment">//这里的HandlerMapping就是自己构建的一个映射器</span></span><br><span class="line">        HandlerMapping.load(is);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//doGet和doPost方法都是走service方法，可以直接在这里编写</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1. ********第一件事：获取用户请求的uri   /xx.do</span></span><br><span class="line">        String uri = req.getRequestURI();</span><br><span class="line">        HandlerMapping.MVCMapping mapping = HandlerMapping.get(uri);</span><br><span class="line">        <span class="keyword">if</span>( mapping == <span class="keyword">null</span>)&#123;</span><br><span class="line">            resp.sendError(<span class="number">404</span>,<span class="string">"MVC：映射地址不存在："</span>+uri);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Object obj = mapping.getObj();</span><br><span class="line">        Method method = mapping.getMethod();</span><br><span class="line">        Object result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//参考反射中方法的执行，第一个参数就是方法所在的对象！！</span></span><br><span class="line">            result = method.invoke(obj, req, resp);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">switch</span> (mapping.getType())&#123;</span><br><span class="line">            <span class="keyword">case</span> TEXT:</span><br><span class="line">                resp.getWriter().write((String)result);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> VIEW:</span><br><span class="line">                resp.sendRedirect((String)result);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实际的操作方法中，返回值应该都为String类型，因为<code>result</code>的处理流程中（上面代码最后几行），无论前端展示还是重定向都是要转为String类型</p>
+</li>
+<li><p>注解的建立</p>
+<ul>
+<li><p>给用于向前端返回文字的方法建立注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 注解的作用：</span></span><br><span class="line"><span class="comment"> *  被此注解添加的方法， 会被用于处理请求。</span></span><br><span class="line"><span class="comment"> *  方法返回的内容，会以文字形式返回到客户端</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ResponseBody &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用于跳转页面的方法建立注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 注解的作用：</span></span><br><span class="line"><span class="comment"> *  被此注解添加的方法， 会被用于处理请求。</span></span><br><span class="line"><span class="comment"> *  方法返回的内容，会直接重定向</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ResponseView &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>注解的使用1：建立枚举类型描述注解(?注解的用处不太明白，需要关注下)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ResponseType &#123;</span><br><span class="line">    TEXT,VIEW;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Servlet和注解建立后，就是创建映射器，加载相应的方法</p>
+<p>可以看出，映射器的本质就是一个Map集合，是对请求（String）和方法（MVCMapping）的一个映射，当然MVCMapping中不止封装了方法，还有该方法所在的类反射得到的对象，还有该方法的作用类型</p>
+<blockquote>
+<p>问：Map中的String值 ((ResponseBody) annotation).value() 是什么意思</p>
+<p>答：对于value方法没加默认值（default）的注解，在声明注解时必须传入参数，这时候在每个方法的注解中传入网址了，也就是Map中的String。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 映射器（包含了大量的网址与方法的对应关系）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HandlerMapping</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,MVCMapping&gt; data = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MVCMapping <span class="title">get</span><span class="params">(String uri)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data.get(uri);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">load</span><span class="params">(InputStream is )</span></span>&#123;</span><br><span class="line">        Properties ppt = <span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ppt.load(is);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//获取配置文件中描述的一个个的类</span></span><br><span class="line">        Collection&lt;Object&gt; values = ppt.values();</span><br><span class="line">        <span class="keyword">for</span> (Object cla:values) &#123;</span><br><span class="line">            String className = (String) cla;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//加载配置文件中描述的每一个类</span></span><br><span class="line">                Class c = Class.forName(className);</span><br><span class="line">                <span class="comment">//创建这个类的对象</span></span><br><span class="line">                Object obj = c.getConstructor().newInstance();</span><br><span class="line">                <span class="comment">//获取这个类的所有方法</span></span><br><span class="line">                Method[] methods = c.getMethods();</span><br><span class="line">                <span class="keyword">for</span> (Method m:methods) &#123;</span><br><span class="line">                    Annotation[] as = m.getAnnotations();</span><br><span class="line">                    <span class="keyword">if</span>(as != <span class="keyword">null</span>)&#123;</span><br><span class="line">                        <span class="keyword">for</span>(Annotation annotation:as)&#123;</span><br><span class="line">                            <span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> ResponseBody)&#123;</span><br><span class="line">                                <span class="comment">//说明此方法，用于返回字符串给客户端</span></span><br><span class="line">                                MVCMapping mapping = <span class="keyword">new</span> MVCMapping(obj,m,ResponseType.TEXT);</span><br><span class="line">                                Object o = data.put(((ResponseBody) annotation).value(),mapping);</span><br><span class="line">                                <span class="keyword">if</span>(o != <span class="keyword">null</span>)&#123;</span><br><span class="line">                                    <span class="comment">//存在了重复的请求地址</span></span><br><span class="line">                                    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"请求地址重复："</span>+((ResponseBody) annotation).value());</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> ResponseView)&#123;</span><br><span class="line">                                <span class="comment">//说明此方法，用于返回界面给客户端</span></span><br><span class="line">                                MVCMapping mapping = <span class="keyword">new</span> MVCMapping(obj,m,ResponseType.VIEW);</span><br><span class="line">                                Object o =  data.put(((ResponseView) annotation).value(),mapping);</span><br><span class="line">                                <span class="keyword">if</span>(o != <span class="keyword">null</span>)&#123;</span><br><span class="line">                                    <span class="comment">//存在了重复的请求地址</span></span><br><span class="line">                                    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"请求地址重复："</span>+((ResponseView) annotation).value());</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 映射对象，每一个对象封装了一个方法，用于处理请求</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MVCMapping</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Object obj;</span><br><span class="line">        <span class="keyword">private</span> Method method;</span><br><span class="line">        <span class="keyword">private</span> ResponseType type;</span><br><span class="line">		<span class="comment">//添加构造方法和set/get方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时通过<code>类名.get（）</code>就可以获取到请求对应的方法！！！</p>
+</li>
+</ul>
+<h2 id="3-2-前端准备工作"><a href="#3-2-前端准备工作" class="headerlink" title="3.2 前端准备工作"></a>3.2 前端准备工作</h2><h3 id="3-2-1-二维码生成"><a href="#3-2-1-二维码生成" class="headerlink" title="3.2.1 二维码生成"></a>3.2.1 二维码生成</h3><p><a href="https://itdage.cn/file/qrcode.zip" target="_blank" rel="noopener">下载资源文件</a></p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">步骤:</span><br><span class="line">    <span class="number">1.</span>  引入Jquery.js文件</span><br><span class="line">    <span class="number">2.</span>  引入jquery.qrcode.js文件</span><br><span class="line">    <span class="number">3.</span>  引入支持中文的编码js文件 (utf.js)</span><br><span class="line">    <span class="number">4.</span>  在网页中编写一个div 用于显示二维码</span><br><span class="line">            <span class="params">&lt;div id="div1"&gt;</span><span class="params">&lt;/div&gt;</span></span><br><span class="line">    <span class="number">5.</span>  准备二维码的规格对象(JSON)</span><br><span class="line">        var config  = &#123;</span><br><span class="line"><span class="symbol">            width:</span>数字,<span class="comment">//值是number类型, 表示的单位是px  必须传递</span></span><br><span class="line"><span class="symbol">            height:</span>数字,<span class="comment">//值是number类型, 表示的单位是px  必须传递 </span></span><br><span class="line"><span class="symbol">            text:</span><span class="string">"内容"</span>,<span class="comment">//text就表示二维码中存储的数据  必须传递</span></span><br><span class="line"><span class="symbol">            correctLevel:</span>数字,<span class="comment">//取值为0|1|2|3 表示二维码的纠错级别0:L/1:M/2:Q/3:H ,默认0  可选参数</span></span><br><span class="line"><span class="symbol">            background:</span><span class="string">"#rrggbb"</span>,<span class="comment">//默认白色, 表示二维码的后景颜色 可选参数</span></span><br><span class="line"><span class="symbol">            foreground:</span><span class="string">"#rrggbb"</span>,<span class="comment">//默认黑色, 表示二维码的前景颜色 可选参数</span></span><br><span class="line"><span class="symbol">            render:</span><span class="string">"绘制模式"</span><span class="comment">//取值:table/canvas , 默认table 可选参数</span></span><br><span class="line">        &#125;;</span><br><span class="line">    <span class="number">6.</span>  通过选择器, 查找到上述的div ,得到Jquery对象, 通过jquery对象的qrcode函数生成二维码</span><br><span class="line">            $(<span class="string">"#div1"</span>).qrcode(config);</span><br></pre></td></tr></table></figure>
+<p>注意：前端内容的编写一定要小心，没事别带空格！！！</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>二维码生成<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery2.1.4.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/jquery.qrcode.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/utf.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>123<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"qrcode"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">var</span> config=&#123;</span></span><br><span class="line">        width:200,</span><br><span class="line">        height:200,</span><br><span class="line"><span class="actionscript">        text:<span class="string">"23456"</span></span></span><br><span class="line">      &#125;</span><br><span class="line"><span class="javascript">      $(<span class="string">"#qrcode"</span>).qrcode(config);</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-2-弹出层-layer"><a href="#3-2-2-弹出层-layer" class="headerlink" title="3.2.2 弹出层-layer"></a>3.2.2 弹出层-layer</h3><p>步骤:</p>
+<pre><code>   1.  下载layer , 并将解压后的layer文件夹 移动到项目中
+   2.  引入jquery.js
+   3.  引入layer.js
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery2.1.4.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"layer/layer.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="function"><span class="keyword">function</span> <span class="title">msgTest</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//提示的文字</span></span></span><br><span class="line"><span class="actionscript">            layer.msg(<span class="string">"提示的文字"</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="function"><span class="keyword">function</span> <span class="title">loadTest</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">          <span class="comment">//返回弹出层的id</span></span></span><br><span class="line"><span class="actionscript">          <span class="keyword">var</span> windowId=layer.load(<span class="number">0</span>); <span class="comment">//0-16</span></span></span><br><span class="line"><span class="actionscript">          <span class="comment">//可以通过窗口的id关闭窗口,loading窗口在弹出时, 不允许进行操作.</span></span></span><br><span class="line"><span class="actionscript">            setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line">                layer.close(windowId);</span><br><span class="line">            &#125;,2000)</span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="function"><span class="keyword">function</span> <span class="title">msg_load</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//信息和图标同时显示</span></span></span><br><span class="line"><span class="actionscript">            layer.msg(<span class="string">"提示的文字"</span>,&#123;icon:<span class="number">16</span>,shade:<span class="number">0.01</span>&#125;);</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="function"><span class="keyword">function</span> <span class="title">alertTest</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//区别于js自带的alert（每个浏览器的弹框都不一样）</span></span></span><br><span class="line"><span class="actionscript">            layer.alert(<span class="string">"123"</span>,&#123;icon:<span class="number">10</span>&#125;);</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="function"><span class="keyword">function</span> <span class="title">tipsTest</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">            layer.tips(<span class="string">"这里有秘密"</span>,<span class="string">"#secret"</span>,&#123;tipsMore:<span class="literal">true</span>,tips:<span class="number">1</span>&#125;);</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"msgTest()"</span>&gt;</span>msg函数<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"loadTest()"</span>&gt;</span>load函数<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"msg_load()"</span>&gt;</span>msg函数+load效果<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"alertTest()"</span>&gt;</span>alert函数<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"tipsTest()"</span>&gt;</span>tips函数<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">      锄禾日当午，疑是地上<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"secret"</span>&gt;</span>霜<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-3-准备工具类"><a href="#3-3-准备工具类" class="headerlink" title="3.3 准备工具类"></a>3.3 准备工具类</h2><ul>
+<li><p>库文件：D:\idea-project\day65_javaWebTest\web\WEB-INF\lib</p>
+</li>
+<li><p>时间格式工具</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DateFormatUtil</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SimpleDateFormat format = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">format</span><span class="params">(Date date)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> format.format(date);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据库操作工具（需先导入德鲁伊库+mysql8.0）</p>
+<p>使用的方法：</p>
+<ul>
+<li>直接获得与状态通道，自己对其进行处理（设置sql和占位符参数）</li>
+<li>直接调用增删改查方法，传入sql语句和参数列表（查询返回值是结果集，更新返回结果是被修改行数）</li>
+<li>最后通过<code>closeAll（）</code>关闭所有</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBUtils</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1.定义变量</span></span><br><span class="line">    <span class="keyword">private</span> Connection connection;</span><br><span class="line">    <span class="keyword">private</span> PreparedStatement pps;</span><br><span class="line">    <span class="keyword">protected</span> ResultSet resultSet;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;<span class="comment">//存储收影响的行数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String userPass;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String url;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String dirverName;</span><br><span class="line">    <span class="comment">//德鲁伊</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> DruidDataSource dataSource=<span class="keyword">new</span> DruidDataSource();</span><br><span class="line">    <span class="comment">//2.加载驱动</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">//德鲁伊</span></span><br><span class="line">        ResourceBundle bundle = ResourceBundle.getBundle(<span class="string">"jdbc"</span>);</span><br><span class="line">        dirverName = bundle.getString(<span class="string">"driverClassName"</span>);</span><br><span class="line">        url = bundle.getString(<span class="string">"url"</span>);</span><br><span class="line">        userName = bundle.getString(<span class="string">"username"</span>);</span><br><span class="line">        userPass = bundle.getString(<span class="string">"password"</span>);</span><br><span class="line"></span><br><span class="line">        dataSource.setUsername(userName);</span><br><span class="line">        dataSource.setPassword(userPass);</span><br><span class="line">        dataSource.setUrl(url);</span><br><span class="line">        dataSource.setDriverClassName(dirverName);</span><br><span class="line">       <span class="comment">// dataSource.setInitialSize(20);</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//3.获得链接</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span>  Connection <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection=dataSource.getConnection();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> connection;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//4.得到预状态通道</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span>  PreparedStatement <span class="title">getPps</span><span class="params">(String sql)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            pps= getConnection().prepareStatement(sql);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pps;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//5.绑定参数  List保存的是给占位符所赋的值</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">param</span><span class="params">(List list)</span></span>&#123;</span><br><span class="line">             <span class="keyword">if</span>(list!=<span class="keyword">null</span>&amp;&amp;list.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                 <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++) &#123;</span><br><span class="line">                     <span class="keyword">try</span> &#123;</span><br><span class="line">                         pps.setObject(i+<span class="number">1</span>,list.get(i));</span><br><span class="line">                     &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">                         throwables.printStackTrace();</span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//6.执行操作(增删改+查询)</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span>  <span class="keyword">int</span>  <span class="title">update</span><span class="params">(String sql,List list)</span></span>&#123;</span><br><span class="line">        getPps(sql);</span><br><span class="line">        param(list);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            count= pps.executeUpdate();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//7.查询</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span>  ResultSet <span class="title">query</span><span class="params">(String sql,List list)</span></span>&#123;</span><br><span class="line">        getPps(sql);</span><br><span class="line">        param(list);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            resultSet= pps.executeQuery();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultSet;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//8.关闭资源</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">closeAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;</span><br><span class="line">                connection.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (pps != <span class="keyword">null</span>) &#123;</span><br><span class="line">                pps.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (resultSet != <span class="keyword">null</span>) &#123;</span><br><span class="line">                resultSet.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-4-后台对接管理员数据库"><a href="#3-4-后台对接管理员数据库" class="headerlink" title="3.4 后台对接管理员数据库"></a>3.4 后台对接管理员数据库</h2><p>数据库：id+账号名+密码+登录IP+登录时间</p>
+<ul>
+<li>先填写登录IP和登录时间，返回id</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminDaoMysql</span> <span class="keyword">implements</span> <span class="title">BaseAdminDao</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SQL_UPDATE_LOGIN_TIME = <span class="string">"UPDATE EADMIN SET LOGINTIME=?,LOGINIP=? WHERE USERNAME=?"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SQL_LOGIN = <span class="string">"SELECT ID FROM EADMIN WHERE USERNAME=? AND PASSWORD=?"</span>;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateLoginTime</span><span class="params">(String username, Date date, String ip)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.    获取连接</span></span><br><span class="line">        Connection conn = DruidUtil.getConnection();</span><br><span class="line">        PreparedStatement state = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//2.    预编译SQL语句</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            state = conn.prepareStatement(SQL_UPDATE_LOGIN_TIME);</span><br><span class="line">            <span class="comment">//3.    填充参数</span></span><br><span class="line">            state.setDate(<span class="number">1</span>,<span class="keyword">new</span> java.sql.Date(date.getTime()));</span><br><span class="line">            state.setString(<span class="number">2</span>,ip);</span><br><span class="line">            state.setString(<span class="number">3</span>,username);</span><br><span class="line">            <span class="comment">//4.    执行</span></span><br><span class="line">            state.executeUpdate();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//5.    释放资源</span></span><br><span class="line">            DruidUtil.close(conn,state,<span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 管理员根据账号密码登陆</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> username 账号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> password 密码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 登陆的结果， true表示登陆成功</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">login</span><span class="params">(String username, String password)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.    获取连接</span></span><br><span class="line">        Connection conn = DruidUtil.getConnection();</span><br><span class="line">        PreparedStatement state = <span class="keyword">null</span>;</span><br><span class="line">        ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//2.    预编译SQL语句</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            state = conn.prepareStatement(SQL_LOGIN);</span><br><span class="line">            <span class="comment">//3.    填充参数</span></span><br><span class="line">            state.setString(<span class="number">1</span>,username);</span><br><span class="line">            state.setString(<span class="number">2</span>,password);</span><br><span class="line">            <span class="comment">//4.    执行并获取结果</span></span><br><span class="line">            rs = state.executeQuery();</span><br><span class="line">            <span class="comment">//5.    根据查询结果，返回</span></span><br><span class="line">            <span class="keyword">return</span> rs.next();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException throwables) &#123;</span><br><span class="line">            throwables.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//6.    释放资源</span></span><br><span class="line">            DruidUtil.close(conn,state,rs);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-5-管理员登录前后端交互"><a href="#3-5-管理员登录前后端交互" class="headerlink" title="3.5 管理员登录前后端交互"></a>3.5 管理员登录前后端交互</h2><h3 id="3-5-1-Ajax设置"><a href="#3-5-1-Ajax设置" class="headerlink" title="3.5.1 Ajax设置"></a>3.5.1 Ajax设置</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">".login-button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> username = $(<span class="string">"#username"</span>).val();</span><br><span class="line">        <span class="keyword">var</span> password = $(<span class="string">"#password"</span>).val();</span><br><span class="line">        <span class="comment">//1.    先使用layer，弹出load（提示加载中...）</span></span><br><span class="line">        <span class="keyword">var</span> windowId = layer.load();</span><br><span class="line">        <span class="comment">//2.    ajax与服务器交互</span></span><br><span class="line">        $.post(<span class="string">"login.do"</span>,&#123;<span class="attr">username</span>:username,<span class="attr">password</span>:password&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            <span class="comment">//3.    关闭load窗口</span></span><br><span class="line">            layer.close(windowId);</span><br><span class="line">            <span class="comment">//4.    将服务器回复的结果进行显示</span></span><br><span class="line">            layer.msg(data.result);</span><br><span class="line">            <span class="keyword">if</span>(data.status == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">//跳转到主页</span></span><br><span class="line">                location.assign(<span class="string">"index.html"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">        &#125;,<span class="string">"JSON"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/25/%E8%AE%BA%E6%96%87-%E6%A1%86%E6%9E%B6/" rel="next" title="论文-框架">
+                <i class="fa fa-chevron-left"></i> 论文-框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点复习"><span class="nav-text">知识点复习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目实现过程"><span class="nav-text">项目实现过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码优化"><span class="nav-text">代码优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-text">注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-登录功能"><span class="nav-text">1. 登录功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-退出功能"><span class="nav-text">2.  退出功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-获取学生列表"><span class="nav-text">3. 获取学生列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-模糊查询-分页-Dao层"><span class="nav-text">4. 模糊查询+分页(Dao层)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-新增学生"><span class="nav-text">5. 新增学生</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-年级信息"><span class="nav-text">5.1 年级信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-学生对象"><span class="nav-text">5.2 学生对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-主键查询对学生信息进行修改"><span class="nav-text">6. 主键查询对学生信息进行修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-在6的基础上进行修改"><span class="nav-text">7. 在6的基础上进行修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-删除学生"><span class="nav-text">8. 删除学生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-枚举值保存学生状态"><span class="nav-text">9. 枚举值保存学生状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-使用过滤器处理乱码"><span class="nav-text">10. 使用过滤器处理乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-多个请求走同一个servlet"><span class="nav-text">11. 多个请求走同一个servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-分页工具类"><span class="nav-text">12. 分页工具类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目进阶-多表"><span class="nav-text">项目进阶-多表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数据库的多表合并"><span class="nav-text">1. 数据库的多表合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实体类创建"><span class="nav-text">2. 实体类创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-用户列表展示"><span class="nav-text">3. 用户列表展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-新增人员思路"><span class="nav-text">4. 新增人员思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-角色的新增，删除，修改"><span class="nav-text">5. 角色的新增，删除，修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-不同角色的菜单进行动态更新"><span class="nav-text">6. 不同角色的菜单进行动态更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-快递站项目"><span class="nav-text">3. 快递站项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-编写MVC框架"><span class="nav-text">3.1 编写MVC框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-具体代码"><span class="nav-text">3.1.1 具体代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-前端准备工作"><span class="nav-text">3.2 前端准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-二维码生成"><span class="nav-text">3.2.1 二维码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-弹出层-layer"><span class="nav-text">3.2.2 弹出层-layer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-准备工具类"><span class="nav-text">3.3 准备工具类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-后台对接管理员数据库"><span class="nav-text">3.4 后台对接管理员数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-管理员登录前后端交互"><span class="nav-text">3.5 管理员登录前后端交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-Ajax设置"><span class="nav-text">3.5.1 Ajax设置</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

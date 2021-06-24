@@ -89,7 +89,7 @@
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201209180508.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201210153031.png">
 <meta property="article:published_time" content="2020-12-09T08:44:15.000Z">
-<meta property="article:modified_time" content="2021-03-14T08:14:26.547Z">
+<meta property="article:modified_time" content="2021-06-24T08:50:01.395Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -327,8 +327,8 @@
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-03-14T16:14:26+08:00" content="2021-03-14">
-                          2021-03-14
+                     <time itemprop="dateUpdated" datetime="2021-06-24T16:50:01+08:00" content="2021-06-24">
+                          2021-06-24
                      </time>
                  </span>
              
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-JVM-IDEA-%E9%9B%86%E5%90%88-%E6%95%B0%E7%BB%84-String%E4%B8%93%E9%A2%98-%E5%9F%BA%E7%A1%80-%E6%A6%82%E5%BF%B5/" itemprop="url" rel="index">
-                    <span itemprop="name">java学习-JVM.IDEA.集合/数组/String专题.基础.概念.</span>
+                  <a href="/categories/java%E5%AD%A6%E4%B9%A0-JVM-IDEA-web-%E9%9B%86%E5%90%88-%E6%95%B0%E7%BB%84-String%E4%B8%93%E9%A2%98-%E5%89%8D%E7%AB%AF-web%E5%AE%9E%E6%88%98-%E5%9F%BA%E7%A1%80-%E6%A6%82%E5%BF%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习-JVM.IDEA.web.集合/数组/String专题.前端.web实战.基础.概念.</span>
                   </a>
                 </span>
 
@@ -431,9 +431,22 @@
 </li>
 </ul>
 <h2 id="2-1-比较"><a href="#2-1-比较" class="headerlink" title="2.1 比较"></a>2.1 比较</h2><ul>
-<li>==表示内容和地址均相等，如果均为引用类型，则为同一对象</li>
-<li>equals只表示内容相同</li>
-<li>equalsIgnoreCase(String str)：忽略大小写后看是否相同</li>
+<li><p>==和equals的区别</p>
+<p>==表示内容和地址均相等，如果均为引用类型，则为同一对象</p>
+<p>equals只表示内容相同，和hashcode有关，如果equals结果为true，则hashcode必相同；如果hashcode相同，equals结果不一定</p>
+<p>equalsIgnoreCase(String str)：忽略大小写后看是否相同</p>
+</li>
+<li><p><code>compareTo()</code>：两种用法</p>
+<ul>
+<li>字符串与对象进行比较。</li>
+<li>按字典顺序比较两个字符串。</li>
+</ul>
+<p>比较的方式：</p>
+<p>如果第一个字符和参数的第一个字符不等，结束比较，返回第一个字符的ASCII码差值。</p>
+<p>如果第一个字符和参数的第一个字符相等，则以第二个字符和参数的第二个字符做比较，以此类推,直至不等为止，返回该字符的ASCII码差值。 如果两个字符串不一样长，可对应字符又完全一样，则返回两个字符串的长度差值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        String str1 = <span class="string">"Strings"</span>;</span><br><span class="line">        String str3 = <span class="string">"Strings123"</span>;</span><br><span class="line">        <span class="keyword">int</span> result = str1.compareTo( str3 );</span><br><span class="line">        System.out.println(result);<span class="comment">//-3</span></span><br><span class="line">     </span><br><span class="line">        result = str3.compareTo( str1 );</span><br><span class="line">        System.out.println(result);<span class="comment">//3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>应用的题目：<a href="https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/" target="_blank" rel="noopener">剑指 Offer 45. 把数组排成最小的数</a></p>
+</li>
 </ul>
 <h2 id="2-2-获取参数"><a href="#2-2-获取参数" class="headerlink" title="2.2 获取参数"></a>2.2 获取参数</h2><ul>
 <li><code>public int length()</code>：字符串长度</li>
@@ -467,6 +480,16 @@
 <li><p><code>public String[] split(String regex)</code>：按照参数的规则，将字符串切分为若干部分</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"aaa,ccc,bbb"</span>;</span><br><span class="line">String[] array1 = str1.split(<span class="string">","</span>);</span><br><span class="line"><span class="comment">//注意：对于按"." 进行字符串切分，需要split("\\.")</span></span><br></pre></td></tr></table></figure>
 </li>
+<li><p>注意：碰到连续多个字符串和传入参数相匹配</p>
+<p>此时第一个匹配的内容的中间用空字符串来表示，添加到结果数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String s = <span class="string">"a123good123123example"</span>;</span><br><span class="line">    String[] word = s.split(<span class="string">"123"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;word.length; ++i)&#123;</span><br><span class="line">        System.out.println(word[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">good</span><br><span class="line"></span><br><span class="line">example</span><br></pre></td></tr></table></figure>
+<p>对数组遍历进行修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;word.length; ++i)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">""</span>.equals(word[i])) <span class="keyword">continue</span>;</span><br><span class="line">    System.out.println(word[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">good</span><br><span class="line">example</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="2-6-判断"><a href="#2-6-判断" class="headerlink" title="2.6 判断"></a>2.6 判断</h2><ul>
 <li><code>public boolean isEmpty()</code>：字符串长度是否为0；</li>
@@ -488,6 +511,10 @@
 <li><strong>删除指定位置字符或字符串！</strong>StringBuffer类方法：<ul>
 <li>delete（int begin, int end）;</li>
 <li>deleteCharAt(int index)；</li>
+</ul>
+</li>
+<li>删除字符串首尾的空格<ul>
+<li>String trim()：返回值为删除首尾空格后的字符串</li>
 </ul>
 </li>
 </ul>
@@ -523,7 +550,7 @@
 <p>为何要设置EMPTY_ELEMENTDATA，DEFAULTCAPACITY_EMPTY_ELEMENTDATA，两个空的数组常量</p>
 </blockquote>
 <p>数组为EMPTY_ELEMENTDATA就走基于用户设置大小值进行1.5倍扩容（这里是空所以是0），数组为默认空DEFAULTCAPACITY_EMPTY_ELEMENTDATA就会走基于默认值的大小10扩容进行1.5倍扩容。 核心代码：如果是默认初始化空容量会走 if (elementData ==  DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);         }这段代码，接下来基于默认初始化大小10扩容，依次是10,15,22,33这种1.5倍数扩容。如果List<String>list = new ArrayList&lt;&gt;(0);那就是基于你设置的大小0开始扩容，依次是0，1 ，2，3 ，4， 6这种1.5倍数扩容</p>
-<h2 id="1-HashMap的API"><a href="#1-HashMap的API" class="headerlink" title="1. HashMap的API"></a>1. HashMap的API</h2>
+
       
     </div>
     
@@ -646,7 +673,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -657,7 +684,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -668,7 +695,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -701,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-HashMap"><span class="nav-text">1. HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是哈希表"><span class="nav-text">1.1 什么是哈希表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-哈希碰撞"><span class="nav-text">1.2 哈希碰撞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-哈希map的实现原理"><span class="nav-text">1.3 哈希map的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-哈希表架构（table）"><span class="nav-text">1.3.1 哈希表架构（table）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-其他几个重要字段"><span class="nav-text">1.3.2 其他几个重要字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-put方法"><span class="nav-text">1.3.3 put方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-inflateTable方法"><span class="nav-text">1.3.4 inflateTable方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-5-hash函数"><span class="nav-text">1.3.5 hash函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-6-由key到下标的最终流程"><span class="nav-text">1.3.6 由key到下标的最终流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-字符串（String、StringBuffer、StringBuilder）"><span class="nav-text">2. 字符串（String、StringBuffer、StringBuilder）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-比较"><span class="nav-text">2.1 比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-获取参数"><span class="nav-text">2.2 获取参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-截取（substring）"><span class="nav-text">2.3 截取（substring）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-转换"><span class="nav-text">2.4 转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-分割字符串"><span class="nav-text">2.5 分割字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-判断"><span class="nav-text">2.6 判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-遍历"><span class="nav-text">2.7 遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-增"><span class="nav-text">2.8 增</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-删"><span class="nav-text">2.9 删</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-改"><span class="nav-text">2.10 改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-查"><span class="nav-text">2.11 查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-集合框架"><span class="nav-text">3 . 集合框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-List"><span class="nav-text">3.1 List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-lists-add-list-和lists-add-new-ArrayList-lt-gt-list-的区别"><span class="nav-text">3.1.1 lists.add(list)和lists.add(new ArrayList&lt;&gt;(list))的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-初始化ArrayList-的三种方式"><span class="nav-text">3.1.2 初始化ArrayList 的三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-ArrayList的源码"><span class="nav-text">3.1.3 ArrayList的源码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HashMap的API"><span class="nav-text">1. HashMap的API</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-HashMap"><span class="nav-text">1. HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是哈希表"><span class="nav-text">1.1 什么是哈希表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-哈希碰撞"><span class="nav-text">1.2 哈希碰撞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-哈希map的实现原理"><span class="nav-text">1.3 哈希map的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-哈希表架构（table）"><span class="nav-text">1.3.1 哈希表架构（table）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-其他几个重要字段"><span class="nav-text">1.3.2 其他几个重要字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-put方法"><span class="nav-text">1.3.3 put方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-inflateTable方法"><span class="nav-text">1.3.4 inflateTable方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-5-hash函数"><span class="nav-text">1.3.5 hash函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-6-由key到下标的最终流程"><span class="nav-text">1.3.6 由key到下标的最终流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-字符串（String、StringBuffer、StringBuilder）"><span class="nav-text">2. 字符串（String、StringBuffer、StringBuilder）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-比较"><span class="nav-text">2.1 比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-获取参数"><span class="nav-text">2.2 获取参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-截取（substring）"><span class="nav-text">2.3 截取（substring）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-转换"><span class="nav-text">2.4 转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-分割字符串"><span class="nav-text">2.5 分割字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-判断"><span class="nav-text">2.6 判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-遍历"><span class="nav-text">2.7 遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-增"><span class="nav-text">2.8 增</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-删"><span class="nav-text">2.9 删</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-改"><span class="nav-text">2.10 改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-查"><span class="nav-text">2.11 查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-集合框架"><span class="nav-text">3 . 集合框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-List"><span class="nav-text">3.1 List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-lists-add-list-和lists-add-new-ArrayList-lt-gt-list-的区别"><span class="nav-text">3.1.1 lists.add(list)和lists.add(new ArrayList&lt;&gt;(list))的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-初始化ArrayList-的三种方式"><span class="nav-text">3.1.2 初始化ArrayList 的三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-ArrayList的源码"><span class="nav-text">3.1.3 ArrayList的源码</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
