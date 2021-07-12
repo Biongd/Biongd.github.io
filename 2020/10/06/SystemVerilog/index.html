@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数字IC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="终于进入了systemverilog的学习，接续加油！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SystemVerilog">
+<meta property="og:url" content="http://yoursite.com/2020/10/06/SystemVerilog/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="终于进入了systemverilog的学习，接续加油！！">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201209211755.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210709221729.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210707182439.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210707190458.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210707191159.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210707192755.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210707192916.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210707202150.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210708100727.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210708101837.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210708110231.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200502110846540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0pheV93aG8=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210708161421.png">
+<meta property="article:published_time" content="2020-10-06T06:25:30.000Z">
+<meta property="article:modified_time" content="2021-07-12T00:30:19.990Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="数字IC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20201209211755.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/10/06/SystemVerilog/"/>
+
+
+
+
+
+  <title>SystemVerilog | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/06/SystemVerilog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SystemVerilog</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-06T14:25:30+08:00">
+                2020-10-06
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-07-12T08:30:19+08:00" content="2021-07-12">
+                          2021-07-12
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97-SystemVerilog-verilog%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">数字-SystemVerilog.verilog基础.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>终于进入了systemverilog的学习，接续加油！！</p>
+<a id="more"></a>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="语法-数据类型"><a href="#语法-数据类型" class="headerlink" title="语法-数据类型"></a>语法-数据类型</h2><p>SV中引入logic类型，和传统verilog中的reg和net的区别和联系：</p>
+<ul>
+<li>verilog作为描述语言，倾向于设计人员懂得寄存器和线网类型变量。利于后端综合工具</li>
+<li>SV侧重验证的语言，对logic对应的硬件并不十分关切，只作为单纯的变量进行赋值操作，这些变量也属于软件环境构建。</li>
+</ul>
+<p>logic相对应的是bit类型，他们均可以构建矢量类型（vector），而他们的区别在于</p>
+<ul>
+<li><p>logic为4值逻辑，即可以表示0，1，x，z</p>
+</li>
+<li><p>bit为2值逻辑，只有0,1</p>
+</li>
+</ul>
+<p>为什么有了四值了，还搞个2值的？将硬件世界与软件世界分离</p>
+<p><strong>按四值逻辑类型</strong>和<strong>二值逻辑类型</strong>划分：</p>
+<ul>
+<li>四值：integer、logic、reg、net-type</li>
+<li>二值：byte、shortint、int、longint、bit</li>
+</ul>
+<p>按<strong>有符号</strong>和<strong>无符号</strong>划分：</p>
+<ul>
+<li>有符号类型：byte、shortint、int、longint、integer</li>
+<li>无符号类型：bit、logic、reg、net-type</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20201209211755.png" alt="image-20201209211755421"></p>
+<p>图中画圈部分，从有符号数到无符号数的转化，即为静态转化，在编译的时候完成检查</p>
+<p>对应的动态转换$cast(tgt, src),和静态转化均为显式转化。对应上面的隐式转化</p>
+<p>所以在不同数据类型进行操作时应注意变量的：</p>
+<ul>
+<li>逻辑数值类型</li>
+<li>符号类型</li>
+<li>矢量位宽</li>
+</ul>
+<h2 id="过程块和方法"><a href="#过程块和方法" class="headerlink" title="过程块和方法"></a>过程块和方法</h2><p>initial块：类似于c的main方法，是启动程序的入口，可以有多个initial块并行，除class外，别的块都可以有</p>
+<p>always：硬件行为，只能用于硬件块中！</p>
+<p>硬件世界：module，interface；</p>
+<p>软件世界：class，programe；</p>
+<h3 id="function和task"><a href="#function和task" class="headerlink" title="function和task"></a>function和task</h3><p>1.<strong>传入参数</strong>：</p>
+<p>可以在参数列表中指定输入参数（input），输出参数（output），输入输出参数（inout），引用类型（ref），这些参数形式区别于软件的参数</p>
+<ul>
+<li><p>input说明参数流入，在参数未表明传输方向时是默认的</p>
+</li>
+<li><p>output定义输出方向，方法结束后该参数其实是一个输出值</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> trans；</span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    trans t;</span><br><span class="line">    trans s;</span><br><span class="line">    t = <span class="keyword">new</span>();</span><br><span class="line">    s = <span class="keyword">new</span>();</span><br><span class="line">    copyof（t,s）;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> copyof(trans t, trans s);</span><br><span class="line">    t=s;</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+<p>默认为input参数，和软件的形参一样，input类型的参数在方法内部就是一个动态变量，和此时方法内的t和外面的t没有任何关系！！！</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> copyof(<span class="keyword">output</span> trans t, <span class="keyword">input</span> trans s);</span><br><span class="line">    t=s;</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+<p>通过output修饰，则对变量的修改可以传出方法</p>
+</li>
+<li><p>inout：双向端口</p>
+</li>
+<li><p>ref：类似于inout，传入变量的引用，实际也就是内存地址或者说指针，方法内对变量的修改实际是对内存的修改，是立即发生的！！！</p>
+<p>对应变量，可以理解为传入的是一个指针</p>
+<p>对应句柄，可以理解为传入的是一个句柄！！</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> <span class="keyword">initial</span>(<span class="keyword">ref</span> trans t);</span><br><span class="line">	t=<span class="keyword">new</span>();</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>2.变量生命周期</strong></p>
+<p>关键字：</p>
+<ul>
+<li>automatic：动态变量<ul>
+<li>方法：默认方法内的全部变量都是动态变量</li>
+<li>变量</li>
+</ul>
+</li>
+<li>static：静态变量（默认） </li>
+</ul>
+<h1 id="类和包的使用"><a href="#类和包的使用" class="headerlink" title="类和包的使用"></a>类和包的使用</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h2 id="包的使用"><a href="#包的使用" class="headerlink" title="包的使用"></a>包的使用</h2><ul>
+<li><p>包的意义</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SV语言提供了一种在多个module、<span class="keyword">interface</span>和<span class="symbol">program</span>之中共享<span class="symbol">parameter</span>、<span class="symbol">data</span>、<span class="symbol">type</span>、<span class="symbol">task</span>、<span class="symbol">function</span>、<span class="symbol">class</span>等的方法，即利用<span class="symbol">package</span>的方式来实现。通常将不同模块的类定义归整到不同的<span class="symbol">package</span>中。</span><br><span class="line"><span class="symbol">package</span>的好处是将一簇相关的类组织在了单一的命名空间<span class="symbol">namespace</span>下，使得分属于不同模块验证环境的类来自于不同的<span class="symbol">package</span>，这样可以通过<span class="symbol">package</span>来解决类的归属问题。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>包的定义</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> regs_pkg;</span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"stimulator.sv"</span> </span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"monitor.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"chker.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"env.sv"</span></span><br><span class="line"><span class="keyword">endpackage</span></span><br><span class="line"><span class="keyword">package</span> arb_pkg;</span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"stimulator.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"monitor.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"chker.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"env.sv"</span></span><br><span class="line"><span class="keyword">endpackage</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意：</p>
+<p>​        两个package中都定义了4个与模块验证相关的类，而这两个package中同名的类，它们的内容是不相同的，实现的也是不同的功能。将这些重名的类归属到不同的package中编译，不会发生重名的编译冲突，因为package是将命名空间分隔开来的。使用时需要注明使用哪一个package中的类。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> mcdf_tb;</span><br><span class="line">	regs_pkg::monitor mon1 = <span class="keyword">new</span>();</span><br><span class="line">	arb_pkg::monitor mon2 = <span class="keyword">new</span>();</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>包与库的区分</p>
+<p>尽管regs_pkg和arb_pkg中都存在着一个名字为monitor的类，我们可以在引用类名的时候通过域名索引::操作符的方式来显式支出所引用的monitor类具体来自于哪一个package，这样能很好地通过不同名的package来管理同名的类。package这个容器可以对类名做一个隔离的作用。<br>package更多的意义在于将软件(类、类型、方法等)封装在不同的命名空间中，一次来与全局的命名空间进行隔离。package需要额外定义，容纳各种数据、方法、类。<br>library是编译的产物，在没有介绍软件之前，硬件(module、interface、program)都会编译到库中，如果不指定编译库的话，会被编译进入默认的库中。从容纳的类型来看，库既可以容纳硬件类型，也可以容纳软件类型，例如类和方法，也包括package。</p>
+</li>
+<li><p>包的命名规则</p>
+<p>在创建package的时候，已经在指定包名称的时候隐含地指定了包的默认路径，即包文件所在的路径。如果有其他要被包含在包内的文件在默认路径之外，需要在编译包的时候加上额外指定的搜寻路径选项“+incdir+PATH”。<br>如果遵循package的命名习惯，不但要求定义的package名称独一无二，其内部定义的类应该也尽可能的独一无二。<br>如果不同package中定义的类名也不相同时，在顶层的引用也可以通过 import pkg_name::*的形式，来表示在module mcdf_tb中引用的类，如果在当前域中没有定义的话，会搜寻regs_pkg和arb_pkg中定义的类，又由于它们各自包含的类名不相同，因此不用担心搜寻中会遇到同名类冲突问题。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> regs_pkg;</span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"regs_stm.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"regs_mon.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"regs_chk.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"regs_env.sv"</span></span><br><span class="line"><span class="keyword">endpackage</span></span><br><span class="line"><span class="keyword">package</span> arb_pkg;</span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"arb_stm.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"arb_mon.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"arb_chk.sv"</span></span><br><span class="line">	'<span class="keyword">include</span> <span class="string">"arb_env.sv"</span></span><br><span class="line"><span class="keyword">endpackage</span></span><br><span class="line"><span class="keyword">module</span> mcdf_tb;</span><br><span class="line">	<span class="keyword">import</span> regs_pkg::*;</span><br><span class="line">	<span class="keyword">import</span> arb_pkg::*;</span><br><span class="line">	</span><br><span class="line">	regs_mon mon1 = <span class="keyword">new</span>();</span><br><span class="line">	arb_mon  mon2 = <span class="keyword">new</span>();</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用包的注意事项</p>
+<p>在包中可以定义类、静态方法和静态变量。<br>如果将类封装在某一个包中，那么它就不应该在其它地方编译，这么做的好处在于之后对类的引用更加方便。<br>包是类的归宿，类是包的子民。<br>一个完整模块的验证环境组件类，应该由一个定义的模块包来封装。<br>使用’include的关键字完成类再包中的封装，要注意编译的前后顺序来放置各个’include的类文件。<br>编译一个包的背后实际是将各个类文件“平铺”在包中，按照顺序完成包和各个类的有序编译。<br>使用类可以通过import完成包中所有类或者某一个类的导入，使得新的环境可以识别出该类，否则类会躺在包这个盒子里不被外部识别。</p>
+</li>
+</ul>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><h3 id="1-静态转换"><a href="#1-静态转换" class="headerlink" title="1.静态转换"></a>1.静态转换</h3><p>在需要转换的表达式前面加单引号</p>
+<p>这种方式不会对转换值做检查。如果转换失败，我们也无从得知</p>
+<h3 id="2-动态转换"><a href="#2-动态转换" class="headerlink" title="2.动态转换"></a>2.动态转换</h3><p>动态转换需要调用系统函数<strong>$cast(tgt,src)</strong>做转换，把src转换成tgt的类型。</p>
+<p>比如声明了父类句柄的子类src，转化为子类句柄的tgt</p>
+<p>==<code>son tgt = （son）src；</code></p>
+<p>类句柄的向下转换</p>
+<pre><code>父类句柄转换为子类句柄时，需要使用$cast()函数进行转换，否则会出现编译错误；
+
+$cast()会检查句柄所指向的对象的类型，而不是检查句柄本身;
+
+子类句柄赋值给父类句柄（也就是将子类句柄拷贝成父类句柄），编译器认为合法;
+
+父类句柄拷贝给子类对象，需要使用$cast检查句柄所指向的对象类型，一旦源对象跟目的对象是同一类型，就可以从父类句柄拷贝子类对象的地址给子类句柄。
+</code></pre><p>【注意】:</p>
+<pre><code>当$cast作为任务来使用时（直接调用，不需要返回值时），如果转换失败会给出一个错误报告
+当$cast作为函数使用时（需要返回值），转换失败返回0，不给出错误报告
+</code></pre><h3 id="3-显式和隐式转换"><a href="#3-显式和隐式转换" class="headerlink" title="3.显式和隐式转换"></a>3.显式和隐式转换</h3><p>动态转换和静态转换都需要操作符或者系统函数的介入，称为显式转换</p>
+<p>不需要转换的操作，称为隐式转换；</p>
+<p> 如：右侧是4位的矢量，左侧是5位的矢量，赋值时会隐式的做位扩展，然后再赋值</p>
+<h2 id="虚函数（virtual）"><a href="#虚函数（virtual）" class="headerlink" title="虚函数（virtual）"></a>虚函数（virtual）</h2><p>看一下”virtual”关键字有哪些使用场景：</p>
+<ol>
+<li>主要应用场景在virtual class，virtual interface 以及 virtual task/function。</li>
+<li>OOP三大特性（封装，继承，多态）中的 <strong>多态</strong> 在SystemVerilog中一般通过 “<strong>virtual</strong>” 关键字实现。</li>
+</ol>
+<h3 id="1-virtual-interface"><a href="#1-virtual-interface" class="headerlink" title="1. virtual interface"></a>1. virtual interface</h3><ul>
+<li>在interface定义时，如果不使用关键字 “virtual” 那么在多次调用该接口时，在其中的一个实例中对接口中某一信号的修改会影响其他实例接口；如果使用了 “virtual” 关键字，那么每个实例是独立的。</li>
+<li>习惯上在声明interface时均添加 “virtual”关键字。</li>
+</ul>
+<h3 id="2-virtual-task-function"><a href="#2-virtual-task-function" class="headerlink" title="2. virtual task/function"></a>2. virtual task/function</h3><p>子类在实现方法的继承时可以发生方法的重写，此时子类只有通过调用super.fun()才能访问父类方法</p>
+<ul>
+<li>多态的元素之一，没有声明virtual的方法，父类句柄=子类对象时，父类句柄无法访问到子类，只能访问到父类本身的function（）。一旦声明virtual，则该方法实现动态绑定，父类句柄则可以访问到子类的function（）！！！</li>
+<li>virtual方法只需要定义在最顶层的类中，其所有子类及子类的子类中的重写方法都实现了动态绑定，通过<code>最顶层的类的句柄=子类实例</code>都可以实现调用子类的该方法</li>
+</ul>
+<h3 id="3-virtual-class"><a href="#3-virtual-class" class="headerlink" title="3. virtual class"></a>3. virtual class</h3><p>即抽象类</p>
+<p>虚类一般用来定义类的格式,、类的成员、类的参数等，虚类不能被实例化，只能被扩展（重载）后实例化，用于在项目中定义一些标准的类。</p>
+<p>虚类中的方法通常使用关键字 “ pure virtual “ 纯虚方法。同时OOP规定，只要class中存在一个没有被实现的pure function，就不允许例化这个class</p>
+<p>pure virtual function（纯虚方法）：没有实体的方法原型，相当于一个声明，只能在抽象类中定义。</p>
+<h2 id="对象拷贝"><a href="#对象拷贝" class="headerlink" title="对象拷贝"></a>对象拷贝</h2><p>当需要赋值一个对象，以防止对象的方法修改原始对象的值，或者在一个发生器中保留约束时，可以对对象做拷贝</p>
+<h3 id="1-浅拷贝"><a href="#1-浅拷贝" class="headerlink" title="1. 浅拷贝"></a>1. 浅拷贝</h3><p>只拷贝成员变量：String，int，句柄等</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">packet p = p1;</span><br><span class="line">packet p = p2;</span><br><span class="line">p1 = <span class="keyword">new</span>();</span><br><span class="line">p2 = <span class="keyword">new</span>() p1;</span><br></pre></td></tr></table></figure>
+<p>此时p1和p2是两个对象，区别于直接句柄赋值：p1=p2</p>
+<h3 id="2-自定义拷贝"><a href="#2-自定义拷贝" class="headerlink" title="2. 自定义拷贝"></a>2. 自定义拷贝</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210709221729.png" alt="image-20210709221729315" style="zoom:67%;" /></p>
+<p>拷贝函数和新对象生成函数分开写：</p>
+<ul>
+<li>父类和子类成员均可以完成拷贝，拷贝方法声明为virtual，遵循只考虑该类的域成员的原则，父类的成员拷贝调用父类的拷贝函数</li>
+<li>copy_data()需要注意句柄的类型转换，保证转换后的句柄可以访问类的成员变量</li>
+</ul>
+<h2 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h2><h1 id="实验进化2"><a href="#实验进化2" class="headerlink" title="实验进化2"></a>实验进化2</h1><p>要从实验1完成哪些进化：</p>
+<h2 id="interface的提取"><a href="#interface的提取" class="headerlink" title="interface的提取"></a>interface的提取</h2><ul>
+<li><p>test和dut的连接关系(initiator)：</p>
+<p>initiator的目的更像是创建虚拟的硬件模型，通过该module的实例化创建具有驱动能力的数据发送模块（给data就能按照需要进行发送，task chnl_write（））</p>
+<p>实验1：通过module进行例化</p>
+<p>实验2：通过interface实例化再传入module</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实验1的initiator_nodule</span></span><br><span class="line"><span class="keyword">module</span> chnl_initiator(</span><br><span class="line">    <span class="comment">//创建模型的第一部分，创建需要的输入输出接口</span></span><br><span class="line">  <span class="keyword">input</span>               clk,</span><br><span class="line">  <span class="keyword">input</span>               rstn,</span><br><span class="line">  <span class="keyword">output</span> <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] ch_data,</span><br><span class="line">  <span class="keyword">output</span> <span class="keyword">logic</span>        ch_valid,</span><br><span class="line">  <span class="keyword">input</span>               ch_ready,</span><br><span class="line">  <span class="keyword">input</span>        [ <span class="number">5</span>:<span class="number">0</span>] ch_margin</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">string</span> name;</span><br><span class="line"><span class="comment">//给个名字作为标识</span></span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> set_name(<span class="keyword">string</span> s);</span><br><span class="line">  name = s;</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="comment">//赋予该模型驱动能力，即给MCDT写入的能力</span></span><br><span class="line"><span class="keyword">task</span> chnl_write(<span class="keyword">input</span> <span class="keyword">logic</span>[<span class="number">31</span>:<span class="number">0</span>] data);</span><br><span class="line">  <span class="comment">// USER TODO</span></span><br><span class="line">  <span class="comment">// drive valid data</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  @(<span class="keyword">posedge</span> clk);</span><br><span class="line">  ch_valid &lt;= <span class="number">1</span>;</span><br><span class="line">  ch_data &lt;= data;</span><br><span class="line">  @(<span class="keyword">negedge</span> clk);</span><br><span class="line">  <span class="keyword">wait</span>(ch_ready === <span class="number">'b1</span>);</span><br><span class="line">  <span class="built_in">$display</span>(<span class="string">"%t channel initial [%s] sent data %x"</span>, <span class="built_in">$time</span>, name, data);</span><br><span class="line">  chnl_idle();</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"><span class="comment">//赋予该模型等待的能力</span></span><br><span class="line"><span class="keyword">task</span> chnl_idle();</span><br><span class="line">  <span class="comment">// USER TODO</span></span><br><span class="line">  <span class="comment">// drive idle data</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  @(<span class="keyword">posedge</span> clk);</span><br><span class="line">  ch_valid &lt;= <span class="number">0</span>;</span><br><span class="line">  ch_data &lt;= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"><span class="comment">//实例化为3个channel</span></span><br><span class="line">chnl_initiator chnl0_init(</span><br><span class="line">  <span class="variable">.clk</span>      (clk),</span><br><span class="line">  <span class="variable">.rstn</span>     (rstn),</span><br><span class="line">  <span class="variable">.ch_data</span>  (ch0_data),</span><br><span class="line">  <span class="variable">.ch_valid</span> (ch0_valid),</span><br><span class="line">  <span class="variable">.ch_ready</span> (ch0_ready),</span><br><span class="line">  <span class="variable">.ch_margin</span>(ch0_margin) </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">chnl_initiator chnl1_init(</span><br><span class="line">  <span class="variable">.clk</span>      (clk),</span><br><span class="line">  <span class="variable">.rstn</span>     (rstn),</span><br><span class="line">  <span class="variable">.ch_data</span>  (ch1_data),</span><br><span class="line">  <span class="variable">.ch_valid</span> (ch1_valid),</span><br><span class="line">  <span class="variable">.ch_ready</span> (ch1_ready),</span><br><span class="line">  <span class="variable">.ch_margin</span>(ch1_margin) </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">chnl_initiator chnl2_init(</span><br><span class="line">  <span class="variable">.clk</span>      (clk),</span><br><span class="line">  <span class="variable">.rstn</span>     (rstn),</span><br><span class="line">  <span class="variable">.ch_data</span>  (ch2_data),</span><br><span class="line">  <span class="variable">.ch_valid</span> (ch2_valid),</span><br><span class="line">  <span class="variable">.ch_ready</span> (ch2_ready),</span><br><span class="line">  <span class="variable">.ch_margin</span>(ch2_margin) </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实验2的initiator_interface(添加了clock块，对采样和驱动数据进行过滤)</span></span><br><span class="line"><span class="keyword">interface</span> chnl_intf(<span class="keyword">input</span> clk, <span class="keyword">input</span> rstn);</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] ch_data;</span><br><span class="line">  <span class="keyword">logic</span>        ch_valid;</span><br><span class="line">  <span class="keyword">logic</span>        ch_ready;</span><br><span class="line">  <span class="keyword">logic</span> [ <span class="number">5</span>:<span class="number">0</span>] ch_margin;</span><br><span class="line">  <span class="keyword">clocking</span> drv_ck @(<span class="keyword">posedge</span> clk);</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">input</span> #<span class="number">1</span>ns <span class="keyword">output</span> #<span class="number">1</span>ns;</span><br><span class="line">    <span class="keyword">output</span> ch_data, ch_valid;</span><br><span class="line">    <span class="keyword">input</span> ch_ready, ch_margin;</span><br><span class="line">  <span class="keyword">endclocking</span></span><br><span class="line"><span class="keyword">endinterface</span></span><br><span class="line"><span class="comment">//用interface把接口摘出去，再建立初始化模型</span></span><br><span class="line"><span class="keyword">module</span> chnl_initiator(chnl_intf intf);</span><br><span class="line">  <span class="keyword">string</span> name;</span><br><span class="line">  <span class="keyword">int</span> idle_cycles = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//增加模块功能，动态调整idle（等待）周期</span></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">automatic</span> <span class="keyword">void</span> set_idle_cycles(<span class="keyword">int</span> n);</span><br><span class="line">    idle_cycles = n;</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">automatic</span> <span class="keyword">void</span> set_name(<span class="keyword">string</span> s);</span><br><span class="line">    name = s;</span><br><span class="line">  <span class="keyword">endfunction</span>	</span><br><span class="line">    <span class="comment">//添加赋予驱动的功能</span></span><br><span class="line">  <span class="keyword">task</span> <span class="keyword">automatic</span> chnl_write(<span class="keyword">input</span> <span class="keyword">logic</span>[<span class="number">31</span>:<span class="number">0</span>] data);</span><br><span class="line">    @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">    <span class="comment">//时钟上升时设置驱动</span></span><br><span class="line">    intf<span class="variable">.drv_ck</span><span class="variable">.ch_valid</span> &lt;= <span class="number">1</span>;</span><br><span class="line">    intf<span class="variable">.drv_ck</span><span class="variable">.ch_data</span> &lt;= data;</span><br><span class="line">    @(<span class="keyword">negedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">    <span class="comment">//等待半拍，接收信号reday为高电平则</span></span><br><span class="line">    <span class="keyword">wait</span>(intf<span class="variable">.ch_ready</span> === <span class="number">'b1</span>);</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"%t channel initiator [%s] sent data %x"</span>, <span class="built_in">$time</span>, name, data);</span><br><span class="line">    <span class="comment">//这一步就决定了idle的执行次数</span></span><br><span class="line">    <span class="keyword">repeat</span>(idle_cycles) chnl_idle();</span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line">    <span class="comment">//添加空闲等待功能</span></span><br><span class="line">  <span class="keyword">task</span> <span class="keyword">automatic</span> chnl_idle();</span><br><span class="line">    @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">    intf<span class="variable">.drv_ck</span><span class="variable">.ch_valid</span> &lt;= <span class="number">0</span>;</span><br><span class="line">    intf<span class="variable">.drv_ck</span><span class="variable">.ch_data</span> &lt;= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="generator的提取"><a href="#generator的提取" class="headerlink" title="generator的提取"></a>generator的提取</h2><ul>
+<li><p>驱动数据data的生成：</p>
+<p>实验1：在test功能module中进行创建</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">  chnl0_arr = <span class="keyword">new</span>[<span class="number">100</span>];</span><br><span class="line">  chnl1_arr = <span class="keyword">new</span>[<span class="number">100</span>];</span><br><span class="line">  chnl2_arr = <span class="keyword">new</span>[<span class="number">100</span>];</span><br><span class="line">  <span class="keyword">foreach</span>(chnl0_arr[i]) <span class="keyword">begin</span></span><br><span class="line">    chnl0_arr[i] = <span class="number">'h00C0_00000</span> + i;</span><br><span class="line">	chnl1_arr[i] = <span class="number">'h00C1_00000</span> + i;</span><br><span class="line">	chnl2_arr[i] = <span class="number">'h00C2_00000</span> + i;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>实验2：抽象出generator模块，通过interface实例化再传入module，此时结构明显更清晰了</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> chnl_generator;</span><br><span class="line">  <span class="keyword">int</span> chnl_arr[$];</span><br><span class="line">  <span class="keyword">int</span> num;</span><br><span class="line">  <span class="keyword">int</span> id;</span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">automatic</span> <span class="keyword">void</span> initialize(<span class="keyword">int</span> n);</span><br><span class="line">    id = n;</span><br><span class="line">    num = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">automatic</span> <span class="keyword">int</span> get_data();</span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    data = <span class="number">'h00C0_0000</span> + (id&lt;&lt;<span class="number">16</span>) + num;</span><br><span class="line">    num++;</span><br><span class="line">    chnl_arr<span class="variable">.push_back</span>(data);</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="将interface和generator的module按照需要进行实例化"><a href="#将interface和generator的module按照需要进行实例化" class="headerlink" title="将interface和generator的module按照需要进行实例化"></a>将interface和generator的module按照需要进行实例化</h2><p>并对实例化结果赋想要的初值</p>
+<p>可以看到因为把接口提取出去，module的实例化不需要再对</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">chnl_intf chnl0_if(.*);</span><br><span class="line">chnl_intf chnl1_if(.*);</span><br><span class="line">chnl_intf chnl2_if(.*);</span><br><span class="line"></span><br><span class="line">chnl_initiator chnl0_init(chnl0_if);</span><br><span class="line">chnl_initiator chnl1_init(chnl1_if);</span><br><span class="line">chnl_initiator chnl2_init(chnl2_if);</span><br><span class="line"></span><br><span class="line">chnl_generator chnl0_gen();</span><br><span class="line">chnl_generator chnl1_gen();</span><br><span class="line">chnl_generator chnl2_gen();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span> </span><br><span class="line">  <span class="comment">// verification component initializationi</span></span><br><span class="line">  chnl0_gen<span class="variable">.initialize</span>(<span class="number">0</span>);</span><br><span class="line">  chnl1_gen<span class="variable">.initialize</span>(<span class="number">1</span>);</span><br><span class="line">  chnl2_gen<span class="variable">.initialize</span>(<span class="number">2</span>);</span><br><span class="line">  chnl0_init<span class="variable">.set_name</span>(<span class="string">"chnl0_init"</span>);</span><br><span class="line">  chnl1_init<span class="variable">.set_name</span>(<span class="string">"chnl1_init"</span>);</span><br><span class="line">  chnl2_init<span class="variable">.set_name</span>(<span class="string">"chnl2_init"</span>);</span><br><span class="line">  chnl0_init<span class="variable">.set_idle_cycles</span>(<span class="number">0</span>);</span><br><span class="line">  chnl1_init<span class="variable">.set_idle_cycles</span>(<span class="number">0</span>);</span><br><span class="line">  chnl2_init<span class="variable">.set_idle_cycles</span>(<span class="number">0</span>);   </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="test的module"><a href="#test的module" class="headerlink" title="test的module"></a>test的module</h2><p>将generator的值装配到initiator中，然后执行</p>
+<h1 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h1><h2 id="1-随机约束和分布"><a href="#1-随机约束和分布" class="headerlink" title="1. 随机约束和分布"></a>1. 随机约束和分布</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210707182439.png" alt="img"></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Packet;</span><br><span class="line">    <span class="comment">//The random variable</span></span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>] src, dst, data[<span class="number">8</span>];</span><br><span class="line">    <span class="keyword">randc</span> <span class="keyword">bit</span> [<span class="number">7</span>:<span class="number">0</span>] kind;</span><br><span class="line">    <span class="comment">//Limit the values for src</span></span><br><span class="line">    <span class="keyword">constraint</span> c &#123; src &gt; <span class="number">10</span>;</span><br><span class="line">                   src &lt; <span class="number">15</span>;    &#125;</span><br><span class="line">    <span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">Packet p;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    p = <span class="keyword">new</span>();    <span class="comment">//Create a packet </span></span><br><span class="line">    <span class="keyword">assert</span> (p<span class="variable">.randomize</span>())     <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">$fatal</span>(<span class="number">0</span>, <span class="string">"Packet::randomize failed"</span>);</span><br><span class="line">    transmit(p);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>rand：以扑克牌为例，每次随机都是抽回一张牌，然后再放回去</p>
+<p>randc：每次随机抽回的牌都不放回</p>
+<p>随机值必须是二值逻辑，4值逻辑中的x，z随机不出来</p>
+<p>assert：==if</p>
+<p>p.randomize()：生成随机数，返回是否成功（0则为失败）</p>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><p>constraint：约束求解器</p>
+<p><strong>父类约束被子类继承</strong></p>
+<p>dist：权重分布关键词（主要涉及:=表示赋值和:/表示平均概念的理解）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rand</span> <span class="keyword">int</span> src, dst;</span><br><span class="line"><span class="keyword">constraint</span> c_dist&#123;</span><br><span class="line">    src <span class="keyword">dist</span> &#123;<span class="number">0</span>:=<span class="number">40</span>,[<span class="number">1</span>:<span class="number">3</span>]:=<span class="number">60</span>&#125;;</span><br><span class="line">    <span class="comment">//src = 0, weight = 40/220</span></span><br><span class="line">    <span class="comment">//src = 1, weight = 60/220</span></span><br><span class="line">    <span class="comment">//src = 2, weight = 60/220</span></span><br><span class="line">    <span class="comment">//src = 3, weight = 60/220</span></span><br><span class="line"> </span><br><span class="line">    dst <span class="keyword">dist</span> &#123;<span class="number">0</span>:/<span class="number">40</span>,[<span class="number">1</span>:<span class="number">3</span>]:/<span class="number">60</span>&#125;;</span><br><span class="line">    <span class="comment">//src = 0, weight = 40/100</span></span><br><span class="line">    <span class="comment">//src = 1, weight = 20/100</span></span><br><span class="line">    <span class="comment">//src = 2, weight = 20/100</span></span><br><span class="line">    <span class="comment">//src = 3, weight = 20/100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>inside表示约束中变量是某一值的集合</strong>，除非还存在其他约束，否则随机变量在集合中取值概率相同。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rand</span> <span class="keyword">int</span> c;    <span class="comment">//随机变量</span></span><br><span class="line"><span class="keyword">int</span> lo, hi;    <span class="comment">//作为上限和下限的非随机变量</span></span><br><span class="line"><span class="keyword">constraint</span> c_rang&#123;</span><br><span class="line">    c <span class="keyword">inside</span> &#123;[lo:hi]&#125;;    <span class="comment">//lo&lt;=c&amp;&amp;c&lt;=hi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>使用$指定最大值和最小值</strong>。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">rand bit [6:0] b;     //0 <span class="tag">&lt;<span class="name">=</span> <span class="attr">b</span> &lt;= <span class="string">127</span></span></span></span><br><span class="line"><span class="xml">rand bit [5:0] e;     //0 <span class="tag">&lt;<span class="name">=</span> <span class="attr">e</span> &lt;= <span class="string">63</span></span></span></span><br><span class="line"><span class="xml">constraint c_range    </span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">    b inside &#123;[$:4], [20:$]&#125;</span><span class="xml">;    //0<span class="tag">&lt;<span class="name">=</span> <span class="attr">b</span> &lt;=<span class="string">4</span> || <span class="attr">20</span> &lt;= <span class="string">b</span> &lt;=<span class="string">127</span></span></span></span><br><span class="line"><span class="xml">    e inside </span><span class="template-variable">&#123;[$:4], [20:$]&#125;</span><span class="xml">;    //0<span class="tag">&lt;<span class="name">=</span> <span class="attr">b</span> &lt;=<span class="string">4</span> || <span class="attr">20</span> &lt;= <span class="string">b</span> &lt;=<span class="string">63</span></span></span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>对于<strong>条件约束</strong>，可以通过-&gt;或者if-else让约束表达式在特定时刻有效</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> BusOp;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">constraint</span> c_io &#123;</span><br><span class="line">        (io_space_mode) -&gt; addr[<span class="number">31</span>] == <span class="number">1'b1</span>; <span class="comment">//1时生效</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> BusOp;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">constraint</span> c_len_rw &#123;</span><br><span class="line">        <span class="keyword">if</span>(op == READ)</span><br><span class="line">            len <span class="keyword">inside</span> &#123;[BYTE:LWRD]&#125;;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            len == LWED;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 对于约束而言，是双向约束，是一种声明性质的代码，并行的，不是自上而下的，所有约束表达式同时有效</p>
+<p>一旦发生约束冲突，则会同时失败。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rand</span> logic [<span class="number">15</span>:<span class="number">0</span>] r, s, t;</span><br><span class="line"><span class="attribute">constraint</span> c_bidir &#123;</span><br><span class="line">    <span class="attribute">r</span> &lt; t;</span><br><span class="line">    <span class="attribute">s</span> == r;</span><br><span class="line">    <span class="attribute">t</span> &lt; <span class="number">30</span>;</span><br><span class="line">    <span class="attribute">s</span> &gt; <span class="number">25</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-约束块控制"><a href="#2-约束块控制" class="headerlink" title="2. 约束块控制"></a>2. 约束块控制</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210707190458.png" alt="img"></p>
+<p>约束冲突的时候通过约束块控制实现交替约束。</p>
+<ul>
+<li><code>constraint_mode()</code>，可以被类调用，也可以被约束块调用，让该作用域下的约束打开或关闭</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Packet;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">int</span> length;</span><br><span class="line"><span class="comment">//进行两个冲突的约束length</span></span><br><span class="line">    <span class="keyword">constraint</span> c_short &#123;length <span class="keyword">inside</span> [<span class="number">1</span>:<span class="number">32</span>];&#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">constraint</span> c_long  &#123;length <span class="keyword">inside</span> [<span class="number">1000</span>:<span class="number">1023</span>];&#125;</span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">Packet p;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    p = <span class="keyword">new</span>();</span><br><span class="line"> </span><br><span class="line"><span class="comment">//Create a long packet by disabling short constraint</span></span><br><span class="line">    p<span class="variable">.c_short</span><span class="variable">.constraint_mode</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">assert</span>(p<span class="variable">.randmize</span>());</span><br><span class="line">    transmit(p);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//Create a short packet by disabling all constraints then enabling only the shart constraint</span></span><br><span class="line">    p<span class="variable">.constraint_mode</span>(<span class="number">0</span>);</span><br><span class="line">    p<span class="variable">.c_short</span><span class="variable">.constraint_mode</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">assert</span>(p<span class="variable">.randomize</span>());</span><br><span class="line">    transmit(p);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>randomize().with可以在外部增加约束，每次生成随机的时候只在当前有效，多次randomize的结果不会互相影响！！！</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210707191159.png" alt="image-20210707191159430"></p>
+<blockquote>
+<p>问：t.randomize().wiht({addr inside [200,300]； date inside [0,10]；});</p>
+<p>这次随机化能不能实现？</p>
+</blockquote>
+<p>答，可以，soft关键字表示在发生约束冲突时，soft修饰的约束失效！！</p>
+<h2 id="3-随机函数"><a href="#3-随机函数" class="headerlink" title="3. 随机函数"></a>3. 随机函数</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210707192755.png" alt="image-20210707192754936" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210707192916.png" alt="image-20210707192915991" style="zoom:67%;" /></p>
+<ul>
+<li><p>对于上面提到的randomize（）函数的注意点：</p>
+<ul>
+<li>可以传入参数，rand声明的变量没传入就不会随机化，没被rand声明的变量传入也会被随机化</li>
+<li>无论是否传入参数，约束条件都生效</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Rising;</span><br><span class="line">    <span class="keyword">byte</span> low;        <span class="comment">//未被随机约束变量</span></span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">byte</span> med, hi;    <span class="comment">//随机化的变量,8位有符号值</span></span><br><span class="line">    <span class="keyword">constraint</span> up</span><br><span class="line">        &#123;    low &lt; med; med &lt; hi;&#125;</span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    Rising r;</span><br><span class="line">    r = <span class="keyword">new</span>();</span><br><span class="line">    r<span class="variable">.randomize</span>();        <span class="comment">//    随机化hi,但是不改变low</span></span><br><span class="line">    r<span class="variable">.randomize</span>(med);     <span class="comment">//    只随机化med</span></span><br><span class="line">    r<span class="variable">.randomize</span>(low);     <span class="comment">//    只随机化low</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>问：<strong>上述代码中，例化了r之后，先调用r.randomize(low)，那么low,med和hi的组合值可能是下面哪一组？</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（A）low = -1,<span class="attribute">med</span>=0, <span class="attribute">hi</span>=0</span><br><span class="line">（B）low = -1,<span class="attribute">med</span>=1, <span class="attribute">hi</span>=2</span><br><span class="line">（C）low = 报错,<span class="attribute">med</span>=0, <span class="attribute">hi</span>=0</span><br><span class="line">（D）low = 报错,<span class="attribute">med</span>=<span class="literal">null</span>, <span class="attribute">hi</span>=报错</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>答：c，因为约束条件不满足，随机化失败</p>
+</li>
+</ul>
+<h2 id="4-数组的约束"><a href="#4-数组的约束" class="headerlink" title="4. 数组的约束"></a>4. 数组的约束</h2><p>可以加约束的两个层面：size（）和content</p>
+<p>动态数组分别可以对<strong>其长度和内容</strong>做随机化处理。此外，还可以通过在约束中结合数组的其它方法sum(), product(), and(), or()和xor()。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> good_sum5;</span><br><span class="line">    <span class="keyword">rand</span> uint len[];</span><br><span class="line">    <span class="keyword">constraint</span> c_len&#123;</span><br><span class="line">        <span class="keyword">foreach</span> (len[i]) len[i] <span class="keyword">inside</span> &#123;[<span class="number">1</span>:<span class="number">255</span>]&#125;; <span class="comment">//元素约束</span></span><br><span class="line">        len<span class="variable">.sum</span>() &lt; <span class="number">1024</span>;  <span class="comment">//元素求和</span></span><br><span class="line">        len<span class="variable">.size</span>() <span class="keyword">inside</span> &#123;[<span class="number">1</span>:<span class="number">8</span>]&#125;；  <span class="comment">//数组长度</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<h3 id="randc并不能让数组的每个元素随机化时不重复"><a href="#randc并不能让数组的每个元素随机化时不重复" class="headerlink" title="randc并不能让数组的每个元素随机化时不重复"></a><strong>randc并不能让数组的每个元素随机化时不重复</strong></h3><p><strong>可采用以下方法：</strong></p>
+<ul>
+<li><p>1.数组的每个元素遍历</p>
+</li>
+<li><p>```verilog<br>class UniqueSlow;</p>
+<pre><code>rand bit [7:0] ua[64];
+constraint c {
+    foreach (ua[i])        //对数组中每一个元素操作
+        foreach (ua[j])
+            if(i != j)     //除了元素自己
+                ua[i] != ua[j];     //和其它元素比较
+</code></pre><p>}<br>endclass</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-<span class="ruby"> <span class="number">2</span>.创建randc变量，在<span class="string">`pre_randomize()`</span>方法中给数组赋值</span></span><br><span class="line"></span><br><span class="line"><span class="ruby">-</span></span><br></pre></td></tr></table></figure>
+<p>class randc8;</p>
+<pre><code>randc bit [7:0] val;    //随机变量的值的范围为0~255，每一次randmize的256次值都不相同
+</code></pre><p>endclass</p>
+<p>class LittleUniqueArray;</p>
+<pre><code>bit [7:0] ua [64];      //定义一个含有64个元素的数组
+function void pre_randomize();
+    randc8 rc8;
+    rc8 = new();
+    foreach (ua[i])    begin
+        assert(rc8.randomize());    //从256个元素中随机化64次，每次随机化的值都不同
+        ua[i] = rc8.val;            //之后将随机化后的值赋值给数组
+    end
+endfunction
+</code></pre><p>endclass</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">案例<span class="number">1</span>：</span><br><span class="line"></span><br><span class="line"><span class="meta">```verilog</span></span><br><span class="line"><span class="keyword">class</span> packet;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span>[<span class="number">3</span>:<span class="number">0</span>] da[];                  <span class="comment">//rand修饰动态数组</span></span><br><span class="line">    <span class="keyword">constraint</span> <span class="keyword">int</span> da    &#123;</span><br><span class="line">        da<span class="variable">.size</span>() <span class="keyword">inside</span> &#123;[<span class="number">3</span>:<span class="number">5</span>]&#125;;        <span class="comment">//约束数组的个数为3-5</span></span><br><span class="line">        <span class="keyword">foreach</span>(da[i]) da[i] &lt;= da[i+<span class="number">1</span>];        </span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line">packat p;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    p = <span class="keyword">new</span>();</span><br><span class="line">    p<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;da<span class="variable">.size</span>() <span class="keyword">inside</span> &#123;<span class="number">3</span>,<span class="number">5</span>&#125;;&#125;;    <span class="comment">//约束da数组的个数或者3或者5</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>本题中考查动态数组的范围，边界范围da[4] &lt; da[5]中超出了范围。</p>
+<h3 id="随机化句柄数组"><a href="#随机化句柄数组" class="headerlink" title="随机化句柄数组"></a>随机化句柄数组</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210707202150.png" alt="img"></p>
+<p>这里需要特别注意的：随机函数会随机每个句柄的对象</p>
+<p>案例2：</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">parameter MAX_SIZE = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">class</span> RandStuff;</span><br><span class="line">        bit<span class="literal">[<span class="number">1</span>:<span class="number">0</span>]</span> value = <span class="number">1</span>;</span><br><span class="line">endclass</span><br><span class="line"><span class="keyword">class</span> RandArray;</span><br><span class="line">    rand RandStuff <span class="built_in">array</span><span class="literal">[]</span>;</span><br><span class="line">    <span class="keyword">constraint</span> c &#123;</span><br><span class="line">        <span class="built_in">array</span>.size<span class="literal">()</span> inside</span><br><span class="line">        &#123;<span class="literal">[<span class="number">1</span>:MAX]</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span><span class="literal">()</span>;</span><br><span class="line">    <span class="comment">//分配最大容量</span></span><br><span class="line">    <span class="built_in">array</span> = <span class="keyword">new</span><span class="literal">[MAX<span class="identifier">_SIZE</span>]</span>;</span><br><span class="line">    foreach (<span class="built_in">array</span><span class="literal">[<span class="identifier">i</span>]</span>)</span><br><span class="line">        <span class="built_in">array</span><span class="literal">[<span class="identifier">i</span>]</span> = <span class="keyword">new</span><span class="literal">()</span>;</span><br><span class="line">    endfunction</span><br><span class="line">endclass</span><br><span class="line"> </span><br><span class="line">RandArray ra;</span><br><span class="line">initial <span class="keyword">begin</span></span><br><span class="line">    <span class="comment">//构造数组所有对象</span></span><br><span class="line">ra = <span class="keyword">new</span><span class="literal">()</span>;</span><br><span class="line">    <span class="comment">//随机化数组，但是可能会减小数组</span></span><br><span class="line"><span class="keyword">assert</span>(ra.randomize<span class="literal">()</span>);</span><br><span class="line">foreach (ra.<span class="built_in">array</span><span class="literal">[<span class="identifier">i</span>]</span>)</span><br><span class="line">    <span class="constructor">$display(<span class="params">ra</span>.<span class="params">array</span>[<span class="params">i</span>].<span class="params">value</span>)</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>问：ra.randomize() with {array.size == 2}的合法求解是多少呢？</p>
+</blockquote>
+<p>答：<strong>array[0].value = 1,array[1].value = 1</strong></p>
+<p>因为句柄对象没有rand修饰，随意randomize（）进不到对象里面</p>
+<blockquote>
+<p>问：RandArray类中bit[1:0] value加上rand修饰会怎么样？</p>
+</blockquote>
+<p>答：此时随机化方法会向句柄对象中继续寻找，然后给value变量进行随机化</p>
+<h2 id="5-随机控制"><a href="#5-随机控制" class="headerlink" title="5. 随机控制"></a>5. 随机控制</h2><h3 id="生成随机序列"><a href="#生成随机序列" class="headerlink" title="生成随机序列"></a>生成随机序列</h3><p>（1）产生随机事务序列的另一种方法就是使用SV的 <strong>randsequence结构</strong>。这对于随机安排组织原子（atomic）测试序列很有帮助。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">15</span>; i++) <span class="keyword">begin</span></span><br><span class="line"><span class="comment">//按照要求发送激励</span></span><br><span class="line">        <span class="keyword">randsequence</span> (stream)</span><br><span class="line">            stream : cfg_read := <span class="number">1</span> | io_read :=<span class="number">2</span> | mem_read :=<span class="number">5</span>;        </span><br><span class="line"><span class="comment">//cfg_read和io_read以及mem_read的可能性1:2:5</span></span><br><span class="line">            cfg_reead : &#123;cfg_read_task;&#125; | &#123;cfg_read_task;&#125; cfg_read;</span><br><span class="line">            mem_reead : &#123;mem_read_task;&#125; | &#123;mem_read_task;&#125; mem_read;</span><br><span class="line">            io_reead  : &#123;io_read_task;&#125;  | &#123;io_read_task;&#125;  io_read;</span><br><span class="line">        <span class="keyword">endsequence</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>（2）randcase来建立随机决策树，但是它带来的 问题就是没有变量 可以提供追踪 调试。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">int</span> len;</span><br><span class="line">    <span class="keyword">randcase</span></span><br><span class="line">        <span class="number">1</span>:len = $urandom_range(<span class="number">0</span>,<span class="number">2</span>);    <span class="comment">//10%:0,1,or2</span></span><br><span class="line">        <span class="number">8</span>:len = $urandom_range(<span class="number">3</span>,<span class="number">5</span>);    <span class="comment">//80%:3,4,or5</span></span><br><span class="line">        <span class="number">1</span>:len = $urandom_range(<span class="number">6</span>,<span class="number">7</span>);    <span class="comment">//10%:6or7</span></span><br><span class="line">    <span class="keyword">endcase</span></span><br><span class="line">    $dsiplay(<span class="string">"len = %0d"</span>, len);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>总结：</p>
+<p>（1）randsequence和randcase都是针对轻量级的随机控制应用。而我们可以 通过定义随机类 取代上述随机控制并且由于类的继承 性使得在后期维护代码的时候更加方便。</p>
+<p>（2）randsequence的相关功能我们在协调激励组件和测试用例的时候可能会用到。</p>
+<p>（3）randcase对应着随机约束中dist权重约束if-else条件约束组合。</p>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>核心：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fork</span> … <span class="keyword">join</span></span><br><span class="line"><span class="keyword">fork</span> … <span class="keyword">join_none</span></span><br><span class="line"><span class="keyword">fork</span> … <span class="keyword">join_any</span></span><br></pre></td></tr></table></figure>
+<p>三者区别：执行顺序</p>
+<ul>
+<li>fork-join：执行完该并行块才继续执行</li>
+<li>fork-join_none：先执行后面的，这个块和后面的语句属于并行</li>
+<li>fork-join_any：最快的一句执行完，就和后面的语句并行</li>
+</ul>
+<p>一旦initial块执行结束，线程中未完成的语句也结束</p>
+<h2 id="线程控制"><a href="#线程控制" class="headerlink" title="线程控制"></a>线程控制</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210708100727.png" alt="img"></p>
+<ul>
+<li><p>如何确保fork-join和fork-none在退出前执行完呢</p>
+<p>在end之前调用wait fork</p>
+</li>
+<li><p><strong>停止多个线程</strong>：disable fork</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    check_trans(tr0);    <span class="comment">//线程0</span></span><br><span class="line">    <span class="comment">//创建一个线程来限制disable fork的作用范围</span></span><br><span class="line">    <span class="keyword">fork</span>    <span class="comment">//线程1</span></span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            check_trans(tr1);    <span class="comment">//线程2</span></span><br><span class="line">            <span class="keyword">fork</span>                 <span class="comment">//线程3</span></span><br><span class="line">                check_tans(tr2);    <span class="comment">//线程4</span></span><br><span class="line">            <span class="keyword">join</span></span><br><span class="line">            <span class="comment">//停止线程1-4，单独保留线程0</span></span><br><span class="line">            <span class="variable">#(TIME_OUT/2)</span> <span class="keyword">disable</span> <span class="keyword">fork</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">join</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>disable线程1，以及其衍生出来的线程</p>
+</li>
+<li><p>停止多次 调用的任务</p>
+<p>如果你给某一个任务或者线程<strong>指明标号</strong>，那么当这个<strong>线程被调用多次后</strong>，如果通过disable去禁止这个线程标号，所有<strong>衍生的同名线程</strong>都将被禁止。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> wait_for_time_out (<span class="keyword">int</span> id);</span><br><span class="line">    <span class="keyword">if</span>(id == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                #<span class="number">2</span>;</span><br><span class="line">                <span class="built_in">$display</span>(<span class="string">"@%0t: disable wait_for_time_out"</span>, <span class="built_in">$time</span>);</span><br><span class="line">                <span class="keyword">disable</span> wait_for_time_out;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">join_none</span></span><br><span class="line">            <span class="keyword">fork</span>: just_a_little</span><br><span class="line">                <span class="keyword">begin</span></span><br><span class="line">                    <span class="built_in">$display</span>(<span class="string">"@%0t: %m: %0d enteriing thread"</span>, <span class="built_in">$time</span>,id);</span><br><span class="line">                    #TIME_OUT;</span><br><span class="line">                    <span class="built_in">$display</span>(<span class="string">"@%0t； %m: %0d done"</span>, <span class="built_in">$time</span>,id);</span><br><span class="line">                <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">join_none</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+<p>可以看到该task占用的线程只是点火启动</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">initial <span class="keyword">begin</span></span><br><span class="line">    wait<span class="constructor">_for_time_out(0)</span>;    <span class="comment">//Spawn thread 0</span></span><br><span class="line">    wait<span class="constructor">_for_time_out(1)</span>;    <span class="comment">//Spawn thread 1</span></span><br><span class="line">    wait<span class="constructor">_for_time_out(2)</span>;    <span class="comment">//Spawn thread 2</span></span><br><span class="line">    #(TIME_OUT*<span class="number">2</span>) <span class="constructor">$display(<span class="string">"@%0t: All done"</span>, $<span class="params">time</span>)</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>若果执行上述语句，则在执行完id=0的task后，所用其他由该task开辟的线程被全部截止</p>
+</li>
+</ul>
+<h2 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210708101837.png" alt="img"></p>
+<h3 id="event"><a href="#event" class="headerlink" title="event"></a>event</h3><p><strong>event关键字：声明即实例</strong></p>
+<p>看一下线程间的相互阻塞</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">event</span> e1,e2;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"@%0t: 1:before trigger"</span>, <span class="built_in">$time</span>);</span><br><span class="line">        -&gt; e1;</span><br><span class="line">        @e2;</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"@%0t: 1:after trigger"</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"@%0t: 2:before trigger"</span>, <span class="built_in">$time</span>);</span><br><span class="line">        -&gt;e2;</span><br><span class="line">        @e1;</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"@%0t: 2:after trigger"</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p> e1和e2在同一时刻被触发，但是由于delta  cycle的时间 差是的两个 初始化块可能无法等到e1或者e2</p>
+<p>因为存在date-cycle，e1和e2总是有一个先触发，触发e1时等待e2，触发e2时等待e1。打印结果为：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@0:</span><span class="number">1</span>：before trigger</span><br><span class="line"><span class="variable">@0</span>:<span class="number">2</span>：before trigger</span><br><span class="line"><span class="variable">@0</span>:<span class="number">1</span>：after trigger</span><br></pre></td></tr></table></figure>
+<p>可以看到@e1导致的阻塞没有办法解决</p>
+<h3 id="triggered"><a href="#triggered" class="headerlink" title="triggered()"></a>triggered()</h3><p><strong>此时就可以对阻塞方式进行一下修改：</strong></p>
+<p>更加安全的方式使用event的方法triggered()，将边沿触发改为电平触发</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">event</span> e1,e2;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"@%0t: 1:before trigger"</span>, <span class="built_in">$time</span>);</span><br><span class="line">        -&gt; e1;</span><br><span class="line">        <span class="keyword">wait</span> (e2<span class="variable">.tregger</span>);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"@%0t: 1:after trigger"</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"@%0t: 2:before trigger"</span>, <span class="built_in">$time</span>);</span><br><span class="line">        -&gt;e2;</span><br><span class="line">        <span class="keyword">wait</span> (e1<span class="variable">.tregger</span>);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"@%0t: 2:after trigger"</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>此时只有e1，e2执行就代表电平触发已经完成，不会再造成阻塞</p>
+<h3 id="和triggered-的使用时机"><a href="#和triggered-的使用时机" class="headerlink" title="@和triggered()的使用时机"></a>@和triggered()的使用时机</h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> road;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    sutomatic <span class="keyword">begin</span></span><br><span class="line">    byd<span class="variable">.drive</span>();</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> car;</span><br><span class="line">    <span class="keyword">bit</span>   <span class="keyword">static</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">task</span>  launch();</span><br><span class="line">        start = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"car is launched"</span>);</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line">    <span class="keyword">task</span> move();</span><br><span class="line">        <span class="keyword">wait</span>(start == <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"car is moving"</span>);</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">task</span> drive();</span><br><span class="line">    <span class="keyword">fork</span></span><br><span class="line">        <span class="keyword">this</span><span class="variable">.launch</span>();</span><br><span class="line">        <span class="keyword">this</span><span class="variable">.move</span>();</span><br><span class="line">    <span class="keyword">join</span></span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<p>为了保证发动方法在前，通过bit位控制move（）方法阻塞</p>
+<p>此时只要执行了launch（），move（）方法随便执行</p>
+<p>此时可以直接换成event和triggered</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> car;</span><br><span class="line">    <span class="keyword">event</span>  e_start;</span><br><span class="line">    <span class="keyword">task</span>  launch();</span><br><span class="line">        -&gt; e_start;</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"car is launched"</span>);</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line">    <span class="keyword">task</span> move();</span><br><span class="line">        <span class="keyword">wait</span>(e_start<span class="variable">.triggered</span>());</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"car is moving"</span>);</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">task</span> drive();</span><br><span class="line">    <span class="keyword">fork</span></span><br><span class="line">        <span class="keyword">this</span><span class="variable">.launch</span>();</span><br><span class="line">        <span class="keyword">this</span><span class="variable">.move</span>();</span><br><span class="line">    <span class="keyword">join</span></span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<p>那如果再增加一个显示速度的方法，要求每次增加速度都会显示，此时就要使用边沿触发@，因为电平触发只会发生一次，后续<code>wait(triggered())</code>的返回值会一直为1，阻塞检测激励将不复存在</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">lass car;</span><br><span class="line">    <span class="keyword">event</span> e_start;</span><br><span class="line">    <span class="keyword">event</span> e_speedup;</span><br><span class="line">    <span class="keyword">int</span> speed = <span class="number">0</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">task</span> speedup();</span><br><span class="line">        #<span class="number">10</span>ns;</span><br><span class="line">        -&gt;e_speedup;</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line">    <span class="keyword">task</span> display();</span><br><span class="line">        <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">            @e_speedup;</span><br><span class="line">            speed++;</span><br><span class="line">            <span class="built_in">$display</span>(<span class="string">"speed is %0d"</span>,speed);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line">    <span class="keyword">task</span> drive();</span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            <span class="keyword">this</span><span class="variable">.speedup</span>();</span><br><span class="line">            <span class="keyword">this</span><span class="variable">.display</span>();</span><br><span class="line">        <span class="keyword">join_none</span></span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<h3 id="旗语（semaphore）"><a href="#旗语（semaphore）" class="headerlink" title="旗语（semaphore）"></a>旗语（semaphore）</h3><p>也就是锁<img src="https://gitee.com/biongd/img/raw/master/img/20210708110231.png" alt="img"></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">program</span> <span class="keyword">automatic</span> test(bus_ifc<span class="variable">.TB</span><span class="variable">.bus</span>);</span><br><span class="line">    semaphore sem;    <span class="comment">//创建一个semaphore</span></span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        sem = <span class="keyword">new</span>(<span class="number">1</span>);    <span class="comment">//分配一个钥匙</span></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            sequencer();    <span class="comment">//产生两个总线实物线程</span></span><br><span class="line">            sequencer();</span><br><span class="line">        <span class="keyword">join</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">task</span> sequencer;</span><br><span class="line">        <span class="keyword">repeat</span>($urandom%<span class="number">10</span>)    <span class="comment">//随机等待0-9个周期</span></span><br><span class="line">        @bus<span class="variable">.cb</span>;</span><br><span class="line">        sendTrans();            <span class="comment">//执行总线事务</span></span><br><span class="line">    endTask</span><br><span class="line">    <span class="keyword">task</span> sendTrans;</span><br><span class="line">        sem<span class="variable">.get</span>(<span class="number">1</span>);            <span class="comment">//获取总线钥匙</span></span><br><span class="line">        @bus<span class="variable">.cb</span>;                <span class="comment">//把信号驱动到总线上</span></span><br><span class="line">        bus<span class="variable">.cb</span><span class="variable">.addr</span> &lt;= t<span class="variable">.addr</span>;</span><br><span class="line">        ...</span><br><span class="line">        sem<span class="variable">.put</span>(<span class="number">1</span>);            <span class="comment">//处理完成时把钥匙返回</span></span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endprogram</span></span><br></pre></td></tr></table></figure>
+<p>semaphore 钥匙数是傻瓜式的增减：</p>
+<p>new() ：不传参就没钥匙</p>
+<p>get（）：调用就少一把</p>
+<p>put（）：调用就多一把</p>
+<p>上面这种调用方式可能出现的问题，钥匙越来越多</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> car;</span><br><span class="line">    semaphore key;</span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">new</span><span class="literal">()</span>;</span><br><span class="line">        key = <span class="keyword">new</span>(<span class="number">1</span>);</span><br><span class="line">    endfunction</span><br><span class="line">    task get<span class="constructor">_on(<span class="params">string</span> <span class="params">p</span>)</span>;</span><br><span class="line">        <span class="constructor">$display(<span class="string">"%s is waiting for the key"</span>, <span class="params">p</span>)</span>;</span><br><span class="line">        key.get<span class="literal">()</span>;</span><br><span class="line">        #<span class="number">1n</span>s;</span><br><span class="line">        <span class="constructor">$display(<span class="string">"%s got on zhe car"</span>, <span class="params">p</span>)</span>;</span><br><span class="line">    endtask</span><br><span class="line">    task get<span class="constructor">_off(<span class="params">string</span> <span class="params">p</span>)</span>;</span><br><span class="line">        <span class="constructor">$display(<span class="string">"%s is got off the car"</span>, <span class="params">p</span>)</span>;</span><br><span class="line">        key.put<span class="literal">()</span>;</span><br><span class="line">        #<span class="number">1n</span>s;</span><br><span class="line">        <span class="constructor">$display(<span class="string">"%s return the key"</span>, <span class="params">p</span>)</span>;</span><br><span class="line">    endtask</span><br><span class="line">endlass</span><br><span class="line"><span class="keyword">module</span> family;</span><br><span class="line">car byd = <span class="keyword">new</span><span class="literal">()</span>;</span><br><span class="line"><span class="built_in">string</span> p1 = <span class="string">"husband"</span>;</span><br><span class="line"><span class="built_in">string</span> p2 = <span class="string">"wife"</span>;</span><br><span class="line">initial <span class="keyword">begin</span></span><br><span class="line">    fork</span><br><span class="line">        <span class="keyword">begin</span>    <span class="comment">//    丈夫开车</span></span><br><span class="line">            byd.get<span class="constructor">_on(<span class="params">p1</span>)</span>;</span><br><span class="line">            byd.get<span class="constructor">_off(<span class="params">p1</span>)</span>;  </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">begin</span>    <span class="comment">//    妻子开车</span></span><br><span class="line">            byd.get<span class="constructor">_on(<span class="params">p2</span>)</span>;</span><br><span class="line">            byd.get<span class="constructor">_off(<span class="params">p2</span>)</span>;            </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    jion</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
+<p>如果没注意还了一把钥匙，就会导致钥匙数在意料之外变多，如何避免这种情况</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> carkeep;</span><br><span class="line">    <span class="keyword">int</span> key = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">string</span> q[$];            <span class="comment">//队列</span></span><br><span class="line">    <span class="keyword">string</span> user;</span><br><span class="line">    <span class="keyword">task</span> keep_car();</span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            <span class="keyword">forever</span> <span class="keyword">begin</span>    <span class="comment">//管理钥匙和分发</span></span><br><span class="line">                <span class="keyword">wait</span>(q<span class="variable">.size</span>() != <span class="number">0</span> &amp;&amp; key != <span class="number">0</span>);</span><br><span class="line">                user = q<span class="variable">.pop_front</span>();    <span class="comment">//等待</span></span><br><span class="line">                key--;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">join_none</span>;</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line">    <span class="keyword">task</span> get_key(<span class="keyword">string</span> p);    <span class="comment">//拿钥匙</span></span><br><span class="line">        q<span class="variable">.push_back</span>(p);        <span class="comment">//把名字告诉</span></span><br><span class="line">        <span class="keyword">wait</span>(user == p);        <span class="comment">//等待了</span></span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line">    <span class="keyword">task</span> put_key(<span class="keyword">string</span> p);    <span class="comment">//还钥匙</span></span><br><span class="line">        <span class="keyword">if</span>(user == p)    <span class="keyword">begin</span>    <span class="comment">//拿钥匙的和还钥匙的是一个人</span></span><br><span class="line">            user = <span class="string">"none"</span>;</span><br><span class="line">            key++；</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<p>增加一个用户队列，此时用户没有资格获取钥匙，由keep_car()统一分发！！！用户只可以还钥匙，并将该用户删除</p>
+<p>这就保证了最多只能有1把钥匙！！！</p>
+<ul>
+<li>调用还钥匙方法：user是锁死的，只有同一个user才可以还，还完别的user无法访问，钥匙数最多只能为1</li>
+<li>调用取钥匙方法：一旦队列有人，并且有钥匙，马上分配！！此时key为0，队列进入等待，直到取钥匙的user还钥匙</li>
+</ul>
+<h3 id="mailbox"><a href="#mailbox" class="headerlink" title="mailbox"></a>mailbox</h3><p>线程同步只需要event来保证，只有线程之间传递消息时使用mailbox</p>
+<p><img src="https://img-blog.csdnimg.cn/20200502110846540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0pheV93aG8=,size_16,color_FFFFFF,t_70" alt="img"></p>
+<ul>
+<li>try_get()，try_put（)，try_peek()是非阻塞</li>
+<li>限定mailbox可以传入的参数类型：<code>mailbox   #(int)</code></li>
+<li>new() ：表示变长，new（N）表示定长</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">program</span> <span class="keyword">automatic</span> bounded;</span><br><span class="line">    mailbox mbx;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        mbx = <span class="keyword">new</span>(<span class="number">1</span>);    <span class="comment">//容量为1</span></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            <span class="comment">//线程1</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span>; i&lt;<span class="number">4</span> ; i++) <span class="keyword">begin</span></span><br><span class="line">                <span class="built_in">$display</span>(<span class="string">"Producer: before put(%0d)"</span>, i);</span><br><span class="line">                mbx<span class="variable">.put</span>(i);</span><br><span class="line">                <span class="built_in">$display</span>(<span class="string">"Producer: after put(%0d)"</span>, i);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="comment">//Consumer线程</span></span><br><span class="line">            <span class="keyword">repeat</span>(<span class="number">4</span>) <span class="keyword">begin</span></span><br><span class="line">                <span class="keyword">int</span> j;</span><br><span class="line">                #<span class="number">1</span>ns mbx<span class="variable">.get</span>(j);</span><br><span class="line">                <span class="built_in">$display</span>(<span class="string">"Consumer: after put(%0d)"</span>, j);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">join</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endprogram</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">program</span> <span class="keyword">automatic</span> bounded;</span><br><span class="line">    mailbox mbx;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        mbx = <span class="keyword">new</span>(<span class="number">1</span>);    <span class="comment">//容量为1</span></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            <span class="comment">//线程1</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span>; i&lt;<span class="number">4</span> ; i++) <span class="keyword">begin</span></span><br><span class="line">                <span class="built_in">$display</span>(<span class="string">"Producer: before put(%0d)"</span>, i);</span><br><span class="line">                mbx<span class="variable">.put</span>(i);</span><br><span class="line">                <span class="built_in">$display</span>(<span class="string">"Producer: after put(%0d)"</span>, i);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="comment">//Consumer线程</span></span><br><span class="line">            <span class="keyword">repeat</span>(<span class="number">4</span>) <span class="keyword">begin</span></span><br><span class="line">                <span class="keyword">int</span> j;</span><br><span class="line">                #<span class="number">1</span>ns mbx<span class="variable">.get</span>(j);</span><br><span class="line">                <span class="built_in">$display</span>(<span class="string">"Consumer: after put(%0d)"</span>, j);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">join</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endprogram</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210708161421.png" alt="image-20210708161421701"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E5%AD%97IC/" rel="tag"># 数字IC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/06/verilog%E5%9F%BA%E7%A1%80/" rel="next" title="verilog基础">
+                <i class="fa fa-chevron-left"></i> verilog基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/06/IC%E9%AA%8C%E8%AF%81/" rel="prev" title="verilog基础">
+                verilog基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-数据类型"><span class="nav-text">语法-数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程块和方法"><span class="nav-text">过程块和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#function和task"><span class="nav-text">function和task</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类和包的使用"><span class="nav-text">类和包的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包的使用"><span class="nav-text">包的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-静态转换"><span class="nav-text">1.静态转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-动态转换"><span class="nav-text">2.动态转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-显式和隐式转换"><span class="nav-text">3.显式和隐式转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚函数（virtual）"><span class="nav-text">虚函数（virtual）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-virtual-interface"><span class="nav-text">1. virtual interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-virtual-task-function"><span class="nav-text">2. virtual task&#x2F;function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-virtual-class"><span class="nav-text">3. virtual class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象拷贝"><span class="nav-text">对象拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-浅拷贝"><span class="nav-text">1. 浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-自定义拷贝"><span class="nav-text">2. 自定义拷贝</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回调函数"><span class="nav-text">回调函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验进化2"><span class="nav-text">实验进化2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#interface的提取"><span class="nav-text">interface的提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generator的提取"><span class="nav-text">generator的提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将interface和generator的module按照需要进行实例化"><span class="nav-text">将interface和generator的module按照需要进行实例化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test的module"><span class="nav-text">test的module</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机"><span class="nav-text">随机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-随机约束和分布"><span class="nav-text">1. 随机约束和分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#约束"><span class="nav-text">约束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-约束块控制"><span class="nav-text">2. 约束块控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-随机函数"><span class="nav-text">3. 随机函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数组的约束"><span class="nav-text">4. 数组的约束</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#randc并不能让数组的每个元素随机化时不重复"><span class="nav-text">randc并不能让数组的每个元素随机化时不重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机化句柄数组"><span class="nav-text">随机化句柄数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-随机控制"><span class="nav-text">5. 随机控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成随机序列"><span class="nav-text">生成随机序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程控制"><span class="nav-text">线程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程通信"><span class="nav-text">线程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#event"><span class="nav-text">event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#triggered"><span class="nav-text">triggered()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和triggered-的使用时机"><span class="nav-text">@和triggered()的使用时机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旗语（semaphore）"><span class="nav-text">旗语（semaphore）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mailbox"><span class="nav-text">mailbox</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

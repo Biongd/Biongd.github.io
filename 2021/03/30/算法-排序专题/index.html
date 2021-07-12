@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="悦来客栈">
 <meta property="og:description" content="1. 堆排序（O(nlog(n))）目的：构建一个大顶堆或小顶堆（堆顶元素为最大或最小） 其实堆的空间结构实际上就是一棵完全二叉树，不过堆有它自己的限定条件。大堆就是树中每个父亲节点都要比孩子节点大，并且两个兄弟之间是没有大小区分的。小堆与之相反，就是每个父亲节点都要比孩子节点小。 堆的空间结构虽然是个完全二叉树，但是这样的结构也是我们为了好理解才想出来的，实际上堆是通过数组的下标进行相应的排序，">
 <meta property="article:published_time" content="2021-03-30T06:50:21.000Z">
-<meta property="article:modified_time" content="2021-06-24T08:50:01.413Z">
+<meta property="article:modified_time" content="2021-07-12T00:30:19.983Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -323,8 +323,8 @@
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-06-24T16:50:01+08:00" content="2021-06-24">
-                          2021-06-24
+                     <time itemprop="dateUpdated" datetime="2021-07-12T08:30:19+08:00" content="2021-07-12">
+                          2021-07-12
                      </time>
                  </span>
              
@@ -347,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F%E4%B8%93%E9%A2%98-%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D-dp%E4%B8%93%E9%A2%98-%E6%95%B0%E5%AD%A6-%E6%A0%91-%E5%9B%BE-bfs-dfs/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法-排序专题.基础介绍.dp专题.数学.树/图/bfs/dfs.</span>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F%E4%B8%93%E9%A2%98-%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3-dp%E4%B8%93%E9%A2%98-%E6%95%B0%E5%AD%A6-%E6%A0%91-%E5%9B%BE-bfs-dfs/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法-排序专题.基础介绍.滑动窗口.dp专题.数学.树/图/bfs/dfs.</span>
                   </a>
                 </span>
 
@@ -395,7 +395,7 @@
 <p><strong>大顶堆：arr[i] &gt;= arr[2i+1] &amp;&amp; arr[i] &gt;= arr[2i+2]</strong>  </p>
 <p><strong>小顶堆：arr[i] &lt;= arr[2i+1] &amp;&amp; arr[i] &lt;= arr[2i+2]</strong> </p>
 <p>上述的两个公式就是大根堆的建立的基础：</p>
-<h2 id="1-1-构建大根堆"><a href="#1-1-构建大根堆" class="headerlink" title="1.1 构建大根堆"></a>1.1 构建大根堆</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构建大根堆</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] buildMaxHeap(<span class="keyword">int</span>[] array)&#123;</span><br><span class="line">    <span class="comment">//从最底部的根节点开始（(array.length-2)/2）</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=(array.length-<span class="number">2</span>)/<span class="number">2</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">        adjustDownToUp(array, i, array.length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将元素array[k]自下往上逐步调整树形结构</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">adjustDownToUp</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> k, <span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = array[k];</span><br><span class="line">    <span class="comment">//对k为根的子树从上到下依次进行调整</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>*k+<span class="number">1</span>; i&lt;length-<span class="number">1</span>; i=<span class="number">2</span>*i+<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="comment">//先比较左右子节点，大的才有资格和根进行比较</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;length &amp;&amp; array[i]&lt;array[i+<span class="number">1</span>])&#123;</span><br><span class="line">            <span class="comment">//如果是右节点大，则取右节点的下标</span></span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果子节点比根大，将两者进行调换。</span></span><br><span class="line">        <span class="comment">//如果根节点大，则停止调整</span></span><br><span class="line">        <span class="keyword">if</span>(temp&gt;=array[i])&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            array[k] = array[i];<span class="comment">//（这里会导致i的位置有个缺，需要被下面的大子节点或temp填上）</span></span><br><span class="line">            k = i;<span class="comment">//【关键】修改k值，以便继续向下调整</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    array[k] = temp;<span class="comment">//被调整的结点的值放人最终位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-1-构建大根堆"><a href="#1-1-构建大根堆" class="headerlink" title="1.1 构建大根堆"></a>1.1 构建大根堆</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构建大根堆</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] buildMaxHeap(<span class="keyword">int</span>[] array)&#123;</span><br><span class="line">    <span class="comment">//从最底部的根节点开始（(array.length-2)/2）</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=(array.length-<span class="number">2</span>)/<span class="number">2</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">        adjustDownToUp(array, i, array.length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将元素array[k]自下往上逐步调整树形结构</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">adjustDownToUp</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> k, <span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = array[k];</span><br><span class="line">    <span class="comment">//对k为根的子树从上到下依次进行调整</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>*k+<span class="number">1</span>; i&lt;length; i=<span class="number">2</span>*i+<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="comment">//先比较左右子节点，大的才有资格和根进行比较</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;length-<span class="number">1</span> &amp;&amp; array[i]&lt;array[i+<span class="number">1</span>])&#123;</span><br><span class="line">            <span class="comment">//如果是右节点大，则取右节点的下标</span></span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果子节点比根大，将两者进行调换。</span></span><br><span class="line">        <span class="comment">//如果根节点大，则停止调整(因为下面的都是调整过的)</span></span><br><span class="line">        <span class="keyword">if</span>(temp&gt;=array[i])&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            array[k] = array[i];<span class="comment">//（这里会导致i的位置有个缺，需要被下面的大子节点或temp填上）</span></span><br><span class="line">            k = i;<span class="comment">//【关键】修改k值，以便继续向下调整</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    array[k] = temp;<span class="comment">//被调整的结点的值放人最终位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="1-2-堆排序"><a href="#1-2-堆排序" class="headerlink" title="1.2 堆排序"></a>1.2 堆排序</h2><p>根和数组的尾部元素互换；</p>
 <p>对排除尾部元素的剩余数组从0开始进行调整；</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//堆排序</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] heapSort(<span class="keyword">int</span>[] array)&#123;</span><br><span class="line">        array = buildMaxHeap(array); <span class="comment">//初始建堆，array[0]为第一趟值最大的元素</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=array.length-<span class="number">1</span>;i&gt;<span class="number">1</span>;i--)&#123;  </span><br><span class="line">            <span class="keyword">int</span> temp = array[<span class="number">0</span>];  <span class="comment">//将堆顶元素和堆低元素交换，即得到当前最大元素正确的排序位置</span></span><br><span class="line">            array[<span class="number">0</span>] = array[i];</span><br><span class="line">            array[i] = temp;</span><br><span class="line">            adjustDownToUp(array, <span class="number">0</span>,i);  <span class="comment">//整理，将剩余的元素整理成堆</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -431,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/03/09/java-IDEA/" rel="next" title="java-IDEA">
-                <i class="fa fa-chevron-left"></i> java-IDEA
+              <a href="/2021/03/30/%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="next" title="算法-滑动窗口">
+                <i class="fa fa-chevron-left"></i> 算法-滑动窗口
               </a>
             
           </div>
@@ -524,7 +524,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -546,7 +546,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
