@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数字IC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="对UVM的初步理解就是类似于java的spring框架，是编程的方法论并为编程人员制定规则，让编程更加规范 类库：verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVM">
+<meta property="og:url" content="http://yoursite.com/2020/10/06/IC%E9%AA%8C%E8%AF%81-UVM/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="对UVM的初步理解就是类似于java的spring框架，是编程的方法论并为编程人员制定规则，让编程更加规范 类库：verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F;">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210712122518.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210712123146.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210712123250.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20180821192216319?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzk0MTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716184035.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716183843.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716185653.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20180821211122139?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzk0MTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716194839.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20180821212109982?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzk0MTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716203559.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716220512.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716224448.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716225157.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716225726.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716230533.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716233058.png">
+<meta property="article:published_time" content="2020-10-06T06:25:30.000Z">
+<meta property="article:modified_time" content="2021-07-16T23:03:12.879Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="数字IC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210712122518.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/10/06/IC验证-UVM/"/>
+
+
+
+
+
+  <title>UVM | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/06/IC%E9%AA%8C%E8%AF%81-UVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">UVM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-06T14:25:30+08:00">
+                2020-10-06
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-07-17T07:03:12+08:00" content="2021-07-17">
+                          2021-07-17
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97-v/" itemprop="url" rel="index">
+                    <span itemprop="name">数字-v</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>对UVM的初步理解就是类似于java的spring框架，是编程的方法论并为编程人员制定规则，让编程更加规范</p>
+<p>类库：verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/</p>
+ <a id="more"></a>
+<h1 id="1-UVM概念"><a href="#1-UVM概念" class="headerlink" title="1. UVM概念"></a>1. UVM概念</h1><ul>
+<li>UVM就一种验证方法学而言，它的思想却并不是必须要与某一种语言绑定的。因此，UVM的验证方法学通过吸取eRM、AVM、OVM、UVM等之前不同方法学的优点，集众家之所长。</li>
+<li>所有的验证方法学服务目的都在于提供一些可以重用的类来减轻在项目之间水平复用和垂直复用的工作量，而同时对于验证新人又能提供一套可靠的框架，摆脱搭建房子构思图纸的苦恼。</li>
+<li>UVM面向所有数字设计，涵盖了从模块级到芯片级，ASIC到FPGA，以及控制逻辑、数据通路到处理器验证的全部场景。</li>
+<li>UVM中的Universal(通用)的含义代表的是该方法学可以适用于大多数的验证项目，而它自身提供的基础类库(basic class library)和基本验证结构可以让具有不同软件编程经验的验证人员能够快速构建起一个结构可靠的验证框架。</li>
+<li>UVM的框架构建类和测试类能够减轻环境构建的负担，进而将更多的精力集中在如何制定验证计划和创建测试场景。<br>UVM框架，包括UVM的类库和核心机制、核心的UVM组件和层次构建方式、常见的UVM组件间的通信方式、UVM测试场景的构成、UVM的寄存器模型应用。</li>
+</ul>
+<h2 id="UVM类库地图"><a href="#UVM类库地图" class="headerlink" title="UVM类库地图"></a>UVM类库地图</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210712122518.png" alt="image-20210712122518431" style="zoom:150%;" /></p>
+<p><strong>10大类型：</strong></p>
+<ul>
+<li><p>核心基类</p>
+<p>克隆，打印等方法都已经进行了封装</p>
+</li>
+<li><p>工厂（factory）类</p>
+</li>
+<li><p>事务（transaction）和序列（sequence）类</p>
+<p>trans的有序组合——序列</p>
+</li>
+<li><p>结构创建（struct creation）类</p>
+</li>
+<li><p>环境组件（environment component）类</p>
+<p>driver，monitor，generator，checker等</p>
+</li>
+<li><p>通信管道（channel）类</p>
+<p>mailbox</p>
+</li>
+<li><p>信息报告（message report）类</p>
+<p>为什么不用$display()?</p>
+</li>
+<li><p>寄存器模型（register model）类</p>
+</li>
+<li><p>线程同步（thread synchronizetion）类</p>
+<p>event，旗语等</p>
+</li>
+<li><p>事务接口（transaction interface）类</p>
+</li>
+</ul>
+<h2 id="UVM组件"><a href="#UVM组件" class="headerlink" title="UVM组件"></a>UVM组件</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210712123146.png" alt="image-20210712123146758"></p>
+<p>sequencer：承担了generator发送激励的功能，产生激励的部分在架构图中已经看不到了，属于动态部分sequence</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210712123250.png" alt="image-20210712123250858"></p>
+<h2 id="UVM环境-phase机制"><a href="#UVM环境-phase机制" class="headerlink" title="UVM环境-phase机制"></a>UVM环境-phase机制</h2><p>硬件：仿真开始前，已经完成了实例化和连接</p>
+<p>软件：运行时动态加载对象，并生成连接</p>
+<p>多层嵌套的组件，需要在上层次中创建对象和建立连接（monitor和checker）</p>
+<p>UVM验证环境是按照UVM_PHASE有序执行的，UVM_PHASE按照是否消耗时间分为function_phase和task_phase.function_phase如build_phase、connect_phase，这些phase是不消耗时间的；task_phase如main_phase、reset_phase这些phase是消耗时间的.<br>1.function_phase介绍<br>在function_phase中build_phase实现实例化工作，主要是对uvm_component及其派生类的实例化；connect_phase用来完成诸如port的链接这些动作；end_of_elaborattion_phase、start_of_simulation_phase不常用，不过也可以根据平台的需要做一些预处理的动作；<br>report_phase主要在结束时对DUT和RM状态做一下检查；涉及到读取寄存器状态，需要在task_phase中检查.<br>2.function_phase顺序<br>build_phase是自顶而下的执行顺序，即从uvm_test_top开始执行，进而到uvm_env、uvm_rm的build_phase；其他function_phase正好相反，是自下而上的执行顺序.</p>
+<h2 id="工厂机制"><a href="#工厂机制" class="headerlink" title="工厂机制"></a>工厂机制</h2><p>从设计模式出发就很好理解了，通过工厂类中的生成方法制造需要类型的对象！！</p>
+<ul>
+<li>UVM中创建的任何一个类都需要工厂注册</li>
+<li>注册的两大类型：UVM_component和UVM_object(10大类型里面除了port类外，全都由这两个类制造)<ul>
+<li>component：常见组件：不动产，构建验证环境</li>
+<li>object：非固定资产，如trans类，帮助实现验证场景，可以动态产生</li>
+</ul>
+</li>
+</ul>
+<p>范式：</p>
+<ul>
+<li>UVM里任何一个组件类都需要注册</li>
+<li>构造方法，new函数的参数固定</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">例<span class="number">1</span> uvm_object类型:</span><br><span class="line">   <span class="keyword">class</span> obj <span class="keyword">extends</span> uvm_object;</span><br><span class="line">   <span class="meta">`uvm_object_utlis(obj)</span></span><br><span class="line">   <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="number">'ob</span>j');</span><br><span class="line">   	 <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">   	 <span class="built_in">$display</span>($sfortmatf(<span class="string">"%s is ceated"</span>,name));</span><br><span class="line">  <span class="keyword">endfunction</span>：<span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">例<span class="number">2</span> uvm_componet类型：</span><br><span class="line">    <span class="keyword">class</span> comp <span class="keyword">extends</span> uvm_componet;</span><br><span class="line">   <span class="meta">`uvm_componet_utlis(comp)</span></span><br><span class="line">   <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name='comp'，uvm_componet parent=<span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name,parent);</span><br><span class="line">    <span class="built_in">$display</span>($sfortmatf(<span class="string">"%s is ceated"</span>,name));</span><br><span class="line">    <span class="keyword">endfunction</span>：<span class="keyword">new</span></span><br><span class="line"> 注：</span><br><span class="line"> <span class="number">1</span>.  以上两个代码的注册宏和<span class="keyword">new</span>()函数是范式，结构和参数都不可更改。</span><br><span class="line"> <span class="number">2</span>.  注意两者的注册宏的区别</span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工厂和new创建对象的区别</span></span><br><span class="line">comp1 c1, c2;</span><br><span class="line">obj1 o1, o2;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    c1 = <span class="keyword">new</span>(<span class="string">"c1"</span>);</span><br><span class="line">    o1 = <span class="keyword">new</span>(<span class="string">"o1"</span>);</span><br><span class="line">    c2 = comp1::type_id::create(<span class="string">"c2"</span>, <span class="literal">null</span>);</span><br><span class="line">    o2 = obj1::type_id::create(<span class="string">"o2"</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>问：factory是独有的，有且只有一个，这保证了所有的component的注册都在一个“机构”中。那么，在上面代码以及读者构写的代码中，并没有主动出现factory例化代码，这个factory何时被例化，而隐藏在哪里呢？</p>
+<p>component和object虽然在创建时都需要传递create(name, parent)，但是最终创建出来的component是会表示在UVM层次结构中的UVM的核心机制都浓缩在了一个类uvm_coreservice_t，该类内置了UVM世界核心机制的组件和方法，它们主要包括了：</p>
+<ul>
+<li>唯一的uvm_factory，该组件用来注册、覆盖和例化。</li>
+<li>全局的report_server，该组件用来做消息统筹和报告。</li>
+<li>全局的tr_database，该组件用来记录transaction记录。</li>
+<li>get_root()方法用来返回当前UVM环境的结构顶层对象。</li>
+</ul>
+</blockquote>
+<p>因此，如果在仿真器中寻找这个隐藏的核心服务组件对象，可以先搜寻类uvm_coreservice_t，再在其内部搜寻局部静态变量uvm_coreservice_t::inst。找到之后，进一步展开，就可以发现其其内部的几个主要组件实例factory、report_server、tr_database。无论是对于uvm_coreservice_t::inst，还是uvm_default_coreservice_t的成员变量factory、report_server等，都遵循一个原则，即如果被“需要”，那么会例化只且例化一次。</p>
+<p>在上面的简单例码中，由于两个宏<code>define uvm_component_utils(T)和</code>define  uvm_object_utils(T)需要uvm_coreservie_t::inst，所以在仿真开始后，可以从仿真器的对象浏览窗口中看到下面的对象关系图。该图从Synopsys VCS  ‘object’窗口中截取，而今后用来表示对象关系、UVM结构等层次关系的图时，我们也将从VCS工具中截取示例说明。需要额外补充一点的是，之前的SV核心篇章的实例仿真均是在MentorGraphics QuestaSim中进行的，而到了UVM核心篇章的实例仿真均在Synopsys VCS仿真器中进行</p>
+<p>在下面这个对象图中，有4列，从左至右分别是层次、类型、对象ID和对象创建时间。对于对象ID和对象创建时间，我们可以从下图的对象中看到，已经被创建的对象均是在0时刻创建的，而且都是它们对应类型的第一个实例（用@1表示，也应该是唯一一个）。</p>
+<p><img src="https://img-blog.csdn.net/20180821192216319?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzk0MTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>了解了UVM核心机制组件的建立，我们来继续分解上面的宏<code>define uvm_component_utils(T)和</code>define uvm_object_utils(T)。</p>
+<p>这里，以uvm_component_utils(T)为例，其注册的机制发生在该宏的进一步拆解中：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">define</span> m_uvm_component_registry_internal(T,S) \</span></span><br><span class="line"><span class="keyword">typedef</span> uvm_component_registry <span class="variable">#(T,`"S`")</span> type_id; \</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">function</span> type_id get_type(); \</span><br><span class="line"><span class="keyword">return</span> type_id::get(); \</span><br><span class="line"><span class="keyword">endfunction</span> \</span><br><span class="line"> </span><br><span class="line"><span class="keyword">virtual</span> <span class="keyword">function</span> uvm_object_wrapper get_object_type(); \</span><br><span class="line"><span class="keyword">return</span> type_id::get(); \</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+<p>component和object虽然在创建时都需要传递create(name, parent)，但是最终创建出来的component是会表示在UVM层次结构中的，而object则不会显示在层次当中。</p>
+<ul>
+<li><p>uvm_component::new(name, parent)</p>
+<p>保留两个参数，且缺一不可就是为了通过类似“钩子”的做法，一层层由底层勾住上一层，这样就能够将整个UVM结构串接起来了。（如agent和driver、monitor）</p>
+</li>
+<li><p>uvm_object::new(name)则没有parent参数，因此也不会显示在UVM层次中，也只能作为configuration或者transaction等用来做传递的配置结构体或者抽象数据传输的数据结构体，成为uvm_component的成员变量。</p>
+</li>
+</ul>
+<p><strong>注意：</strong>虽然在实际的uvm_default_factory中，它用来注册所有uvm_component和uvm_object的词典只有一个，但是用来覆盖层次中类型的方式却有不止一种。在上面的图中我们将这些可能用来覆盖的类，抽象到一个词典中为了方便简化注册、创建和覆盖的关系。</p>
+<p>在注册过程中，我们通过uvm_component_registry或者uvm_object_registry（均继承与uvm_object_wrapper）来分别注册uvm_component和uvm_object。上面的例子以uvm_component_registry来说明，对于这样一种专门用来注册的类而言，它们自身的方法是专门为配合factory的注册、创建和覆盖而生的，这些方法分别是</p>
+<ul>
+<li>create()</li>
+<li>create_component()</li>
+<li>get()</li>
+<li>get_type_name()</li>
+<li>set_inst_override()</li>
+<li>set_type_override()</li>
+</ul>
+<p>我们如果要通过factory来创建对象时，可以使用的方法有：</p>
+<ul>
+<li>create_component_by_name()</li>
+<li>create_component_by_type()</li>
+<li>create_object_by_name()</li>
+<li>create_object_by_type()</li>
+</ul>
+<h2 id="覆盖方法"><a href="#覆盖方法" class="headerlink" title="覆盖方法"></a>覆盖方法</h2><p>从上面的UVM类型的注册到对象的创建，读者知道了利用factory中注册号的类型，可以通过类型T（类型“箱子”）或者类型名Tname（字符串）来进行。与之类似的，factory也提供了覆盖（override）的特性，用户也可以通过类型覆盖或者实例名覆盖两种方式进行</p>
+<p>覆盖后，创建原始类型的请求就可以用来创建新的类型！！</p>
+<ul>
+<li>无需修改原始代码，保证源代码的封装性</li>
+<li>新类型必须与原始类型相兼容</li>
+</ul>
+<p>使用覆盖的条件：</p>
+<ul>
+<li><p>原有类型和新类型都需要注册</p>
+</li>
+<li><p>使用create（）来创建对象时</p>
+</li>
+<li><p>覆盖一定要发生在实例化之前，否则将毫无意义~</p>
+<p>工厂检查是否原有类型被覆盖，如果是，创建新类型，否则创建原有类型</p>
+<p>● set_inst_override(uvm_object_wrapper override_type, string inst_path)：实例覆盖，部分UVM对象被覆盖</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716184035.png" alt="image-20210716184035535" style="zoom:67%;" /></p>
+<p> ● set_type_override(uvm_object_wrapper override_type，bit r)：类型覆盖，UVM结构层面的替换</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716183843.png" alt="image-20210716183836221" style="zoom:67%;" /></p>
+<p>以类型覆盖的方法为例：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> factory_override;</span><br><span class="line">  <span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line">  <span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"> </span><br><span class="line">  <span class="keyword">class</span> comp1 <span class="keyword">extends</span> uvm_component;</span><br><span class="line">    <span class="meta">`uvm_component_utils(comp1)</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">"comp1"</span>, uvm_component parent=<span class="literal">null</span>);</span><br><span class="line">      <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">      <span class="built_in">$display</span>(<span class="built_in">$sformatf</span>(<span class="string">"comp1:: %s is created"</span>, name));</span><br><span class="line">    <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> hello(<span class="keyword">string</span> name);</span><br><span class="line">      <span class="built_in">$display</span>(<span class="built_in">$sformatf</span>(<span class="string">"comp1:: %s said hello!"</span>, name));</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line">  <span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">  <span class="keyword">class</span> comp2 <span class="keyword">extends</span> comp1;</span><br><span class="line">    <span class="meta">`uvm_component_utils(comp2)</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">"comp2"</span>, uvm_component parent=<span class="literal">null</span>);</span><br><span class="line">      <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">      <span class="built_in">$display</span>(<span class="built_in">$sformatf</span>(<span class="string">"comp2:: %s is created"</span>, name));</span><br><span class="line">    <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">void</span> hello(<span class="keyword">string</span> name);</span><br><span class="line">      <span class="built_in">$display</span>(<span class="built_in">$sformatf</span>(<span class="string">"comp2:: %s said hello!"</span>, name));</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line">  <span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">  comp1 c1, c2;</span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    comp1::type_id::set_type_override(comp2::get_type());</span><br><span class="line">    c1 = <span class="keyword">new</span>(<span class="string">"c1"</span>);</span><br><span class="line">    c2 = comp1::type_id::create(<span class="string">"c2"</span>, <span class="literal">null</span>);</span><br><span class="line">    c1<span class="variable">.hello</span>(<span class="string">"c1"</span>);</span><br><span class="line">    c2<span class="variable">.hello</span>(<span class="string">"c2"</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">comp1:: c1 is created</span><br><span class="line">comp1:: c2 is created</span><br><span class="line">comp2:: c2 is created</span><br><span class="line">comp1:: c1 said hello!</span><br><span class="line">comp2:: c2 said hello!</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716185653.png" alt="image-20210716185653552" style="zoom:67%;" /></p>
+<p>注意：多级组件对同一类型进行覆盖，高层次的组件的优先级更高！</p>
+<h1 id="2-核心基类UVM-object"><a href="#2-核心基类UVM-object" class="headerlink" title="2. 核心基类UVM-object"></a>2. 核心基类UVM-object</h1><h2 id="域的自动化-（Field-Automation）"><a href="#域的自动化-（Field-Automation）" class="headerlink" title="域的自动化 （Field Automation）"></a>域的自动化 （Field Automation）</h2><p>UVM通过一些域的自动化，使得用户在注册UVM类的同时也可以声明今后会参与到对象拷贝、克隆、打印等等操作的成员变量。仍然是上面的例子，我们来看看通过UVM与域的自动化相关的宏，如何简化了对象的拷贝。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> object_copy;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;RED, WHITE, BLACK&#125; color_t;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> box <span class="keyword">extends</span> uvm_object;</span><br><span class="line"><span class="keyword">int</span> volume = <span class="number">120</span>;</span><br><span class="line">color_t color = WHITE;</span><br><span class="line"><span class="keyword">string</span> name = <span class="string">"box"</span>;</span><br><span class="line"><span class="meta">`uvm_object_utils_begin(box)</span></span><br><span class="line"><span class="meta">`uvm_field_int(volume, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_field_enum(color_t, color, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_field_string(name, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_object_utils_end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">"box"</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">    <span class="keyword">this</span><span class="variable">.name</span> = name;</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">box b1, b2;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">b1 = <span class="keyword">new</span>(<span class="string">"box1"</span>);</span><br><span class="line">b1<span class="variable">.volume</span> = <span class="number">80</span>;</span><br><span class="line">b1<span class="variable">.color</span> = BLACK;</span><br><span class="line">b2 = <span class="keyword">new</span>();</span><br><span class="line">b2<span class="variable">.copy</span>(b1);</span><br><span class="line">b2<span class="variable">.name</span> = <span class="string">"box2"</span>;</span><br><span class="line"><span class="built_in">$display</span>(<span class="string">"%s"</span>, b1<span class="variable">.sprint</span>());</span><br><span class="line"><span class="built_in">$display</span>(<span class="string">"%s"</span>, b2<span class="variable">.sprint</span>());</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------</span><br><span class="line">Name Type Size Value</span><br><span class="line">-------------------------------</span><br><span class="line">box1 box - @<span class="number">336</span></span><br><span class="line">volume integral <span class="number">32</span> <span class="number">'h50</span></span><br><span class="line">color color_t <span class="number">32</span> BLACK</span><br><span class="line">name <span class="keyword">string</span> <span class="number">4</span> box1</span><br><span class="line">-------------------------------</span><br><span class="line">-------------------------------</span><br><span class="line">Name Type Size Value</span><br><span class="line">-------------------------------</span><br><span class="line">box box - @<span class="number">337</span></span><br><span class="line">volume integral <span class="number">32</span> <span class="number">'h50</span></span><br><span class="line">color color_t <span class="number">32</span> BLACK</span><br><span class="line">name <span class="keyword">string</span> <span class="number">4</span> box2</span><br><span class="line">-------------------------------</span><br></pre></td></tr></table></figure>
+<h2 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h2><p>从uvm_object提供的方法和相关的宏操作来看，它的核心方法主要提供与数据操作的相关服务：</p>
+<ul>
+<li><p>Copy</p>
+<p>通过域的自动化进行赋值成员变量的限制，对于需要拷贝的成员变量都需要进行注册</p>
+</li>
+<li><p>Clone</p>
+</li>
+<li><p>Compare</p>
+<p>将每一个自动化的域进行比较，一旦失败立即返回（-1）</p>
+</li>
+<li><p>Print</p>
+</li>
+<li><p>Pack/Unpack</p>
+</li>
+</ul>
+<h3 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h3><p>在uvm_object使用到的方法compare()、print()和pack()，如果没有数据操作配置对象作为参数时，即会使用在uvm_pkg中例化的全局成员。在这里，我们可以从下面的图中看到，在uvm_pkg中例化了不少对象，而在本节中我们会使用到的全局配置包括有：</p>
+<ul>
+<li>uvm_default_comparer</li>
+<li>uvm_default_printer</li>
+<li>uvm_default_packer</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20180821211122139?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzk0MTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p>如果不想使用默认的比较配置，用户想自己对比较配置进行设定，可以考虑自行创建一个uvm_comparer对象，或者修改全局的uvm_comparer对象。下面的这段例码，采取了第一种方法：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> object_compare2;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;RED, WHITE, BLACK&#125; color_t;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> box <span class="keyword">extends</span> uvm_object;</span><br><span class="line"><span class="keyword">int</span> volume = <span class="number">120</span>;</span><br><span class="line">color_t color = WHITE;</span><br><span class="line"><span class="keyword">string</span> name = <span class="string">"box"</span>;</span><br><span class="line"><span class="meta">`uvm_object_utils_begin(box)</span></span><br><span class="line"><span class="meta">`uvm_field_int(volume, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_field_enum(color_t, color, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_field_string(name, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_object_utils_end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">"box"</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">    <span class="keyword">this</span><span class="variable">.name</span> = name;</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">box b1, b2;</span><br><span class="line">uvm_comparer cmpr;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    b1 = <span class="keyword">new</span>(<span class="string">"box1"</span>);</span><br><span class="line">    b1<span class="variable">.volume</span> = <span class="number">80</span>;</span><br><span class="line">    b1<span class="variable">.color</span> = BLACK;</span><br><span class="line">    b2 = <span class="keyword">new</span>(<span class="string">"box2"</span>);</span><br><span class="line">    b2<span class="variable">.volume</span> = <span class="number">90</span>;</span><br><span class="line">    cmpr = <span class="keyword">new</span>();</span><br><span class="line">    cmpr<span class="variable">.show_max</span> = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">if</span>(!b2<span class="variable">.compare</span>(b1, cmpr)) <span class="keyword">begin</span></span><br><span class="line">    <span class="meta">`uvm_info("COMPARE", "b2 comapred with b1 failure", UVM_LOW)</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="meta">`uvm_info("COMPARE", "b2 comapred with b1 succes", UVM_LOW)</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [MISCMP] Miscompare <span class="keyword">for</span> box2<span class="variable">.volume</span>: lhs = <span class="number">'h5a</span> : rhs = <span class="number">'h50</span></span><br><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [MISCMP] Miscompare <span class="keyword">for</span> box2<span class="variable">.color</span>: lhs = WHITE : rhs = BLACK</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [MISCMP] Miscompare <span class="keyword">for</span> box2<span class="variable">.name</span>: lhs = <span class="string">"box2"</span> : rhs = <span class="string">"box1"</span></span><br><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [MISCMP] <span class="number">3</span> Miscompare(s) <span class="keyword">for</span> object box1@<span class="number">336</span> vs. box2@<span class="number">337</span></span><br><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [COMPARE] b2 comapred <span class="keyword">with</span> b1 failure</span><br></pre></td></tr></table></figure>
+<p>在这段例码中，额外创建了一个比较配置cmpr。这个对象是uvm_comparer类，而此类并不继承与任何其他的UVM类，只是单纯的一个用于存放比较配置信息的类。在设定了最大的比较错误次数之后，将b1与b2进行比较后的结果信息给得更加全面，这一次则将全部的比较错误信息都输出了。</p>
+<h4 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h4><p>打印方法是核心基类提供的另外一种便于开发和调试的功能。通过field automation，使得声明之后的各个成员域会在调用uvm_object::print()函数时自动打印出来。下面是一段例码：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> object_print;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;RED, WHITE, BLACK&#125; color_t;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> box <span class="keyword">extends</span> uvm_object;</span><br><span class="line"><span class="keyword">int</span> volume = <span class="number">120</span>;</span><br><span class="line">color_t color = WHITE;</span><br><span class="line"><span class="keyword">string</span> name = <span class="string">"box"</span>;</span><br><span class="line"><span class="meta">`uvm_object_utils_begin(box)</span></span><br><span class="line"><span class="meta">`uvm_field_int(volume, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_field_enum(color_t, color, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_field_string(name, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_object_utils_end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">"box"</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">    <span class="keyword">this</span><span class="variable">.name</span> = name;</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">box b1;</span><br><span class="line">uvm_table_printer local_printer;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    b1 = <span class="keyword">new</span>(<span class="string">"box1"</span>);</span><br><span class="line">    local_printer = <span class="keyword">new</span>();</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"default table printer format"</span>);</span><br><span class="line">    b1<span class="variable">.print</span>();</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"default line printer format"</span>);</span><br><span class="line">    uvm_default_printer = uvm_default_line_printer;</span><br><span class="line">    b1<span class="variable">.print</span>();</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"default tree printer format"</span>);</span><br><span class="line">    uvm_default_printer = uvm_default_tree_printer;</span><br><span class="line">    b1<span class="variable">.print</span>();</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"customized printer format"</span>);</span><br><span class="line">    local_printer<span class="variable">.knobs</span><span class="variable">.full_name</span> = <span class="number">1</span>;</span><br><span class="line">    b1<span class="variable">.print</span>(local_printer);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">default</span> <span class="keyword">table</span> printer format</span><br><span class="line">-------------------------------</span><br><span class="line">Name Type Size Value</span><br><span class="line">-------------------------------</span><br><span class="line">box1 box - @<span class="number">336</span></span><br><span class="line">volume integral <span class="number">32</span> <span class="number">'h78</span></span><br><span class="line">color color_t <span class="number">32</span> WHITE</span><br><span class="line">name <span class="keyword">string</span> <span class="number">4</span> box1</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="keyword">default</span> line printer format</span><br><span class="line">box1: (box@<span class="number">336</span>) &#123; volume: <span class="number">'h78</span> color: WHITE name: box1 &#125;</span><br><span class="line"><span class="keyword">default</span> tree printer format</span><br><span class="line">box1: (box@<span class="number">336</span>) &#123;</span><br><span class="line">volume: <span class="number">'h78</span></span><br><span class="line">color: WHITE</span><br><span class="line">name: box1</span><br><span class="line">&#125;</span><br><span class="line">customized printer format</span><br><span class="line">------------------------------------</span><br><span class="line">Name Type Size Value</span><br><span class="line">------------------------------------</span><br><span class="line">box1 box - @<span class="number">336</span></span><br><span class="line">box1<span class="variable">.volume</span> integral <span class="number">32</span> <span class="number">'h78</span></span><br><span class="line">box1<span class="variable">.color</span> color_t <span class="number">32</span> WHITE</span><br><span class="line">box1<span class="variable">.name</span> <span class="keyword">string</span> <span class="number">4</span> box1</span><br><span class="line">-----------------------------------</span><br></pre></td></tr></table></figure>
+<p>从上面这段例码中，读者可以发现，只要被在field  automation中声明过的域，在稍后的print()函数打印室，都将打印出它们的类型、大小和数值。如果用户不对打印的格式做出修改，那么在打印时，UVM会按照uvm_default_printer规定的格式来打印。在上面“比较”一节中，读者已经知道uvm_pkg中在仿真一开始的时候就会例化不少全局的对象，这其中就包括了uvm_default_printer和其它几个用于打印的对象，它们分别是：</p>
+<ul>
+<li>uvm_default_tree_printer：可以将对象按照数状结构打印。</li>
+<li>uvm_default_line_printer ： 可以将对象打印到一行上面。</li>
+<li>uvm_default_table_printer ： 可以将对象按照表格的方式打印。</li>
+<li>uvm_default_printer ： UVM环境默认的打印设置，该句柄默认指向了uvm_default_table_printer。</li>
+</ul>
+<p>所以通过给全局打印机uvm_default_printer赋予不同的打印机句柄，就可以在调用任何uvm_object的print()方法时，得到不同的打印格式。如果用户需要自定义一些打印的属性，用户可以自己创建一个打印机，进而通过修改其属性uvm_printer::knobs中的成员，来输出自己的打印格式。每一台打印机中，都有自己的打印属性，用户可以通过查看UVM类的参考手册，查找关于详细的打印属性类uvm_printer_knobs。</p>
+<p>除了简单的print()函数，用户还可以通过uvm_object::sprint()将对象的信息作为字符串返回，或者自定义do_print()函数来定制一些额外的打印输出。</p>
+<h4 id="打包和解包"><a href="#打包和解包" class="headerlink" title="打包和解包"></a>打包和解包</h4><p>最后，来看看另外一个核心功能，打包和解包。类似于之前的拷贝和打印，uvm_object也分别提供了通过field automation自动实现的打包和解包方法：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">int</span> pack (<span class="keyword">ref</span> <span class="keyword">bit</span> bitstream[], <span class="keyword">input</span> uvm_packer packer=<span class="literal">null</span>);</span><br><span class="line"><span class="keyword">function</span> <span class="keyword">int</span> unpack (<span class="keyword">ref</span> <span class="keyword">bit</span> bitstream[], <span class="keyword">input</span> uvm_packer packer=<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+<p>以及用户可以自定义的回调函数：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> do_pack (uvm_packer packer);</span><br><span class="line"><span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> do_unpack (uvm_packer packer);</span><br></pre></td></tr></table></figure>
+<p>打包和解包实例：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> object_pack_unpack;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;RED, WHITE, BLACK&#125; color_t;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> box <span class="keyword">extends</span> uvm_object;</span><br><span class="line"><span class="keyword">int</span> volume = <span class="number">120</span>;</span><br><span class="line"><span class="keyword">int</span> height = <span class="number">20</span>;</span><br><span class="line">color_t color = WHITE;</span><br><span class="line"><span class="meta">`uvm_object_utils_begin(box)</span></span><br><span class="line"><span class="meta">`uvm_field_int(volume, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_field_int(height, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_field_enum(color_t, color, UVM_ALL_ON)</span></span><br><span class="line"><span class="meta">`uvm_object_utils_end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">"box"</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">box b1, b2;</span><br><span class="line"><span class="keyword">bit</span> packed_bits[];</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    b1 = <span class="keyword">new</span>(<span class="string">"box1"</span>);</span><br><span class="line">    b2 = <span class="keyword">new</span>(<span class="string">"box2"</span>);</span><br><span class="line">    b1<span class="variable">.volume</span> = <span class="number">100</span>;</span><br><span class="line">    b1<span class="variable">.height</span> = <span class="number">40</span>;</span><br><span class="line">    b1<span class="variable">.color</span> = RED;</span><br><span class="line">    b1<span class="variable">.print</span>();</span><br><span class="line">    b1<span class="variable">.pack</span>(packed_bits);</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"packed bits stream size is %d \n"</span>, packed_bits<span class="variable">.size</span>());</span><br><span class="line">    b2<span class="variable">.unpack</span>(packed_bits);</span><br><span class="line">    b2<span class="variable">.print</span>();</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>打印输出：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------</span><br><span class="line">Name Type Size Value</span><br><span class="line">-------------------------------</span><br><span class="line">box1 box - @<span class="number">336</span></span><br><span class="line">volume integral <span class="number">32</span> <span class="number">'h64</span></span><br><span class="line">height integral <span class="number">32</span> <span class="number">'h28</span></span><br><span class="line">color color_t <span class="number">32</span> RED</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="keyword">packed</span> bits stream size is <span class="number">96</span></span><br><span class="line">-------------------------------</span><br><span class="line">Name Type Size Value</span><br><span class="line">-------------------------------</span><br><span class="line">box2 box - @<span class="number">337</span></span><br><span class="line">volume integral <span class="number">32</span> <span class="number">'h64</span></span><br><span class="line">height integral <span class="number">32</span> <span class="number">'h28</span></span><br><span class="line">color color_t <span class="number">32</span> RED</span><br><span class="line">-------------------------------</span><br></pre></td></tr></table></figure>
+<p>上面的例码中b1将自己内部已经声明过的域，首先进行打包，打包好的数据存入到一个比特数组中packed_bits，这个数组中存放着所有经过field  aumation的域值，接下来b2又从packed_bits中解包，将数据存入到自己的各个域中。这么看起来，这个例子是完成一次对象数值的拷贝。如果是这样，那么为什么不适用uvm_object::copy()函数，而是费这么大周折，来将b1内的域值先打包，然后再通过b2解包完成数值的完整传递呢？</p>
+<p>实际上，打包和解包的方式并不是主要为软件对象之间的数值拷贝服务的，而是真正地在为从软件对象到硬件接口的赋值服务的。在硬件接口中，所有的接口都是按照一定的比特宽度来放置的，并不像软件对象内的各个域那样声明。因此，要完成一次从软件对象到硬件接口的赋值，一种方法就是利用uvm_object::pack()来实现。同样地，如果要完成对硬件信号的采样，也可以将排列好的硬件信号数值保存，继而通过uvm_object::unpack()来完成到软件对象的数值拷贝。</p>
+<h1 id="3-phase机制"><a href="#3-phase机制" class="headerlink" title="3. phase机制"></a>3. phase机制</h1><p>解决new构建的问题：层次化环境下，实例化的先后关系；各个组件在实例化后的连接</p>
+<p>在顶层需要对底层进行配置时，SV无法在底层未实例化之前完成配置</p>
+<p>phase的目的：更清晰的将仿真环境层次化</p>
+<p>如果暂时抛开phase的机制剖析，对于UVM组件的开发者而言，他们主要关心各个phase之间执行的先后顺序。在完成各个phase虚方法的实现之后，UVM环境会按照phase的顺序分别调用这些方法。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716194839.png" alt="image-20210716194839847"></p>
+<p>关于执行的顺序，可以从下面这段简单的例码中得到佐证：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> common_phase_order;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> subcomp <span class="keyword">extends</span> uvm_component;</span><br><span class="line"><span class="meta">`uvm_component_utils(subcomp)</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("build_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> connect_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("connect_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> end_of_elaboration_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("end_of_elaboration_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> start_of_simulation_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("start_of_simulation_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">task</span> run_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("run_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> extract_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("extract_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> check_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("check_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> report_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("report_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> final_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("final_phase", "", UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> topcomp <span class="keyword">extends</span> subcomp;</span><br><span class="line">subcomp c1, c2;</span><br><span class="line"><span class="meta">`uvm_component_utils(topcomp)</span></span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info("build_phase", "", UVM_LOW)</span></span><br><span class="line">    c1 = subcomp::type_id::create(<span class="string">"c1"</span>, <span class="keyword">this</span>);</span><br><span class="line">    c2 = subcomp::type_id::create(<span class="string">"c2"</span>, <span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> test1 <span class="keyword">extends</span> uvm_test;</span><br><span class="line">topcomp t1;</span><br><span class="line"><span class="meta">`uvm_component_utils(test1)</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    t1 = topcomp::type_id::create(<span class="string">"t1"</span>, <span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line"><span class="comment">//t1 = new("t1", null);</span></span><br><span class="line">run_test(<span class="string">"test1"</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [RNTST] Running test test1...</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [build_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [build_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [build_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [connect_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [connect_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [connect_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [end_of_elaboration_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [end_of_elaboration_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [end_of_elaboration_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [start_of_simulation_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [start_of_simulation_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [start_of_simulation_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [run_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [run_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [run_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [extract_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [extract_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [extract_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [check_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [check_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [check_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [report_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [report_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [report_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span> [final_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c1</span> [final_phase]</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.t1</span><span class="variable">.c2</span> [final_phase]</span><br></pre></td></tr></table></figure>
+<p>从这个例子可以看出，上面的九个phase，对于一个测试环境的声明周期而言，是有固定的执行先后顺序的；同时，对于处于同一个phase的组件之间，执行也会按照层次的顺序或者自顶向下、或者自底向上来执行。这个简单的环境中，顶层测试组件test1中，例化了一个t1组件，而t1组件内又进一步例化了c1和c2组件。从执行的打印结果来看，需要注意的地方有：</p>
+<ol>
+<li>对于build phase，执行顺序按照自顶向下，这符合验证结构建设的逻辑。因为只有先创建高层的组件，才会创建空间来容纳低层的组件。</li>
+<li>只有uvm_component及其继承与uvm_component的子类，才会按照phase机制将上面九个phase先后执行完毕。</li>
+</ol>
+<p>上面介绍的九个phase中，常用的phase包括build、connect、run和report，它们分别完成了组件的建立、连接、运行和报告。这些phase在uvm_component中通过_phase的后缀完成了虚方法的定义，比如build_phase()中可以定义一些例化组件和配置的任务。在这九个phase中，只有run_phase方法是一个可以耗时的任务，这意味着该方法中可以完成一些等待、激励、采样的任务。对于其它phase对应的方法，都是函数，必须即时返回（0耗时）。</p>
+<p>在run_phase中，用户如果要完成测试，则通常需要经历下面的激励序列：</p>
+<ol>
+<li>上电</li>
+<li>复位</li>
+<li>寄存器配置</li>
+<li>主要测试内容</li>
+<li>等待DUT完成测试</li>
+</ol>
+<p>一种简单的方式是，用户在run_phase中完成上面所有的激励；另外一种方式，如果可以将上面的几种典型的序列分到不同的区间，让对应的激励按区搁置的话，也能让测试更有层次。因此，run_phase又可以分为下面的12个phase：</p>
+<ol>
+<li>pre_reset_phase</li>
+<li>reset_phase</li>
+<li>post_reset_phase</li>
+<li>pre_configure_phase</li>
+<li>configure_phase</li>
+<li>post_configure_phase</li>
+<li>pre_main_phase</li>
+<li>main_phase</li>
+<li>post_main_phase</li>
+<li>pre_shutdown_phase</li>
+<li>shutdown_phase</li>
+<li>post_shutdown_phase</li>
+</ol>
+<p>上面的12个phase的执行顺序也是前后排列的。实际上，run_phase任务和上面细分的12个phase是并行进行的。在start_of_simulation_phase任务执行以后，run_phase和reset_phase开始执行，而在shutdown_phase执行完之后，需要等待run_phase执行完以后，才能进入extract_phase。关于执行的关系，可以从下面这张图中得出</p>
+<p><img src="https://img-blog.csdn.net/20180821212109982?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzk0MTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>这里需要提醒用户的是，虽然run_phase与细分的12个phase是并行执行的，而12个phase也是按照先后顺序执行的。为了避免不必要的干扰，用户可以选择run_phase，或者12个phase中的若干来完成激励，但是请不要将它们混合起来使用，因为这样容易导致执行关系的不明确。</p>
+<h2 id="建立仿真环境"><a href="#建立仿真环境" class="headerlink" title="建立仿真环境"></a>建立仿真环境</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210716203559.png" alt="image-20210716203559281" style="zoom:67%;" /></p>
+<ol>
+<li>首先在加载硬件模型，调用仿真器之前，需要完成编译和建模阶段。</li>
+<li>接下来，在开始仿真之前，会分别执行硬件的always/initial语句，以及UVM的调用测试方法run_test和几个phase，分别是build、connect、end_of_elaboration和start_of_simulation。</li>
+<li>在开始仿真后，将会执行run_phase或者对应的12个细化phase。</li>
+<li>在仿真结束后，将会执行剩余的phase，分别是extract、check、report和final。</li>
+</ol>
+<p>如果只是从UVM的应用角度来看，要在仿真开始时建立验证环境，那么用户可以考虑选择下面几种方式：</p>
+<ul>
+<li>可以通过全局函数（由uvm_pkg提供）run_test()来选择性地指定要运行哪一个uvm_test。这里的test类均继承于uvm_test。这样的话，指定的test类将被例化并指定为顶层的组件。一般而言，run_test()函数可以在合适的module中initial进程块中调用。</li>
+<li>如果没有任何参数传递给run_test()，那么用户可以在仿真时通过传递参数+UVM_TESTNAME=<test_name>，来指定仿真时调用的uvm_test。当然，即便run_test()函数在调用时已经有test传递进去，在仿真时的+UVM_TESTNAME=<test_name>也可以从顶层覆盖底层的指定。这种方式使得在仿真开始时，不需要通过再次修改run_test()调用的test名字和重复编译，而可以灵活选定test</li>
+</ul>
+<p>无论上面哪一种方式，都必须有顶层调用全局函数run_test()，用户可以考虑不传递test名字作为参数，而在仿真时通过传递参数+UVM_TESTNAME=<test_name>实现。全局函数run_test()的重要性，正是从uvm_root创建了一个UVM的世界。来看看这一段代码：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> run_test (<span class="keyword">string</span> test_name=<span class="string">""</span>);</span><br><span class="line">uvm_root top;</span><br><span class="line">uvm_coreservice_t cs;</span><br><span class="line">cs = uvm_coreservice_t::get();</span><br><span class="line">top = cs<span class="variable">.get_root</span>();</span><br><span class="line">top<span class="variable">.run_test</span>(test_name);</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"> </span><br><span class="line">uvm-<span class="number">1</span><span class="variable">.2</span>/base/uvm_globals<span class="variable">.svh</span></span><br></pre></td></tr></table></figure>
+<p>这里需要先来了解UVM的顶层类uvm_root。该类也继承与uvm_component，说明它必然是UVM环境结构中的一员，而他可以作为顶层结构类，它提供了一些像run_test这种方法，来充当了UVM世界中的核心角色。在uvm_pkg中，有且只有一个顶层类uvm_root例化的对象，即uvm_top。这就同“道生一，一生二，二生三，三生万物”的古语一般。在UVM的世界中，“道”就是uvm_pkg，“一”就是uvm_top，而后来的“万物”就是uvm_top下例化的uvm_test及其更多的子组件。</p>
+<p>uvm_top充当的主要核心任务包括：</p>
+<ul>
+<li>作为隐形的UVM世界顶层，任何其它的组件都在它之下，通过创建组件时指定parent来构成层次。如果parent设定为null，那么它将作为uvm_top的子组件。</li>
+<li>phase控制。控制所有组件的phase顺序。</li>
+<li>索引功能。通过层次名称来索引组件实例。</li>
+<li>报告配置。通过uvm_top来全局配置报告的繁简度（verbosity）。</li>
+<li>全局报告设备。由于uvm_top全局可以访问，因此UVM的报告配置在组件内部和组件外部（例如module和seequence）都可以访问。</li>
+</ul>
+<p>通过uvm_top调用方法run_test(test_name)，uvm_top做了如下的初始化：</p>
+<ul>
+<li>得到正确的test_name。</li>
+<li>初始化objection机制。</li>
+<li>创建uvm_test_top实例。</li>
+<li>调用phase控制方法，安排所有组件的phase方法执行顺序。</li>
+<li>等待所有phase执行结束，关闭phase控制进程。</li>
+<li>报告总结和结束仿真。</li>
+</ul>
+<h2 id="uvm仿真结束"><a href="#uvm仿真结束" class="headerlink" title="uvm仿真结束"></a>uvm仿真结束</h2><p>从之前的例子和上面的图中，UVM的环境建立和各个phase的先后调用的入口，都是从run_test()进入的。默认情况下，如果run_test()方法执行完毕，那么系统函数$finish则会被调用，来终止仿真。此外还有什么方法可以结束仿真呢？——objection挂起机制</p>
+<p>从这一版本的结束机制可以看到：</p>
+<ul>
+<li>默认情况下，如果没有objection反停止标记挂起的，所有的run_phase任务在执行时，会直接放入到fork-join_none进程当中。因此run_phase()中的任务会在后台执行，但不会阻止run_phase()结束，进入下一个phase。因此，objection机制是控制仿真退出run phase的一种办法。</li>
+</ul>
+<p>uvm_objection类提供了一种供所有component和sequence共享的计数器。如果有组件来挂起objection，那么它还应该记得落下objection。参与到objection机制中的参与组件，可以独立的各自挂起objection，来防止run phase退出，但是只有这些组件都落下objection后，uvm_objection共享的counter才会变为0，这意味run  phase推出的条件满足，因此可以退出run phase。</p>
+<p>对于uvm_objection类，用来反停止的控制方法包括：</p>
+<ul>
+<li><p>raise_objection ( uvm_object bj = null, string description = “” , int count = 1) 挂起objection</p>
+</li>
+<li><p>drop_objection ( uvm_object bj = null, string description = “” , int count = 1) 落下objection</p>
+</li>
+<li>set_drain_time ( uvm_object bj = null, time drain) 设置退出时间</li>
+</ul>
+<p>对这几种典型方法，在实际应用中的建议包括：</p>
+<ul>
+<li>对于component()而言，用户可以在run_phase()中使用phase.raise_objection()/phase.drop_objection()来控制run phase退出。</li>
+<li>用户最好提供对于description字符串参数用来描述，这有利于后期的调试。</li>
+<li>应该使用默认count值。</li>
+<li>对于uvm_top或者uvm_test_top应该尽可能少使用set_drain_time()。</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> test1 <span class="keyword">extends</span> uvm_test;</span><br><span class="line"><span class="meta">`uvm_component_utils(test1)</span></span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">task</span> run_phase(uvm_phase phase);</span><br><span class="line">    phase<span class="variable">.raise_objection</span>(<span class="keyword">this</span>);</span><br><span class="line">    <span class="meta">`uvm_info("run_phase", "entered ..", UVM_LOW)</span></span><br><span class="line">    #<span class="number">1</span>us;</span><br><span class="line">    <span class="meta">`uvm_info("run_phase", "exited ..", UVM_LOW)</span></span><br><span class="line">    phase<span class="variable">.drop_objection</span>(<span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    run_test(<span class="string">"test1"</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [RNTST] Running test test1...</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top [run_phase] entered ..</span><br><span class="line">UVM_INFO @ <span class="number">1000000</span>: uvm_test_top [run_phase] exited ..</span><br><span class="line">UVM_INFO @ <span class="number">1000000</span>: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase</span><br><span class="line">UVM_INFO @ <span class="number">1000000</span>: reporter [UVM/REPORT/CATCHER]</span><br></pre></td></tr></table></figure>
+<p>从输出结果来看，uvm_pkg::uvm_test_done实例会在test1的run_phase()执行完毕之后，才会退出run  phase。这得益于test1::run_phase()中在仿真一开始就挂起了objection。在执行完毕之后，才落下了objection。这时，uvm_pkg::uvm_test_done认为run phase已经可以退出，进而转向了下一个extract phase。直到退出所有的phase之后，UVM进入了报告总结阶段</p>
+<p>反之，如果在整个test及其子组件和sequence中，都没有通过objection()机制来控制run phase退出，那么所有组件的run  phase都会通过fork-join_none线程提交之后，立即转入到extract  phase。所以objection机制的应用是必不可少的。那么，在什么时间点应该挂起objection呢？再来看下面这段例码：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> objection_application;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> test1 <span class="keyword">extends</span> uvm_test;</span><br><span class="line"><span class="meta">`uvm_component_utils(test1)</span></span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">task</span> run_phase(uvm_phase phase);</span><br><span class="line">    #<span class="number">1</span>ps;</span><br><span class="line">    phase<span class="variable">.raise_objection</span>(<span class="keyword">this</span>);</span><br><span class="line">    <span class="meta">`uvm_info("run_phase", "entered ..", UVM_LOW)</span></span><br><span class="line">    #<span class="number">1</span>us;</span><br><span class="line">    <span class="meta">`uvm_info("run_phase", "exited ..", UVM_LOW)</span></span><br><span class="line">    phase<span class="variable">.drop_objection</span>(<span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    run_test(<span class="string">"test1"</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [RNTST] Running test test1...</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [UVM/REPORT/CATCHER]</span><br></pre></td></tr></table></figure>
+<p>这段代码中，看起来挂起objection()已经晚了，因为run  phase还是立即退出了。这是因为在挂起objection之前还需要运行1ps，而处于fork-join_none后的run_phase任务在0时刻被调用后，run phase退出机制在0时刻发现没有挂起的objection，因此终止所有的run_phase()任务，继而转入了extract  phase。所以，如果要在component中挂起objection，建议在一进入run_phase()后就挂起，保证objection  counter及时被增加；</p>
+<p>另外，需要习惯在sequence中挂起objection，由于sequence不是uvm_component类，而是uvm_object类，因此它只有body()方法，而没有run_phase()方法。所以，在sequence中使用objection机制，可以在body()中的首尾部分分别调用uvm_test_done.raise_objection()和uvm_test_done.drop_objection()。对于习惯在pre_body()中调用uvm_test_done.raise_objection()，在post_body()中调用uvm_test_done.drop_objection()，这么做在多数情况下可以起到objection的防退出机制，但是一些情况下，sequence的pre_body()和post_body()并不会调用，所以objection机制也没有起到作用。因此，我们建议在sequence body()任务中raise/drop objection。</p>
+<h1 id="4-config机制"><a href="#4-config机制" class="headerlink" title="4.config机制"></a>4.config机制</h1><p>buildphase中，除了组件的实例化，配置也是必不可少的</p>
+<p>UVM提供了uvm_config_db的配置类以及几种很方便的变量设置方法来实现在仿真时的环境控制。常见的uvm_config_db的使用方式包括有：</p>
+<ul>
+<li>传递virtual interface到环境中。</li>
+<li>设置单一变量值，例如int、string、enum等。</li>
+<li>传递配置对象（config object）到环境。</li>
+</ul>
+<p>下面的几段例码分别来对这几种方式进行说明。</p>
+<h2 id="interface传递"><a href="#interface传递" class="headerlink" title="interface传递"></a>interface传递</h2><p>首先来看看interface的传递，通过这种方便的传递方式很好地解决了连接硬件世界和软件世界。而在之前关于SV的核心篇章中，读者们可以看到，虽然SV可以通过层次化interface的索引来完成传递，但是这种方式不利于软件环境的封装和复用。下面这种方式，使得接口的传递和获取彻底分离开来，而在后台对virtual interface的传递立下功劳的便是uvm_config_db。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> intf1;</span><br><span class="line"><span class="keyword">logic</span> enable = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">endinterface</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">module</span> config_interface;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> comp1 <span class="keyword">extends</span> uvm_component;</span><br><span class="line"><span class="meta">`uvm_component_utils(comp1)</span></span><br><span class="line"><span class="keyword">virtual</span> intf1 vif;</span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">if</span>(!uvm_config_db<span class="variable">#(virtual intf1)::get(this, "", "vif", vif))</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="meta">`uvm_error("GETVIF", "no virtual interface is assigned")</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="meta">`uvm_info("SETVAL", $sformatf("vif.enable is %b before set", vif.enable), UVM_LOW)</span></span><br><span class="line">    vif<span class="variable">.enable</span> = <span class="number">1</span>;</span><br><span class="line">    <span class="meta">`uvm_info("SETVAL", $sformatf("vif.enable is %b after set", vif.enable), UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> test1 <span class="keyword">extends</span> uvm_test;</span><br><span class="line"><span class="meta">`uvm_component_utils(test1)</span></span><br><span class="line">comp1 c1;</span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    c1 = comp1::type_id::create(<span class="string">"c1"</span>, <span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line">intf1 intf();</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    uvm_config_db<span class="variable">#(virtual intf1)::set(uvm_root::get(), "uvm_test_top.c1", "vif", intf)</span>;</span><br><span class="line">    run_test(<span class="string">"test1"</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [RNTST] Running test test1...</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.c1</span> [SETVAL] vif<span class="variable">.enable</span> is <span class="number">0</span> <span class="keyword">before</span> set</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.c1</span> [SETVAL] vif<span class="variable">.enable</span> is <span class="number">1</span> after set</span><br></pre></td></tr></table></figure>
+<p>从上面这个例子可以看到，接口的传递从硬件世界到UVM环境中的传递可以通过uvm_config_db来实现。在实现过程中需要注意几点：</p>
+<ul>
+<li>接口的传递应该发生在run_test()之前。这保证了在进入build phase之前，virtual interface已经传递进入uvm_config_db中。</li>
+<li>用户应当把interface与virtual interface的声明区分开来。在传递过程中的类型应当为virtual interface，即实际接口的句柄。</li>
+</ul>
+<p><strong>对<code>uvm_config_db#(virtual intf1)::set(uvm_root::get(), &quot;uvm_test_top.c1&quot;, &quot;vif&quot;, intf);</code>参数的理解：</strong></p>
+<p>所有参数实际上构建的是一个hash表！前三个参数实际上对应的是path，最后一个参数对应的是传入的interface</p>
+<p>首先run_test(“test1”)构建了一个root - test - c1 的层次结构。uvm_root::get()获取的是最顶层的句柄root，第二个参数说明是test_top下的c1，第三个参数实际上可以理解为一个key，此时对应的一个path就是：root.test.c1.vif</p>
+<p><strong><code>uvm_config_db#(virtual intf1)::get(this, &quot;&quot;, &quot;vif&quot;, vif)</code>这里的get方法和set刚好对应</strong></p>
+<p>this就代表了当前的c1</p>
+<h2 id="object传递"><a href="#object传递" class="headerlink" title="object传递"></a>object传递</h2><p>在实际的test配置中，需要配置的参数不单单数量多，而且还分属于不同的组件。那么，如果对这么多层次中的变量做出类似上面的单一变量设置，一方面需要更多的代码，这就容易出错，不易于阅读，另外一方面也不易于复用，毕竟底层组件的变量有添加或者减少，通过uvm_config_db::set是无法得知是否设置成功的。因此，如果将每个组件中的变量加以整合，首先放置到一个uvm_object中用于传递，那么将会更有利于整体进行配置。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> config1 <span class="keyword">extends</span> uvm_object;</span><br><span class="line"><span class="keyword">int</span> val1 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> str1 = <span class="string">"null"</span>;</span><br><span class="line"><span class="meta">`uvm_object_utils(config1)</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">"config1"</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> comp1 <span class="keyword">extends</span> uvm_component;</span><br><span class="line"><span class="meta">`uvm_component_utils(comp1)</span></span><br><span class="line">config1 cfg;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    uvm_object tmp;</span><br><span class="line">    uvm_config_db<span class="variable">#(uvm_object)::get(this, "", "cfg", tmp)</span>;</span><br><span class="line">    <span class="keyword">void</span>'(<span class="built_in">$cast</span>(cfg, tmp));</span><br><span class="line">    <span class="meta">`uvm_info("SETVAL", $sformatf("cfg.val1 is %d after get", cfg.val1), UVM_LOW)</span></span><br><span class="line">    <span class="meta">`uvm_info("SETVAL", $sformatf("cfg.str1 is %s after get", cfg.str1), UVM_LOW)</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> test1 <span class="keyword">extends</span> uvm_test;</span><br><span class="line"><span class="meta">`uvm_component_utils(test1)</span></span><br><span class="line">comp1 c1, c2;</span><br><span class="line">config1 cfg1, cfg2;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">   <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    cfg1 = config1::type_id::create(<span class="string">"cfg1"</span>);</span><br><span class="line">    cfg2 = config1::type_id::create(<span class="string">"cfg2"</span>);</span><br><span class="line">    cfg1<span class="variable">.val1</span> = <span class="number">30</span>;</span><br><span class="line">    cfg1<span class="variable">.str1</span>= <span class="string">"c1"</span>;</span><br><span class="line">    cfg2<span class="variable">.val1</span> = <span class="number">50</span>;</span><br><span class="line">    cfg2<span class="variable">.str1</span>= <span class="string">"c2"</span>;</span><br><span class="line">    uvm_config_db<span class="variable">#(uvm_object)::set(this, "c1", "cfg", cfg1)</span>;</span><br><span class="line">    uvm_config_db<span class="variable">#(uvm_object)::set(this, "c2", "cfg", cfg2)</span>;</span><br><span class="line">    c1 = comp1::type_id::create(<span class="string">"c1"</span>, <span class="keyword">this</span>);</span><br><span class="line">    c2 = comp1::type_id::create(<span class="string">"c2"</span>, <span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    run_test(<span class="string">"test1"</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UVM_INFO @ <span class="number">0</span>: reporter [RNTST] Running test test1...</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.c1</span> [SETVAL] cfg<span class="variable">.val1</span> is <span class="number">30</span> after get</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.c1</span> [SETVAL] cfg<span class="variable">.str1</span> is c1 after get</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.c2</span> [SETVAL] cfg<span class="variable">.val1</span> is <span class="number">50</span> after get</span><br><span class="line">UVM_INFO @ <span class="number">0</span>: uvm_test_top<span class="variable">.c2</span> [SETVAL] cfg<span class="variable">.str1</span> is c2 after get</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>set和get的对象类型必须完全一致，子类和父类的关系也不行</li>
+<li>如果set的是一个子类对象，get的是一个父类句柄，必须通过$cast(a,b)进行类型转换</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716220512.png" alt="image-20210716220512126" style="zoom:67%;" /></p>
+<h1 id="5-TLM通信"><a href="#5-TLM通信" class="headerlink" title="5. TLM通信"></a>5. TLM通信</h1><h2 id="5-1-通信概论"><a href="#5-1-通信概论" class="headerlink" title="5.1 通信概论"></a>5.1 通信概论</h2><p>TLM是一个基于事务（transaction）的通信方式，通常在高抽象级的语言中被引用作为模块之间的通讯方式，例如SystemC或者UVM。TLM成功地将模块内的计算和模块之间的通信从时间跨度方面剥离开了。在抽象语言建模的体系中，各个模块通过一系列并行的进程实现，并且通过通信和计算来模拟出正确的行为。而如果要提高系统模型整体的仿真性能，需要考虑两个方面。一个是建模自身的运算优化，另外一个是模型之间的通信优化。前者需要依靠开发者的经验还有开发工具的性能分析工具，来逐步优化模型自身；后者则可以将通信的频率降低，内容体积增大的方式，来减少不同进程之间的同步带来的资源损耗。而TLM正是从通信优化的角度提出的一种抽象通信方式。</p>
+<p>initiator、target以及producer、consumer的概念</p>
+<p>在实现的过程中，TLM通信需要两个通信的对象，这两个对象分别称之为initiator object和target  object。区分它们的方法在于，谁首先发起通信的要求，谁就属于initiator，而谁作为发起通信的响应方，谁就属于target。在初学过程中，读者们还应该注意，通信发起方并不代表了transaction的流向起点，即不一定数据是从initiator流向target，也可能是从target流向了initiator。因此，按照transaction的流向，我们又可以将两个对象分为producer和consumer。区分它们的方法是，数据从哪里产生，它就属于producer，而数据流向了哪里，它就属于consumer。</p>
+<p>从下面的这张图可以看出，initiator与target的关系同producer与consumer的关系，不是固定的。而有了两个参与通信的对象之后，用户需要将TLM的通信方法在target一端中实现，以便于initiator将来作为发起方可以调用target内的通信方法，实现数据传输。在target实现了必要的通信方法之后，最后一步需要将两个对象进行连接。这需要首先在两个对象内创建端口，继而在更高的层次中将这两个对象进行连接。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716224448.png" alt="image-20210716224447966" style="zoom:67%;" /></p>
+<p><strong>所以，抽象来看TLM通信的步骤可以分解为：</strong></p>
+<ol>
+<li>分辨出initiator和target，producer和consumer。</li>
+<li>在target中实现TLM通信方法。</li>
+<li>在两个对象中创建TLM端口。</li>
+<li>在更高的层次中将两个对象的端口进行连接。（initiator作为连接的发起端：。connect（））</li>
+</ol>
+<p>例如，monitor和checker：monitor是initator；generator和driver：driver是initator（通过get请求数据）</p>
+<p><strong>从数据流向的方向来看，传输的方向可以分为单向（unidirection）和双向（bidirection）。</strong></p>
+<ul>
+<li>单向传输：由initiator发起request transaction。</li>
+<li>双向传输：由initiator发起request transaction，传送至target；而target在消化了request transaction后，也会发起response transaction，继而返回给initiator。</li>
+</ul>
+<p><strong>端口的按照类型可以划分为三种：</strong></p>
+<ul>
+<li>port：经常作为initiator的发起端，也凭借port，initiator才可以访问target中实现的TLM通信方法。</li>
+<li>export：作为initiator和target中间层次的端口。</li>
+<li>imp：只能是作为target接收request的末端，它无法作为中间层次的端口，所以imp的连接无法再次延伸。</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716225157.png" alt="image-20210716225157393" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716225726.png" alt="image-20210716225726756" style="zoom:67%;" /></p>
+<h2 id="5-2-单向通信"><a href="#5-2-单向通信" class="headerlink" title="5.2 单向通信"></a>5.2 单向通信</h2><p>单向通信指的是从initiator到target之间的数据流向是单一方向的，或者说initiator和target只能扮演producer和consumer中的一个角色。在UVM中，对应数据流向的TLM单向端口有很多的类型：</p>
+<ul>
+<li>uvm_blocking_put_PORT</li>
+<li>uvm_nonblocking_put_PORT</li>
+<li>uvm_put_PORT</li>
+<li>uvm_blocking_get_PORT</li>
+<li>uvm_nonblocking_get_PORT</li>
+<li>uvm_get_PORT</li>
+<li>uvm_blocking_peek_PORT</li>
+<li>uvm_nonblocking_peek_PORT</li>
+<li>uvm_peek_PORT</li>
+<li>uvm_blocking_get_peek_PORT</li>
+<li>uvm_nonblocking_get_peek_PORT</li>
+<li>uvm_get_peek_PORT</li>
+</ul>
+<p>这里的PORT代表了三种端口名：port、export和imp。这么一计算的话，那么对于单一方向的传输端口一共有36种。看起来这么多的端口类型似乎对读者的记忆不太友好，实际上记忆这么多的端口名是有技巧的。按照每一个端口名的命名规则，它们也指出了通信的两个要素：</p>
+<ul>
+<li>是否是阻塞的方式（即可以等待延时）</li>
+<li>何种通信方法</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716230533.png" alt="image-20210716230533075" style="zoom:80%;" /></p>
+<p><strong>数据blocking阻塞传输的方法分别包含：</strong></p>
+<ul>
+<li>put：initiator通过该方法可以自己生成数据T t，同时将该数据传送至target。</li>
+<li>get：initiator通过该方法可以从target获取数据T t，而target中的该数据则应消耗。</li>
+<li>peek：initiator通过该方法可以从target获取数据T t，而target中的该数据还应该保留。</li>
+</ul>
+<p>此时target就相当于一个buffer，可以对数据进行存储~</p>
+<p><strong>与上述三种task对应的nonblocking非阻塞的方法分别是：</strong></p>
+<ul>
+<li>try_put</li>
+<li>can_put</li>
+<li>try_get</li>
+<li>can_get</li>
+<li>try_peek</li>
+<li>can_peek</li>
+</ul>
+<p>这六个函数与其对应的任务的区别在于，它们必须立即返回，如果try_xxx函数可以发送或者获取数据，那么函数还应该返回1，如果执行失败则应该返回0。或者通过can_xxx函数先试探target是否可以接收数据，通过返回值，再通过try_xxx函数发送，提高数据发送的成功率。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> itrans <span class="keyword">extends</span> uvm_transaction;</span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	...</span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> otrans <span class="keyword">extends</span> uvm_transaction;</span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	...</span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> comp1 <span class="keyword">extends</span> uvm_component;</span><br><span class="line">	uvm_blocking_put_port <span class="variable">#(itrans)</span> bp_port;</span><br><span class="line">	uvm_nonblocking_get_port <span class="variable">#(otrans)</span> nbg_port;</span><br><span class="line">	<span class="meta">`uvm_component_utils(comp1)</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">task</span> run_phase(uvm_phase phase);</span><br><span class="line">		itrans itr;</span><br><span class="line">		otrans otr;</span><br><span class="line">		<span class="keyword">int</span> trans_num = <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">fork</span></span><br><span class="line">			<span class="keyword">begin</span></span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; trans_num; i++) <span class="keyword">begin</span></span><br><span class="line">					itr = <span class="keyword">new</span>(<span class="string">"itr"</span>, <span class="keyword">this</span>);</span><br><span class="line">					itr<span class="variable">.data</span> = <span class="number">'h10</span> + i;</span><br><span class="line">					<span class="keyword">this</span><span class="variable">.bp_port</span><span class="variable">.put</span>(itr);</span><br><span class="line">					<span class="meta">`uvm_info("PUT", $sformatf("put itrans id: 'h%0x, data: 'h%0x", itr.id, itr.data), UVM_LOW)</span></span><br><span class="line">				<span class="keyword">end</span></span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			<span class="keyword">begin</span></span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; trans_num; j++) <span class="keyword">begin</span></span><br><span class="line">					<span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">						<span class="keyword">if</span>(<span class="keyword">this</span><span class="variable">.nbg_port</span><span class="variable">.try_get</span>(otr) == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">						<span class="keyword">else</span> #<span class="number">1</span>ns;</span><br><span class="line">					<span class="keyword">end</span></span><br><span class="line">					<span class="meta">`uvm_info("TRYGET", $sformatf("get otrans id: 'h%0x, data: 'h%0x", otr.id, otr.data), UVM_LOW)</span></span><br><span class="line">				<span class="keyword">end</span></span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">join</span></span><br><span class="line">	<span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> comp2 <span class="keyword">extends</span> uvm_component;</span><br><span class="line">	uvm_blocking_put_imp <span class="variable">#(itrans, comp2)</span> bp_imp;</span><br><span class="line">	uvm_nonblocking_get_imp <span class="variable">#(otrans, comp2)</span> nbg_imp;</span><br><span class="line">	itrans itr_q[$];</span><br><span class="line">	<span class="meta">`uvm_component_utils(comp2)</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">task</span> put(itrans t);</span><br><span class="line">		itr_q<span class="variable">.push_back</span>(t);</span><br><span class="line">	<span class="keyword">endtask</span></span><br><span class="line">	<span class="keyword">function</span> <span class="keyword">bit</span> try_get(<span class="keyword">output</span> otrans t);</span><br><span class="line">		itrans i;</span><br><span class="line">		<span class="keyword">if</span>(itr_q<span class="variable">.size</span>() != <span class="number">0</span>) <span class="keyword">begin</span></span><br><span class="line">			i = itr_q<span class="variable">.pop_front</span>();</span><br><span class="line">			t = <span class="keyword">new</span>(<span class="string">"t"</span>, <span class="keyword">this</span>);</span><br><span class="line">			t<span class="variable">.id</span> = i<span class="variable">.id</span>;</span><br><span class="line">			t<span class="variable">.data</span> = i<span class="variable">.data</span> &lt;&lt; <span class="number">8</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">endfunction</span></span><br><span class="line">	<span class="keyword">function</span> <span class="keyword">bit</span> can_get();</span><br><span class="line">		<span class="keyword">if</span>(itr_q<span class="variable">.size</span>() != <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> env1 <span class="keyword">extends</span> uvm_env;</span><br><span class="line">	comp1 c1;</span><br><span class="line">	comp2 c2;</span><br><span class="line">	<span class="meta">`uvm_component_utils(env1)</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">		<span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line">		c1 = comp1::type_id::create(<span class="string">"c1"</span>, <span class="keyword">this</span>);</span><br><span class="line">		c2 = comp2::type_id::create(<span class="string">"c2"</span>, <span class="keyword">this</span>);</span><br><span class="line">	<span class="keyword">endfunction</span></span><br><span class="line">	<span class="keyword">function</span> <span class="keyword">void</span> connect_phase(uvm_phase phase);</span><br><span class="line">		<span class="keyword">super</span><span class="variable">.connect_phase</span>(phase);</span><br><span class="line">		c1<span class="variable">.bp_port</span><span class="variable">.connect</span>(c2<span class="variable">.bp_imp</span>);</span><br><span class="line">		c1<span class="variable">.nbg_port</span><span class="variable">.connect</span>(c2<span class="variable">.nbg_imp</span>);</span><br><span class="line">	<span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<p><strong>class comp1的run_phase任务：</strong><code>bp_port.put(itr)</code>实际上并不是在comp1中定义put方法，而是在imp端或者说target端定义的put方法，这里就实现了通信的隔离！！这时实现put方法的可以是任一一个类~只有当bp_port上没有建立连接时才会报错！！！</p>
+<p><strong>class comp2中的put方法</strong>：实际上就是将数据放入队列；get方法：就是将数据从队列中取出，此时initiator端可以直接获取</p>
+<h2 id="5-3-双向通信"><a href="#5-3-双向通信" class="headerlink" title="5.3 双向通信"></a>5.3 双向通信</h2><p>与单向通信相同的是，双向通信的两端也分为initiator和target，但是数据流向在端对端之间是双向的。双向通信中的两端同时扮演着producer和consumer的角色，而initiator作为request发起方，在发起request之后，还会等待response返回。</p>
+<p>UVM双向端口分为以下类型：</p>
+<pre><code>uvm_blocking_transport_PORT
+uvm_nonblocking_transport_PORT
+uvm_transport_PORT
+uvm_blocking_master_PORT
+uvm_nonblocking_master_PORT
+uvm_master_PORT
+uvm_blocking_slave_PORT
+uvm_nonblocking_slave_PORT
+uvm_slave_PORT
+</code></pre><p>PORT代表了port、export</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210716233058.png" alt="image-20210716233057904"></p>
+<h2 id="5-4-通信管道"><a href="#5-4-通信管道" class="headerlink" title="5.4 通信管道"></a>5.4 通信管道</h2><p>以上通信有一个共同的地方即都是端对端的方式，同时在target一端需要实现传输方法，例如put()或者get()。这种方式在实际使用过程中也不免会给用户带来一些烦恼：</p>
+<ul>
+<li>如何可以不自己实现这些传输方法，同时可以享受到TLM的好处</li>
+<li>对于monitor、coverage collector等组件在传输数据时，会存在一端到多端的传输，如何解决这一问题</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E5%AD%97IC/" rel="tag"># 数字IC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B/" rel="next" title="操作系统-线程">
+                <i class="fa fa-chevron-left"></i> 操作系统-线程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/06/IC%E9%AA%8C%E8%AF%81-verilog/" rel="prev" title="verilog基础">
+                verilog基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-UVM概念"><span class="nav-text">1. UVM概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UVM类库地图"><span class="nav-text">UVM类库地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UVM组件"><span class="nav-text">UVM组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UVM环境-phase机制"><span class="nav-text">UVM环境-phase机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂机制"><span class="nav-text">工厂机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖方法"><span class="nav-text">覆盖方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-核心基类UVM-object"><span class="nav-text">2. 核心基类UVM-object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#域的自动化-（Field-Automation）"><span class="nav-text">域的自动化 （Field Automation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心方法"><span class="nav-text">核心方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局对象"><span class="nav-text">全局对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比较"><span class="nav-text">比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打印"><span class="nav-text">打印</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打包和解包"><span class="nav-text">打包和解包</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-phase机制"><span class="nav-text">3. phase机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建立仿真环境"><span class="nav-text">建立仿真环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uvm仿真结束"><span class="nav-text">uvm仿真结束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-config机制"><span class="nav-text">4.config机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#interface传递"><span class="nav-text">interface传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#object传递"><span class="nav-text">object传递</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-TLM通信"><span class="nav-text">5. TLM通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-通信概论"><span class="nav-text">5.1 通信概论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-单向通信"><span class="nav-text">5.2 单向通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-双向通信"><span class="nav-text">5.3 双向通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-通信管道"><span class="nav-text">5.4 通信管道</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
