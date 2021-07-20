@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数字IC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="项目梳理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SystemVerilog">
+<meta property="og:url" content="http://yoursite.com/2020/10/06/a%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B%E6%BC%94%E5%8C%96%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="项目梳理">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210708183029.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210708205714.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210708223857.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210709202114.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210711150438.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210719203725.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210719111922.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210719151120.png">
+<meta property="article:published_time" content="2020-10-06T06:25:30.000Z">
+<meta property="article:modified_time" content="2021-07-20T15:03:55.480Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="数字IC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210708183029.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/10/06/a实验过程演化整理/"/>
+
+
+
+
+
+  <title>SystemVerilog | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/06/a%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B%E6%BC%94%E5%8C%96%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SystemVerilog</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-06T14:25:30+08:00">
+                2020-10-06
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-07-20T23:03:55+08:00" content="2021-07-20">
+                          2021-07-20
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97-SystemVerilog-verilog%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">数字-SystemVerilog.verilog基础.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>项目梳理</p>
+<a id="more"></a>
+<h1 id="实验3-1：SystemVerilog的真正引入"><a href="#实验3-1：SystemVerilog的真正引入" class="headerlink" title="实验3-1：SystemVerilog的真正引入"></a>实验3-1：SystemVerilog的真正引入</h1><p><img src="https://gitee.com/biongd/img/raw/master/img/20210708183029.png" alt="image-20210708183029815" style="zoom: 80%;" /></p>
+<p>问1：generator中的run方法规定了执行次数，initiator方法未规定执行次数，test类中的如何finish（）？</p>
+<p>答：agent封装类中的run方法在调用chnl_generator和chnl_initiator的run方法时，用的是fork-join_any块，即只要数据发送完run方法结束</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fork</span></span><br><span class="line">  gen<span class="variable">.run</span>();</span><br><span class="line">  init<span class="variable">.run</span>();</span><br><span class="line"><span class="keyword">join_any</span></span><br></pre></td></tr></table></figure>
+<p>问2：如何保证generator生成一个，initiator发送一个？</p>
+<p>答：通过mailbox建立的握手行为，initiator执行get完才能写，generator执行完get才能进入下一次生成数据的循环</p>
+<p>问3：如何通过指令控制仿真环境</p>
+<ul>
+<li><p>重启仿真：”restart”</p>
+</li>
+<li><p>生成随机数（改变随机种子）：</p>
+<p>“vsim -novopt -solvefaildebug -sv_seed 0 work.tb1”</p>
+<p>“vsim -novopt -solvefaildebug -sv seed random work.tb1”，每次</p>
+<ul>
+<li>参数solvefaildebug：随机化失败时会提示错误信息</li>
+<li>参数0：随机种子编号，通过改变随机种子即可以改变每次生成的随机值</li>
+</ul>
+</li>
+<li><p>添加参数并通过参数判断是否执行语句：</p>
+<p>“+TESTNAME=testname”</p>
+</li>
+</ul>
+<h2 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h2><h3 id="包chnl-pck"><a href="#包chnl-pck" class="headerlink" title="包chnl_pck"></a>包chnl_pck</h3><ul>
+<li><p>class chnl_trans：定义激励数据的格式（数据包间隔，数据间隔，通道id，数据包id）</p>
+<ul>
+<li><p>初始化：记录创建了多少个对象</p>
+</li>
+<li><p>constraint cstr：</p>
+<p>​    通过约束+randomize（）定义数据的初始值（被generator调用）</p>
+</li>
+<li><p>function chnl_trans clone()：</p>
+<p>​    对实例化对象进行复制！！（无需通过new+参数初始化）</p>
+</li>
+</ul>
+</li>
+<li><p>class chnl_initiator：构建和dut、generator相连的初始化模型（驱动器）</p>
+<ul>
+<li><p>初始化：命名</p>
+<ul>
+<li>属性变量只要interface（沟通dut）和name，还有interface</li>
+</ul>
+</li>
+<li><p>set_interface(virtual chnl_intf intf)：</p>
+<p>​    传入实际的interface，给interface句柄赋值</p>
+</li>
+<li><p><strong>driver（）：</strong></p>
+<p>​    <strong>从generator、get数据，然后执行chnl_write(input chnl_trans t)将数据发给dut</strong>，因为write方法内有时钟和reday信号进行阻塞，所以必须等到write方法执行完后才能用mailbox的put，这样generator就被mailbox的get阻塞，无法进行下一次的数据发送</p>
+<p>​    通过mailbox和generator进行数据交换，先调用mailbox的get方法，从generator获取数据</p>
+</li>
+<li><p><strong>chnl_write(input chnl_trans t)：</strong></p>
+<p>​    <strong>和dut进行数据交流</strong></p>
+<p>​    身为驱动类的必备功能，给dut传数据</p>
+</li>
+<li><p>chnl_idle()：</p>
+<p>​    将valid和data置0，结合数据包间隔，数据间隔，给数据传输添加空窗期</p>
+</li>
+<li><p><strong>run（）：</strong></p>
+<p>​    <strong>执行driver（）</strong></p>
+</li>
+</ul>
+</li>
+<li><p><strong>class chnl_generator：</strong>生成数据并发送给initiator</p>
+<ul>
+<li><p>初始化：（1）在此处对和initiatot交流的mailbox进行实例化；（2）对数据包id，通道id和ntrans赋初值；</p>
+<ul>
+<li>属性变量包括：通道id，数据包id，对chnl_trans的随机化对象进行约束；ntrans决定数据包的发送次数；</li>
+</ul>
+</li>
+<li><p>send_trans()：</p>
+<p>​    对应initiator的driver（）方法</p>
+<ul>
+<li>此处实例化chnl_trans的req和rsp两个对象，req随机化成功（ this.pkt_id++;），发送给mailbox（也就是initiator），initiator克隆一份后将rsp中的rsp变量修改为1，rsp传回generator后通过rsp属性值判断，作为此次发送是否成功的断言！！！失败则打印</li>
+</ul>
+</li>
+<li><p>run（）：</p>
+<p>​    <strong>执行send_trans()</strong></p>
+</li>
+</ul>
+</li>
+<li><p>class chnl_agent：对chnl_generator和chnl_initiator进行封装，将对外接口进一步优化</p>
+<ul>
+<li>初始化：传入chnl_generator和chnl_initiator需要的参数</li>
+<li>set_interface(virtual chnl_intf vif)：给chnl_initiator的set_interface方法传入参数</li>
+<li>run()：将generator和initiator的run方法进行封装，同时用句柄赋值的方式，让generator和initiator的mailbox指向同一个地址</li>
+</ul>
+</li>
+<li><p>chnl_root_test：最顶层封装，tb文件直接调用的对象，创建3个agent，调用run和set_interface方法</p>
+<ul>
+<li>初始化：创建3个agent</li>
+</ul>
+</li>
+</ul>
+<h3 id="tb文件"><a href="#tb文件" class="headerlink" title="tb文件"></a>tb文件</h3><ul>
+<li><p>interface：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> chnl_intf(<span class="keyword">input</span> clk, <span class="keyword">input</span> rstn);</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] ch_data;</span><br><span class="line">  <span class="keyword">logic</span>        ch_valid;</span><br><span class="line">  <span class="keyword">logic</span>        ch_ready;</span><br><span class="line">  <span class="keyword">logic</span> [ <span class="number">5</span>:<span class="number">0</span>] ch_margin;</span><br><span class="line">  <span class="keyword">clocking</span> drv_ck @(<span class="keyword">posedge</span> clk);</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">input</span> #<span class="number">1</span>ns <span class="keyword">output</span> #<span class="number">1</span>ns;</span><br><span class="line">    <span class="keyword">output</span> ch_data, ch_valid;</span><br><span class="line">    <span class="keyword">input</span> ch_ready, ch_margin;</span><br><span class="line">  <span class="keyword">endclocking</span></span><br><span class="line"><span class="keyword">endinterface</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>module：</p>
+<ul>
+<li><p>dut的输入输出连接</p>
+</li>
+<li><p>分配时钟和复位信号</p>
+</li>
+<li><p>启动test（导包，声明接口，声明句柄并实例化，调用run方法）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">module</span> tb1;</span><br><span class="line">  <span class="keyword">logic</span>         clk;</span><br><span class="line">  <span class="keyword">logic</span>         rstn;</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>]  mcdt_data;</span><br><span class="line">  <span class="keyword">logic</span>         mcdt_val;</span><br><span class="line">  <span class="keyword">logic</span> [ <span class="number">1</span>:<span class="number">0</span>]  mcdt_id;</span><br><span class="line">  </span><br><span class="line">  mcdt dut(</span><br><span class="line">     <span class="variable">.clk_i</span>       (clk                )</span><br><span class="line">    ,<span class="variable">.rstn_i</span>      (rstn               )</span><br><span class="line">    ,<span class="variable">.ch0_data_i</span>  (chnl0_if<span class="variable">.ch_data</span>   )</span><br><span class="line">    ,<span class="variable">.ch0_valid_i</span> (chnl0_if<span class="variable">.ch_valid</span>  )</span><br><span class="line">    ,<span class="variable">.ch0_ready_o</span> (chnl0_if<span class="variable">.ch_ready</span>  )</span><br><span class="line">    ,<span class="variable">.ch0_margin_o</span>(chnl0_if<span class="variable">.ch_margin</span> )</span><br><span class="line">    ,<span class="variable">.ch1_data_i</span>  (chnl1_if<span class="variable">.ch_data</span>   )</span><br><span class="line">    ,<span class="variable">.ch1_valid_i</span> (chnl1_if<span class="variable">.ch_valid</span>  )</span><br><span class="line">    ,<span class="variable">.ch1_ready_o</span> (chnl1_if<span class="variable">.ch_ready</span>  )</span><br><span class="line">    ,<span class="variable">.ch1_margin_o</span>(chnl1_if<span class="variable">.ch_margin</span> )</span><br><span class="line">    ,<span class="variable">.ch2_data_i</span>  (chnl2_if<span class="variable">.ch_data</span>   )</span><br><span class="line">    ,<span class="variable">.ch2_valid_i</span> (chnl2_if<span class="variable">.ch_valid</span>  )</span><br><span class="line">    ,<span class="variable">.ch2_ready_o</span> (chnl2_if<span class="variable">.ch_ready</span>  )</span><br><span class="line">    ,<span class="variable">.ch2_margin_o</span>(chnl2_if<span class="variable">.ch_margin</span> )</span><br><span class="line">    ,<span class="variable">.mcdt_data_o</span> (mcdt_data          )</span><br><span class="line">    ,<span class="variable">.mcdt_val_o</span>  (mcdt_val           )</span><br><span class="line">    ,<span class="variable">.mcdt_id_o</span>   (mcdt_id            )</span><br><span class="line">  );</span><br><span class="line">      <span class="comment">// clock generation</span></span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span> </span><br><span class="line">    clk &lt;= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">      #<span class="number">5</span> clk &lt;= !clk;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// reset trigger</span></span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span> </span><br><span class="line">    #<span class="number">10</span> rstn &lt;= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">repeat</span>(<span class="number">10</span>) @(<span class="keyword">posedge</span> clk);</span><br><span class="line">    rstn &lt;= <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="实验3-2：generator提取"><a href="#实验3-2：generator提取" class="headerlink" title="实验3-2：generator提取"></a>实验3-2：generator提取</h1><p>爲了更方便的控制generator生成数据，将generator从agent中拿出，直接由test控制</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210708205714.png" alt="image-20210708205714482" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210708223857.png" alt="image-20210708223857777" style="zoom: 80%;" /></p>
+<h2 id="文件变化"><a href="#文件变化" class="headerlink" title="文件变化"></a>文件变化</h2><p>vsim+TESTNAME = chnl_burst_test work.tb2</p>
+<h3 id="包chnl-pck-1"><a href="#包chnl-pck-1" class="headerlink" title="包chnl_pck"></a>包chnl_pck</h3><ul>
+<li><p><strong>chnl_generator：</strong></p>
+<p>属性变量连原本由chnl_trans控制的data_size，pkt_nidles也加入了进来，目的也是让test可以完全掌握数据生成</p>
+<p>通过一层层的约束</p>
+<p><strong>注意：为什么随机化里面用的是local：：而不用this？</strong></p>
+<p>local指的是generator 的实例对象，如果在这里使用this，指的是调用randomsize方法的数据实例对象</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">rand</span> <span class="keyword">int</span> pkt_id = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">int</span> ch_id = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">int</span> data_nidles = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">int</span> pkt_nidles = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">int</span> data_size = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">int</span> ntrans = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">constraint</span> cstr&#123;</span><br><span class="line">      <span class="keyword">soft</span> ch_id == -<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">soft</span> pkt_id == -<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">soft</span> data_size == -<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">soft</span> data_nidles == -<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">soft</span> pkt_nidles == -<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">soft</span> ntrans == <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">task</span> send_trans();</span><br><span class="line">      chnl_trans req, rsp;</span><br><span class="line">      req = <span class="keyword">new</span>();</span><br><span class="line">	<span class="keyword">assert</span>(req<span class="variable">.randomize</span> <span class="keyword">with</span> &#123;<span class="keyword">local</span>::ch_id &gt;= <span class="number">0</span> -&gt; ch_id == <span class="keyword">local</span>::ch_id; </span><br><span class="line">                                 <span class="keyword">local</span>::pkt_id &gt;= <span class="number">0</span> -&gt; pkt_id == <span class="keyword">local</span>::pkt_id;</span><br><span class="line">                                 <span class="keyword">local</span>::data_nidles &gt;= <span class="number">0</span> -&gt; data_nidles == <span class="keyword">local</span>::data_nidles;</span><br><span class="line">                                 <span class="keyword">local</span>::pkt_nidles &gt;= <span class="number">0</span> -&gt; pkt_nidles == <span class="keyword">local</span>::pkt_nidles;</span><br><span class="line">                                 <span class="keyword">local</span>::data_size &gt;<span class="number">0</span> -&gt; data<span class="variable">.size</span>() == <span class="keyword">local</span>::data_size; </span><br><span class="line">                               &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>class chnl_agent：将generator摘除</p>
+</li>
+<li><p>class chnl_root_test：变化最大</p>
+<ul>
+<li><p>初始化：agent和generator分别创建3个</p>
+<p>​    因为generator从agent中提出，建立initiator和generator的mailbox连接的任务交由test完成</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">"chnl_root_test"</span>);</span><br><span class="line">    <span class="keyword">foreach</span>(agent[i]) <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">this</span><span class="variable">.agent</span>[i] = <span class="keyword">new</span>(<span class="built_in">$sformatf</span>(<span class="string">"chnl_agent%0d"</span>,i));</span><br><span class="line">      <span class="keyword">this</span><span class="variable">.gen</span>[i] = <span class="keyword">new</span>();</span><br><span class="line">      <span class="comment">// USER TODO 2.1</span></span><br><span class="line">      <span class="comment">// Connect the mailboxes handles of gen[i] and agent[i].init</span></span><br><span class="line">        agent[i]<span class="variable">.init</span><span class="variable">.req_mb</span> = gen[i]<span class="variable">.req_mb</span>;</span><br><span class="line">        agent[i]<span class="variable">.init</span><span class="variable">.rsp_mb</span> = gen[i]<span class="variable">.rsp_mb</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">this</span><span class="variable">.name</span> = name;</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"%s instantiate objects"</span>, <span class="keyword">this</span><span class="variable">.name</span>);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>do_config()：对创建的3个generator实例进行随机化(赋予数据)，对比3-1中在generator中的随机化，明显对外暴露了更多接口可以自定义（只需在test中修改）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span>(gen[<span class="number">0</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans==<span class="number">100</span>; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size==<span class="number">8</span>;&#125;)</span><br><span class="line"><span class="keyword">assert</span>(req<span class="variable">.randomize</span> <span class="keyword">with</span> &#123;ch_id == <span class="keyword">local</span>::ch_id; pkt_id == <span class="keyword">local</span>::pkt_id;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run()：同样因为gen和init的分离，run方法如何执行和结束也是一个问题</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span><span class="variable">.do_config</span>();</span><br><span class="line">  <span class="keyword">fork</span></span><br><span class="line">    agent[<span class="number">0</span>]<span class="variable">.run</span>();</span><br><span class="line">    agent[<span class="number">1</span>]<span class="variable">.run</span>();</span><br><span class="line">    agent[<span class="number">2</span>]<span class="variable">.run</span>();</span><br><span class="line">  <span class="keyword">join_none</span></span><br><span class="line">  <span class="keyword">fork</span></span><br><span class="line">    gen[<span class="number">0</span>]<span class="variable">.run</span>();</span><br><span class="line">    gen[<span class="number">1</span>]<span class="variable">.run</span>();</span><br><span class="line">    gen[<span class="number">2</span>]<span class="variable">.run</span>();</span><br><span class="line">  <span class="keyword">join</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="实验3-3：增加新组件monitor和checker"><a href="#实验3-3：增加新组件monitor和checker" class="headerlink" title="实验3-3：增加新组件monitor和checker"></a>实验3-3：增加新组件monitor和checker</h1><p><strong>monitor和checker干了嘛?</strong></p>
+<ul>
+<li><p>monitor: 分为chnl_monitor监控输入和mcdt_monitor监控输出</p>
+<ul>
+<li><p>如何保证采集数有效：就是允许数据传输的条件</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//chnl</span></span><br><span class="line">@(<span class="keyword">posedge</span> intf<span class="variable">.clk</span> <span class="keyword">iff</span> (intf<span class="variable">.mon_ck</span><span class="variable">.ch_valid</span>===<span class="number">'b1</span> &amp;&amp; intf<span class="variable">.mon_ck</span><span class="variable">.ch_ready</span>===<span class="number">'b1</span>));</span><br><span class="line"> m<span class="variable">.data</span> = intf<span class="variable">.mon_ck</span><span class="variable">.ch_data</span>;</span><br><span class="line">        mon_mb<span class="variable">.put</span>(m);</span><br><span class="line"><span class="comment">//mcdt</span></span><br><span class="line">@(<span class="keyword">posedge</span> intf<span class="variable">.clk</span> <span class="keyword">iff</span> intf<span class="variable">.mon_ck</span><span class="variable">.mcdt_val</span>===<span class="number">'b1</span>);</span><br><span class="line">m<span class="variable">.data</span> = intf<span class="variable">.mon_ck</span><span class="variable">.mcdt_data</span>;</span><br><span class="line">        m<span class="variable">.id</span> = intf<span class="variable">.mon_ck</span><span class="variable">.mcdt_id</span>;</span><br><span class="line">        mon_mb<span class="variable">.put</span>(m);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>monitor的run方法：就是为了将采集数据放入mailbox</p>
+</li>
+</ul>
+</li>
+<li><p>checker：run方法就是从monitor发送的mailbox中获取数据，比较chnl的mailbox和mcdt的mailbox的数据是否一致</p>
+</li>
+</ul>
+<p><strong>问1：chnl_monitor和mcdt_monitor的数据对比如何保证数据的顺序是对应的？</strong></p>
+<p>两者的mailbox保证了上下的数据都是进到队列里面，然后从头部拿出比较，一方为空则比较，或者说checker的run就无法执行</p>
+<p><strong>问2：不用$finish()了，如何结束的进程</strong></p>
+<ul>
+<li><p>结束整个进程：test自定义<code>run_stop_callback()</code>方法。方法内部通过获取3把钥匙进行阻塞，每有一个gen执行完发送，put一个钥匙</p>
+<p>在整个文件的最开始建立旗语， <code>semaphore run_stop_flags = new();</code> 在generator中每有一个发送了ntrans个数据包截止的时候put进去一个钥匙，当三个gen都执行完，run_stop_flags获得三把钥匙，执行$finish()，归根结底还是用的finish</p>
+</li>
+<li><p>full_test中结束generator：先看一下full_test中给gen赋值的随机化约束：ntrans是不定值</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span>(gen[<span class="number">0</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans <span class="keyword">inside</span> &#123;[<span class="number">1000</span>:<span class="number">2000</span>]&#125;; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size <span class="keyword">inside</span> &#123;<span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;&#125;)</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[0] randomization failure!"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>问3：mailbox有几个，在哪些组件间建立连接</strong></p>
+<p>答：共有6个</p>
+<ul>
+<li><p>4个被checker和monitor持有，3个是agent的monitor和checker之间建立的连接，1个是mcdt的monitor和checker的连接</p>
+</li>
+<li><p>2个被gen和init持有，用于两者的握手协议</p>
+</li>
+<li><p>注意: 可以看到monitor的数据<code>mon_data_t</code>声明非常简单，其和checker的数据传输单纯就是一个存储的队列</p>
+</li>
+<li><p>同样在root_test中建立连接</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>(agents[i]) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">this</span><span class="variable">.agents</span>[i] = <span class="keyword">new</span>(<span class="built_in">$sformatf</span>(<span class="string">"chnl_agent%0d"</span>,i));</span><br><span class="line">        <span class="keyword">this</span><span class="variable">.gen</span>[i] = <span class="keyword">new</span>();</span><br><span class="line">        <span class="comment">// USER TODO 2.1</span></span><br><span class="line">        <span class="comment">// Connect the mailboxes handles of gen[i] and agents[i].init</span></span><br><span class="line">        <span class="keyword">this</span><span class="variable">.agents</span>[i]<span class="variable">.init</span><span class="variable">.req_mb</span> = <span class="keyword">this</span><span class="variable">.gen</span>[i]<span class="variable">.req_mb</span>;</span><br><span class="line">        <span class="keyword">this</span><span class="variable">.agents</span>[i]<span class="variable">.init</span><span class="variable">.rsp_mb</span> = <span class="keyword">this</span><span class="variable">.gen</span>[i]<span class="variable">.rsp_mb</span>;</span><br><span class="line">        <span class="keyword">this</span><span class="variable">.agents</span>[i]<span class="variable">.mon</span><span class="variable">.mon_mb</span> = <span class="keyword">this</span><span class="variable">.chker</span><span class="variable">.in_mbs</span>[i];</span><br><span class="line">      <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210709202114.png" alt="image-20210709202107429"></p>
+<h2 id="新加入文件结构"><a href="#新加入文件结构" class="headerlink" title="新加入文件结构"></a>新加入文件结构</h2><h3 id="包chnl-pack"><a href="#包chnl-pack" class="headerlink" title="包chnl_pack"></a>包chnl_pack</h3><ul>
+<li><p>typedef struct packed：</p>
+<p>低配版的chnl_trans，作为monitor里的数据容器</p>
+</li>
+<li><p>class chnl_monitor：获取dut输入，发送给checker</p>
+<ul>
+<li><p>属性：name，interface，mailbox（未实例化）</p>
+</li>
+<li><p>set_interface：传入接口</p>
+</li>
+<li><p>mon_trans：发mail给ckecker</p>
+<ul>
+<li><p><code>@(posedge intf.clk iff (intf.mon_ck.ch_valid===&#39;b1 &amp;&amp; intf.mon_ck.ch_ready===&#39;b1))</code></p>
+<p>保证在数据传输的时候进行采样；</p>
+</li>
+<li><p>并且将数据线上的数据装盒，放入mailbox</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>class mcdt_monitor：获取dut输出，发送给checker</p>
+</li>
+<li><p>class chnl_agent更新：将chnl_monitor加入，run方法中加入monitor.run();</p>
+</li>
+<li><p>class chnl_checker：</p>
+<ul>
+<li>属性：name，error_count，cmp_count，mailbox</li>
+<li>初始化：对邮箱实例化，错误和完成计数初始化<ul>
+<li>注意：chnl_monitor有3个，需创建3个mailbox与之对应，监控3个chnl</li>
+</ul>
+</li>
+<li>do_compare()：这里的阻塞</li>
+</ul>
+</li>
+<li><p>chnl_root_test：作为所有测试类的基类</p>
+<p>功能：</p>
+<ul>
+<li>初始化：实例化各部分组件，连接mailbox（generator和driver的连接，monitor和checker的连接）</li>
+<li>虚方法（do_config）：执行随机化，可以通过断言判断随机化是否成功（在子类中实现）</li>
+</ul>
+</li>
+<li><p>chnl_basic_test：实现随机化的config方法</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> do_config();</span><br><span class="line">      <span class="keyword">super</span><span class="variable">.do_config</span>();</span><br><span class="line">      <span class="keyword">assert</span>(gen[<span class="number">0</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans==<span class="number">100</span>; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size==<span class="number">8</span>;&#125;)</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[0] randomization failure!"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">assert</span>(gen[<span class="number">1</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans==<span class="number">50</span>; data_nidles <span class="keyword">inside</span> &#123;[<span class="number">1</span>:<span class="number">2</span>]&#125;; pkt_nidles <span class="keyword">inside</span> &#123;[<span class="number">3</span>:<span class="number">5</span>]&#125;; data_size==<span class="number">6</span>;&#125;)</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[1] randomization failure!"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">assert</span>(gen[<span class="number">2</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans==<span class="number">80</span>; data_nidles <span class="keyword">inside</span> &#123;[<span class="number">0</span>:<span class="number">1</span>]&#125;; pkt_nidles <span class="keyword">inside</span> &#123;[<span class="number">1</span>:<span class="number">2</span>]&#125;; data_size==<span class="number">32</span>;&#125;)</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[2] randomization failure!"</span>);</span><br><span class="line">    <span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>chnl_burst_test：随机化存在差别，</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> do_config();</span><br><span class="line">  <span class="keyword">super</span><span class="variable">.do_config</span>();</span><br><span class="line">  <span class="keyword">assert</span>(gen[<span class="number">0</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans <span class="keyword">inside</span> &#123;[<span class="number">80</span>:<span class="number">100</span>]&#125;; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size <span class="keyword">inside</span> &#123;<span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;&#125;)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[0] randomization failure!"</span>);</span><br><span class="line">  <span class="keyword">assert</span>(gen[<span class="number">1</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans <span class="keyword">inside</span> &#123;[<span class="number">80</span>:<span class="number">100</span>]&#125;; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size <span class="keyword">inside</span> &#123;<span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;&#125;)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[1] randomization failure!"</span>);</span><br><span class="line">  <span class="keyword">assert</span>(gen[<span class="number">2</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans <span class="keyword">inside</span> &#123;[<span class="number">80</span>:<span class="number">100</span>]&#125;; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size <span class="keyword">inside</span> &#123;<span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;&#125;)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[2] randomization failure!"</span>);</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>chnl_fifo_full_test：大数据量冲击</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> do_config();</span><br><span class="line">  <span class="keyword">super</span><span class="variable">.do_config</span>();</span><br><span class="line">  <span class="keyword">assert</span>(gen[<span class="number">0</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans <span class="keyword">inside</span> &#123;[<span class="number">1000</span>:<span class="number">2000</span>]&#125;; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size <span class="keyword">inside</span> &#123;<span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;&#125;)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[0] randomization failure!"</span>);</span><br><span class="line">  <span class="keyword">assert</span>(gen[<span class="number">1</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans <span class="keyword">inside</span> &#123;[<span class="number">1000</span>:<span class="number">2000</span>]&#125;; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size <span class="keyword">inside</span> &#123;<span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;&#125;)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[1] randomization failure!"</span>);</span><br><span class="line">  <span class="keyword">assert</span>(gen[<span class="number">2</span>]<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;ntrans <span class="keyword">inside</span> &#123;[<span class="number">1000</span>:<span class="number">2000</span>]&#125;; data_nidles==<span class="number">0</span>; pkt_nidles==<span class="number">1</span>; data_size <span class="keyword">inside</span> &#123;<span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;&#125;)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] gen[2] randomization failure!"</span>);</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="tb文件-1"><a href="#tb文件-1" class="headerlink" title="tb文件"></a>tb文件</h3><p>优化：通过外部指令决定执行那个类</p>
+<p>核心知识点：</p>
+<ul>
+<li>字符串索引的关联数组：类似哈希表，不过是将key变成了数组下标，实现字符串到数组元素的映射</li>
+<li>将3个实例化的test模块放入数组，通过命令键入的字符串取出，用父类test接收，决定执行那个test的方法！！！</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">import</span> chnl_pkg3::*;</span><br><span class="line"></span><br><span class="line">  chnl_intf chnl0_if(.*);</span><br><span class="line">  chnl_intf chnl1_if(.*);</span><br><span class="line">  chnl_intf chnl2_if(.*);</span><br><span class="line">  mcdt_intf mcdt_if(.*);</span><br><span class="line"></span><br><span class="line">  chnl_basic_test basic_test;</span><br><span class="line">  chnl_burst_test burst_test;</span><br><span class="line">  chnl_fifo_full_test fifo_full_test;</span><br><span class="line">  chnl_root_test tests[<span class="keyword">string</span>];</span><br><span class="line">  <span class="keyword">string</span> name;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span> </span><br><span class="line">    basic_test = <span class="keyword">new</span>();</span><br><span class="line">    burst_test = <span class="keyword">new</span>();</span><br><span class="line">    fifo_full_test = <span class="keyword">new</span>();</span><br><span class="line">    tests[<span class="string">"chnl_basic_test"</span>] = basic_test;</span><br><span class="line">    tests[<span class="string">"chnl_burst_test"</span>] = burst_test;</span><br><span class="line">    tests[<span class="string">"chnl_fifo_full_test"</span>] = fifo_full_test;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">$value$plusargs</span>(<span class="string">"TESTNAME=%s"</span>, name)) <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">if</span>(tests<span class="variable">.exists</span>(name)) <span class="keyword">begin</span></span><br><span class="line">        tests[name]<span class="variable">.set_interface</span>(chnl0_if, chnl1_if, chnl2_if, mcdt_if);</span><br><span class="line">        tests[name]<span class="variable">.run</span>();</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="built_in">$fatal</span>(<span class="built_in">$sformatf</span>(<span class="string">"[ERRTEST], test name %s is invalid, please specify a valid name!"</span>, name));</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      <span class="built_in">$display</span>(<span class="string">"NO runtime optiont +TESTNAME=xxx is configured, and run default test chnl_basic_test"</span>);</span><br><span class="line">      tests[<span class="string">"chnl_basic_test"</span>]<span class="variable">.set_interface</span>(chnl0_if, chnl1_if, chnl2_if, mcdt_if);</span><br><span class="line">      tests[<span class="string">"chnl_basic_test"</span>]<span class="variable">.run</span>(); </span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<h1 id="实验4-1：新增结构"><a href="#实验4-1：新增结构" class="headerlink" title="实验4-1：新增结构"></a>实验4-1：新增结构</h1><p>问1：param_def.v</p>
+<p>如图：将reg，formatter拿入考量</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210711150438.png" alt="image-20210711150431833" style="zoom:67%;" /></p>
+<h2 id="文件结构-1"><a href="#文件结构-1" class="headerlink" title="文件结构"></a>文件结构</h2><h3 id="param-def-v"><a href="#param-def-v" class="headerlink" title="param_def.v"></a>param_def.v</h3><p>通过宏对部分参数进行定义</p>
+<h3 id="1-包chnl-pack-基层包，无需导包"><a href="#1-包chnl-pack-基层包，无需导包" class="headerlink" title="1. 包chnl_pack(基层包，无需导包)"></a>1. 包chnl_pack(基层包，无需导包)</h3><p>变化：结构更加规范：</p>
+<ul>
+<li><p>class mcdt_monitor，class chnl_checker还有test均从该包拿出；</p>
+</li>
+<li><p>仅保留和chnl相关的功能，即生成激励gen，发送数据driver（initiator改名），监控数据monitor；</p>
+</li>
+<li><p>driver存在些许改变，增加reset方法对复位信号做出响应</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> do_reset();</span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    @(<span class="keyword">negedge</span> intf<span class="variable">.rstn</span>);</span><br><span class="line">    intf<span class="variable">.ch_valid</span> &lt;= <span class="number">0</span>;</span><br><span class="line">    intf<span class="variable">.ch_data</span> &lt;= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-package-rpt-pkg（report工具包）"><a href="#2-package-rpt-pkg（report工具包）" class="headerlink" title="2. package rpt_pkg（report工具包）"></a>2. package rpt_pkg（report工具包）</h3><p>梳理下功能，然后再看下在test中是如何被调用的</p>
+<ul>
+<li><p>枚举类型：</p>
+<ul>
+<li>信息类型</li>
+<li>通过权重对输出的信息进行过滤</li>
+<li>通过action选择选择执行步骤</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;INFO, WARNING, ERROR, FATAL&#125; report_t;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;LOW, MEDIUM, HIGH, TOP&#125; severity_t;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;LOG, STOP, EXIT&#125; action_t;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置初始值:</p>
+<ul>
+<li>权重为low时，表示最低一级的消息都被记录；后期验证次数多了之后，功能逐渐完善，就可以将过滤等级调高</li>
+<li>文件名，将日志导出</li>
+<li>对各条信息的输出次数进行计数</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> severity_t svrt = LOW;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">string</span> logname = <span class="string">"report.log"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> info_count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> warning_count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> error_count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> fatal_count = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>最关键的一点：</strong>信息收集方法<code>rpt_msg（）</code> ，在<code>do_report（）</code>方法中被调用，看下调用时传入参数的含义</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> rpt_msg(<span class="keyword">string</span> src, <span class="keyword">string</span> i, report_t r=INFO, severity_t s=LOW, action_t a=LOG);</span><br><span class="line">  <span class="keyword">integer</span> logf;</span><br><span class="line">  <span class="keyword">string</span> msg;</span><br><span class="line">  <span class="keyword">case</span>(r)</span><br><span class="line">    INFO: info_count++;</span><br><span class="line">    WARNING: warning_count++;</span><br><span class="line">    ERROR: error_count++;</span><br><span class="line">    FATAL: fatal_count++;</span><br><span class="line">  <span class="keyword">endcase</span></span><br><span class="line">  <span class="keyword">if</span>(s &gt;= svrt) <span class="keyword">begin</span></span><br><span class="line">    msg = <span class="built_in">$sformatf</span>(<span class="string">"@%0t [%s] %s : %s"</span>, <span class="built_in">$time</span>, r, src, i);</span><br><span class="line">    logf = <span class="built_in">$fopen</span>(logname, <span class="string">"a+"</span>);</span><br><span class="line">    <span class="built_in">$display</span>(msg);</span><br><span class="line">    <span class="built_in">$fwrite</span>(logf, <span class="built_in">$sformatf</span>(<span class="string">"%s\n"</span>, msg));</span><br><span class="line">    <span class="built_in">$fclose</span>(logf);</span><br><span class="line">    <span class="keyword">if</span>(a == STOP) <span class="keyword">begin</span></span><br><span class="line">      <span class="built_in">$stop</span>();</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a == EXIT) <span class="keyword">begin</span></span><br><span class="line">      <span class="built_in">$finish</span>();</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> do_report();</span><br><span class="line">  <span class="keyword">string</span> s;</span><br><span class="line">  s = <span class="string">"\n---------------------------------------------------------------\n"</span>;</span><br><span class="line">  s = &#123;s, <span class="string">"REPORT SUMMARY\n"</span>&#125;; </span><br><span class="line">  s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">"info count: %0d \n"</span>, info_count)&#125;; </span><br><span class="line">  s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">"warning count: %0d \n"</span>, warning_count)&#125;; </span><br><span class="line">  s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">"error count: %0d \n"</span>, error_count)&#125;; </span><br><span class="line">  s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">"fatal count: %0d \n"</span>, fatal_count)&#125;; </span><br><span class="line">  s = &#123;s, <span class="string">"---------------------------------------------------------------\n"</span>&#125;;</span><br><span class="line">  rpt_msg(<span class="string">"[REPORT]"</span>, s, rpt_pkg::INFO, rpt_pkg::TOP);</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>src：提前声明的默认值，实际使用时传入执行者（调用他的类，如checker或agent等）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpt_pkg::rpt_msg(<span class="built_in">$sformatf</span>(<span class="string">"[%s]"</span>,<span class="keyword">this</span><span class="variable">.name</span>), s, rpt_pkg::INFO, rpt_pkg::TOP);</span><br></pre></td></tr></table></figure>
+<p>当然，也可以传入一下象征意义的字符串，如”[CMPFAIL]”，”[CMPSUCD]”等</p>
+</li>
+<li><p>i：见do_report的s，对各类型的信息进行计数；</p>
+<p>也可以传入自己定义的字符串，如checker中的report；</p>
+</li>
+<li><p>report_t r：通过case语句，给相应的信息类型计数++</p>
+</li>
+<li><p>severity_t s：筛选等级，和定义好的svrt进行比较，比它大才能执行后面的打印信息，导出日志等操作</p>
+</li>
+<li><p>action_t：直接默认就好，此时只执行导出日志</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">void</span> do_report();</span><br><span class="line">  <span class="keyword">string</span> s;</span><br><span class="line">  s = <span class="string">"\n---------------------------------------------------------------\n"</span>;</span><br><span class="line">  s = &#123;s, <span class="string">"CHECKER SUMMARY \n"</span>&#125;; </span><br><span class="line">  s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">"total comparison count: %0d \n"</span>, <span class="keyword">this</span><span class="variable">.total_count</span>)&#125;; </span><br><span class="line">  <span class="keyword">foreach</span>(<span class="keyword">this</span><span class="variable">.chnl_count</span>[i]) s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">" channel[%0d] comparison count: %0d \n"</span>, i, <span class="keyword">this</span><span class="variable">.chnl_count</span>[i])&#125;;</span><br><span class="line">  s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">"total error count: %0d \n"</span>, <span class="keyword">this</span><span class="variable">.err_count</span>)&#125;; </span><br><span class="line">  <span class="keyword">foreach</span>(<span class="keyword">this</span><span class="variable">.chnl_mbs</span>[i]) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span><span class="variable">.chnl_mbs</span>[i]<span class="variable">.num</span>() != <span class="number">0</span>)</span><br><span class="line">      s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">"WARNING:: chnl_mbs[%0d] is not empty! size = %0d \n"</span>, i, <span class="keyword">this</span><span class="variable">.chnl_mbs</span>[i]<span class="variable">.num</span>())&#125;; </span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span><span class="variable">.fmt_mb</span><span class="variable">.num</span>() != <span class="number">0</span>)</span><br><span class="line">      s = &#123;s, <span class="built_in">$sformatf</span>(<span class="string">"WARNING:: fmt_mb is not empty! size = %0d \n"</span>, <span class="keyword">this</span><span class="variable">.fmt_mb</span><span class="variable">.num</span>())&#125;; </span><br><span class="line">  s = &#123;s, <span class="string">"---------------------------------------------------------------\n"</span>&#125;;</span><br><span class="line">  rpt_pkg::rpt_msg(<span class="built_in">$sformatf</span>(<span class="string">"[%s]"</span>,<span class="keyword">this</span><span class="variable">.name</span>), s, rpt_pkg::INFO, rpt_pkg::TOP);</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-package-reg-pkg-导包：-include-“param-def-v”"><a href="#3-package-reg-pkg-导包：-include-“param-def-v”" class="headerlink" title="3. package reg_pkg(导包：`include “param_def.v”)"></a>3. package reg_pkg(导包：`include “param_def.v”)</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210719203725.png" alt="image-20210719203717852"></p>
+<p>1.导入的<strong>param_def.v</strong>包被reg_pkg.sv和reg.v共用</p>
+<p>2.整体结构和chnl_pkg相当雷同</p>
+<h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><p><strong>1.为什么do_writer方法中，传入的trans中cmd == `READ，也就是执行READ时，要等待两个下降沿再获取数据？？？</strong></p>
+<p>答：上升沿来，将命令cmd和地址addr放到interface上；下一个上升沿来，寄存器reg获取到cmd和addr，将内部数据放到interface上；之后的下降沿来，就可以把interface上的data拿走了</p>
+<ul>
+<li><p>激励：reg_trans</p>
+<ul>
+<li><p>属性：8位addr，2位cmd，32位data</p>
+</li>
+<li><p>约束：注意这里的inside和宏定义变量的使用；注意这里-&gt;的if-else用法，对约束进行绑定；</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constraint</span> cstr &#123;</span><br><span class="line">  <span class="keyword">soft</span> cmd <span class="keyword">inside</span> &#123;<span class="meta">`WRITE, `READ, `IDLE&#125;;</span></span><br><span class="line">  <span class="keyword">soft</span> addr <span class="keyword">inside</span> &#123;<span class="meta">`SLV0_RW_ADDR, `SLV1_RW_ADDR, `SLV2_RW_ADDR, `SLV0_R_ADDR, `SLV1_R_ADDR, `SLV2_R_ADDR&#125;;</span></span><br><span class="line">  addr[<span class="number">7</span>:<span class="number">4</span>]==<span class="number">0</span> &amp;&amp; cmd==<span class="meta">`WRITE -&gt; soft data[31:6]==0;</span></span><br><span class="line">  <span class="keyword">soft</span> addr[<span class="number">7</span>:<span class="number">5</span>]==<span class="number">0</span>;</span><br><span class="line">  addr[<span class="number">4</span>]==<span class="number">1</span> -&gt; <span class="keyword">soft</span> cmd == <span class="meta">`READ;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>克隆：clone()</p>
+</li>
+<li><p>打印方法：sprint（），对所有信息进行拼接</p>
+</li>
+</ul>
+</li>
+<li><p>驱动：reg_driver</p>
+<ul>
+<li><p>属性：交流组件需要姓名（name），交流组件需要接口（reg_intf），交流需要信箱（ mailbox #（trans））</p>
+</li>
+<li><p>new：name</p>
+</li>
+<li><p>传入接口：setinterface，注意判断是否为空</p>
+</li>
+<li><p>驱动方法（和generator之间的数据交流，对dut的寄存器进行写操作）：driver，和chnl的driver方法一模一样，写方法执行完返回rsp给信箱—由generator获取</p>
+<p>复位信号上升沿触发 </p>
+</li>
+<li><p>写方法：do_writer(reg_trans t)，不光写，还能读，等待时间也由方法实现</p>
+<p>时钟边沿+iff复位==1</p>
+</li>
+<li><p>复位方法：do_reset（），和reg_idle()的方法一样，都是对interface上的数据的直接</p>
+<p>复位信号下降沿触发</p>
+</li>
+<li><p>最终run方法：先do_driver保持驱动，再do_reset监控复位</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> reg_write(reg_trans t);</span><br><span class="line">  @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span> <span class="keyword">iff</span> intf<span class="variable">.rstn</span>);</span><br><span class="line">  <span class="keyword">case</span>(t<span class="variable">.cmd</span>)</span><br><span class="line">    <span class="meta">`WRITE: begin </span></span><br><span class="line">              intf<span class="variable">.drv_ck</span><span class="variable">.cmd_addr</span> &lt;= t<span class="variable">.addr</span>; </span><br><span class="line">              intf<span class="variable">.drv_ck</span><span class="variable">.cmd</span> &lt;= t<span class="variable">.cmd</span>; </span><br><span class="line">              intf<span class="variable">.drv_ck</span><span class="variable">.cmd_data_m2s</span> &lt;= t<span class="variable">.data</span>; </span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">    <span class="meta">`READ:  begin </span></span><br><span class="line">              intf<span class="variable">.drv_ck</span><span class="variable">.cmd_addr</span> &lt;= t<span class="variable">.addr</span>; </span><br><span class="line">              intf<span class="variable">.drv_ck</span><span class="variable">.cmd</span> &lt;= t<span class="variable">.cmd</span>; </span><br><span class="line">              <span class="keyword">repeat</span>(<span class="number">2</span>) @(<span class="keyword">negedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">              t<span class="variable">.data</span> = intf<span class="variable">.cmd_data_s2m</span>; </span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">    <span class="meta">`IDLE:  begin </span></span><br><span class="line">              <span class="keyword">this</span><span class="variable">.reg_idle</span>(); </span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">default</span>: <span class="built_in">$error</span>(<span class="string">"command %b is illegal"</span>, t<span class="variable">.cmd</span>);</span><br><span class="line">  <span class="keyword">endcase</span></span><br><span class="line">  <span class="built_in">$display</span>(<span class="string">"%0t reg driver [%s] sent addr %2x, cmd %2b, data %8x"</span>, <span class="built_in">$time</span>, name, t<span class="variable">.addr</span>, t<span class="variable">.cmd</span>, t<span class="variable">.data</span>);</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">task</span> reg_idle();</span><br><span class="line">  @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">  intf<span class="variable">.drv_ck</span><span class="variable">.cmd_addr</span> &lt;= <span class="number">0</span>;</span><br><span class="line">  intf<span class="variable">.drv_ck</span><span class="variable">.cmd</span> &lt;= <span class="meta">`IDLE;</span></span><br><span class="line">  intf<span class="variable">.drv_ck</span><span class="variable">.cmd_data_m2s</span> &lt;= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>激励生成器：reg_generator</p>
+<ul>
+<li><p>属性：不和interface打交道，不需要名字；trans有的属性都得有且给一个不可能的初值（-1），因为要通过generator随机化；两个信箱；trans队列</p>
+</li>
+<li><p>约束：同样是不可能的软约束（-1）</p>
+</li>
+<li><p>new：只需要创建信箱</p>
+</li>
+<li><p>发送数据：send_trans，不止发给driver，也从driver获取读到的数据，同时负责对数据进行打印</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> send_trans();</span><br><span class="line">  reg_trans req, rsp;</span><br><span class="line">  req = <span class="keyword">new</span>();</span><br><span class="line">  <span class="keyword">assert</span>(req<span class="variable">.randomize</span> <span class="keyword">with</span> &#123;<span class="keyword">local</span>::addr &gt;= <span class="number">0</span> -&gt; addr == <span class="keyword">local</span>::addr;</span><br><span class="line">                             <span class="keyword">local</span>::cmd &gt;= <span class="number">0</span> -&gt; cmd == <span class="keyword">local</span>::cmd;</span><br><span class="line">                             <span class="keyword">local</span>::data &gt;= <span class="number">0</span> -&gt; data == <span class="keyword">local</span>::data;</span><br><span class="line">                           &#125;)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">$fatal</span>(<span class="string">"[RNDFAIL] register packet randomization failure!"</span>);</span><br><span class="line">  <span class="built_in">$display</span>(req<span class="variable">.sprint</span>());</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.req_mb</span><span class="variable">.put</span>(req);</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.rsp_mb</span><span class="variable">.get</span>(rsp);</span><br><span class="line">  <span class="built_in">$display</span>(rsp<span class="variable">.sprint</span>());</span><br><span class="line">  <span class="keyword">if</span>(req<span class="variable">.cmd</span> == <span class="meta">`READ) </span></span><br><span class="line">    <span class="keyword">this</span><span class="variable">.data</span> = rsp<span class="variable">.data</span>;</span><br><span class="line">  <span class="keyword">assert</span>(rsp<span class="variable">.rsp</span>)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">$error</span>(<span class="string">"[RSPERR] %0t error response received!"</span>, <span class="built_in">$time</span>);</span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建字符串：sprint()，稍后看一下trans有了sprint（），这里为啥又有一个一样的？？</p>
+</li>
+<li><p>打印：post_randomize()，display上面的字符串，每次随机化后可以打印一下</p>
+</li>
+</ul>
+</li>
+<li><p>data监测器：reg_monior</p>
+<ul>
+<li><p>属性：和接口打交道，需要name；interface；和checker打交道，需要信箱</p>
+</li>
+<li><p>new：只需要给name</p>
+</li>
+<li><p>set_interface</p>
+</li>
+<li><p>获取数据并放入信箱：mon_trans()，</p>
+<p>采样时机：写命令当前时钟直接获取，读命令下一个时钟获取（见问题1）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> mon_trans();</span><br><span class="line">  reg_trans m;</span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span> <span class="keyword">iff</span> (intf<span class="variable">.rstn</span> &amp;&amp; intf<span class="variable">.mon_ck</span><span class="variable">.cmd</span> != <span class="meta">`IDLE));</span></span><br><span class="line">    m = <span class="keyword">new</span>();</span><br><span class="line">    m<span class="variable">.addr</span> = intf<span class="variable">.mon_ck</span><span class="variable">.cmd_addr</span>;</span><br><span class="line">    m<span class="variable">.cmd</span> = intf<span class="variable">.mon_ck</span><span class="variable">.cmd</span>;</span><br><span class="line">    <span class="keyword">if</span>(intf<span class="variable">.mon_ck</span><span class="variable">.cmd</span> == <span class="meta">`WRITE) begin</span></span><br><span class="line">      m<span class="variable">.data</span> = intf<span class="variable">.mon_ck</span><span class="variable">.cmd_data_m2s</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(intf<span class="variable">.mon_ck</span><span class="variable">.cmd</span> == <span class="meta">`READ) begin</span></span><br><span class="line">      @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">      m<span class="variable">.data</span> = intf<span class="variable">.mon_ck</span><span class="variable">.cmd_data_s2m</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    mon_mb<span class="variable">.put</span>(m);</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"%0t %s monitored addr %2x, cmd %2b, data %8x"</span>, <span class="built_in">$time</span>, <span class="keyword">this</span><span class="variable">.name</span>, m<span class="variable">.addr</span>, m<span class="variable">.cmd</span>, m<span class="variable">.data</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最终start方法：调用mon_trans</p>
+</li>
+</ul>
+</li>
+<li><p>相对最顶层：reg_agent（实例化driver和monitor）</p>
+<ul>
+<li>属性：和接口打交道，name；要实例化driver和monitor，句柄；要传入接口local virtual reg_intf vif;</li>
+<li>new：实例化driver和moniter；初始化name</li>
+<li>set_interface</li>
+<li>运行diver的run和monitor的start：run（）</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-package-fmt-pkg"><a href="#4-package-fmt-pkg" class="headerlink" title="4. package fmt_pkg"></a>4. package fmt_pkg</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210719111922.png" alt=""></p>
+<p>上来先来俩枚举：</p>
+<p>  typedef enum {SHORT_FIFO, MED_FIFO, LONG_FIFO, ULTRA_FIFO} fmt_fifo_t;<br>  typedef enum {LOW_WIDTH, MED_WIDTH, HIGH_WIDTH, ULTRA_WIDTH} fmt_bandwidth_t;</p>
+<p>作用：构建一个buffer，模拟对fmt输出数据的接收</p>
+<p>结构同样和chnl异曲同工</p>
+<ul>
+<li><p>数据:fmt_trans</p>
+<ul>
+<li><p>属性：buffer的深度和带宽（宽度—数据处理速度），通道选择（ch_id），数据包容器（data【】），数据包长（length），rsp</p>
+</li>
+<li><p>约束：对buffer进行初始化</p>
+</li>
+<li><p>克隆：clone（）</p>
+</li>
+<li><p>trans信息字符串：sprint()</p>
+</li>
+<li><p>比较两个fmt_trans是否相同</p>
+<p>需要注意比较之后的信息打印，调用rpt_pkg的打印方法：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpt_pkg::rpt_msg(<span class="string">"[CMPOBJ]"</span>, s, rpt_pkg::INFO, rpt_pkg::MEDIUM);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>驱动：fmt_driver（buffer容器的配置，接收和消耗数据）</p>
+<ul>
+<li><p>属性：和接口打交道（name），interface；信箱1、2和generator通信（req, rsp）；信箱3（fifo）存储fmt输出数据；buffer深度（fifo_bound）；buffer数据处理速度（data_consum_peroid）;</p>
+</li>
+<li><p>new：name，new buffer（fifo，fifo_bound\==4096，data_consum_peroid\==1）</p>
+</li>
+<li><p>传入接口：set_interface</p>
+</li>
+<li><p>配置buffer：do_config()，每次拿到数据，都根据将generator发过来的req数据内的fifo和bandwidth变量对buffer进行配置。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">fmt_trans req, rsp;</span><br><span class="line">      <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">this</span><span class="variable">.req_mb</span><span class="variable">.get</span>(req);</span><br><span class="line">        <span class="keyword">case</span>(req<span class="variable">.fifo</span>)</span><br><span class="line">          SHORT_FIFO: <span class="keyword">this</span><span class="variable">.fifo_bound</span> = <span class="number">64</span>;</span><br><span class="line">          MED_FIFO: <span class="keyword">this</span><span class="variable">.fifo_bound</span> = <span class="number">256</span>;</span><br><span class="line">          LONG_FIFO: <span class="keyword">this</span><span class="variable">.fifo_bound</span> = <span class="number">512</span>;</span><br><span class="line">          ULTRA_FIFO: <span class="keyword">this</span><span class="variable">.fifo_bound</span> = <span class="number">2048</span>;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">        <span class="keyword">this</span><span class="variable">.fifo</span> = <span class="keyword">new</span>(<span class="keyword">this</span><span class="variable">.fifo_bound</span>);</span><br><span class="line">        <span class="keyword">case</span>(req<span class="variable">.bandwidth</span>)</span><br><span class="line">          LOW_WIDTH: <span class="keyword">this</span><span class="variable">.data_consum_peroid</span> = <span class="number">8</span>;</span><br><span class="line">          MED_WIDTH: <span class="keyword">this</span><span class="variable">.data_consum_peroid</span> = <span class="number">4</span>;</span><br><span class="line">          HIGH_WIDTH: <span class="keyword">this</span><span class="variable">.data_consum_peroid</span> = <span class="number">2</span>;</span><br><span class="line">          ULTRA_WIDTH: <span class="keyword">this</span><span class="variable">.data_consum_peroid</span> = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">        rsp = req<span class="variable">.clone</span>();</span><br><span class="line">        rsp<span class="variable">.rsp</span> = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">this</span><span class="variable">.rsp_mb</span><span class="variable">.put</span>(rsp);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复位：do_reset() ，将grant拉低，停止接收</p>
+<p>复位下降沿触发</p>
+</li>
+<li><p>接收dut-fmt的输出：do_receive，3个触发信号：</p>
+<ul>
+<li><p>fmt_req向buffer发送请求，每一拍检测buffer的剩余容量，如果大于fmt_length说明该数据包可以进入，发送给dut的grant信号拉高</p>
+</li>
+<li><p>等待dut的start信号给到tb，首先将grant拉低（grant持续两拍），同时每个时钟下降沿获取fmt_length个数据加入buffer</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> do_receive();</span><br><span class="line">     <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">       @(<span class="keyword">posedge</span> intf<span class="variable">.fmt_req</span>);</span><br><span class="line">       <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">         @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">         <span class="keyword">if</span>((<span class="keyword">this</span><span class="variable">.fifo_bound</span>-<span class="keyword">this</span><span class="variable">.fifo</span><span class="variable">.num</span>()) &gt;= intf<span class="variable">.fmt_length</span>)</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">end</span></span><br><span class="line">       intf<span class="variable">.drv_ck</span><span class="variable">.fmt_grant</span> &lt;= <span class="number">1</span>;</span><br><span class="line">       @(<span class="keyword">posedge</span> intf<span class="variable">.fmt_start</span>);</span><br><span class="line">       <span class="keyword">fork</span></span><br><span class="line">         <span class="keyword">begin</span></span><br><span class="line">           @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">           intf<span class="variable">.drv_ck</span><span class="variable">.fmt_grant</span> &lt;= <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">end</span></span><br><span class="line">       <span class="keyword">join_none</span></span><br><span class="line">       <span class="keyword">repeat</span>(intf<span class="variable">.fmt_length</span>) <span class="keyword">begin</span></span><br><span class="line">         @(<span class="keyword">negedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">         <span class="keyword">this</span><span class="variable">.fifo</span><span class="variable">.put</span>(intf<span class="variable">.fmt_data</span>);</span><br><span class="line">       <span class="keyword">end</span></span><br><span class="line">     <span class="keyword">end</span></span><br><span class="line">   <span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>将buffer中的信号导出（减小this.fifo.num()，这样才有空放新数）:do_consume()</p>
+<p>消耗和接收是并行的 ，所以消耗的速度不一定和接收速度一样就得是1个周期完成，消耗的慢接收就不执行呗</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> do_consume();</span><br><span class="line">  <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] data;</span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">void</span>'(<span class="keyword">this</span><span class="variable">.fifo</span><span class="variable">.try_get</span>(data));</span><br><span class="line">    <span class="keyword">repeat</span>($urandom_range(<span class="number">1</span>, <span class="keyword">this</span><span class="variable">.data_consum_peroid</span>)) @(<span class="keyword">posedge</span> intf<span class="variable">.clk</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对外接口：run（），并行调用do_receive,   do_consume,   do_config,   do_reset</p>
+</li>
+</ul>
+</li>
+<li><p>fmt_generator：这里的激励就不是数据了，就是对buffer的配置</p>
+<ul>
+<li><p>属性：深度（fifo），位宽（bandwidth），信箱1,2</p>
+</li>
+<li><p>new：信箱初始化</p>
+</li>
+<li><p>随机化buffer变量：send_trans()，</p>
+</li>
+<li><p>对外接口：start（），调用send_trans()</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span>(req<span class="variable">.randomize</span> <span class="keyword">with</span> &#123;<span class="keyword">local</span>::fifo != MED_FIFO -&gt; fifo == <span class="keyword">local</span>::fifo; </span><br><span class="line">                           <span class="keyword">local</span>::bandwidth != MED_WIDTH -&gt; bandwidth == <span class="keyword">local</span>::bandwidth;</span><br><span class="line">                         &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>fmt_monitor：</p>
+<ul>
+<li><p>属性：同样和接口打交道（interface，name）；和checker的mailbox</p>
+</li>
+<li><p>new：name</p>
+</li>
+<li><p>采样发送给信箱：mon_trans()</p>
+<p>采样时机：@(posedge intf.mon_ck.fmt_start); 要把（ch_id，length，data）都放进fmt_trans，data是length个时钟上升沿采到的</p>
+</li>
+<li><p>对外接口：run()，调用mon_trans()</p>
+</li>
+</ul>
+</li>
+<li><p>fmt_agent：</p>
+<ul>
+<li>大同，就是把monitor和driver结合起来，实例化，传接口，对外接口run调用这两个run（）</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-package-mcdf-pkg（顶层包）"><a href="#5-package-mcdf-pkg（顶层包）" class="headerlink" title="5. package mcdf_pkg（顶层包）"></a>5. package mcdf_pkg（顶层包）</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210719151120.png" alt="image-20210719151113192"></p>
+<p>核心就是checker的实现，和实验3相比，checker多了对寄存器信息的处理</p>
+<h4 id="问：-1"><a href="#问：-1" class="headerlink" title="问："></a>问：</h4><ol>
+<li><p>如何将寄存器信息用到数据的比对上？</p>
+<p>如上图所示，构建mcdf硬件参考模型（模仿硬件功能），参考模型通过reg_mb信箱获取寄存器内容，do_reg_update()实现对寄存器内容的更新，do_packet()实现对数据的打包。</p>
+<p>通过寄存器数据中的length，可以将chnl_mb中的数据放到length长度数组中，封装成fmt_trans格式，调用fmt_trans的compare与fmt_mb中的数据报进行对比</p>
+</li>
+<li><p>如何保证寄存器模型中的数据指令和数据输入刚好对应？寄存器数据由外部写入，真正数据传输的时候对应寄存器的数据如何得到？</p>
+</li>
+<li><p>三个寄存器模型如何代表dut中的6个寄存器？</p>
+<p>RW和R的低位都是0,4,8。通过reg[3:2]就可以把各个寄存器区分开</p>
+</li>
+</ol>
+<ul>
+<li><p>寄存器模型：mcdf_reg_t</p>
+<p>除了读写寄存器的6位，还有代表读寄存器的8位信号，相当于一个RW寄存器和一个R寄存器集成了一个寄存器模型</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="keyword">packed</span> &#123;</span><br><span class="line">    <span class="keyword">bit</span>[<span class="number">2</span>:<span class="number">0</span>] len;</span><br><span class="line">    <span class="keyword">bit</span>[<span class="number">1</span>:<span class="number">0</span>] prio;</span><br><span class="line">    <span class="keyword">bit</span> en;</span><br><span class="line">    <span class="keyword">bit</span>[<span class="number">7</span>:<span class="number">0</span>] avail;</span><br><span class="line">  &#125; mcdf_reg_t;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;RW_LEN, RW_PRIO, RW_EN, RD_AVAIL&#125; mcdf_field_t;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>硬件参考模型：mcdf_refmod</p>
+<ul>
+<li><p>属性：接口（interface，name）；3个寄存器（RW+R）；3个输入信箱（和chnl的monitor通信）；3个输出信箱（和外部checker通信）；一个接收reg的monitor数据的信箱（reg_mb）；</p>
+</li>
+<li><p>new：name；out_mbs的发送方，对信箱进行实例化</p>
+</li>
+<li>do_reg_update：从reg_mb中获取寄存器数据，并将其保存下来；地址位对应寄存器模型数组的index，数据的每一位的功能都赋值到寄存器模型中；对于读和写命令，保存的内容不同</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> do_reg_update();</span><br><span class="line">  reg_trans t;</span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">this</span><span class="variable">.reg_mb</span><span class="variable">.get</span>(t);</span><br><span class="line">    <span class="keyword">if</span>(t<span class="variable">.addr</span>[<span class="number">7</span>:<span class="number">4</span>] == <span class="number">0</span> &amp;&amp; t<span class="variable">.cmd</span> == <span class="meta">`WRITE) begin</span></span><br><span class="line">      <span class="keyword">this</span><span class="variable">.regs</span>[t<span class="variable">.addr</span>[<span class="number">3</span>:<span class="number">2</span>]]<span class="variable">.en</span> = t<span class="variable">.data</span>[<span class="number">0</span>];</span><br><span class="line">      <span class="keyword">this</span><span class="variable">.regs</span>[t<span class="variable">.addr</span>[<span class="number">3</span>:<span class="number">2</span>]]<span class="variable">.prio</span> = t<span class="variable">.data</span>[<span class="number">2</span>:<span class="number">1</span>];</span><br><span class="line">      <span class="keyword">this</span><span class="variable">.regs</span>[t<span class="variable">.addr</span>[<span class="number">3</span>:<span class="number">2</span>]]<span class="variable">.len</span> = t<span class="variable">.data</span>[<span class="number">5</span>:<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(t<span class="variable">.addr</span>[<span class="number">7</span>:<span class="number">4</span>] == <span class="number">1</span> &amp;&amp; t<span class="variable">.cmd</span> == <span class="meta">`READ) begin</span></span><br><span class="line">      <span class="keyword">this</span><span class="variable">.regs</span>[t<span class="variable">.addr</span>[<span class="number">3</span>:<span class="number">2</span>]]<span class="variable">.avail</span> = t<span class="variable">.data</span>[<span class="number">7</span>:<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>chnl数据打包：do_packet()，将从chnl的各个monitor（in_mbs）发送的数据，根据寄存器模型（也就是reg数组）中的data命令进行打包！！！</p>
+<p>this.get_field_value(id, RW_LEN)==0，对应ot.length = 4；</p>
+<p>this.get_field_value(id, RW_LEN)==1，对应ot.length = 8；以此类推至32</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> do_packet(<span class="keyword">int</span> id);</span><br><span class="line">  fmt_trans ot;</span><br><span class="line">  mon_data_t it;</span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">this</span><span class="variable">.in_mbs</span>[id]<span class="variable">.peek</span>(it);</span><br><span class="line">    ot = <span class="keyword">new</span>();</span><br><span class="line">    ot<span class="variable">.length</span> = <span class="number">4</span> &lt;&lt; (<span class="keyword">this</span><span class="variable">.get_field_value</span>(id, RW_LEN) &amp; <span class="number">'b11</span>);</span><br><span class="line">    ot<span class="variable">.data</span> = <span class="keyword">new</span>[ot<span class="variable">.length</span>];</span><br><span class="line">    ot<span class="variable">.ch_id</span> = id;</span><br><span class="line">    <span class="keyword">foreach</span>(ot<span class="variable">.data</span>[m]) <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">this</span><span class="variable">.in_mbs</span>[id]<span class="variable">.get</span>(it);</span><br><span class="line">      ot<span class="variable">.data</span>[m] = it<span class="variable">.data</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">this</span><span class="variable">.out_mbs</span>[id]<span class="variable">.put</span>(ot);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把寄存器模型中的数据放到枚举类型里面，方便调用：get_field_value(int id, mcdf_field_t f)</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">int</span> get_field_value(<span class="keyword">int</span> id, mcdf_field_t f);</span><br><span class="line">  <span class="keyword">case</span>(f)</span><br><span class="line">    RW_LEN: <span class="keyword">return</span> regs[id]<span class="variable">.len</span>;</span><br><span class="line">    RW_PRIO: <span class="keyword">return</span> regs[id]<span class="variable">.prio</span>;</span><br><span class="line">    RW_EN: <span class="keyword">return</span> regs[id]<span class="variable">.en</span>;</span><br><span class="line">    RD_AVAIL: <span class="keyword">return</span> regs[id]<span class="variable">.avail</span>;</span><br><span class="line">  <span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复位要对寄存器模型和out_mbs信箱都做复位：do_reset()</p>
+</li>
+</ul>
+</li>
+<li><p>包含了硬件参考模型的checker：mcdf_checker</p>
+<ul>
+<li><p>属性：寄存器模型的创建，每个chnl比较的数据包计数，总的错误包计数（compare（）==0），总的比较的包计数，checker内所有信箱的创建和连接</p>
+<p>包括和reg，chnl（3个），fmt的monitor的信箱的实例化；声明和refmod（out_mbs3个）关联的信箱；最关键的是refmod的实例化</p>
+</li>
+<li><p>new：name，建立checker内部的连接：refmod持有的out_mbs【i】和checker持有的exp_mbs【i】；refmod持有的in_mbs[i]和chnl_monitor持有的mo_bs[i]的连接 ；沟通reg，chnl（3个），fmt的monitor的信箱的实例化；</p>
+</li>
+<li><p>seti_nterface ：关键是interface的rst信号</p>
+</li>
+<li><p>比较fmt输出和slave输入：do_compare()</p>
+<p>声明俩fmt_trans句柄，一个从fmt_mb里拿，一个从exp_mbs里拿，如上图所示；</p>
+<p>然后调用fmt_trans本身的比较方法，注意打印信息</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> do_compare();</span><br><span class="line">  fmt_trans expt, mont;</span><br><span class="line">  <span class="keyword">bit</span> cmp;</span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">this</span><span class="variable">.fmt_mb</span><span class="variable">.get</span>(mont);</span><br><span class="line">    <span class="keyword">this</span><span class="variable">.exp_mbs</span>[mont<span class="variable">.ch_id</span>]<span class="variable">.get</span>(expt);</span><br><span class="line">    cmp = mont<span class="variable">.compare</span>(expt);   </span><br><span class="line">    <span class="keyword">this</span><span class="variable">.total_count</span>++;</span><br><span class="line">    <span class="keyword">this</span><span class="variable">.chnl_count</span>[mont<span class="variable">.ch_id</span>]++;</span><br><span class="line">    <span class="keyword">if</span>(cmp == <span class="number">0</span>) <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">this</span><span class="variable">.err_count</span>++;</span><br><span class="line">      rpt_pkg::rpt_msg(<span class="string">"[CMPFAIL]"</span>, </span><br><span class="line">        <span class="built_in">$sformatf</span>(<span class="string">"%0t %0dth times comparing but failed! MCDF monitored output packet is different with reference model output"</span>, <span class="built_in">$time</span>, <span class="keyword">this</span><span class="variable">.total_count</span>),</span><br><span class="line">        rpt_pkg::ERROR,</span><br><span class="line">        rpt_pkg::TOP,</span><br><span class="line">        rpt_pkg::LOG);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      rpt_pkg::rpt_msg(<span class="string">"[CMPSUCD]"</span>,</span><br><span class="line">        <span class="built_in">$sformatf</span>(<span class="string">"%0t %0dth times comparing and succeeded! MCDF monitored output packet is the same with reference model output"</span>, <span class="built_in">$time</span>, <span class="keyword">this</span><span class="variable">.total_count</span>),</span><br><span class="line">        rpt_pkg::INFO,</span><br><span class="line">        rpt_pkg::HIGH);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>report：打印两者的信箱里有多少数据包</p>
+</li>
+</ul>
+</li>
+<li><p>次顶层环境配置：mcdf_env，把agent，checker融会贯通（chnl_agt，reg_agt，fmt_agt）</p>
+<ul>
+<li>属性：3种agent，其中chnl_agt是数组，name，不需要接口（在test里面传，env只负责整合）</li>
+<li>new：agent和checker的实例化；同样是连接邮箱，把agent中的monitor和checker的邮箱连起来</li>
+<li>顶层跑起来的方法：run（），让所有的agent和checker跑起来</li>
+<li>打印运行报告：do_report()，其实也就是调用checker的do_report()</li>
+</ul>
+</li>
+<li><p>最顶层环境配置：base_test，把generator和env合二为一，对generator加以配置</p>
+<ul>
+<li><p>属性：name，3种gen（chnl【i】，reg，fmt），env</p>
+</li>
+<li><p>new：对3种gen的初始化，env的初始化；把3种agent的driver和gen的信箱连接起来；对日志输出文件进行初始化</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpt_pkg::logname = &#123;<span class="keyword">this</span><span class="variable">.name</span>, <span class="string">"_check.log"</span>&#125;;</span><br><span class="line">rpt_pkg::clean_log();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>核心执行方法：run</p>
+<p>不再用root_test的do_config方法，改为do_data（），do_formatter（），do_reg（）；</p>
+<p>env的run方法放在fork   join_none块里，反正激励没给到它也跑不起来</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> run();</span><br><span class="line">  <span class="keyword">fork</span></span><br><span class="line">    env<span class="variable">.run</span>();</span><br><span class="line">  <span class="keyword">join_none</span></span><br><span class="line">  rpt_pkg::rpt_msg(<span class="string">"[TEST]"</span>,</span><br><span class="line">    <span class="built_in">$sformatf</span>(<span class="string">"=====================%s AT TIME %0t STARTED====================="</span>, <span class="keyword">this</span><span class="variable">.name</span>, <span class="built_in">$time</span>),</span><br><span class="line">    rpt_pkg::INFO,</span><br><span class="line">    rpt_pkg::HIGH);</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.do_reg</span>();</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.do_formatter</span>();</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.do_data</span>();</span><br><span class="line">  rpt_pkg::rpt_msg(<span class="string">"[TEST]"</span>,</span><br><span class="line">    <span class="built_in">$sformatf</span>(<span class="string">"=====================%s AT TIME %0t FINISHED====================="</span>, <span class="keyword">this</span><span class="variable">.name</span>, <span class="built_in">$time</span>),</span><br><span class="line">    rpt_pkg::INFO,</span><br><span class="line">    rpt_pkg::HIGH);</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.do_report</span>();</span><br><span class="line">  <span class="built_in">$finish</span>();</span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>虚方法：do_data（），do_formatter（），do_reg（）；在子类test中实现</p>
+</li>
+<li><p>set_interface：给每一个agent和checker传入interface</p>
+</li>
+<li><p>两个值是否相同的比较：diff_value（），用于比较寄存器中写入的数据是否正确</p>
+</li>
+<li><p>reg的三种命令激励发送：void’（）表示此时不返回值</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> idle_reg();</span><br><span class="line">      <span class="keyword">void</span>'(reg_gen<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;cmd == <span class="meta">`IDLE; addr == 0; data == 0;&#125;);</span></span><br><span class="line">      reg_gen<span class="variable">.start</span>();</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">virtual</span> <span class="keyword">task</span> write_reg(<span class="keyword">bit</span>[<span class="number">7</span>:<span class="number">0</span>] addr, <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] data);</span><br><span class="line">      <span class="keyword">void</span>'(reg_gen<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;cmd == <span class="meta">`WRITE; addr == local::addr; data == local::data;&#125;);</span></span><br><span class="line">      reg_gen<span class="variable">.start</span>();</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">virtual</span> <span class="keyword">task</span> read_reg(<span class="keyword">bit</span>[<span class="number">7</span>:<span class="number">0</span>] addr, <span class="keyword">output</span> <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] data);</span><br><span class="line">      <span class="keyword">void</span>'(reg_gen<span class="variable">.randomize</span>() <span class="keyword">with</span> &#123;cmd == <span class="meta">`READ; addr == local::addr;&#125;);</span></span><br><span class="line">      reg_gen<span class="variable">.start</span>();</span><br><span class="line">      data = reg_gen<span class="variable">.data</span>;</span><br><span class="line">    <span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>继承自basic_test的实际测试类：mcdf_data_consistence_basic_test</p>
+<ul>
+<li><p>new；父类new方法</p>
+</li>
+<li><p>reg的配置方法：do_reg()</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> do_reg();</span><br><span class="line">  <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] wr_val, rd_val;</span><br><span class="line">  <span class="comment">// slv0 with len=8,  prio=0, en=1</span></span><br><span class="line">  wr_val = (<span class="number">1</span>&lt;&lt;<span class="number">3</span>)+(<span class="number">0</span>&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.write_reg</span>(<span class="meta">`SLV0_RW_ADDR, wr_val);</span></span><br><span class="line">  <span class="keyword">this</span><span class="variable">.read_reg</span>(<span class="meta">`SLV0_RW_ADDR, rd_val);</span></span><br><span class="line">  <span class="keyword">void</span>'(<span class="keyword">this</span><span class="variable">.diff_value</span>(wr_val, rd_val, <span class="string">"SLV0_WR_REG"</span>));</span><br><span class="line">    </span><br><span class="line">  <span class="comment">// slv1 with len=16, prio=1, en=1</span></span><br><span class="line">  wr_val = (<span class="number">2</span>&lt;&lt;<span class="number">3</span>)+(<span class="number">1</span>&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.write_reg</span>(<span class="meta">`SLV1_RW_ADDR, wr_val);</span></span><br><span class="line">  <span class="keyword">this</span><span class="variable">.read_reg</span>(<span class="meta">`SLV1_RW_ADDR, rd_val);</span></span><br><span class="line">  <span class="keyword">void</span>'(<span class="keyword">this</span><span class="variable">.diff_value</span>(wr_val, rd_val, <span class="string">"SLV1_WR_REG"</span>));</span><br><span class="line">    </span><br><span class="line">  <span class="comment">// slv2 with len=32, prio=2, en=1</span></span><br><span class="line">  wr_val = (<span class="number">3</span>&lt;&lt;<span class="number">3</span>)+(<span class="number">2</span>&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.write_reg</span>(<span class="meta">`SLV2_RW_ADDR, wr_val);</span></span><br><span class="line">  <span class="keyword">this</span><span class="variable">.read_reg</span>(<span class="meta">`SLV2_RW_ADDR, rd_val);</span></span><br><span class="line">  <span class="keyword">void</span>'(<span class="keyword">this</span><span class="variable">.diff_value</span>(wr_val, rd_val, <span class="string">"SLV2_WR_REG"</span>));</span><br><span class="line">    </span><br><span class="line">  <span class="comment">// send IDLE command</span></span><br><span class="line">  <span class="keyword">this</span><span class="variable">.idle_reg</span>();</span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E5%AD%97IC/" rel="tag"># 数字IC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/06/IC%E9%AA%8C%E8%AF%81-UVM/" rel="next" title="UVM">
+                <i class="fa fa-chevron-left"></i> UVM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/06/IC%E9%AA%8C%E8%AF%81-verilog/" rel="prev" title="verilog基础">
+                verilog基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实验3-1：SystemVerilog的真正引入"><span class="nav-text">实验3-1：SystemVerilog的真正引入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件结构"><span class="nav-text">文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包chnl-pck"><span class="nav-text">包chnl_pck</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tb文件"><span class="nav-text">tb文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验3-2：generator提取"><span class="nav-text">实验3-2：generator提取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件变化"><span class="nav-text">文件变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包chnl-pck-1"><span class="nav-text">包chnl_pck</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验3-3：增加新组件monitor和checker"><span class="nav-text">实验3-3：增加新组件monitor和checker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#新加入文件结构"><span class="nav-text">新加入文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包chnl-pack"><span class="nav-text">包chnl_pack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tb文件-1"><span class="nav-text">tb文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验4-1：新增结构"><span class="nav-text">实验4-1：新增结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件结构-1"><span class="nav-text">文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#param-def-v"><span class="nav-text">param_def.v</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-包chnl-pack-基层包，无需导包"><span class="nav-text">1. 包chnl_pack(基层包，无需导包)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-package-rpt-pkg（report工具包）"><span class="nav-text">2. package rpt_pkg（report工具包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-package-reg-pkg-导包：-include-“param-def-v”"><span class="nav-text">3. package reg_pkg(导包：&#96;include “param_def.v”)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问："><span class="nav-text">问：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-package-fmt-pkg"><span class="nav-text">4. package fmt_pkg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-package-mcdf-pkg（顶层包）"><span class="nav-text">5. package mcdf_pkg（顶层包）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问：-1"><span class="nav-text">问：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
