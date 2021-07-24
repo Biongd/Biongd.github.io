@@ -103,7 +103,7 @@
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716230533.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210716233058.png">
 <meta property="article:published_time" content="2020-10-06T06:25:30.000Z">
-<meta property="article:modified_time" content="2021-07-16T23:03:12.879Z">
+<meta property="article:modified_time" content="2021-07-23T06:33:07.037Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="数字IC">
 <meta name="twitter:card" content="summary">
@@ -341,8 +341,8 @@
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-07-17T07:03:12+08:00" content="2021-07-17">
-                          2021-07-17
+                     <time itemprop="dateUpdated" datetime="2021-07-23T14:33:07+08:00" content="2021-07-23">
+                          2021-07-23
                      </time>
                  </span>
              
@@ -412,7 +412,8 @@
 <li>UVM中的Universal(通用)的含义代表的是该方法学可以适用于大多数的验证项目，而它自身提供的基础类库(basic class library)和基本验证结构可以让具有不同软件编程经验的验证人员能够快速构建起一个结构可靠的验证框架。</li>
 <li>UVM的框架构建类和测试类能够减轻环境构建的负担，进而将更多的精力集中在如何制定验证计划和创建测试场景。<br>UVM框架，包括UVM的类库和核心机制、核心的UVM组件和层次构建方式、常见的UVM组件间的通信方式、UVM测试场景的构成、UVM的寄存器模型应用。</li>
 </ul>
-<h2 id="UVM类库地图"><a href="#UVM类库地图" class="headerlink" title="UVM类库地图"></a>UVM类库地图</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210712122518.png" alt="image-20210712122518431" style="zoom:150%;" /></p>
+<h2 id="UVM类库地图"><a href="#UVM类库地图" class="headerlink" title="UVM类库地图"></a>UVM类库地图</h2><p>类库网址：<a href="https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/" target="_blank" rel="noopener">https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/</a></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210712122518.png" alt="image-20210712122518431" style="zoom:150%;" /></p>
 <p><strong>10大类型：</strong></p>
 <ul>
 <li><p>核心基类</p>
@@ -448,7 +449,13 @@
 <h2 id="UVM环境-phase机制"><a href="#UVM环境-phase机制" class="headerlink" title="UVM环境-phase机制"></a>UVM环境-phase机制</h2><p>硬件：仿真开始前，已经完成了实例化和连接</p>
 <p>软件：运行时动态加载对象，并生成连接</p>
 <p>多层嵌套的组件，需要在上层次中创建对象和建立连接（monitor和checker）</p>
-<p>UVM验证环境是按照UVM_PHASE有序执行的，UVM_PHASE按照是否消耗时间分为function_phase和task_phase.function_phase如build_phase、connect_phase，这些phase是不消耗时间的；task_phase如main_phase、reset_phase这些phase是消耗时间的.<br>1.function_phase介绍<br>在function_phase中build_phase实现实例化工作，主要是对uvm_component及其派生类的实例化；connect_phase用来完成诸如port的链接这些动作；end_of_elaborattion_phase、start_of_simulation_phase不常用，不过也可以根据平台的需要做一些预处理的动作；<br>report_phase主要在结束时对DUT和RM状态做一下检查；涉及到读取寄存器状态，需要在task_phase中检查.<br>2.function_phase顺序<br>build_phase是自顶而下的执行顺序，即从uvm_test_top开始执行，进而到uvm_env、uvm_rm的build_phase；其他function_phase正好相反，是自下而上的执行顺序.</p>
+<p>UVM验证环境是按照UVM_PHASE有序执行的，UVM_PHASE按照是否消耗时间分为function_phase和task_phase.function_phase如build_phase、connect_phase，这些phase是不消耗时间的；task_phase如main_phase、reset_phase这些phase是消耗时间的.</p>
+<p>1.function_phase介绍</p>
+<p>在function_phase中build_phase实现实例化工作，主要是对uvm_component及其派生类的实例化；connect_phase用来完成诸如port的链接这些动作；</p>
+<p>end_of_elaborattion_phase、start_of_simulation_phase不常用，不过也可以根据平台的需要做一些预处理的动作；</p>
+<p>report_phase主要在结束时对DUT和RM状态做一下检查；涉及到读取寄存器状态，需要在task_phase中检查.</p>
+<p>2.function_phase顺序</p>
+<p>build_phase是自顶而下的执行顺序，即从uvm_test_top开始执行，进而到uvm_env、uvm_rm的build_phase；其他function_phase正好相反，是自下而上的执行顺序.</p>
 <h2 id="工厂机制"><a href="#工厂机制" class="headerlink" title="工厂机制"></a>工厂机制</h2><p>从设计模式出发就很好理解了，通过工厂类中的生成方法制造需要类型的对象！！</p>
 <ul>
 <li>UVM中创建的任何一个类都需要工厂注册</li>
@@ -846,7 +853,7 @@ uvm_slave_PORT
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/10/06/a%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B%E6%BC%94%E5%8C%96%E6%95%B4%E7%90%86/" rel="prev" title="SystemVerilog">
+              <a href="/2020/10/06/IC%E9%AA%8C%E8%AF%81-SystemVerilog/" rel="prev" title="SystemVerilog">
                 SystemVerilog <i class="fa fa-chevron-right"></i>
               </a>
             
