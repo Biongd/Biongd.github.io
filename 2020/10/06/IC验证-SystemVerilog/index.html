@@ -86,6 +86,14 @@
 <meta property="og:site_name" content="悦来客栈">
 <meta property="og:description" content="终于进入了systemverilog的学习，接续加油！！">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201209211755.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802093251.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802123013.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802093801.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802094007.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802102512.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802103404.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802104050.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802121605.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210709221729.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210707182439.png">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210707190458.png">
@@ -103,7 +111,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200412132631177.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NjAyMjQzNA==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190823204638126.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JsZWF1Y2hhdA==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-10-06T06:25:30.000Z">
-<meta property="article:modified_time" content="2021-07-30T12:01:46.669Z">
+<meta property="article:modified_time" content="2021-08-02T05:00:40.110Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="数字IC">
 <meta name="twitter:card" content="summary">
@@ -341,8 +349,8 @@
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-07-30T20:01:46+08:00" content="2021-07-30">
-                          2021-07-30
+                     <time itemprop="dateUpdated" datetime="2021-08-02T13:00:40+08:00" content="2021-08-02">
+                          2021-08-02
                      </time>
                  </span>
              
@@ -469,6 +477,51 @@
 </li>
 <li>static：静态变量（默认） </li>
 </ul>
+<h1 id="时钟块"><a href="#时钟块" class="headerlink" title="时钟块"></a>时钟块</h1><h2 id="竞争问题实例"><a href="#竞争问题实例" class="headerlink" title="竞争问题实例"></a>竞争问题实例</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210802093251.png" alt="image-20210802093251007" style="zoom:67%;" /></p>
+<p><strong>在45ns时，clk1在上升沿处打印结果d1，clk2在45ns处采样的d1应该是多少？</strong></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802123013.png" alt="image-20210802123013109" style="zoom: 67%;" /></p>
+<p>在一般手绘仿真波形的时候，都会将d1的数值变化较时钟上升沿延后，但是在仿真软件中无法直接看出</p>
+<p>如何打开delta-cycle模式，捕捉时序关系</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802093801.png" alt="image-20210802093801071" style="zoom:67%;" /></p>
+<p>将detla-cycle展开，看一下实际的时序关系</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802094007.png" alt="image-20210802094007197" style="zoom:67%;" /></p>
+<h2 id="竞争问题的理解"><a href="#竞争问题的理解" class="headerlink" title="竞争问题的理解"></a>竞争问题的理解</h2><ul>
+<li><p>由于各种可能性，clk与被采样数据之间如果只存在若干个delta-cycle的延迟，假如出现了时钟的复用，那么采样可能会存在问题，也就如上面例子中所示，相同时钟在同样的时刻中得到的是不同的采样结果，因此采样数据中的竞争问题会成为潜在困扰仿真采样准确性的问题。</p>
+<p>如上面的例子所示，45ns处clk1和clk2（实际是45+delta-cycle）的打印结果不同，这显然是不符合逻辑的！！！clk2采样到了新更新的数值，这是不对的</p>
+<p>不一定是测试环境，就算是在设计环境中，clk2对通过clk1上升沿时驱动的数据进行采样也都是有问题的</p>
+</li>
+<li><p>为了避免在RTL仿真行为中发生的信号竞争问题，建议通过非阻塞赋值或特定的信号延迟来解决同步的问题。</p>
+</li>
+<li><p>默认情况下，时钟对于组合电路的驱动会添加一个无限最小时间(delta-cycle)的延迟，而该延迟无法用绝对时间单位衡量，它要比最小时间单位精度还小。</p>
+</li>
+<li><p>在一个时间片(time-slot)中可以发生很多事情，例如在仿真器中敲命令“run 0”，即是让仿真器运行一个无限最小时间，一个时间片包含无限多个delta-cycle。 s &gt; </p>
+<p>ms &gt; ns &gt; ps &gt; fs &gt; delta-cycle</p>
+</li>
+<li><p>查看delta-cycle可以观察在特定时间点，时序逻辑或组合逻辑中，参与硬件模拟仿真的硬件变量之间的准确时序前后关系。</p>
+</li>
+</ul>
+<h3 id="竞争问题的解决"><a href="#竞争问题的解决" class="headerlink" title="竞争问题的解决"></a>竞争问题的解决</h3><ul>
+<li><p>在驱动时，添加相应的人为延迟。模拟真实的延迟行为（模拟保持时间的驱动要求，即将输入保持一定时间），同时加大clk与变量之间的延迟，以此提高DUT使用信号时的准确性和TB采样信号时的可靠性。</p>
+<p>比如说在clk1上升沿到达后，给1个1ps的延时后再做信号变更，此时仿真里面也就不存在delta-cycle的竞争问题</p>
+</li>
+<li><p>对于一些设计中的没有进行上述延迟处理的信号，<strong>也就是采样时依然存在的delta-cycle延迟的信号</strong>，我们还可以依靠在采样事件前的某段时刻进行采样，来模拟建立时间的采样要求（即信号在时钟到来前已经建立一段时间），确保采样的可靠性。</p>
+</li>
+</ul>
+<h3 id="时钟块怎么用"><a href="#时钟块怎么用" class="headerlink" title="时钟块怎么用"></a>时钟块怎么用</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210802102512.png" alt="image-20210802102512667" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802103404.png" alt="image-20210802103404336" style="zoom:67%;" /></p>
+<h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210802104050.png" alt="image-20210802104050695" style="zoom: 80%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802121605.png" alt="image-20210802121605150" style="zoom: 67%;" /></p>
+<ul>
+<li>硬件世界和软件世界的连接可以通过灵活的interface实现，也可以通过modport来进一步限定信号传输的方向，避免端口的连接错误。</li>
+<li>也可以在接口中声明clocking(时序块)和采样的时钟信号，用来做信号的同步和采样。</li>
+<li>clocking块基于时钟周期对信号进行驱动或采样的方式，使得testbench不再苦恼于如何准确及时地对信号驱动或者采样，消除了信号竞争的问题。</li>
+<li>clocking块不但可以定义在interface中，也可以定义在module和program中。</li>
+<li>clocking中列举的信号不是自己定义的，而是应该由interface或其它声明clocking的模块定义的。</li>
+<li>clocking在声明完名字之后，应该伴随着定义默认的采样事件，即“default input/output event”。如果没有定义，则会默认地在clocking采样事件前的1step对输入进行采样，在采样事件后的# 0 对输出进行驱动。</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>在我看来interface中对于时间块的定义，实际上就是软件系统（tb）对硬件系统（dut）的一个模仿，可以把tb的时钟理解为clk1，dut的时钟理解为clk2，此时在clk1的上升沿，通过驱动的延时，就给了dut相对于clk2的一个保持时间；</p>
+<p>另外tb采样的过程和驱动过程是独立起来看的，如果把dut的时钟理解为clk1，tb的时钟理解为clk2，则此时tb的采样结果和dut的输出结果</p>
+<p>为了避免可能的采样竞争问题，应该在验证环境的驱动环节就添加固定延迟，使得在仿真波形中更容易体现出时钟与被驱动信号之间的时序前后关系，同时也便于DUT的准确处理和TB的准确采样。<br>如果TB在采样从DUT送出的数据，在时钟与被驱动信号之间在存在delta-cycle时，应该考虑时钟采样沿的更早时间段去模拟建立时间要求采样，这种方法也可以避免由于delta-cycle问题带来的采样竞争问题。<br>当我们把clocking运用到interface中，用来声明各个接口与时钟的采样和驱动关系后，可以大大提高数据驱动和采样的准确性，从根本上消除采样竞争的可能性。</p>
 <h1 id="类和包的使用"><a href="#类和包的使用" class="headerlink" title="类和包的使用"></a>类和包的使用</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h2 id="包的使用"><a href="#包的使用" class="headerlink" title="包的使用"></a>包的使用</h2><ul>
 <li><p>包的意义</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SV语言提供了一种在多个module、<span class="keyword">interface</span>和<span class="symbol">program</span>之中共享<span class="symbol">parameter</span>、<span class="symbol">data</span>、<span class="symbol">type</span>、<span class="symbol">task</span>、<span class="symbol">function</span>、<span class="symbol">class</span>等的方法，即利用<span class="symbol">package</span>的方式来实现。通常将不同模块的类定义归整到不同的<span class="symbol">package</span>中。</span><br><span class="line"><span class="symbol">package</span>的好处是将一簇相关的类组织在了单一的命名空间<span class="symbol">namespace</span>下，使得分属于不同模块验证环境的类来自于不同的<span class="symbol">package</span>，这样可以通过<span class="symbol">package</span>来解决类的归属问题。</span><br></pre></td></tr></table></figure>
@@ -539,7 +592,7 @@ $cast()会检查句柄所指向的对象的类型，而不是检查句柄本身;
 <li>父类和子类成员均可以完成拷贝，拷贝方法声明为virtual，遵循只考虑该类的域成员的原则，父类的成员拷贝调用父类的拷贝函数</li>
 <li>copy_data()需要注意句柄的类型转换，保证转换后的句柄可以访问类的成员变量</li>
 </ul>
-<h2 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h2><h1 id="实验进化2"><a href="#实验进化2" class="headerlink" title="实验进化2"></a>实验进化2</h1><p>要从实验1完成哪些进化：</p>
+<h1 id="实验进化2"><a href="#实验进化2" class="headerlink" title="实验进化2"></a>实验进化2</h1><p>要从实验1完成哪些进化：</p>
 <h2 id="interface的提取"><a href="#interface的提取" class="headerlink" title="interface的提取"></a>interface的提取</h2><ul>
 <li><p>test和dut的连接关系(initiator)：</p>
 <p>initiator的目的更像是创建虚拟的硬件模型，通过该module的实例化创建具有驱动能力的数据发送模块（给data就能按照需要进行发送，task chnl_write（））</p>
@@ -844,8 +897,8 @@ $cast()会检查句柄所指向的对象的类型，而不是检查句柄本身;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/10/06/IC%E9%AA%8C%E8%AF%81-%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B/" rel="next" title="实验过程">
-                <i class="fa fa-chevron-left"></i> 实验过程
+              <a href="/2020/10/06/IC%E9%AA%8C%E8%AF%81-UVM/" rel="next" title="UVM">
+                <i class="fa fa-chevron-left"></i> UVM
               </a>
             
           </div>
@@ -937,7 +990,7 @@ $cast()会检查句柄所指向的对象的类型，而不是检查句柄本身;
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -948,7 +1001,7 @@ $cast()会检查句柄所指向的对象的类型，而不是检查句柄本身;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -992,7 +1045,7 @@ $cast()会检查句柄所指向的对象的类型，而不是检查句柄本身;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-数据类型"><span class="nav-text">语法-数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程块和方法"><span class="nav-text">过程块和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#function和task"><span class="nav-text">function和task</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类和包的使用"><span class="nav-text">类和包的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包的使用"><span class="nav-text">包的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-静态转换"><span class="nav-text">1.静态转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-动态转换"><span class="nav-text">2.动态转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-显式和隐式转换"><span class="nav-text">3.显式和隐式转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚函数（virtual）"><span class="nav-text">虚函数（virtual）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-virtual-interface"><span class="nav-text">1. virtual interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-virtual-task-function"><span class="nav-text">2. virtual task&#x2F;function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-virtual-class"><span class="nav-text">3. virtual class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象拷贝"><span class="nav-text">对象拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-浅拷贝"><span class="nav-text">1. 浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-自定义拷贝"><span class="nav-text">2. 自定义拷贝</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回调函数"><span class="nav-text">回调函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验进化2"><span class="nav-text">实验进化2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#interface的提取"><span class="nav-text">interface的提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generator的提取"><span class="nav-text">generator的提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将interface和generator的module按照需要进行实例化"><span class="nav-text">将interface和generator的module按照需要进行实例化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test的module"><span class="nav-text">test的module</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机"><span class="nav-text">随机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-随机约束和分布"><span class="nav-text">1. 随机约束和分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#约束"><span class="nav-text">约束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-约束块控制"><span class="nav-text">2. 约束块控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-随机函数"><span class="nav-text">3. 随机函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数组的约束"><span class="nav-text">4. 数组的约束</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#randc并不能让数组的每个元素随机化时不重复"><span class="nav-text">randc并不能让数组的每个元素随机化时不重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机化句柄数组"><span class="nav-text">随机化句柄数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-随机控制"><span class="nav-text">5. 随机控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成随机序列"><span class="nav-text">生成随机序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程控制"><span class="nav-text">线程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程通信"><span class="nav-text">线程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#event"><span class="nav-text">event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#triggered"><span class="nav-text">triggered()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和triggered-的使用时机"><span class="nav-text">@和triggered()的使用时机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旗语（semaphore）"><span class="nav-text">旗语（semaphore）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mailbox"><span class="nav-text">mailbox</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#覆盖率"><span class="nav-text">覆盖率</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖组——covergroup"><span class="nav-text">覆盖组——covergroup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖点——coverpoint"><span class="nav-text">覆盖点——coverpoint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#盖点元素——隐式bin与显式bins"><span class="nav-text">盖点元素——隐式bin与显式bins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖点的状态跳转——-gt-与-通配符"><span class="nav-text">覆盖点的状态跳转——&#x3D;&gt; 与 ?通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖点之间的交叉覆盖率——cross"><span class="nav-text">覆盖点之间的交叉覆盖率——cross</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码code——约束与覆盖率的运用"><span class="nav-text">代码code——约束与覆盖率的运用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何提高覆盖率"><span class="nav-text">如何提高覆盖率</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#断言"><span class="nav-text">断言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-立即断言-if"><span class="nav-text">1. 立即断言&#x3D;~if</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-定制断言"><span class="nav-text">2. 定制断言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-并发断言-Concurrent-Assertions-edge采样"><span class="nav-text">3. 并发断言  Concurrent Assertions(edge采样)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-iff的使用"><span class="nav-text">4. iff的使用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-数据类型"><span class="nav-text">语法-数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程块和方法"><span class="nav-text">过程块和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#function和task"><span class="nav-text">function和task</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时钟块"><span class="nav-text">时钟块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#竞争问题实例"><span class="nav-text">竞争问题实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#竞争问题的理解"><span class="nav-text">竞争问题的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#竞争问题的解决"><span class="nav-text">竞争问题的解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟块怎么用"><span class="nav-text">时钟块怎么用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例："><span class="nav-text">实例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-text">结论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类和包的使用"><span class="nav-text">类和包的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包的使用"><span class="nav-text">包的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-静态转换"><span class="nav-text">1.静态转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-动态转换"><span class="nav-text">2.动态转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-显式和隐式转换"><span class="nav-text">3.显式和隐式转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚函数（virtual）"><span class="nav-text">虚函数（virtual）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-virtual-interface"><span class="nav-text">1. virtual interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-virtual-task-function"><span class="nav-text">2. virtual task&#x2F;function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-virtual-class"><span class="nav-text">3. virtual class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象拷贝"><span class="nav-text">对象拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-浅拷贝"><span class="nav-text">1. 浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-自定义拷贝"><span class="nav-text">2. 自定义拷贝</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验进化2"><span class="nav-text">实验进化2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#interface的提取"><span class="nav-text">interface的提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generator的提取"><span class="nav-text">generator的提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将interface和generator的module按照需要进行实例化"><span class="nav-text">将interface和generator的module按照需要进行实例化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test的module"><span class="nav-text">test的module</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机"><span class="nav-text">随机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-随机约束和分布"><span class="nav-text">1. 随机约束和分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#约束"><span class="nav-text">约束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-约束块控制"><span class="nav-text">2. 约束块控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-随机函数"><span class="nav-text">3. 随机函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数组的约束"><span class="nav-text">4. 数组的约束</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#randc并不能让数组的每个元素随机化时不重复"><span class="nav-text">randc并不能让数组的每个元素随机化时不重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机化句柄数组"><span class="nav-text">随机化句柄数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-随机控制"><span class="nav-text">5. 随机控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成随机序列"><span class="nav-text">生成随机序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程控制"><span class="nav-text">线程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程通信"><span class="nav-text">线程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#event"><span class="nav-text">event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#triggered"><span class="nav-text">triggered()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和triggered-的使用时机"><span class="nav-text">@和triggered()的使用时机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旗语（semaphore）"><span class="nav-text">旗语（semaphore）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mailbox"><span class="nav-text">mailbox</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#覆盖率"><span class="nav-text">覆盖率</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖组——covergroup"><span class="nav-text">覆盖组——covergroup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖点——coverpoint"><span class="nav-text">覆盖点——coverpoint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#盖点元素——隐式bin与显式bins"><span class="nav-text">盖点元素——隐式bin与显式bins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖点的状态跳转——-gt-与-通配符"><span class="nav-text">覆盖点的状态跳转——&#x3D;&gt; 与 ?通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖点之间的交叉覆盖率——cross"><span class="nav-text">覆盖点之间的交叉覆盖率——cross</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码code——约束与覆盖率的运用"><span class="nav-text">代码code——约束与覆盖率的运用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何提高覆盖率"><span class="nav-text">如何提高覆盖率</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#断言"><span class="nav-text">断言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-立即断言-if"><span class="nav-text">1. 立即断言&#x3D;~if</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-定制断言"><span class="nav-text">2. 定制断言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-并发断言-Concurrent-Assertions-edge采样"><span class="nav-text">3. 并发断言  Concurrent Assertions(edge采样)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-iff的使用"><span class="nav-text">4. iff的使用</span></a></li></ol></li></ol></div>
             
 
           </div>
