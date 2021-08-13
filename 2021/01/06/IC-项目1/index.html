@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数字IC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="UVM的学习也告一段路，接下来进入验证的番外篇，也就是整儿八经的实战项目和对于行业的理解了，升华一下自己的眼界，同时也为以后的工作做些准备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目1">
+<meta property="og:url" content="http://yoursite.com/2021/01/06/IC-%E9%A1%B9%E7%9B%AE1/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="UVM的学习也告一段路，接下来进入验证的番外篇，也就是整儿八经的实战项目和对于行业的理解了，升华一下自己的眼界，同时也为以后的工作做些准备">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801152901.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801154143.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801155527.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801155855.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801163149.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801164307.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308150834372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210807102944.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802184827.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802225324.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803004043.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803005728.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803010000.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803010732.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803011005.png">
+<meta property="article:published_time" content="2021-01-06T06:25:30.000Z">
+<meta property="article:modified_time" content="2021-08-09T14:18:15.045Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="数字IC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210801152901.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/01/06/IC-项目1/"/>
+
+
+
+
+
+  <title>项目1 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/06/IC-%E9%A1%B9%E7%9B%AE1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">项目1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-06T14:25:30+08:00">
+                2021-01-06
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-08-09T22:18:15+08:00" content="2021-08-09">
+                          2021-08-09
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97-SystemVerilog-verilog%E5%9F%BA%E7%A1%80-mcdf%E5%AE%9E%E9%AA%8C-UVM/" itemprop="url" rel="index">
+                    <span itemprop="name">数字-SystemVerilog.verilog基础.mcdf实验.UVM.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>UVM的学习也告一段路，接下来进入验证的番外篇，也就是整儿八经的实战项目和对于行业的理解了，升华一下自己的眼界，同时也为以后的工作做些准备</p>
+<a id="more"></a>
+<h1 id="1-MCDF设计更新"><a href="#1-MCDF设计更新" class="headerlink" title="1. MCDF设计更新"></a>1. MCDF设计更新</h1><p>贴近工作场景，核心除了怎么更好的编，还有怎么更稳定的复用和迭代！！！</p>
+<h2 id="1-1-结构更新"><a href="#1-1-结构更新" class="headerlink" title="1.1 结构更新"></a>1.1 结构更新</h2><ul>
+<li>channel的概念由slave node替代</li>
+<li>slave node的接口发生变化</li>
+<li>register的接口发生变化</li>
+<li>formatter的接口发生变化</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210801152901.png" alt="image-20210801152901826" style="zoom:80%;" /></p>
+<h2 id="1-2-接口变化"><a href="#1-2-接口变化" class="headerlink" title="1.2 接口变化"></a>1.2 接口变化</h2><h3 id="slave-node接口"><a href="#slave-node接口" class="headerlink" title="slave node接口"></a>slave node接口</h3><ul>
+<li><code>DATA(31:0)</code>：通道数据输入。（input）</li>
+<li><code>DATA_PARITY</code>：data数据的奇偶校验位。（input）</li>
+<li><code>VALID</code>：数据有效标志信号。（input）</li>
+<li><code>WAIT</code>：暂停接收。（类似于之前的ready信号）（output）</li>
+<li><code>PARITY_ERR</code>：slave node侧发现数据或者数据校验位出错。（output）</li>
+</ul>
+<p>输入数据和奇偶校验位，输出看数据和奇偶校验是否匹配</p>
+<h3 id="register接口-AMBA-APB标准总线"><a href="#register接口-AMBA-APB标准总线" class="headerlink" title="register接口(AMBA APB标准总线)"></a>register接口(AMBA APB标准总线)</h3><ul>
+<li><code>PADDR(7:0)</code>：地址。（input）</li>
+<li><code>PWR</code>：写标识。（input）</li>
+<li><code>PEN</code>：总线使能。（input）</li>
+<li><code>PSEL</code>：总线选择。（input）</li>
+<li><code>PWDATA(31:0)</code>：写入数据。（input）</li>
+<li><code>PRDATA(31:0)</code>：读出数据。（output）</li>
+<li><code>PREADY</code>：读写操作完成标识，可以用于延迟。（output）</li>
+<li><code>PSLVERR</code>：总线操作错误。（例如无效空间访问）（output）</li>
+</ul>
+<h3 id="formatter接口"><a href="#formatter接口" class="headerlink" title="formatter接口"></a>formatter接口</h3><ul>
+<li><code>PKG_VLD</code>：数据包有效标识。（output）</li>
+<li><code>PKG_FST</code>：数据包首个数据标识符。（output）</li>
+<li><code>PKG_DATA</code>：数据输出端口。（output）</li>
+<li><code>PKG_LST</code>：数据包末尾数据标识符。（output）</li>
+<li><code>PKG_RDY</code>：接受侧准备就绪标识。（input）</li>
+</ul>
+<h2 id="1-3-时序更新"><a href="#1-3-时序更新" class="headerlink" title="1.3 时序更新"></a>1.3 时序更新</h2><h3 id="slave-node接口时序"><a href="#slave-node接口时序" class="headerlink" title="slave node接口时序"></a>slave node接口时序</h3><ul>
+<li>slave node接收从上行发来的数据，包括32bit的DATA和1bit的Parity。数据在VALID的指示下接收。</li>
+<li>数据能否被接收取决于三个条件：数据是否有效(VALID)、内部FIFO的状态(Not Full)、数据有效性的校验结果(No Parity Error)。如果后两个条件不满足，WAIT端口置起，阻挡上行数据发送。</li>
+<li>DATA_PARITY_ERR端口在第三个条件不满足时被置起（不像FIFO状态可以自动改变wait信号），这个信号也同时作为RO(ready only)状态位可以通过APB读出。而且它<strong>只能通过APB设置P_ERR_CLR寄存器来清除复位。</strong></li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210801154143.png" alt="image-20210801154143147" style="zoom:80%;" /></p>
+<p>上图给出了6种传输情形：</p>
+<ul>
+<li>#1：正常传输。</li>
+<li>#2：VALID=0，上行数据未准备好，等待。</li>
+<li>#3：数据校验错误，接收端置起WAIT将数据接收和输入挂起。</li>
+<li>#4：错误标识位通过APB清除，数据准备重发。</li>
+<li>#5：FIFO满，WAIT置起，数据发送被延期。</li>
+<li>#6：FIFO恢复，重发数据成功。</li>
+</ul>
+<p>问：为啥会出现输入的奇偶校验位DATA_PARITY在到达slaveNODE之后和数据对应不上的情况？</p>
+<p>答：<img src="https://gitee.com/biongd/img/raw/master/img/20210801155527.png" alt="image-20210801155527540" style="zoom:80%;" /></p>
+<p>如上图所示的1个4个bit的输入，每一位对应一个触发器，最低位由于延迟而导致建立时间不够从1变成了0，此时输入的奇偶校验和数据就对不上了</p>
+<h3 id="formatter数据包格式以及接口时序"><a href="#formatter数据包格式以及接口时序" class="headerlink" title="formatter数据包格式以及接口时序"></a>formatter数据包格式以及接口时序</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210801155855.png" alt="image-20210801155855670" style="zoom:80%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210801163149.png" alt="image-20210801163149889" style="zoom:80%;" /></p>
+<p>之前的formatter：ch_id和length都是放在接口上的，现在都放在了头字里，且length不再是简单的4,8,16,32。而是1-256</p>
+<p>注意这里的奇偶校验位parity是只检测所有的data还是包含了头字</p>
+<h3 id="寄存器更新"><a href="#寄存器更新" class="headerlink" title="寄存器更新"></a>寄存器更新</h3><p><img src="https://gitee.com/biongd/img/raw/master/img/20210801164307.png" alt="image-20210801164307305" style="zoom:80%;" /></p>
+<p>变化明显：</p>
+<ul>
+<li>由一个32位寄存器决定对哪个slave进行操作，同样是一个寄存器决定所有通道的数据包长度</li>
+<li>free_slot对应之前的状态寄存器，读取avalid</li>
+<li>parity_err对应slave的奇偶校验检测的数据，通过寄存器parity_err_clr可以将其擦除</li>
+</ul>
+<h1 id="2-UVM验证环境更新策略"><a href="#2-UVM验证环境更新策略" class="headerlink" title="2. UVM验证环境更新策略"></a>2. UVM验证环境更新策略</h1><h2 id="2-1-组件更新"><a href="#2-1-组件更新" class="headerlink" title="2.1 组件更新"></a>2.1 组件更新</h2><p><img src="https://img-blog.csdnimg.cn/20210308150834372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" style="zoom: 80%;" /></p>
+<ul>
+<li>channel master agent的driver和monitor由于总线接口信号和时序的变化，需要更新。</li>
+<li>register master agent由于总线更新为APB，需要开发完整的APB master agent。</li>
+<li>formatter slave agent由于总线信号和时序的变化，也需要进行更新。</li>
+<li>寄存器列表发生了变化，因此也需要进行寄存器模块的更新。</li>
+<li>由于寄存器访问VIP发生变化，也需要对寄存器模型与总线VIP桥接转换的adapter进行更新。</li>
+</ul>
+<h2 id="2-2-环境更新"><a href="#2-2-环境更新" class="headerlink" title="2.2 环境更新"></a>2.2 环境更新</h2><ul>
+<li>与MCDF连接的各个接口信号需要重新定义。</li>
+<li>在顶层testbench，对于各个接口信号的连接也需要更新。</li>
+</ul>
+<h2 id="2-3-测试更新"><a href="#2-3-测试更新" class="headerlink" title="2.3 测试更新"></a>2.3 测试更新</h2><ul>
+<li>在尽量保证验证环境复用和测试用例复用的情况下，需要考虑如何复用原有的测试。原有的测试部分可以分为：do_config()，即寄存器配置部分。do_formatter()，即formatter slave agent行为模型的配置。do_data()，即发送数据。</li>
+<li>可以尽量保证do_formatter()和do_data()的测试代码部分保持不变， 而只修改上层对寄存器的配置部分。</li>
+<li>寄存器的配置之所以需要修改，是因为寄存器模型本身发生了变化，而与访问寄存器总线IP发生变化没有直接关系。</li>
+</ul>
+<p><strong>总结：</strong><br> 更新：寄存器模型、总线、adapter、do_config()、环境。</p>
+<h2 id="2-4-环境复用和序列复用"><a href="#2-4-环境复用和序列复用" class="headerlink" title="2.4 环境复用和序列复用"></a>2.4 环境复用和序列复用</h2><p>环境复用：</p>
+<ul>
+<li>保证顶层环境的稳定</li>
+<li>尽量减少底层组件的更新</li>
+</ul>
+<p>在更新底层组件的时候，也要考虑如何实施，从而保证顶层环境的稳定。</p>
+<p>序列复用：</p>
+<ul>
+<li>保证底层序列的稳定</li>
+<li>尽量减少底层序列的更新</li>
+</ul>
+<p>尽量让底层序列的更新尽可能少的影响顶层序列</p>
+<h1 id="3-代码"><a href="#3-代码" class="headerlink" title="3. 代码"></a>3. 代码</h1><h2 id="3-1-APB的VIP"><a href="#3-1-APB的VIP" class="headerlink" title="3.1 APB的VIP"></a>3.1 APB的VIP</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210807102944.png" alt="image-20210807102944216" style="zoom:67%;" /></p>
+<ul>
+<li>通过svh和sv的拆分，将类的定义和框架进行展示，将具体实现只提供编译文件到library，依此进行封装；最终只需要编译两个文件：apb_pkg.sv和apb.sv</li>
+</ul>
+<h3 id="底层svh和sv"><a href="#底层svh和sv" class="headerlink" title="底层svh和sv"></a>底层svh和sv</h3><p>底层组件：以driver为例</p>
+<p>svh：类，注册自动化域， 由extern声明的父类方法，可以在外部（sv中）实现</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">ifndef</span> TEMPLATE_MASTER_DRIVER_SVH</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">define</span> TEMPLATE_MASTER_DRIVER_SVH</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> template_master_driver <span class="keyword">extends</span> uvm_driver <span class="variable">#(template_transfer)</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//////////////////////////////////////////////////////////////////////////////</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">//  Public interface (Component users may manipulate these fields/methods)</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">//////////////////////////////////////////////////////////////////////////////</span></span><br><span class="line">  template_config cfg;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// USER: Add your fields here</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// This macro performs UVM object creation, type control manipulation, and </span></span><br><span class="line">  <span class="comment">// factory registration</span></span><br><span class="line">  <span class="meta">`uvm_component_utils_begin(template_master_driver)</span></span><br><span class="line">     <span class="comment">// USER: Register fields here</span></span><br><span class="line">  <span class="meta">`uvm_component_utils_end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// new - constructor</span></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// uvm run phase</span></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> run();</span><br><span class="line"></span><br><span class="line">  <span class="comment">//////////////////////////////////////////////////////////////////////////////</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">//  Implementation (private) interface</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">//////////////////////////////////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// The virtual interface used to drive and view HDL signals.</span></span><br><span class="line">  <span class="keyword">virtual</span> template_if vif;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// This is the method that is responsible for getting sequence transactions</span></span><br><span class="line">  <span class="comment">// and driving the transaction into the DUT</span></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">protected</span> <span class="keyword">task</span> get_and_drive();</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// This method drives a sequence trasnaction onto the interface</span></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">protected</span> <span class="keyword">task</span> drive_transfer(template_transfer trans);</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// This method that is responsible for sending an idle cycle to the DUT</span></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">protected</span> <span class="keyword">task</span> send_idle();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// This method drives the DUT into reset </span></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">protected</span> <span class="keyword">task</span> reset_signals();</span><br><span class="line"><span class="keyword">endclass</span> : template_master_driver</span><br><span class="line"><span class="meta">`<span class="meta-keyword">endif</span> // TEMPLATE_MASTER_DRIVER_SVH</span></span><br></pre></td></tr></table></figure>
+<p>sv：函数和任务的实现，具体怎么实现还是要自己填入</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">ifndef</span> TEMPLATE_MASTER_DRIVER_SV</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">define</span> TEMPLATE_MASTER_DRIVER_SV</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> template_master_driver::<span class="keyword">new</span> (<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">  <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line"><span class="keyword">endfunction</span> : <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> template_master_driver::run();</span><br><span class="line">   <span class="keyword">fork</span></span><br><span class="line">     get_and_drive();</span><br><span class="line">     reset_signals();</span><br><span class="line">   <span class="keyword">join_none</span></span><br><span class="line"><span class="keyword">endtask</span> : run</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> template_master_driver::get_and_drive();</span><br><span class="line">    uvm_sequence_item item;</span><br><span class="line">    template_transfer t;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">      </span><br><span class="line">      seq_item_port<span class="variable">.get_next_item</span>(item);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// debug</span></span><br><span class="line">      <span class="meta">`uvm_info(get_type_name(), "sequencer got next item", UVM_HIGH)</span></span><br><span class="line"></span><br><span class="line">      <span class="built_in">$cast</span>(t, item);</span><br><span class="line">      drive_transfer(t);</span><br><span class="line">      seq_item_port<span class="variable">.item_done</span>();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// debug</span></span><br><span class="line">      <span class="meta">`uvm_info(get_type_name(), "sequencer item_done_triggered", UVM_HIGH)</span></span><br><span class="line">      <span class="comment">// Advance clock</span></span><br><span class="line">      send_idle();    </span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">endtask</span> : get_and_drive</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> template_master_driver::drive_transfer (template_transfer trans);</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(), "drive_transfer", UVM_HIGH)</span></span><br><span class="line">  <span class="comment">// USER: Add implementation  </span></span><br><span class="line"><span class="keyword">endtask</span> : drive_transfer</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> template_master_driver::send_idle();</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(), "send_idle ...", UVM_HIGH)</span></span><br><span class="line">  <span class="comment">// USER: Add implementation</span></span><br><span class="line">  @(vif<span class="variable">.cb</span>);</span><br><span class="line"><span class="keyword">endtask</span>:send_idle</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> template_master_driver::reset_signals();</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(), "reset_signals ...", UVM_HIGH)</span></span><br><span class="line">  <span class="comment">// USER: Add implementation</span></span><br><span class="line"><span class="keyword">endtask</span> : reset_signals</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">endif</span> // TEMPLATE_MASTER_DRIVER_SV</span></span><br></pre></td></tr></table></figure>
+<h3 id="顶层svh和sv"><a href="#顶层svh和sv" class="headerlink" title="顶层svh和sv"></a>顶层svh和sv</h3><p>template.svh：将所有的文件全部导入，做一个整合</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">ifndef</span> TEMPLATE_SVH</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">define</span> TEMPLATE_SVH</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_transfer.sv"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_config.sv"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_driver.svh"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_monitor.svh"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_sequencer.svh"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_agent.svh"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_driver.svh"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_monitor.svh"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_sequencer.svh"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_agent.svh"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_driver.sv"       </span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_monitor.sv"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_sequencer.sv"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_agent.sv"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_master_seq_lib.sv"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_driver.sv"       </span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_monitor.sv"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_sequencer.sv"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_agent.sv"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template_slave_seq_lib.sv"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">endif</span> //  `<span class="meta-keyword">ifndef</span> TEMPLATE_SVH</span></span><br></pre></td></tr></table></figure>
+<p>template_pkg.sv：将svh导入，相当于对整个项目进行编译的入口</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">ifndef</span> TEMPLATE_PKG_SV</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">define</span> TEMPLATE_PKG_SV</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> template_pkg;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "uvm_macros.svh"</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> "template.svh"</span></span><br><span class="line"><span class="keyword">endpackage</span> : template_pkg</span><br><span class="line">   </span><br><span class="line"><span class="meta">`<span class="meta-keyword">endif</span> //  `<span class="meta-keyword">ifndef</span> TEMPLATE_PKG_SV</span></span><br></pre></td></tr></table></figure>
+<h3 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">ifndef</span> APB_IF_SV</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">define</span> APB_IF_SV</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> apb_if (<span class="keyword">input</span> clk, <span class="keyword">input</span> rstn);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] paddr;</span><br><span class="line">  <span class="keyword">logic</span>        pwrite;</span><br><span class="line">  <span class="keyword">logic</span>        psel;</span><br><span class="line">  <span class="keyword">logic</span>        penable;</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] pwdata;</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] prdata;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Control flags</span></span><br><span class="line">  <span class="keyword">bit</span>                has_checks = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">bit</span>                has_coverage = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Actual Signals </span></span><br><span class="line">  <span class="comment">// USER: Add interface signals</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">clocking</span> cb_mst @(<span class="keyword">posedge</span> clk);</span><br><span class="line">    <span class="comment">// USER: Add clocking block detail</span></span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">input</span> #<span class="number">1</span>ps <span class="keyword">output</span> #<span class="number">1</span>ps;</span><br><span class="line">    <span class="keyword">output</span> paddr, pwrite, psel, penable, pwdata;</span><br><span class="line">    <span class="keyword">input</span> prdata;</span><br><span class="line">  <span class="keyword">endclocking</span> : cb_mst</span><br><span class="line"></span><br><span class="line">  <span class="keyword">clocking</span> cb_slv @(<span class="keyword">posedge</span> clk);</span><br><span class="line">   <span class="comment">// USER: Add clocking block detail</span></span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">input</span> #<span class="number">1</span>ps <span class="keyword">output</span> #<span class="number">1</span>ps;</span><br><span class="line">    <span class="keyword">input</span> paddr, pwrite, psel, penable, pwdata;</span><br><span class="line">    <span class="keyword">output</span> prdata;</span><br><span class="line">  <span class="keyword">endclocking</span> : cb_slv</span><br><span class="line"></span><br><span class="line">  <span class="keyword">clocking</span> cb_mon @(<span class="keyword">posedge</span> clk);</span><br><span class="line">   <span class="comment">// USER: Add clocking block detail</span></span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">input</span> #<span class="number">1</span>ps <span class="keyword">output</span> #<span class="number">1</span>ps;</span><br><span class="line">    <span class="keyword">input</span> paddr, pwrite, psel, penable, pwdata, prdata;</span><br><span class="line">  <span class="keyword">endclocking</span> : cb_mon</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Coverage and assertions to be implemented here.</span></span><br><span class="line">  <span class="comment">// USER: Add assertions/coverage here</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// APB command covergroup</span></span><br><span class="line">  <span class="keyword">covergroup</span> cg_apb_command @(<span class="keyword">posedge</span> clk <span class="keyword">iff</span> rstn);</span><br><span class="line">    pwrite: <span class="keyword">coverpoint</span> pwrite&#123;</span><br><span class="line">      type_option<span class="variable">.weight</span> = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">bins</span> write = &#123;<span class="number">1</span>&#125;;</span><br><span class="line">      <span class="keyword">bins</span> read  = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    psel : <span class="keyword">coverpoint</span> psel&#123;</span><br><span class="line">      type_option<span class="variable">.weight</span> = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">bins</span> sel   = &#123;<span class="number">1</span>&#125;;</span><br><span class="line">      <span class="keyword">bins</span> unsel = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    cmd  : <span class="keyword">cross</span> pwrite, psel&#123;</span><br><span class="line">      <span class="keyword">bins</span> cmd_write = <span class="keyword">binsof</span>(psel<span class="variable">.sel</span>) &amp;&amp; <span class="keyword">binsof</span>(pwrite<span class="variable">.write</span>);</span><br><span class="line">      <span class="keyword">bins</span> cmd_read  = <span class="keyword">binsof</span>(psel<span class="variable">.sel</span>) &amp;&amp; <span class="keyword">binsof</span>(pwrite<span class="variable">.read</span>);</span><br><span class="line">      <span class="keyword">bins</span> cmd_idle  = <span class="keyword">binsof</span>(psel<span class="variable">.unsel</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">endgroup</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// APB transaction timing group</span></span><br><span class="line">  <span class="keyword">covergroup</span> cg_apb_trans_timing_group @(<span class="keyword">posedge</span> clk <span class="keyword">iff</span> rstn);</span><br><span class="line">    psel: <span class="keyword">coverpoint</span> psel&#123;</span><br><span class="line">      <span class="keyword">bins</span> single   = (<span class="number">0</span> =&gt; <span class="number">1</span> =&gt; <span class="number">1</span>  =&gt; <span class="number">0</span>); </span><br><span class="line">      <span class="keyword">bins</span> burst_2  = (<span class="number">0</span> =&gt; <span class="number">1</span> [*<span class="number">4</span>]  =&gt; <span class="number">0</span>); </span><br><span class="line">      <span class="keyword">bins</span> burst_4  = (<span class="number">0</span> =&gt; <span class="number">1</span> [*<span class="number">8</span>]  =&gt; <span class="number">0</span>); </span><br><span class="line">      <span class="keyword">bins</span> burst_8  = (<span class="number">0</span> =&gt; <span class="number">1</span> [*<span class="number">16</span>] =&gt; <span class="number">0</span>); </span><br><span class="line">      <span class="keyword">bins</span> burst_16 = (<span class="number">0</span> =&gt; <span class="number">1</span> [*<span class="number">32</span>] =&gt; <span class="number">0</span>); </span><br><span class="line">      <span class="keyword">bins</span> burst_32 = (<span class="number">0</span> =&gt; <span class="number">1</span> [*<span class="number">64</span>] =&gt; <span class="number">0</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    penable: <span class="keyword">coverpoint</span> penable &#123;</span><br><span class="line">      <span class="keyword">bins</span> single = (<span class="number">0</span> =&gt; <span class="number">1</span> =&gt; <span class="number">0</span> [*<span class="number">2</span>:<span class="number">10</span>] =&gt; <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">bins</span> burst  = (<span class="number">0</span> =&gt; <span class="number">1</span> =&gt; <span class="number">0</span>         =&gt; <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">endgroup</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// APB write &amp; read order group</span></span><br><span class="line">  <span class="keyword">covergroup</span> cg_apb_write_read_order_group @(<span class="keyword">posedge</span> clk <span class="keyword">iff</span> (rstn &amp;&amp; penable));</span><br><span class="line">    write_read_order: <span class="keyword">coverpoint</span> pwrite&#123;</span><br><span class="line">      <span class="keyword">bins</span> write_write = (<span class="number">1</span> =&gt; <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">bins</span> write_read  = (<span class="number">1</span> =&gt; <span class="number">0</span>);</span><br><span class="line">      <span class="keyword">bins</span> read_write  = (<span class="number">0</span> =&gt; <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">bins</span> read_read   = (<span class="number">0</span> =&gt; <span class="number">0</span>);</span><br><span class="line">    &#125; </span><br><span class="line">  <span class="keyword">endgroup</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">automatic</span> cg_apb_command cg0 = <span class="keyword">new</span>();</span><br><span class="line">    <span class="keyword">automatic</span> cg_apb_trans_timing_group cg1 = <span class="keyword">new</span>();</span><br><span class="line">    <span class="keyword">automatic</span> cg_apb_write_read_order_group cg2 = <span class="keyword">new</span>();</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endinterface</span> : apb_if</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">endif</span> // APB_IF_SV</span></span><br></pre></td></tr></table></figure>
+<h3 id="transcation-和-sequence"><a href="#transcation-和-sequence" class="headerlink" title="transcation 和 sequence"></a>transcation 和 sequence</h3><h4 id="apb-transfer-sv"><a href="#apb-transfer-sv" class="headerlink" title="apb_transfer.sv"></a>apb_transfer.sv</h4><p>地址（一个PADDR信号），数据（1个PWDATA/PRDATA信号），和总线的三种操作状态(三个控制信号决定了状态：PSEL, PENABLE, PWRITE)</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">ifndef</span> APB_TRANSFER_SV</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">define</span> APB_TRANSFER_SV</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;IDLE, WRITE, READ &#125; apb_trans_kind;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> apb_transfer <span class="keyword">extends</span> uvm_sequence_item;</span><br><span class="line">  <span class="comment">// USER: Add transaction fields</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>]      addr;</span><br><span class="line">  <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>]      data;</span><br><span class="line">  <span class="keyword">rand</span> apb_trans_kind  trans_kind; </span><br><span class="line">  <span class="keyword">rand</span> <span class="keyword">int</span> idle_cycles;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constraint</span> cstr&#123;</span><br><span class="line">    <span class="keyword">soft</span> idle_cycles == <span class="number">1</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// USER: Add constraint blocks</span></span><br><span class="line">  <span class="meta">`uvm_object_utils_begin(apb_transfer)</span></span><br><span class="line">    <span class="meta">`uvm_field_enum     (apb_trans_kind, trans_kind, UVM_ALL_ON)</span></span><br><span class="line">    <span class="comment">// USER: Register fields here</span></span><br><span class="line">    <span class="meta">`uvm_field_int      (addr, UVM_ALL_ON)</span></span><br><span class="line">    <span class="meta">`uvm_field_int      (data, UVM_ALL_ON)</span></span><br><span class="line">    <span class="meta">`uvm_field_int      (idle_cycles, UVM_ALL_ON)</span></span><br><span class="line">  <span class="meta">`uvm_object_utils_end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// new - constructor</span></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name = <span class="string">"apb_transfer_inst"</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">  <span class="keyword">endfunction</span> : <span class="keyword">new</span></span><br><span class="line"><span class="keyword">endclass</span> : apb_transfer</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">endif</span> // APB_TRANSFER_SV</span></span><br></pre></td></tr></table></figure>
+<h4 id="底层apb-master-sequence"><a href="#底层apb-master-sequence" class="headerlink" title="底层apb_master_sequence"></a>底层apb_master_sequence</h4><ul>
+<li><p>apb_master_single_write_sequence</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> body();</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(),"Starting sequence", UVM_HIGH)</span></span><br><span class="line"> <span class="meta">`uvm_do_with(req, &#123;trans_kind == WRITE; addr == local::addr; data == local::data;&#125;)</span></span><br><span class="line">  get_response(rsp);</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(),$psprintf("Done sequence: %s",req.convert2string()), UVM_HIGH)</span></span><br><span class="line"><span class="keyword">endtask</span>: body</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>apb_master_single_read_sequence</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> body();</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(),"Starting sequence", UVM_HIGH)</span></span><br><span class="line"> <span class="meta">`uvm_do_with(req, &#123;trans_kind == READ; addr == local::addr;&#125;)</span></span><br><span class="line">  get_response(rsp);</span><br><span class="line">  data = rsp<span class="variable">.data</span>;</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(),$psprintf("Done sequence: %s",req.convert2string()), UVM_HIGH)</span></span><br><span class="line"><span class="keyword">endtask</span>: body</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>apb_master_write_read_sequence</p>
+<p>写完就读，设置cycle为0，写和读用的地址也是同一个</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rand</span> <span class="keyword">int</span>           idle_cycles; </span><br><span class="line"><span class="keyword">constraint</span> cstr&#123;</span><br><span class="line">  idle_cycles == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> body();</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(),"Starting sequence", UVM_HIGH)</span></span><br><span class="line"> <span class="meta">`uvm_do_with(req,  &#123;trans_kind == WRITE; </span></span><br><span class="line">                      addr == <span class="keyword">local</span>::addr; </span><br><span class="line">                      data == <span class="keyword">local</span>::data;</span><br><span class="line">                      idle_cycles == <span class="keyword">local</span>::idle_cycles;</span><br><span class="line">                     &#125;)</span><br><span class="line">  get_response(rsp);</span><br><span class="line">  <span class="meta">`uvm_do_with(req, &#123;trans_kind == READ; addr == local::addr;&#125;)</span></span><br><span class="line">  get_response(rsp);</span><br><span class="line">  data = rsp<span class="variable">.data</span>;</span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(),$psprintf("Done sequence: %s",req.convert2string()), UVM_HIGH)</span></span><br><span class="line"><span class="keyword">endtask</span>: body</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>apb_master_burst_write_sequence</p>
+<p>连续写：数据改为数组</p>
+<p>随机化：给一个连增的地址写入连增的数据</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>]      data[];</span><br><span class="line"><span class="keyword">constraint</span> cstr&#123;</span><br><span class="line">    <span class="keyword">soft</span> data<span class="variable">.size</span>() <span class="keyword">inside</span> &#123;<span class="number">4</span>, <span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;</span><br><span class="line">    <span class="keyword">foreach</span>(data[i]) <span class="keyword">soft</span> data[i] == addr + (i &lt;&lt; <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">task</span> body();</span><br><span class="line">    <span class="meta">`uvm_info(get_type_name(),"Starting sequence", UVM_HIGH)</span></span><br><span class="line">    <span class="keyword">foreach</span>(data[i]) <span class="keyword">begin</span></span><br><span class="line">	    <span class="meta">`uvm_do_with(req, &#123;trans_kind == WRITE; </span></span><br><span class="line">                         addr == <span class="keyword">local</span>::addr + (i&lt;&lt;<span class="number">2</span>); </span><br><span class="line">                         data == <span class="keyword">local</span>::data[i];</span><br><span class="line">                         idle_cycles == <span class="number">0</span>;</span><br><span class="line">                        &#125;)</span><br><span class="line">      get_response(rsp);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="meta">`uvm_do_with(req, &#123;trans_kind == IDLE;&#125;)</span></span><br><span class="line">    get_response(rsp);</span><br><span class="line">    <span class="meta">`uvm_info(get_type_name(),$psprintf("Done sequence: %s",req.convert2string()), UVM_HIGH)</span></span><br><span class="line">  <span class="keyword">endtask</span>: body</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>apb_master_burst_read_sequence</p>
+<p>连续读，将读回的结果放入data数组</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>]      addr;</span><br><span class="line">  <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>]      data[];</span><br><span class="line">  <span class="keyword">constraint</span> cstr&#123;</span><br><span class="line">    <span class="keyword">soft</span> data<span class="variable">.size</span>() <span class="keyword">inside</span> &#123;<span class="number">4</span>, <span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">`uvm_object_utils(apb_master_burst_read_sequence)</span></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">""</span>); </span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">  <span class="keyword">endfunction</span> : <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">task</span> body();</span><br><span class="line">    <span class="meta">`uvm_info(get_type_name(),"Starting sequence", UVM_HIGH)</span></span><br><span class="line">    <span class="keyword">foreach</span>(data[i]) <span class="keyword">begin</span></span><br><span class="line">	    <span class="meta">`uvm_do_with(req, &#123;trans_kind == READ; </span></span><br><span class="line">                         addr == <span class="keyword">local</span>::addr + (i&lt;&lt;<span class="number">2</span>); </span><br><span class="line">                         idle_cycles == <span class="number">0</span>;</span><br><span class="line">                        &#125;)</span><br><span class="line">      get_response(rsp);</span><br><span class="line">      data[i] = rsp<span class="variable">.data</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="meta">`uvm_do_with(req, &#123;trans_kind == IDLE;&#125;)</span></span><br><span class="line">    get_response(rsp);</span><br><span class="line">    <span class="meta">`uvm_info(get_type_name(),$psprintf("Done sequence: %s",req.convert2string()), UVM_HIGH)</span></span><br><span class="line">  <span class="keyword">endtask</span>: body</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="apb-test"><a href="#apb-test" class="headerlink" title="apb_test"></a>apb_test</h3><p>test主要就是在build_phase中进行创建，让环境准备好；在run_phase中进行挂载，让系统跑起来~~</p>
+<p>test cases真正的核心在于sequences</p>
+<h4 id="apb-base-test-sequence"><a href="#apb-base-test-sequence" class="headerlink" title="apb_base_test_sequence"></a>apb_base_test_sequence</h4><p>check_mem_data()方法原理：(参考上面的结构图)</p>
+<p>关联数组mem：bit[31:0] 对应32位地址总线</p>
+<p>用来master和slave之间的数据比对，test和slave中都有一个mem，master通过接口发送数据给slave，slave中的mem和test中的mem都会存储这个数据，等从slave读回数据时，就可以和test中mem里面的数据进行比较。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> apb_base_test_sequence <span class="keyword">extends</span> uvm_sequence <span class="variable">#(apb_transfer)</span>;</span><br><span class="line">  <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] mem[<span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>]];</span><br><span class="line">  <span class="meta">`uvm_object_utils(apb_base_test_sequence)</span></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">""</span>); </span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">  <span class="keyword">endfunction</span> : <span class="keyword">new</span></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">bit</span> check_mem_data(<span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] addr, <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] data);</span><br><span class="line">    <span class="keyword">if</span>(mem<span class="variable">.exists</span>(addr)) <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">if</span>(data != mem[addr]) <span class="keyword">begin</span></span><br><span class="line">        <span class="meta">`uvm_error("CMPDATA", $sformatf("addr 32'h%8x, READ DATA expected 32'h%8x != actual 32'h%8x", addr, mem[addr], data))</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="meta">`uvm_info("CMPDATA", $sformatf("addr 32'h%8x, READ DATA 32'h%8x comparing success!", addr, data), UVM_LOW)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">if</span>(data != <span class="number">0</span>) <span class="keyword">begin</span></span><br><span class="line">        <span class="meta">`uvm_error("CMPDATA", $sformatf("addr 32'h%8x, READ DATA expected 32'h00000000 != actual 32'h%8x", addr, data))</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="meta">`uvm_info("CMPDATA", $sformatf("addr 32'h%8x, READ DATA 32'h%8x comparing success!", addr, data), UVM_LOW)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endfunction</span>: check_mem_data</span><br><span class="line"></span><br><span class="line">  <span class="keyword">task</span> wait_reset_release();</span><br><span class="line">    @(<span class="keyword">negedge</span> apb_tb<span class="variable">.rstn</span>);</span><br><span class="line">    @(<span class="keyword">posedge</span> apb_tb<span class="variable">.rstn</span>);</span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">task</span> wait_cycles(<span class="keyword">int</span> n);</span><br><span class="line">    <span class="keyword">repeat</span>(n) @(<span class="keyword">posedge</span> apb_tb<span class="variable">.clk</span>);</span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] get_rand_addr();</span><br><span class="line">    <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] addr;</span><br><span class="line">    <span class="keyword">void</span>'(std::randomize(addr) <span class="keyword">with</span> &#123;addr[<span class="number">31</span>:<span class="number">12</span>] == <span class="number">0</span>; addr[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">0</span>;&#125;);</span><br><span class="line">    <span class="keyword">return</span> addr;</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<h4 id="apb-single-transaction-sequence类"><a href="#apb-single-transaction-sequence类" class="headerlink" title="apb_single_transaction_sequence类"></a><strong><code>apb_single_transaction_sequence</code>类</strong></h4><p>可以看到base_test的sequence没有body（）方法，也就是激励的挂载全部交由子类进行</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> body();</span><br><span class="line">  <span class="keyword">bit</span>[<span class="number">31</span>:<span class="number">0</span>] addr;</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.wait_reset_release</span>();</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.wait_cycles</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// TEST continous write transaction：</span></span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(), "TEST continous write transaction...", UVM_LOW)</span></span><br><span class="line">  <span class="keyword">repeat</span>(test_num) <span class="keyword">begin</span></span><br><span class="line">    addr = <span class="keyword">this</span><span class="variable">.get_rand_addr</span>();</span><br><span class="line">    <span class="meta">`uvm_do_with(single_write_seq, &#123;addr == local::addr; data == local::addr;&#125;)</span></span><br><span class="line">    mem[addr] = addr;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// TEST continous read transaction</span></span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(), "TEST continous read transaction...", UVM_LOW)</span></span><br><span class="line">  <span class="keyword">repeat</span>(test_num) <span class="keyword">begin</span></span><br><span class="line">    addr = <span class="keyword">this</span><span class="variable">.get_rand_addr</span>();</span><br><span class="line">    <span class="meta">`uvm_do_with(single_read_seq, &#123;addr == local::addr;&#125;)</span></span><br><span class="line">    <span class="keyword">void</span>'(<span class="keyword">this</span><span class="variable">.check_mem_data</span>(addr, single_read_seq<span class="variable">.data</span>));</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// TEST read transaction after write transaction</span></span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(), "TEST read transaction after write transaction...", UVM_LOW)</span></span><br><span class="line">  <span class="keyword">repeat</span>(test_num) <span class="keyword">begin</span></span><br><span class="line">    addr = <span class="keyword">this</span><span class="variable">.get_rand_addr</span>();</span><br><span class="line">    <span class="meta">`uvm_do_with(single_write_seq, &#123;addr == local::addr; data == local::addr;&#125;)</span></span><br><span class="line">    mem[addr] = addr;</span><br><span class="line">    <span class="meta">`uvm_do_with(single_read_seq, &#123;addr == local::addr;&#125;)</span></span><br><span class="line">    <span class="keyword">void</span>'(<span class="keyword">this</span><span class="variable">.check_mem_data</span>(addr, single_read_seq<span class="variable">.data</span>));</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// TEST read transaction immediately after write transaction</span></span><br><span class="line">  <span class="meta">`uvm_info(get_type_name(), "TEST read transaction immediately after write transaction", UVM_LOW)</span></span><br><span class="line">  <span class="keyword">repeat</span>(test_num) <span class="keyword">begin</span></span><br><span class="line">    addr = <span class="keyword">this</span><span class="variable">.get_rand_addr</span>();</span><br><span class="line">    <span class="meta">`uvm_do_with(write_read_seq, &#123;addr == local::addr; data == local::addr;&#125;)</span></span><br><span class="line">    mem[addr] = addr;</span><br><span class="line">    <span class="keyword">void</span>'(<span class="keyword">this</span><span class="variable">.check_mem_data</span>(addr, write_read_seq<span class="variable">.data</span>));</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span><span class="variable">.wait_cycles</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-2-APB协议的断言检查和断言覆盖率"><a href="#3-2-APB协议的断言检查和断言覆盖率" class="headerlink" title="3.2 APB协议的断言检查和断言覆盖率"></a>3.2 APB协议的断言检查和断言覆盖率</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210802184827.png" alt="image-20210802184155414" style="zoom: 80%;" /><img src="https://gitee.com/biongd/img/raw/master/img/20210802225324.png" alt="image-20210802225324329"></p>
+<p><strong>问：为啥这里的读、写都是用##2的，中间空的一拍呢？</strong></p>
+<p>APB总线的时序，中间空了一拍setup的状态。</p>
+<p>以连续写为例：相当于PENABLE为1时，写入数据。下一拍：PSEL和PWRITE保持，PENABLE为0，此时为setup状态，也就是开启了一次新的传输，PWDATA也在此时建立。再下一拍：PENABLE拉高，数据写入。</p>
+<p><strong>即一次写或读需要 两拍时钟才能完成</strong>：见断言覆盖率-1</p>
+<h3 id="断言检查："><a href="#断言检查：" class="headerlink" title="断言检查："></a>断言检查：</h3><p>所有property都在interface中定义，先看一下interface中总线信号的定义</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> apb_if (<span class="keyword">input</span> clk, <span class="keyword">input</span> rstn);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] paddr;</span><br><span class="line">  <span class="keyword">logic</span>        pwrite;</span><br><span class="line">  <span class="keyword">logic</span>        psel;</span><br><span class="line">  <span class="keyword">logic</span>        penable;</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] pwdata;</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] prdata;</span><br></pre></td></tr></table></figure>
+<p><strong>1.在PSEL为高时，PADDR总线不可以为X值</strong></p>
+<p>注意系统boolean方法：$isunknown()：信号为x则返回1</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_paddr_no_x;</span><br><span class="line">    @(<span class="keyword">posedge</span> clk) psel |-&gt; !<span class="built_in">$isunknown</span>(paddr);</span><br><span class="line"><span class="keyword">endproperty</span>: p_paddr_no_x</span><br><span class="line"><span class="keyword">assert</span> <span class="keyword">property</span>(p_paddr_no_x) <span class="keyword">else</span> <span class="meta">`uvm_error("ASSERT", "PADDR is unknown when PSEL is high")</span></span><br></pre></td></tr></table></figure>
+<p><strong>2.在PSEL拉高的下一个周期，PENABLE也应该拉高</strong></p>
+<p>注意系统boolean方法：$rose()：上一拍的值为0，这一拍的值为1，则返回1</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_psel_rose_next_cycle_penable_rise;</span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="built_in">$rose</span>(psel) |=&gt; <span class="built_in">$rose</span>(penable);</span><br><span class="line"><span class="keyword">endproperty</span>: p_psel_rose_next_cycle_penable_rise</span><br><span class="line"><span class="keyword">assert</span> <span class="keyword">property</span>(p_psel_rose_next_cycle_penable_rise) <span class="keyword">else</span> <span class="meta">`uvm_error("ASSERT", "PENABLE not rose after 1 cycle PSEL rose")</span></span><br></pre></td></tr></table></figure>
+<p><strong>3.在PENABLE拉高的下一个周期，PENABLE应该拉低</strong></p>
+<p>注意系统boolean方法：$fell()：上一拍的值为1，这一拍的值为0，则返回1</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_penable_rose_next_cycle_fall;</span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="built_in">$rose</span>(penable) |=&gt; <span class="built_in">$fell</span>(penable);</span><br><span class="line"><span class="keyword">endproperty</span>: p_penable_rose_next_cycle_fall</span><br><span class="line"><span class="keyword">assert</span> <span class="keyword">property</span>(p_penable_rose_next_cycle_fall) <span class="keyword">else</span> <span class="meta">`uvm_error("ASSERT", "PENABLE not fall after 1 cycle PENABLE rose")</span></span><br></pre></td></tr></table></figure>
+<p><strong>4.在PSEL和PWRITE同时保持为高的阶段，PWDATA需要保持</strong> </p>
+<p>注意系统boolean方法：$stable()：信号在时钟上升沿保持不变（也就是第二拍的数据和第一拍保持一样）则返回1</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_pwdata_stable_during_trans_phase;</span><br><span class="line">  @(<span class="keyword">posedge</span> clk) ((psel &amp;&amp; !penable) ##<span class="number">1</span> (psel &amp;&amp; penable)) |-&gt; <span class="built_in">$stable</span>(pwdata);</span><br><span class="line"><span class="keyword">endproperty</span>: p_pwdata_stable_during_trans_phase</span><br><span class="line"><span class="keyword">assert</span> <span class="keyword">property</span>(p_pwdata_stable_during_trans_phase) <span class="keyword">else</span> <span class="meta">`uvm_error("ASSERT", "PWDATA not stable during transaction phase")</span></span><br></pre></td></tr></table></figure>
+<p><strong>5.下一次传输开始前（如何判断下一次传播啥时候开始），PADDR和PWRITE信号应该保持不变</strong></p>
+<p>当前者为某个区间取值，例如[1:5]，如果没有|-&gt;或者|=&gt;时，则匹配一次即可进入下一阶段或者断言成功，但是如果有|-&gt;或者|=&gt;时，则必须保证所有情况都满足才能进入下一阶段，否则卡死。而first_match的作用就是在此时，使得只要出现一种满足情况即可进入下一阶段。</p>
+<p>$rose(penable)：第一次数据传输，记录此时PADDR和PWRITE</p>
+<p>(psel &amp;&amp; !penable)[=1]：第二次setup，记录上一拍的。。。看一下时序图，在setup的这一拍传入新的PADDR</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_paddr_stable_until_next_trans;       <span class="comment">//PADDR保持不变</span></span><br><span class="line">  <span class="keyword">logic</span>[<span class="number">31</span>:<span class="number">0</span>] addr1, addr2;</span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="keyword">first_match</span>((<span class="built_in">$rose</span>(penable),addr1=paddr) ##<span class="number">1</span> ((psel &amp;&amp; !penable)[=<span class="number">1</span>],addr2=<span class="built_in">$past</span>(paddr))) |-&gt; addr1 == addr2;</span><br><span class="line"><span class="keyword">endproperty</span>: p_paddr_stable_until_next_trans</span><br><span class="line"><span class="keyword">assert</span> <span class="keyword">property</span>(p_paddr_stable_until_next_trans) <span class="keyword">else</span> <span class="meta">`uvm_error("ASSERT", "PADDR not stable until next transaction start")</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">property</span> p_pwrite_stable_until_next_trans;     <span class="comment">//PWRITE保持不变</span></span><br><span class="line">  <span class="keyword">logic</span> pwrite1, pwrite2;</span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="keyword">first_match</span>((<span class="built_in">$rose</span>(penable),pwrite1=pwrite) ##<span class="number">1</span> ((psel &amp;&amp; !penable)[=<span class="number">1</span>],pwrite2=<span class="built_in">$past</span>(pwrite))) |-&gt; pwrite1 == pwrite2;</span><br><span class="line"><span class="keyword">endproperty</span>: p_pwrite_stable_until_next_trans</span><br><span class="line"><span class="keyword">assert</span> <span class="keyword">property</span>(p_pwrite_stable_until_next_trans) <span class="keyword">else</span> <span class="meta">`uvm_error("ASSERT", "PWRITE not stable until next transaction start")</span></span><br></pre></td></tr></table></figure>
+<p><strong>6.在PENABLE拉高的同一个周期，如果是读信号，PRDATA应该发生变化</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_prdata_available_once_penable_rose;</span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="built_in">$rose</span>(penable) &amp;&amp; !pwrite |-&gt; !<span class="built_in">$stable</span>(prdata);</span><br><span class="line"><span class="keyword">endproperty</span>: p_prdata_available_once_penable_rose</span><br><span class="line"><span class="keyword">assert</span> <span class="keyword">property</span>(p_prdata_available_once_penable_rose) <span class="keyword">else</span> <span class="meta">`uvm_error("ASSERT", "PRDATA not available once PENABLE rose")</span></span><br></pre></td></tr></table></figure>
+<p><strong>7.断言检查的控制</strong></p>
+<p>只有做过复位之后才将断言检查打开</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span>: assertion_control</span><br><span class="line">  <span class="keyword">fork</span></span><br><span class="line">    <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">wait</span>(rstn == <span class="number">0</span>);</span><br><span class="line">      <span class="built_in">$assertoff</span>();</span><br><span class="line">      <span class="keyword">wait</span>(rstn == <span class="number">1</span>);</span><br><span class="line">      <span class="built_in">$asserton</span>();</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">join_none</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="断言覆盖率"><a href="#断言覆盖率" class="headerlink" title="断言覆盖率"></a>断言覆盖率</h3><p><strong>1.写操作时，分别发生连续写（</strong>只需要覆盖到PSEL连续4拍为高，同时PWRITE连续4拍为高才能保证，PENABLE和PSEL的关系在上面的断言检查中已经检查过了 ，不用重复定义）<strong>和非连续写</strong>（PSEL信号每两拍就得拉下来至少1拍，PWRITE无所谓）</p>
+<p>注意：</p>
+<p>操作符throughout必须连接一个表达式和一个序列即req throughout seq，含义是在seq匹配起始到结束期间，req都必须成立。</p>
+<p>[*2]：连续两拍</p>
+<p>[=1]：非连续的1拍，前面（0-n）拍为！penable，后面（0-n）拍为！penable</p>
+<ul>
+<li>不连续的写了两次</li>
+<li>连续的写了两次</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_write_during_nonburst_trans;    <span class="comment">//非连续写</span></span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="built_in">$rose</span>(penable) |-&gt; pwrite <span class="keyword">throughout</span> (##<span class="number">1</span> (!penable)[*<span class="number">2</span>] ##<span class="number">1</span> penable[=<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">endproperty</span>: p_write_during_nonburst_trans</span><br><span class="line"><span class="keyword">cover</span> <span class="keyword">property</span>(p_write_during_nonburst_trans);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">property</span> p_write_during_burst_trans;       <span class="comment">//连续写</span></span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="built_in">$rose</span>(penable) |-&gt; pwrite <span class="keyword">throughout</span> (##<span class="number">2</span> penable);</span><br><span class="line"><span class="keyword">endproperty</span>: p_write_during_burst_trans</span><br><span class="line"><span class="keyword">cover</span> <span class="keyword">property</span>(p_write_during_burst_trans);</span><br></pre></td></tr></table></figure>
+<p><strong>2.对同一个地址先做写操作，再不间隔做读操作</strong></p>
+<p>要求读的地址和写地址保持相同，</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_write_read_burst_trans;</span><br><span class="line">  <span class="keyword">logic</span>[<span class="number">31</span>:<span class="number">0</span>] addr;</span><br><span class="line">  @(<span class="keyword">posedge</span> clk) (<span class="built_in">$rose</span>(penable) &amp;&amp; pwrite, addr=paddr) |-&gt; (##<span class="number">2</span> (<span class="built_in">$rose</span>(penable) &amp;&amp; !pwrite &amp;&amp; addr==paddr)); </span><br><span class="line"><span class="keyword">endproperty</span>: p_write_read_burst_trans</span><br><span class="line"><span class="keyword">cover</span> <span class="keyword">property</span>(p_write_read_burst_trans);</span><br></pre></td></tr></table></figure>
+<p><strong>3.对同一个地址做连续两次写操作，再从中读取数据</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_write_twice_read_burst_trans;</span><br><span class="line">  <span class="keyword">logic</span>[<span class="number">31</span>:<span class="number">0</span>] addr;</span><br><span class="line">  @(<span class="keyword">posedge</span> clk) (<span class="built_in">$rose</span>(penable) &amp;&amp; pwrite, addr=paddr) |-&gt; (##<span class="number">2</span> (<span class="built_in">$rose</span>(penable) &amp;&amp; pwrite &amp;&amp; addr==paddr) ##<span class="number">2</span> (<span class="built_in">$rose</span>(penable) &amp;&amp; !pwrite &amp;&amp; addr==paddr) );</span><br><span class="line"><span class="keyword">endproperty</span>: p_write_twice_read_burst_trans</span><br><span class="line"><span class="keyword">cover</span> <span class="keyword">property</span>(p_write_twice_read_burst_trans);</span><br></pre></td></tr></table></figure>
+<p><strong>4.读操作时，分别发生连续读和不连续读</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> p_read_during_nonburst_trans;     <span class="comment">//直接套用不连续写</span></span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="built_in">$rose</span>(penable) |-&gt; !pwrite <span class="keyword">throughout</span> (##<span class="number">1</span> (!penable)[*<span class="number">2</span>] ##<span class="number">1</span> penable[=<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">endproperty</span>: p_read_during_nonburst_trans</span><br><span class="line"><span class="keyword">cover</span> <span class="keyword">property</span>(p_read_during_nonburst_trans);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">property</span> p_read_during_burst_trans;       <span class="comment">//直接套用连续写</span></span><br><span class="line">  @(<span class="keyword">posedge</span> clk) <span class="built_in">$rose</span>(penable) |-&gt; !pwrite <span class="keyword">throughout</span> (##<span class="number">2</span> penable);</span><br><span class="line"><span class="keyword">endproperty</span>: p_read_during_burst_trans</span><br><span class="line"><span class="keyword">cover</span> <span class="keyword">property</span>(p_read_during_burst_trans);</span><br></pre></td></tr></table></figure>
+<p><strong>5.发生对同一个地址的读操作再不间隔做写操作，再不间隔做读操作</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">property</span> p_read_write_read_burst_trans;</span><br><span class="line">   <span class="keyword">logic</span>[<span class="number">31</span>:<span class="number">0</span>] addr;</span><br><span class="line">@(<span class="keyword">posedge</span> clk) (<span class="built_in">$rose</span>(penable) &amp;&amp; !pwrite, addr=paddr) |-&gt; (##<span class="number">2</span> (<span class="built_in">$rose</span>(penable) &amp;&amp; pwrite &amp;&amp; addr==paddr) ##<span class="number">2</span> (<span class="built_in">$rose</span>(penable) &amp;&amp; !pwrite &amp;&amp; addr==paddr) );</span><br><span class="line"> <span class="keyword">endproperty</span>: p_read_write_read_burst_trans</span><br><span class="line"> <span class="keyword">cover</span> <span class="keyword">property</span>(p_read_write_read_burst_trans);</span><br></pre></td></tr></table></figure>
+<h2 id="仿真命令"><a href="#仿真命令" class="headerlink" title="仿真命令"></a>仿真命令</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vsim -novopt -sv_seed random -assertdebug -assertcover -classdebug +UVM_TESTNAME=apb_single_transaction_test -l assertion<span class="variable">.log</span> work<span class="variable">.apb_tb</span></span><br></pre></td></tr></table></figure>
+<h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><h4 id="assertion"><a href="#assertion" class="headerlink" title="assertion"></a>assertion</h4><p><img src="https://gitee.com/biongd/img/raw/master/img/20210803004043.png" alt="image-20210803004043117"></p>
+<p>可以看到定义的7个并行断言</p>
+<ul>
+<li>pass count：真正通过property的，而不是空成功的（前置和后置seq都满足）</li>
+<li>active count：当前后台有没有正在做检查的assertion</li>
+<li>failure count：失败的property</li>
+<li>peak memory：峰值的memory，当前a满足，就需要开个线程去评估b，如果下一拍还满足就再开一个线程，当覆盖多个周期时，线程的累计会消耗大量资源</li>
+</ul>
+<h4 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h4><p><img src="https://gitee.com/biongd/img/raw/master/img/20210803005728.png" alt="image-20210803005728575" style="zoom:80%;" /></p>
+<p>可以直观的看到错误的数量，这也是为什么选择用`uvm_error进行打印！！！</p>
+<h4 id="assertion波形"><a href="#assertion波形" class="headerlink" title="assertion波形"></a>assertion波形</h4><p><img src="https://gitee.com/biongd/img/raw/master/img/20210803010000.png" alt="image-20210803010000612"></p>
+<p>断言检查的第4项：property p_pwdata_stable_during_trans_phase;</p>
+<p>蓝点代表start：进入assert；黄点代表pass：在第二拍验证通过</p>
+<h4 id="covergroup"><a href="#covergroup" class="headerlink" title="covergroup"></a>covergroup</h4><p>功能覆盖率</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210803010732.png" alt="image-20210803010732214"></p>
+<h4 id="cover-directives"><a href="#cover-directives" class="headerlink" title="cover directives"></a>cover directives</h4><p>断言覆盖率</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210803011005.png" alt="image-20210803011005771"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E5%AD%97IC/" rel="tag"># 数字IC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/12/13/%E6%89%93%E5%AD%97%E6%97%B6%E5%BF%AB%E9%80%9F%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87/" rel="next" title="打字时快速移动光标">
+                <i class="fa fa-chevron-left"></i> 打字时快速移动光标
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/20/%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96_%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/" rel="prev" title="资源获取/软件下载">
+                资源获取/软件下载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-MCDF设计更新"><span class="nav-text">1. MCDF设计更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-结构更新"><span class="nav-text">1.1 结构更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-接口变化"><span class="nav-text">1.2 接口变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#slave-node接口"><span class="nav-text">slave node接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#register接口-AMBA-APB标准总线"><span class="nav-text">register接口(AMBA APB标准总线)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#formatter接口"><span class="nav-text">formatter接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-时序更新"><span class="nav-text">1.3 时序更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#slave-node接口时序"><span class="nav-text">slave node接口时序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#formatter数据包格式以及接口时序"><span class="nav-text">formatter数据包格式以及接口时序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器更新"><span class="nav-text">寄存器更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-UVM验证环境更新策略"><span class="nav-text">2. UVM验证环境更新策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-组件更新"><span class="nav-text">2.1 组件更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-环境更新"><span class="nav-text">2.2 环境更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-测试更新"><span class="nav-text">2.3 测试更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-环境复用和序列复用"><span class="nav-text">2.4 环境复用和序列复用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-代码"><span class="nav-text">3. 代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-APB的VIP"><span class="nav-text">3.1 APB的VIP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#底层svh和sv"><span class="nav-text">底层svh和sv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶层svh和sv"><span class="nav-text">顶层svh和sv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interface"><span class="nav-text">interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transcation-和-sequence"><span class="nav-text">transcation 和 sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apb-transfer-sv"><span class="nav-text">apb_transfer.sv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#底层apb-master-sequence"><span class="nav-text">底层apb_master_sequence</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apb-test"><span class="nav-text">apb_test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apb-base-test-sequence"><span class="nav-text">apb_base_test_sequence</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apb-single-transaction-sequence类"><span class="nav-text">apb_single_transaction_sequence类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-APB协议的断言检查和断言覆盖率"><span class="nav-text">3.2 APB协议的断言检查和断言覆盖率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#断言检查："><span class="nav-text">断言检查：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断言覆盖率"><span class="nav-text">断言覆盖率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仿真命令"><span class="nav-text">仿真命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行结果"><span class="nav-text">执行结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#assertion"><span class="nav-text">assertion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志"><span class="nav-text">日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assertion波形"><span class="nav-text">assertion波形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#covergroup"><span class="nav-text">covergroup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cover-directives"><span class="nav-text">cover directives</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

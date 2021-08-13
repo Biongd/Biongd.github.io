@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数字IC," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="完成了SV和UVM的学习，也算是初出茅庐了。这篇文章主要是对行业的一些知识进行总结归纳，逐步提升自己对于行业的理解，用一个更高的视角来看待这份工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拔高知识">
+<meta property="og:url" content="http://yoursite.com/2020/12/08/IC-%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="完成了SV和UVM的学习，也算是初出茅庐了。这篇文章主要是对行业的一些知识进行总结归纳，逐步提升自己对于行业的理解，用一个更高的视角来看待这份工作">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801170714.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801171147.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308142623657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308142921805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308144019886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308144806274.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308144923715.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308145848386.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021030815035496.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308155042918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308155222667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210308170505437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801230926.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801230922.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801230905.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210801230909.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802083357.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802090109.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802154220.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802154141.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802160046.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802160525.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802160816.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802161724.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802162204.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802162230.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802162334.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802162403.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802164036.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802170317.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802170407.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802170510.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802184735.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802184803.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210802184827.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803154422.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803160337.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803160413.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210803161349.png">
+<meta property="article:published_time" content="2020-12-08T06:25:30.000Z">
+<meta property="article:modified_time" content="2021-08-13T04:16:33.903Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta property="article:tag" content="数字IC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210801170714.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/12/08/IC-拔高知识/"/>
+
+
+
+
+
+  <title>拔高知识 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/08/IC-%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">拔高知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-08T14:25:30+08:00">
+                2020-12-08
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-08-13T12:16:33+08:00" content="2021-08-13">
+                          2021-08-13
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97-SystemVerilog-verilog%E5%9F%BA%E7%A1%80-mcdf%E5%AE%9E%E9%AA%8C-UVM/" itemprop="url" rel="index">
+                    <span itemprop="name">数字-SystemVerilog.verilog基础.mcdf实验.UVM.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>完成了SV和UVM的学习，也算是初出茅庐了。这篇文章主要是对行业的一些知识进行总结归纳，逐步提升自己对于行业的理解，用一个更高的视角来看待这份工作</p>
+<a id="more"></a>
+<h1 id="AMBA标准接口"><a href="#AMBA标准接口" class="headerlink" title="AMBA标准接口"></a>AMBA标准接口</h1><h2 id="AMBA概述"><a href="#AMBA概述" class="headerlink" title="AMBA概述"></a>AMBA概述</h2><p>什么是AMBA（Advanced Microcontroller Bus Architecture）片上总线？</p>
+<p>随着深亚微米工艺技术日益成熟，集成电路芯片的规模越来越大。数字IC从基于时序驱动的设计方法，发展到基于IP复用的设计方法，并在SOC设计中得到了广泛应用。<strong>在基于IP复用的SoC设计中，片上总线设计是最关键的问题</strong>。为此，业界出现了很多片上总线标准。其中，由<strong>ARM公司推出的AMBA片内总线</strong>受到了广大IP开发商和SoC系统集成者的青睐，已成为一种流行的工业标准片上结构。AMBA规范主要包括了AHB(Advanced High performance Bus)系统总线和APB(Advanced Peripheral Bus)外围总线。</p>
+<p>AMBA高级处理器总线架构，不同的速率需求构成了为高性能SoC设计的通信标准：</p>
+<ul>
+<li>AHB(advanced high-performance bus)高级高性能总线</li>
+<li>APB(advanced peripheral bus)高级外围总线</li>
+<li>AXI(advanced eXtension interface)高级可拓展接口</li>
+</ul>
+<p>1995 - AMBA1.0 定义了APB外设总线以及ASB系统总线</p>
+<p>1999 - AMBA2.0 定义了AHB - Advanced High-performance Bus, APB总线升级为同步总线</p>
+<p>2003 - AMBA3.0 发布了高性能互联协议AXI,  以及APB总线扩展, AHB-Lite协议等</p>
+<p>以及后来发布的AMBA4.0, AMBA5.0 协议, 定义了更多的总线及扩展。</p>
+<p>具体可参考<a href="https://www.arm.com/products/silicon-ip-system/embedded-system-design/amba-specifications" target="_blank" rel="noopener">arm官网</a></p>
+<p><strong>AHB</strong><br>AHB主要是针对高效率、高频宽以及快速系统模块所设计的总线，它可以连接如微处理器、芯片上或者芯片外的内存模块和DMA等高效率模块。</p>
+<p><strong>APB</strong><br>APB主要用在低速且低功率的外围，可针对外围设备作功率消耗以及复杂接口的最佳化。APB在AHB和低带宽的外围设备之间提供了通信的桥梁，所以APB是AHB的二级拓展总线。如利用apb连接各种低速外设/外围控制器。如uart, i2c, sdio, i2s, pwm, timer, efuse, spi等等。</p>
+<p><strong>AXI</strong><br>AXI 为AMBA3.0引入的总线协议, AXI高速度、高带宽，管道化互联，单向通道，只需要首地址，读写并行，支持乱序，支持非对齐操作，有效支持初始延迟较高的外设，连线非常多。</p>
+<p>相比AHB有更多的优势,  故现在SOC设计中有取代AHB的趋势。</p>
+<p>可直接连接ddr controller, usb controller, dma controller, sram, gic, AES加解密芯片等等, 也可以利用axi bridage连接apb总线, 利用apb连接各种低速外设/外围控制器。如uart, i2c, sdio, i2s, pwm, timer, efuse, spi等等。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210801170714.png" alt="image-20210801170714811" style="zoom:67%;" /></p>
+<h2 id="AHB接口"><a href="#AHB接口" class="headerlink" title="AHB接口"></a>AHB接口</h2><h3 id="AHB的组成"><a href="#AHB的组成" class="headerlink" title="AHB的组成"></a>AHB的组成</h3><ul>
+<li>Master：能够发起读写操作，提供地址和控制信号，同一时间只有1个Master会被激活。</li>
+<li>Slave：在给定的地址范围内对读写操作作响应，并对Master返回成功、失败或者等待状态。</li>
+<li>Arbiter：负责保证总线上一次只有1个Master在工作。仲裁协议是规定的，但是仲裁算法可以根据应用决定。</li>
+<li>Decoder：负责对地址进行解码，并提供片选信号到各Slave。每个AHB都需要1个仲裁器和1个中央解码器。</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210801171147.png" alt="image-20210801171147310" style="zoom:67%;" /></p>
+<p>AHB基本信号</p>
+<ul>
+<li>HADDR：32位系统地址总线。</li>
+<li>HTRANS：M指示传输状态，NONSEQ、SEQ、IDLE、BUSY。</li>
+<li>HWRITE：传输方向1-写，0-读。</li>
+<li>HSIZE：传输单位。</li>
+<li>HBURST：传输的burst类型，SINGLE、INCR、WRAP4、INCR4。</li>
+<li>HWDATA：写数据总线，从M写到S。</li>
+<li>HREADY：S应答M是否读写操作传输完成，1-传输完成，0-需延长传输周期。</li>
+<li>HRESP：S应答当前传输状态，OKAY、ERROR、RETRY、SPLIT。</li>
+<li>HRDATA：读数据总线，从S读到M。</li>
+</ul>
+<p>AHB基本传输</p>
+<ul>
+<li>两个阶段。</li>
+<li>地址周期(AP)，只有一个周期。</li>
+<li>数据周期(DP)，由HREADY信号决定需要几个周期。</li>
+<li>流水线传送。</li>
+<li>先是地址周期，然后是数据周期。</li>
+</ul>
+<p><strong>等待传输状态：</strong></p>
+<p><code>HREADY</code>信号拉高才能读写数据</p>
+<p><img src="https://img-blog.csdnimg.cn/20210308142623657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>AHB transfer传输：</strong></p>
+<p>将上图的Control信号展开为HTRANS信号和HBURST信号。HBURST设置为INCR，即地址连续增长。NONSEQ指的是连续发送数据中的第一个数据，而SEQ指的是传输过程里面的数据。BUSY指的是虽然准备发送数据，而且是在发送数据过程里面，但是还没有准备好当前的这个数据，所以要等待下一拍才发送数据，因此就出现了两次0x24这个地址。<br><img src="https://img-blog.csdnimg.cn/20210308142921805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> </p>
+<p><strong>AHB burst传输：</strong></p>
+<p><code>HBURST</code>信号设置为<code>INCR4</code>，表示连续发送4个数据。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210308144019886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="APB接口"><a href="#APB接口" class="headerlink" title="APB接口"></a>APB接口</h2><ul>
+<li>主要应用在低带宽的外设上，如UART、I2C，它的架构不像AHB总线是多主设备的架构。</li>
+<li>APB总线的唯一主设备是APB桥(与AXI或APB相连)，因此不需要仲裁一些request/grant信号。</li>
+<li>APB的协议也十分简单，甚至不是流水的操作，固定两个时钟周期完成一次读或写的操作。</li>
+<li>其特性包括：两个时钟周期传输，无需等待周期和回应信号，控制逻辑简单，只有四个控制信号。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20210308144806274.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" style="zoom:80%;" /></p>
+<p>APB时序协议的状态机</p>
+<p><img src="https://img-blog.csdnimg.cn/20210308144923715.png" alt="在这里插入图片描述"></p>
+<h3 id="idle-状态"><a href="#idle-状态" class="headerlink" title="idle 状态"></a>idle 状态</h3><p><strong>系统初始化为IDLE状态</strong>，此时没有传输操作，也没有选中任何从模块。当<strong>有传输要进行时</strong>，PSELx=1，PENABLE=0，系统进入SETUP状态，并只会在SETUP状态停留一个周期。当PCLK的下一个上升沿到来时，<strong>系统进入ENABLE状态</strong>。系统进入ENABLE状态时，维持之前在SETUP状态的PADDR、PSEL、PWRITE不变，并将PENABLE置为1。传输也只会在ENABLE状态维持一个周期，在经过SETUP与ENABLE状态之后就已完成。之后如果没有传输要进行，就进入IDLE状态等待，如果有连续的传输，则进入SETUP状态。</p>
+<h3 id="写操作"><a href="#写操作" class="headerlink" title="写操作"></a><strong>写操作</strong></h3><p><img src="https://img-blog.csdnimg.cn/20210308145848386.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>写操作发生时，伴随着地址线、写数据线、写信号线以及选择线一同变化。</li>
+<li>写操作的第一个周期称之为SETUP周期。</li>
+<li>写一个周期，PENABLE信号线置起，这表示ENABLE周期。</li>
+<li>在ENABLE周期，地址线、数据线和控制线都应该保持有效。</li>
+<li>在ENABLE周期结束后，本次写操作结束。</li>
+<li>PENABLE在写操作周期结束后，会同PSEL一同拉低，除非又需要立即跟随下一次传输。</li>
+<li>为了省电，地址信号和写信号在一次传输过后不会改变，直到下一次传输发生。</li>
+</ul>
+<h3 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h3><p><img src="https://img-blog.csdnimg.cn/2021030815035496.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>地址线，写信号线、选择线将同写操作时一样保持不变。</li>
+<li>从端需要在<code>ENABLE</code>周期内，返回<code>PRDATA</code>。</li>
+<li><code>PRDATA</code>将在<code>ENABLE</code>周期的下一个周期被采样。</li>
+</ul>
+<h1 id="验证IP模板"><a href="#验证IP模板" class="headerlink" title="验证IP模板"></a>验证IP模板</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p><strong>什么是验证IP？</strong></p>
+<p>验证IP被用来植入到验证平台中，用来检查协议操作和接口。大多数标准协议和总线IP可以帮助检查基本的特性，例如系统启动，而VIP会做更多细致的检查。VIP的细致要求对于SoC复杂度增长所带来的验证困境相当重要。VIP可以在设计阶段的不同流程中充分应用。一个项目中，可以采取来自于不同提供商的VIP，共同构成一个完整的验证环境。</p>
+<h2 id="2-VIP的应用优势"><a href="#2-VIP的应用优势" class="headerlink" title="2. VIP的应用优势"></a>2. VIP的应用优势</h2><ul>
+<li>如上图粉色区域所示，可以用一个USB3.0 VIP来代替一个总线以及一个外设，降低仿真资源。</li>
+<li>VIP可以在模块级（标准接口多）和子系统，系统级阶段进行使用。</li>
+<li>利用VIP代替设计中的processor或者mem，降低动态仿真资源，提高效率。</li>
+</ul>
+<p>在大趋势SoC的技术换代，验证人员对PCIe、USB、DDR、以及AMBA总线标准的理解尤其重要！多做项目，啃标准。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210308155042918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>device VIP的使用</p>
+<p><img src="https://img-blog.csdnimg.cn/20210308155222667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" style="zoom:80%;" /></p>
+<h2 id="3-如何使用VIP？"><a href="#3-如何使用VIP？" class="headerlink" title="3. 如何使用VIP？"></a>3. <strong>如何使用VIP？</strong></h2><ul>
+<li>在开发SoC过程中，验证将占比超过一半的时间和人力，一个重要的原因就是层出不穷、多样化、不断升级的I/O组件。</li>
+<li>DDR存储接口也由于它在SoC中占据的比例增大，以及近年来为了解决功耗和延时问题所带来的新的复杂度。</li>
+<li>在原有验证语言(e、C、Vera、SV)中，都存在其对应的VIP，支持一些定向测试和随机测试。</li>
+<li>在后来的VMM、OVM以及UVM中，VIP的开发进一步地缩短了验证时间。</li>
+</ul>
+<h2 id="4-VIP的选择"><a href="#4-VIP的选择" class="headerlink" title="4. VIP的选择"></a>4. VIP的选择</h2><ul>
+<li>仿真器提供商是否有对应的VIP，其协议版本是否与设计协议版本相匹配。</li>
+<li>能否与其他公司的VIP兼容</li>
+<li>VIP的成熟度，如它之前的客户数量，以及是否经过了多次的silicon proven的开发周期。</li>
+<li>VIP的复杂度，编译和环境植入的难易度会直接影响验证的周期。</li>
+<li>是否能够查阅丰富的文档以及得到及时的技术支持。</li>
+</ul>
+<h1 id="VIP的开发和发布"><a href="#VIP的开发和发布" class="headerlink" title="VIP的开发和发布"></a>VIP的开发和发布</h1><p>面临的3个问题</p>
+<ul>
+<li>1/3的时间都是在进行验证环境的构建，有没有可能做到验证环境的自动化</li>
+<li>市面的开源框架只能做到验证框架的自动化，做不到标准化的验证VIP的自动填充</li>
+<li>验证环境构建起来了，添加用例之后，怎么把回归测试跑完，怎么收集功能覆盖率，再反过来更新测试用例</li>
+</ul>
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><ul>
+<li>对于会被经常复用的总线协议或者功能模块，可以针对其开发专用的验证IP(VIP)。</li>
+<li><strong>对于总线VIP，需要master agent和slave agent</strong>，有时也需要Environment去构建多个主端对从端的验证环境。</li>
+<li>VIP也需要对应的配置对象，即configuration object，同时也需要对应的接口。</li>
+</ul>
+<h2 id="2-主要的开发阶段"><a href="#2-主要的开发阶段" class="headerlink" title="2. 主要的开发阶段"></a>2. 主要的开发阶段</h2><p>阶段1(定义)</p>
+<ul>
+<li>功能特性提取</li>
+<li>特性覆盖率创建及映射</li>
+<li>VIP的架构</li>
+</ul>
+<p>阶段2(VIP基本搭建)</p>
+<ul>
+<li>driver、sequencer、monitor的少量实现（30%）</li>
+<li>实现基本上的端到端的sequence</li>
+</ul>
+<p>阶段3(完成monitor与scoreboard)</p>
+<ul>
+<li>完成monitor —— 100%实现(checkers，assertions)</li>
+<li>完成scoreboard —— 100%实现(数据完整性检查)</li>
+<li>在monitor中，完成监测到的transaction与function coverage实现映射。</li>
+<li>为映射更多的基本功能覆盖率，创建其它sequences。</li>
+</ul>
+<p>阶段4(扩充test和sequence阶段)</p>
+<ul>
+<li>实现更多sequences，从而获得80%的功能覆盖率。</li>
+</ul>
+<p>阶段5(完成标准)</p>
+<ul>
+<li>sequence最终可以实现100%的功能覆盖率。</li>
+<li>回归测试结果和最终的总结报告。</li>
+</ul>
+<h2 id="3-验证方法"><a href="#3-验证方法" class="headerlink" title="3. 验证方法"></a>3. 验证方法</h2><p>验证自己写的AHB的master agent和slave agent都没有问题，但是没有办法保证master或者slave都正确。如何验证自己写的VIP呢？</p>
+<p><img src="https://img-blog.csdnimg.cn/20210308170505437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Nzk0MDYy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>引入成熟的VIP放入到验证环境里面，类似于做反向。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210801230926.png" alt="在这里插入图片描述"></p>
+<p>把成熟的VIP的Master和自己的AHB的slave设置为Passive模式，连接两个验证模块。这样AHB的Master可以访问成熟的VIP的Slave，同时原有的test sequence library可以复用到AHB上面。这样就实现了用成熟VIP的测试序列去验证自己想要的Master。Passive模式下的Master可以monitor总线，也可以收集总线上的覆盖率，所以通过成熟的VIP的test和coverage来验证AHB的Master VIP。<br><img src="https://gitee.com/biongd/img/raw/master/img/20210801230922.png" alt="在这里插入图片描述" style="zoom:67%;" /></p>
+<p>接下来同样的道理，把成熟的Slave VIP和AHB的Master VIP设置为Passive模式，这样就可以使用成熟的test和coverage来验证AHB的Slave VIP。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210801230905.png" alt="在这里插入图片描述" style="zoom:67%;" /></p>
+<p>最后把成熟的Master VIP和Slave VIP都设置为Passive模式，相当于把整个成熟环境都Passive掉，因为AHB的Master和Slave通过上面的方法都得到了验证，所以就可以进行AHB的Master对AHB的Slave的验证了。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210801230909.png" alt="在这里插入图片描述" style="zoom:80%;" /></p>
+<h2 id="VIP的发布"><a href="#VIP的发布" class="headerlink" title="VIP的发布"></a>VIP的发布</h2><p><strong>主要内容</strong></p>
+<p><strong>VIP的源代码(可以选择加密，或者保留接口函数)</strong></p>
+<ul>
+<li>active模式包括：driver，sequencer和tests。</li>
+<li>passive模式包括：monitor，用来做协议检查的assertion，接口的function coverage model。</li>
+</ul>
+<p><strong>特性列表以及对应的覆盖率列表</strong></p>
+<p>明确我支持或者不支持协议的哪些特性</p>
+<ul>
+<li>保证与标准协议文档的主要特性对应。</li>
+<li>与对应组件的测试，功能覆盖点，协议assertion和scoreboard检查。</li>
+</ul>
+<p><strong>VIP文档</strong></p>
+<ul>
+<li>VIP的结构（在集成VIP的时候要理解各个子环境中的关联），具体的设计，用户指南（如何编译文件，功能覆盖率是多少），安装指令和覆盖率报告。</li>
+</ul>
+<p><strong>运行环境</strong></p>
+<ul>
+<li>回归仿真步骤(文件、编译、仿真、结果)。</li>
+</ul>
+<h1 id="assertion"><a href="#assertion" class="headerlink" title="assertion"></a>assertion</h1><p>用来与设计功能和时序做比较的属性描述</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802083357.png" alt="image-20210802083356955"></p>
+<p>规则：grant在request置起后的第二个周期拉起</p>
+<h2 id="断言的功能"><a href="#断言的功能" class="headerlink" title="断言的功能"></a>断言的功能</h2><ul>
+<li>检查设计内容</li>
+<li>提高设计的可视度和调试能力</li>
+<li>检查设计特性在验证中是否被覆盖 </li>
+</ul>
+<p>可读性好，因此可以用来服务于设计文档（断言的原则：越短越好）</p>
+<p>用来检查算法模型的断言在形式验证（formal verification）中可以穷尽计算，找出可能的违例（violation）。</p>
+<p>可以自由地打开和关闭</p>
+<p>一小部分子集甚至可以用来综合或移植到emulation中，用来完成跨平台的移植！！</p>
+<h2 id="基于断言的验证方法学（ABV）"><a href="#基于断言的验证方法学（ABV）" class="headerlink" title="基于断言的验证方法学（ABV）"></a>基于断言的验证方法学（ABV）</h2><p>Assertion Based Verification（ABV）方法学会定义断言</p>
+<p>如何被使用：</p>
+<ul>
+<li>谁写断言？</li>
+<li>哪种语言用来写断言（抽象概念，和语言无关）</li>
+<li>断言可以写在哪里（design里面或外面）</li>
+<li>可以使用哪些断言库library（）</li>
+<li>断言如何调试</li>
+<li>如何使用形式验证工具</li>
+<li>如何使用断言覆盖率</li>
+</ul>
+<p>断言覆盖率</p>
+<ul>
+<li>仿真工具可以报告断言覆盖率，来指示哪些断言没有被触发</li>
+<li>帮助检查是否验证计划捕捉到了所有需要的覆盖率</li>
+<li>断言覆盖率和功能覆盖率可以共同量化验证进度</li>
+</ul>
+<h2 id="类型划分"><a href="#类型划分" class="headerlink" title="类型划分"></a>类型划分</h2><p><strong>立即断言</strong></p>
+<ul>
+<li>非时序的</li>
+<li>执行时如同过程语句</li>
+<li>可以在initial/always过程块或task/function中使用</li>
+</ul>
+<p>并行断言</p>
+<ul>
+<li>时序性的</li>
+<li>关键词property用来区分立即断言和并行断言</li>
+<li><p>之所以称之为并行，是因为他们与设计模块一同并行执行</p>
+<p>例：<br>Request-Grant协议描述：request拉高，在2个周期后，grant拉高，在1个周期后，request拉低，在1个周期后，grant拉低</p>
+</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> req_grant_prop</span><br><span class="line">    @(<span class="keyword">posedge</span> clk) req ##<span class="number">2</span> gnt ##<span class="number">1</span> !req ## !gnt;</span><br><span class="line"><span class="keyword">endproperty</span> </span><br><span class="line"><span class="keyword">assert</span> <span class="keyword">property</span> req_grant_prop <span class="keyword">else</span> <span class="built_in">$error</span>(<span class="string">"Req-Gnt protocol violoation"</span>);</span><br></pre></td></tr></table></figure>
+<p>并行断言只会在时钟边沿激活，变量的值是采样到的值。</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802090109.png" alt="image-20210802090109515"></p>
+<h2 id="并行断言的执行阶段"><a href="#并行断言的执行阶段" class="headerlink" title="并行断言的执行阶段"></a>并行断言的执行阶段</h2><p>有点像monitor，不过monitor通过时钟块获得接口信号，其采样是在时钟上升沿之前的1个ps（看自己定义）</p>
+<h2 id="assertion，property，sequence"><a href="#assertion，property，sequence" class="headerlink" title="assertion，property，sequence"></a>assertion，property，sequence</h2><p><strong>assertion和property</strong></p>
+<ul>
+<li>assertion直接包含一个property</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">c_assert:  <span class="keyword">assert</span> <span class="keyword">property</span>(@(<span class="keyword">posedge</span> clk) <span class="keyword">not</span>(a &amp;&amp; b)</span><br><span class="line">        <span class="keyword">disable</span> <span class="keyword">iff</span> (rst);</span><br><span class="line">        <span class="built_in">$isunknown</span>(request) == <span class="number">0</span>;<span class="comment">//确保没有z或x存在</span></span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>assertion可以清晰独立的声明property</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">property</span> request_2state;</span><br><span class="line">    @(poseedge clk) <span class="keyword">disable</span> <span class="keyword">iff</span> (rst);</span><br><span class="line">    <span class="built_in">$isunknown</span>(request) == <span class="number">0</span>;<span class="comment">//确保没有z或x存在</span></span><br><span class="line"><span class="keyword">endproperty</span></span><br><span class="line">assert_request: <span class="keyword">assert</span> <span class="keyword">property</span>(request_2state);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>property内部可以有条件的关闭</p>
+<p>这里的disable iff（rst）；就是其开关</p>
+</li>
+</ul>
+<p><strong>property和sequence</strong></p>
+<p>这里的SV的sequence只是用来描述一个或多个时钟周期内的时序，和UVM中的sequence没啥关系，它是property的基本构建模块，并经过组合来描述复杂的功能属性</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sequence</span> s1;</span><br><span class="line">    @(<span class="keyword">posedge</span> clk) a ##<span class="number">1</span> b ##<span class="number">1</span> c;</span><br><span class="line"><span class="keyword">endsequence</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">sequence</span> s2;</span><br><span class="line">    @(<span class="keyword">posedge</span> clk) a ##<span class="number">1</span> c;</span><br><span class="line"><span class="keyword">endsequence</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">property</span> p1;</span><br><span class="line">    @(<span class="keyword">posedge</span> clk) <span class="keyword">disable</span> <span class="keyword">iff</span>(!reset)</span><br><span class="line">    s1 |=&gt; s2;</span><br><span class="line"><span class="keyword">endproperty</span></span><br></pre></td></tr></table></figure>
+<p>这里的<code>|=&gt;</code>符号，就表示如果s1的序列发生，则判断s2的序列是否紧接着发生。</p>
+<p>property一般就是对时序做判断，就是某一时序满足后看另一时序是否满足</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sequence</span> s1;</span><br><span class="line">    @(<span class="keyword">posedge</span> clk) a ##<span class="number">1</span> b ##<span class="number">1</span> c;</span><br><span class="line"><span class="keyword">endsequence</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">sequence</span> s2;</span><br><span class="line">    (a ##[<span class="number">2</span>:<span class="number">3</span>] b)  <span class="keyword">or</span> (c ##[<span class="number">1</span>:<span class="number">2</span>] d);</span><br><span class="line"><span class="keyword">endsequence</span></span><br></pre></td></tr></table></figure>
+<p>这里的中括号，就代表2-3拍以内</p>
+<p>功能覆盖率中想要实现对时序的覆盖，最好交由assertion来做</p>
+<h3 id="sequence"><a href="#sequence" class="headerlink" title="sequence"></a><strong>sequence</strong></h3><p><strong>用来提供下列的场景描述：</strong></p>
+<ul>
+<li>第一个时钟周期，第一个表达式成立</li>
+<li>接下来在若干个时钟周期后，第二个表达式也成立</li>
+<li>接下来的若干时钟周期，后续的表达式也成立。</li>
+</ul>
+<p><strong>sequence可以在哪些模块中声明</strong></p>
+<p>可以在module，interface，program，clocking块和package中声明</p>
+<p>一般就放入interface</p>
+<p><strong>sequence可以提供形式参数，用来提高复用性</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sequence</span> s20_1(data, en);</span><br><span class="line">    (!frame &amp;&amp; (data==data_bus)) ##<span class="number">1</span> (c_be[<span class="number">0</span>:<span class="number">3</span>] == en);</span><br><span class="line"><span class="keyword">endsequence</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>蕴含（implication）操作符用来表示：如果property中左边的先行算子（antecedent）成立，那么property右边的后续算子（consequence）才会被计算</li>
+<li>如果先行算子不成功，那么整个属性就默认地被认为成功，这叫做“空成功”（vacuous success）</li>
+<li>蕴含结构只能用在属性定义中，不能在序列中使用。</li>
+<li>蕴含可以分为两类：交叠蕴含（overlapped implication）和非交叠蕴含（non-overlapped implication）</li>
+</ul>
+<p><code>|-&gt;</code>：操作符号是交叠交错符号</p>
+<ul>
+<li>如果条件满足，评估其后续算子序列</li>
+<li>如果不满足，表现为空成功，不执行后续算子。</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802154220.png" alt="image-20210802154220206" style="zoom:67%;" /></p>
+<p><code>|=&gt;</code>：操作符号是非交叠交错符号</p>
+<ul>
+<li>如果条件满足，则在下一个周期评估其后续算子序列</li>
+<li>如果不满足，表现为空成功，不执行后续算子。</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802154141.png" alt="image-20210802154141747" style="zoom:67%;" /></p>
+<h3 id="property"><a href="#property" class="headerlink" title="property"></a>property</h3><p><strong>结合sequence对时序和逻辑的描述，property可以用来描述设计的确切行为。</strong></p>
+<ul>
+<li><p><strong>property可以在验证中用来做assumption，checker或者coverage：</strong></p>
+<ul>
+<li>当使用assert关键词时，可以用作checker来检查设计是否遵循property描述</li>
+<li>当使用assume关键词时，可以作为环境的假设条件，对于仿真环境和形式验证均起到对激励进行假设的作用。</li>
+<li>当使用cover关键词时，可以将property是否真正通过作为断言覆盖率来衡量</li>
+</ul>
+</li>
+<li><p>和sequence一样，可以在module，interface，program，clocking块和package中声明，<strong>注意：绝对不能在class里面做</strong></p>
+</li>
+<li><p>可以同sequence一样具有形式参数</p>
+</li>
+<li><p>多种用途</p>
+<ul>
+<li><p>sequene：只有当满足sequence条件时，property才通过</p>
+</li>
+<li><p>negation：即not property_expr。如果property_expr不满足，negation类的property才通过</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802160046.png" alt="image-20210802160046447" style="zoom:67%;" /></p>
+</li>
+<li><p>disjunction（or）：即property_expr1 or property_expr2，至少一个property_expr满足时，才能通过</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802160525.png" alt="image-20210802160525130" style="zoom:80%;" /></p>
+</li>
+<li><p>conjuntion（and）：通过or就知道了</p>
+</li>
+<li><p>if（expression）property_expr1 else property_expr2</p>
+</li>
+<li><p>implication蕴含，同sequence中用法一致，sequence_expr{|-&gt;, |=&gt;} property_expr</p>
+</li>
+<li><p>instantiation 用法：即一个命名后的property可以在另一个property_expr中所使用</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802160816.png" alt="image-20210802160816835" style="zoom: 67%;" /></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="时钟声明"><a href="#时钟声明" class="headerlink" title="时钟声明"></a>时钟声明</h4><p>一般对于sequence或者property，默认情况下，在使用同一个时钟用来对数据做采样，但是也不排除多个时钟的采样情况</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@(<span class="keyword">posedge</span> clk0) sig0 ##<span class="number">1</span> @(<span class="keyword">posedge</span> clk1) sig1</span><br></pre></td></tr></table></figure>
+<p>这里的等一拍用的是前面的时钟</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802161724.png" alt="image-20210802161724483" style="zoom: 67%;" /></p>
+<p><strong>时钟的指定方式：</strong></p>
+<ul>
+<li><p>sequence中独立指定时钟：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802162204.png" alt="image-20210802162204073" style="zoom:50%;" /></p>
+</li>
+<li><p>在property中独立指定时钟</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802162230.png" alt="image-20210802162230056" style="zoom:50%;" /></p>
+</li>
+<li><p>在过程块中，继承过程块的时钟</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802162334.png" alt="image-20210802162334769" style="zoom:50%;" /></p>
+</li>
+<li><p>时钟块中，也可以继承时钟块的时钟</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802162403.png" alt="image-20210802162403457" style="zoom:50%;" /></p>
+</li>
+<li><p>由此，断言的时钟由以下条件的优先级逐级判定：</p>
+<ul>
+<li>显式声明的断言时钟</li>
+<li>继承断言所嵌入环境的时钟</li>
+<li>继承默认的时钟</li>
+</ul>
+</li>
+<li><p>对于并行断言，其必须具备时钟，即满足上述时钟条件之一</p>
+</li>
+<li><p>多时钟断言：必须显式声明时钟，无法继承或者使用默认时钟；</p>
+<p>无法嵌套由时钟驱动的过程块语句</p>
+<p>无法嵌套时钟块</p>
+</li>
+</ul>
+<p><strong>property绑定</strong></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802164036.png" alt="image-20210802164036527" style="zoom: 67%;" /></p>
+<p>使用绑定的优势在于，无法修改原有设计代码，也无需添加监测信号，即可以实现断言的添加！</p>
+<p><strong>看一下之前的interface是如何连接到module的内部信号上的：</strong></p>
+<p>第一步：接口声明</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> arb_intf(<span class="keyword">input</span> clk, <span class="keyword">input</span> rstn);</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">1</span>:<span class="number">0</span>] slv_prios[<span class="number">3</span>];</span><br><span class="line">  <span class="keyword">logic</span> slv_reqs[<span class="number">3</span>];</span><br><span class="line">  <span class="keyword">logic</span> a2s_acks[<span class="number">3</span>];</span><br><span class="line">  <span class="keyword">logic</span> f2a_id_req;</span><br><span class="line">  <span class="keyword">clocking</span> mon_ck @(<span class="keyword">posedge</span> clk);</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">input</span> #<span class="number">1</span>ns <span class="keyword">output</span> #<span class="number">1</span>ns;</span><br><span class="line">    <span class="keyword">input</span> slv_prios, slv_reqs, a2s_acks, f2a_id_req;</span><br><span class="line">  <span class="keyword">endclocking</span></span><br><span class="line"><span class="keyword">endinterface</span></span><br></pre></td></tr></table></figure>
+<p>第二步：接口例化+内部信号赋值</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">arb_intf  arb_if(.*);  </span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.slv_prios</span>[<span class="number">0</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.slv0_prio_i</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.slv_prios</span>[<span class="number">1</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.slv1_prio_i</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.slv_prios</span>[<span class="number">2</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.slv2_prio_i</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.slv_reqs</span>[<span class="number">0</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.slv0_req_i</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.slv_reqs</span>[<span class="number">1</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.slv1_req_i</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.slv_reqs</span>[<span class="number">2</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.slv2_req_i</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.a2s_acks</span>[<span class="number">0</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.a2s0_ack_o</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.a2s_acks</span>[<span class="number">1</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.a2s1_ack_o</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.a2s_acks</span>[<span class="number">2</span>] = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.a2s2_ack_o</span>;</span><br><span class="line"><span class="keyword">assign</span> arb_if<span class="variable">.f2a_id_req</span> = tb<span class="variable">.dut</span><span class="variable">.arbiter_inst</span><span class="variable">.f2a_id_req_i</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802170317.png" alt="image-20210802170317018" style="zoom:67%;" /></p>
+<p>再来看一下绑定的方法和之前的方法有何区别</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802170407.png" alt="image-20210802170407028" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802170510.png" alt="image-20210802170510044" style="zoom:67%;" /></p>
+<ul>
+<li><p>可以看到不存在赋值的操作，默认能看到module端口和内部一层的信号，但是还是完成了信号的监测</p>
+</li>
+<li><p>interface的例化默认在module的内部，模块什么时候例化不知道，但是只要模块被例化，interface就被例化。</p>
+<p>也是因为这个原因，它只能进行监测且无法修改信号，所以对于用来添加property简直恰到好处</p>
+</li>
+</ul>
+<h4 id="expect"><a href="#expect" class="headerlink" title="expect"></a>expect</h4><p>之前的assert，assume，cover都是非阻塞方式，和仿真执行不影响。</p>
+<p>expect是一种阻塞使用方式，会等待property执行通过才执行后续语句</p>
+<p>简单来看，wait语句的地方，都可以用expect来实现</p>
+<p> <img src="https://gitee.com/biongd/img/raw/master/img/20210802184735.png" alt="image-20210802182928719" style="zoom:67%;" /></p>
+<p>原式表示的是1个sequence，在200ms后的下一个时钟上升沿，分别对a，等一拍的b，再等一拍的c进行判断，判断成功后才能继续执行！！！</p>
+<p>如图所示，蕴含操作符表示先等待a=1（从200ms开始，可能要等待多拍），等到之后再进入expect，如果后续b=1，c=1才能继续执行，哦负责就报错</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802184803.png" alt="image-20210802183246388" style="zoom:50%;" /></p>
+<h2 id="assertion的检查和覆盖率的应用"><a href="#assertion的检查和覆盖率的应用" class="headerlink" title="assertion的检查和覆盖率的应用"></a>assertion的检查和覆盖率的应用</h2><p>APB总线协议的断言检查，APB协议中抽取出的部分协议要求</p>
+<ul>
+<li><p>在PSEL为高时，PADDR总线不可以为X值</p>
+</li>
+<li><p>在PSEL拉高的下一个周期，PENABLE也应该拉高</p>
+</li>
+<li>在PENABLE拉高的下一个周期，PENABLE应该拉低</li>
+<li>在PSEL和PWRITE同时保持为高的阶段，PWDATA需要保持 </li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210802184827.png" alt="image-20210802184155414" style="zoom: 80%;" /></p>
+<ul>
+<li>下一次传输开始前（如何判断下一次传播啥时候开始），PADDR和PWRITE信号应该保持不变</li>
+<li>在PENABLE拉高的同一个周期，PRDATA应该发生变化</li>
+</ul>
+<h2 id="APB总线协议的断言覆盖率"><a href="#APB总线协议的断言覆盖率" class="headerlink" title="APB总线协议的断言覆盖率"></a>APB总线协议的断言覆盖率</h2><ul>
+<li>写操作时，分别发生连续写（只需要覆盖到PSEL连续4拍为高，同时PWRITE连续4拍为高才能保证，PENABLE和PSEL的关系在上面的断言检查中已经检查过了 ，不用重复定义）和非连续写（PSEL信号每两拍就得拉下来至少1拍，PWRITE无所谓）</li>
+<li>对同一个地址先做写操作，再不间隔做读操作</li>
+<li>对同一个地址做连续两次写操作，再从中读取数据</li>
+<li>读操作时，分别发生连续读和不连续读</li>
+<li>发生对同一个地址的读操作再不间隔做写操作，再不间隔做读操作</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>学完断言的相关内容能够做什么呢？</p>
+<ul>
+<li>实现断言检查</li>
+<li>实现断言覆盖率</li>
+<li>断言覆盖率跟测试用例对应，测试用例又跟测试计划对应 </li>
+<li>用功能覆盖率定义上述时序过于复杂，可以用断言覆盖率，property+cover</li>
+<li><p>收集合并最终的assertion检查结果的断言覆盖率，进行分析</p>
+</li>
+<li><p>从仿真结果检查哪些断言被触发且失败、哪些断言没有被触发、哪些断言的覆盖率满足或未满足</p>
+</li>
+</ul>
+<p><strong>注意：仿真时要添加额外的仿真选项 <code>-assertdebug -assertcover</code></strong></p>
+<h1 id="设计描述信息标准化"><a href="#设计描述信息标准化" class="headerlink" title="设计描述信息标准化"></a>设计描述信息标准化</h1><p>IP-XACT是一种标准化、格式化的设计信息描述标准（IEEE 1685-2140）</p>
+<p>IP-XACT定义了一种标准化方式去描述一个IP的关键信息，例如IP的用户可以从IP一致化信息中访问数据或实现设计的自动化</p>
+<p>对于IP用户，当他们使用外部商业IP或者内部IP时，一般会得到大量从不同角度描述IP的文件，这包括RTL代码、使用文档、仿真模型、综合约束等。。</p>
+<p>IP-XACT没有试图定义哪些内容需要提供，没有规范哪些内容需要组织</p>
+<p>试图去定义一个电子版的数据手册，用来归档不同种类信息</p>
+<p>IP-XACT标准最常用的场景：</p>
+<ul>
+<li>定义IP模型的关键信息，例如顶层端口名</li>
+<li>提供入口用来指引交付的IP文档所包含的不同信息</li>
+<li>用来对由IP-XACT建模的IP提供配置信息和互联信息</li>
+</ul>
+<p>想要完成自动化，就必须把所有信息都标准化，格式化出来</p>
+<p>IP-XACT语言规范本身也建立在xml格式之上，所以IP-XACT标准本身阅读起来很吃力，因为其标准是对机器友好</p>
+<p>因此，学习IP-XACT的重点在于如何使用而不是如何阅读，理解这种规范化设计数据文件的优点和用处。</p>
+<p>与IP-XACT标准化设计信息类似的数据存储格式，还包括SystemRDL，XML,RALF,CSV,EXCEL等。</p>
+<p>对于verifier的日常工作，我们需要面对的，可能是上述某一种标准化数据的存储格式，</p>
+<p>我们需要理解不同的人利用这些数据可以实现和处理什么。</p>
+<p>标准化往往就意味着可以更好的自动化！！！</p>
+<p>IP-XACT基于XML格式，可以提供不同对象的描述信息：</p>
+<ul>
+<li>组件（component）：IP层次信息，包含IP参数，寄存器，端口，接口，信息层次较为抽象和宽泛</li>
+<li>设计（design）：包含层次化的设计信息，例如地址表，物理结构。组件和设计信息可以共同描述层次化IP的集成接口和内部结构</li>
+<li>设计配置（design configuration）：指的是针对具体的IP应用常见，基于设计IP-XACT文件，做出对应的设计配置，用来进一步决定设计实例的结构。一个设计文件可以对应多个设计配置文件。</li>
+<li>总线定义（bus definition）和抽象级定义（abstraction definition）：用来描述硬件的通信协议。</li>
+</ul>
+<p>IP-XACT可以提供不同对象的描述信息：</p>
+<ul>
+<li><p>生成器流程（generator chain）：用来描述IP-XACT得以转化的流程：</p>
+<p>例如生成哪一种工具或脚本，哪些参数，可以最终利用IP-XACT文件生成标准化文件。比如生成RTL代码，或者生成一些可读性文件，c的代码，sv的代码等等</p>
+</li>
+</ul>
+<p>可以看出IP-XACT不仅能实现寄存器信息，还包括设计的：</p>
+<ul>
+<li>层次信息</li>
+<li>总线信息</li>
+<li>互联信息</li>
+<li>配置信息</li>
+<li>地址信息</li>
+<li>集成信息等</li>
+</ul>
+<p>理论上，通过IP-XACT管理的IP，可以实现开发，交付，集成和维护的标准化</p>
+<h1 id="寄存器模型自动化"><a href="#寄存器模型自动化" class="headerlink" title="寄存器模型自动化"></a>寄存器模型自动化</h1><h2 id="寄存器描述文件"><a href="#寄存器描述文件" class="headerlink" title="寄存器描述文件"></a>寄存器描述文件</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>目前的数字设计可配置化程度高，满足了设计的灵活性和成本的降低</li>
+<li><p>同时，配置化数字设计带来了成百上千的寄存器，这些寄存器在数字化设计流程中扮演者关键作用，因为它们是硬件和软件的接口</p>
+</li>
+<li><p>如同MCDF的寄存器模块，配置寄存器和状态寄存器构成了硬件的编程接口</p>
+</li>
+<li><p>对寄存器信息的细致安全管理可以提高设计交付的质量</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210803154422.png" alt="image-20210803154415348"></p>
+</li>
+<li><p>在soc系统中，主要由处理器，功能模块，I/O模块，总线和互联网络构成</p>
+</li>
+<li><p>多数模块均可以由外部或内部完成寄存器访问</p>
+</li>
+<li><p>寄存器访问可以归结为总线和寄存器模块</p>
+</li>
+<li><p>总线的标准化，和寄存器信息的标准化使得在寄存器信息标准化管理和自动化实现变为了可能。</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210803160337.png" alt="image-20210803160337146" style="zoom: 67%;" /></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210803160413.png" alt="image-20210803160412968" style="zoom:67%;" /></p>
+<h3 id="寄存器信息编辑"><a href="#寄存器信息编辑" class="headerlink" title="寄存器信息编辑"></a>寄存器信息编辑</h3><p>一些商业寄存器编辑器大致会包含以下内容：</p>
+<ul>
+<li>寄存器块（register block）</li>
+<li>寄存器（register）</li>
+<li>寄存器域（register fileld）</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210803161349.png" alt="image-20210803161349374" style="zoom:67%;" /></p>
+<ul>
+<li>不少公司可能会内部开发寄存器信息编辑器（可视化的或者文本处理的），然后再通过脚本、模板来实现设计自动化和验证自动化</li>
+<li>对于verifier，我们将模拟实际场景，采用Excel这种标准化的数据存储方法，结合python脚本实现寄存器的自动化生成</li>
+</ul>
+<h2 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h2><p>核心要点</p>
+<ul>
+<li>描述文件的内容</li>
+<li>如何生成UVM寄存器</li>
+<li>根据MCDF寄存器描述的更新来相应修改寄存器文件</li>
+<li>python脚本自动生成寄存器模型SV文件</li>
+<li>看新生成的寄存器文件，与MCDF的寄存器描述进行参照对比，确保信息一致性</li>
+<li>用现有的寄存器模型SV文件来替换原有的寄存器模型SV文件，完成编译</li>
+</ul>
+<h1 id="寄存器模型深度应用"><a href="#寄存器模型深度应用" class="headerlink" title="寄存器模型深度应用"></a>寄存器模型深度应用</h1><h2 id="寄存器的随机配置"><a href="#寄存器的随机配置" class="headerlink" title="寄存器的随机配置"></a>寄存器的随机配置</h2><ul>
+<li>先对寄存器做随机化</li>
+<li>将一些必须指定的寄存器域做写操作</li>
+<li>最后做寄存器模型的update</li>
+</ul>
+<p>和之前通过write方法进行寄存器配置的区别：</p>
+<ul>
+<li>所有寄存器的域值统一配置，一目了然</li>
+</ul>
+<h3 id="寄存器域值的前门获取"><a href="#寄存器域值的前门获取" class="headerlink" title="寄存器域值的前门获取"></a>寄存器域值的前门获取</h3><p>问题：寄存器模型不支持域值的前门读写，需要添加新的方法，实现寄存器域的读写</p>
+<ul>
+<li><p>寄存器域值的变更想要通过前门访问进行修改，可以通过updata：</p>
+<p>比如32位slv_id寄存器，想要对8位的slv1的域进行修改，此时m_design和m_mirror不同，通过update方法就可以将slv1的变化更新到dut实际值上</p>
+</li>
+<li><p>使用read和write进行域值修改就没那么容易了，这俩方法只能通过register进行前门访问，这就意味着必须先获取当前的寄存器的32位值（read），然后进行8位的slv1的修改，最后再把改完后的32位期望值写入dut的寄存器</p>
+</li>
+</ul>
+<h1 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h1><p>功能验证目前已不能充分验证芯片系统，与之而来的是性能验证（performance）和效能（power）验证</p>
+<p>效能验证的两部分无论是UPF用来做电源域的模拟开关验证还是与能耗收集评估验证，均需要对应的EDA工具，且专业性较强</p>
+<p><strong>性能验证需要考虑到两部分环境：</strong></p>
+<ul>
+<li>提供性能验证的平台需要足够快，使得软件，固件代码可以在其之上运行</li>
+<li>性能验证需要结合将来会运用的软件、固件代码，这指的是我们需要采用真实或者贴近实际用例的软件代码~~</li>
+<li>用来做性能分析的平台不单包括simulator，还会在FPGA和emulator上进行，这是基于他们出色的仿真速度的考量</li>
+</ul>
+<p>性能验证的目标：</p>
+<ul>
+<li>对目标硬件发送大量的数据</li>
+<li>在固定的周期中采集数据量并<strong>计算带宽</strong></li>
+<li>从数据的接收时间到数据的送出的<strong>延时计算</strong></li>
+</ul>
+<h2 id="性能计算"><a href="#性能计算" class="headerlink" title="性能计算"></a>性能计算</h2><p>以mcdf为例：</p>
+<ul>
+<li>从monitor中收集transaction，并进行performance计算</li>
+<li>对于MCDF的数据吞吐量计算，以channel所有通道的数据输入总和作为输入带宽，以formatter的数据输出为输出带宽。</li>
+<li>通过标记输入数据和输出数据，对同一个数据包在MCDF的输入和输出计算其延时，作为performance的又一个标准~~</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E5%AD%97IC/" rel="tag"># 数字IC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/30/%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%8F%89%E6%A0%91_%E5%9B%BE_bfs_dfs/" rel="next" title="树/图及bfs/dfs">
+                <i class="fa fa-chevron-left"></i> 树/图及bfs/dfs
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/12/09/java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81String%E4%B8%93%E9%A2%98/" rel="prev" title="java-集合框架/String/数组专题">
+                java-集合框架/String/数组专题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AMBA标准接口"><span class="nav-text">AMBA标准接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AMBA概述"><span class="nav-text">AMBA概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AHB接口"><span class="nav-text">AHB接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AHB的组成"><span class="nav-text">AHB的组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APB接口"><span class="nav-text">APB接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#idle-状态"><span class="nav-text">idle 状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写操作"><span class="nav-text">写操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读操作"><span class="nav-text">读操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#验证IP模板"><span class="nav-text">验证IP模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概念"><span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-VIP的应用优势"><span class="nav-text">2. VIP的应用优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-如何使用VIP？"><span class="nav-text">3. 如何使用VIP？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-VIP的选择"><span class="nav-text">4. VIP的选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VIP的开发和发布"><span class="nav-text">VIP的开发和发布</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-主要的开发阶段"><span class="nav-text">2. 主要的开发阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-验证方法"><span class="nav-text">3. 验证方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VIP的发布"><span class="nav-text">VIP的发布</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assertion"><span class="nav-text">assertion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#断言的功能"><span class="nav-text">断言的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于断言的验证方法学（ABV）"><span class="nav-text">基于断言的验证方法学（ABV）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型划分"><span class="nav-text">类型划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并行断言的执行阶段"><span class="nav-text">并行断言的执行阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertion，property，sequence"><span class="nav-text">assertion，property，sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sequence"><span class="nav-text">sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#property"><span class="nav-text">property</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#时钟声明"><span class="nav-text">时钟声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#expect"><span class="nav-text">expect</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertion的检查和覆盖率的应用"><span class="nav-text">assertion的检查和覆盖率的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APB总线协议的断言覆盖率"><span class="nav-text">APB总线协议的断言覆盖率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计描述信息标准化"><span class="nav-text">设计描述信息标准化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器模型自动化"><span class="nav-text">寄存器模型自动化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#寄存器描述文件"><span class="nav-text">寄存器描述文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器信息编辑"><span class="nav-text">寄存器信息编辑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化"><span class="nav-text">自动化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器模型深度应用"><span class="nav-text">寄存器模型深度应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#寄存器的随机配置"><span class="nav-text">寄存器的随机配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器域值的前门获取"><span class="nav-text">寄存器域值的前门获取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能分析"><span class="nav-text">性能分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能计算"><span class="nav-text">性能计算</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
