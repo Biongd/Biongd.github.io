@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="想要进入IC行业，数字设计好像是没法规避的问题，慢慢积累吧，虽然可能没有机会去实际验证，但是总能有所收获">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IC验证-数字设计基础">
+<meta property="og:url" content="http://yoursite.com/2021/08/30/IC%E9%AA%8C%E8%AF%81-%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="悦来客栈">
+<meta property="og:description" content="想要进入IC行业，数字设计好像是没法规避的问题，慢慢积累吧，虽然可能没有机会去实际验证，但是总能有所收获">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210830153428.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210830154026.bmp">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210830153737.bmp">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210830152302.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210830155132.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210830161004.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210915101227.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210915102841.png">
+<meta property="article:published_time" content="2021-08-30T07:24:54.880Z">
+<meta property="article:modified_time" content="2021-09-16T01:32:35.389Z">
+<meta property="article:author" content="xujunjie&#39;blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20210830153428.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","display_updated":true,"offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/08/30/IC验证-数字设计基础/"/>
+
+
+
+
+
+  <title>IC验证-数字设计基础 | 悦来客栈</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悦来客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">learn and better</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/08/30/IC%E9%AA%8C%E8%AF%81-%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xujunjie'blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悦来客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IC验证-数字设计基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+              
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-30T15:24:54+08:00">
+                2021-08-30
+              </time>
+            
+            
+                <span class="post-updated">
+                     &nbsp; | &nbsp; 更新于
+                     <time itemprop="dateUpdated" datetime="2021-09-16T09:32:35+08:00" content="2021-09-16">
+                          2021-09-16
+                     </time>
+                 </span>
+             
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>想要进入IC行业，数字设计好像是没法规避的问题，慢慢积累吧，虽然可能没有机会去实际验证，但是总能有所收获</p>
+<a id="more"></a>
+<h1 id="跨时钟域和亚稳态"><a href="#跨时钟域和亚稳态" class="headerlink" title="跨时钟域和亚稳态"></a>跨时钟域和亚稳态</h1><h2 id="亚稳态"><a href="#亚稳态" class="headerlink" title="亚稳态"></a>亚稳态</h2><p><strong>锁存器出现亚稳态：</strong></p>
+<ul>
+<li>在其中一个输入端输入的脉冲太短。 </li>
+<li>两个端口输入同时有效，或两输入有效相差足够短。 </li>
+<li>在使能输入的边缘处，输入信号不稳定。</li>
+</ul>
+<p><strong>跨时钟域如何导致亚稳态：</strong></p>
+<p>核心：输入信号无法保证建立、保持时间</p>
+<ul>
+<li>时钟脉冲太窄。 </li>
+<li>异步信号对时钟有效沿是随机的，易产生亚稳态。异步信号包括：不被时钟控制的信号；或被不同时钟域的时钟同步的信号。</li>
+</ul>
+<p>触发器进入亚稳态的时间可以用参数MTBF（Mean Time Between Failures）来描述，MTBF即触发器采样失败的时间间隔，表示为：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210830153428.png" alt="image-20210830153428846"></p>
+<p>其中fclock表示系统时钟频率，fdata代表异步输入信号的频率，tmet代表不会引起故障的最长亚稳态时间，C1和C2分别为与器件特性相关的常数。如果MTBF很大，就认为这个设计在实际工作中是能够正常运行的，不会因为亚稳态导致整个系统的失效。</p>
+<p><strong>亚稳态的处理方法：</strong></p>
+<ul>
+<li>亚稳态不能避免。 </li>
+<li>尽可能降低亚稳态的影响。 </li>
+<li>高速数字电路依赖于同步器产生的从亚稳态事件中恢复的缓冲时间。</li>
+</ul>
+<p>常见同步电路的解决方案 </p>
+<ul>
+<li>两级DFF（传单信号） </li>
+<li>FIFO（传有一定位宽的信号bus） </li>
+<li>握手信号（对于FIFO的深度要求比较大，需要引入握手信号）</li>
+</ul>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210830154026.bmp" alt="img"></p>
+<h2 id="跨时钟域"><a href="#跨时钟域" class="headerlink" title="跨时钟域"></a>跨时钟域</h2><p><img src="https://gitee.com/biongd/img/raw/master/img/20210830153737.bmp" alt="img"><img src="https://gitee.com/biongd/img/raw/master/img/20210830152302.png" alt="image-20210830152255672"></p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210830155132.png" alt="image-20210830155132541"></p>
+<p>跨时钟域的信号d可能在时钟上升沿时同步跳变，导致setup/hold time不够，此时会导致一种介于0和1之间的状态，可能震荡很长时间，也就是亚稳态</p>
+<p>此时亚稳态的解决：根据MTBF公式来计算亚稳态的概率</p>
+<p>对于单根信号- 双锁存（采两拍）：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210830161004.png" alt="image-20210830161004761"></p>
+<h1 id="同步复位和异步复位"><a href="#同步复位和异步复位" class="headerlink" title="同步复位和异步复位"></a>同步复位和异步复位</h1><h2 id="1-fifo的空满检测"><a href="#1-fifo的空满检测" class="headerlink" title="1. fifo的空满检测"></a>1. fifo的空满检测</h2><p><strong>读指针和写指针</strong></p>
+<ul>
+<li>读指针：总是指向下一个将要被写入的单元，复位时，指向第1个单元(编号为0)。</li>
+<li>写指针：总是指向当前要被读出的数据，复位时，指向第1个单元(编号为0)</li>
+</ul>
+<p><strong>通过两个指针进行空满判断</strong></p>
+<p>当读写指针相等时，表明FIFO为空，这种情况发生在复位操作时，或者当读指针读出FIFO中最后一个字后，追赶上了写指针时，如下图所示：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210915101227.png" alt="image-20210915101227129" style="zoom: 67%;" /></p>
+<p>当读写指针再次相等时，表明FIFO为满，这种情况发生在，当写指针转了一圈，折回来(wrapped around)又追上了读指针，如下图：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210915102841.png" alt="image-20210915102841760" style="zoom:67%;" /></p>
+<p>为了区分到底是满状态还是空状态，可以采用以下方法：</p>
+<p>在指针中添加一个额外的位(extra bit)，当写指针增加并越过最后一个FIFO地址时，就将写指针这个未用的MSB加1，其它位回零。对读指针也进行同样的操作。此时，对于深度为2n的FIFO，需要的读/写指针位宽为(n+1)位，如对于深度为8的FIFO，需要采用4bit的计数器，0000～1000、1001～1111，<strong>MSB作为折回标志位</strong>，而低3位作为地址指针。</p>
+<p>如果两个指针的MSB不同，说明写指针比读指针多折回了一次；如r_addr=0000,而w_addr = 1000,为满。<br>如果两个指针的MSB相同，则说明两个指针折回的次数相等。其余位相等，说明FIFO为空；</p>
+<h2 id="2-同步fifo代码"><a href="#2-同步fifo代码" class="headerlink" title="2. 同步fifo代码"></a>2. 同步fifo代码</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">timescale</span> 1ns/1ps</span></span><br><span class="line"><span class="keyword">module</span> Sync_FIFO #(</span><br><span class="line">	<span class="comment">//FIFO参数定义</span></span><br><span class="line">	 <span class="keyword">parameter</span>   data_width = <span class="number">32</span>,<span class="comment">// FIFO宽度</span></span><br><span class="line">     <span class="keyword">parameter</span>   data_depth = <span class="number">256</span>,<span class="comment">// FIFO深度</span></span><br><span class="line">     <span class="keyword">parameter</span>   address_width = <span class="number">8</span> <span class="comment">// 地址宽度，对于深度为2^n的FIFO，需要的读/写指针位宽为(n+1)位，多的一位作为折返标志位</span></span><br><span class="line">	)(</span><br><span class="line">	<span class="comment">//system signals</span></span><br><span class="line">	<span class="keyword">input</span>						clk,</span><br><span class="line">	<span class="keyword">input</span>						rst_n,</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">input</span>       				write_en,<span class="comment">// 写使能，高有效</span></span><br><span class="line">	<span class="keyword">input</span> 	[data_width-<span class="number">1</span>:<span class="number">0</span>] 	data_in,<span class="comment">// 写数据</span></span><br><span class="line">	<span class="keyword">output</span> 		 	  			full,<span class="comment">//写满标志，高有效</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">input</span> 						read_en,<span class="comment">// 读使能，高有效</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> [data_width-<span class="number">1</span>:<span class="number">0</span>] data_out,<span class="comment">// 读数据</span></span><br><span class="line">	<span class="keyword">output</span> 		 	  			empty<span class="comment">//读空标志，高有效</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">reg</span>    [data_width-<span class="number">1</span>:<span class="number">0</span>] FIFO_RAM [data_depth-<span class="number">1</span>:<span class="number">0</span>];<span class="comment">// RAM定义，用于存放FIFO数据</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">reg</span>    [address_width:<span class="number">0</span>]    wr_addr_p;<span class="comment">//写地址指针</span></span><br><span class="line"><span class="keyword">reg</span>    [address_width:<span class="number">0</span>]    rd_addr_p;<span class="comment">//读地址指针</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">wire</span>   [address_width-<span class="number">1</span>:<span class="number">0</span>]  wr_addr;<span class="comment">//写RAM 地址</span></span><br><span class="line"><span class="keyword">wire</span>   [address_width-<span class="number">1</span>:<span class="number">0</span>]  rd_addr;<span class="comment">//读RAM 地址</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">assign</span> wr_addr = wr_addr_p[address_width-<span class="number">1</span>:<span class="number">0</span>];<span class="comment">// 读写RAM地址等于读写指针的低address_width位</span></span><br><span class="line"><span class="keyword">assign</span> rd_addr = rd_addr_p[address_width-<span class="number">1</span>:<span class="number">0</span>];<span class="comment">// 读写RAM地址等于读写指针的低address_width位</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n) <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span> (!rst_n) <span class="keyword">begin</span></span><br><span class="line">		wr_addr_p &lt;= <span class="number">'h0</span>;</span><br><span class="line">		rd_addr_p &lt;= <span class="number">'h0</span>;</span><br><span class="line">		data_out &lt;= <span class="number">'h0</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">case</span>(&#123;write_en,read_en&#125;)</span><br><span class="line">			<span class="number">2'b00</span>:<span class="keyword">begin</span><span class="comment">// 不读不写</span></span><br><span class="line">				wr_addr_p &lt;= wr_addr_p;</span><br><span class="line">				rd_addr_p &lt;= rd_addr_p;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			<span class="number">2'b10</span>:<span class="keyword">if</span>(~full) <span class="keyword">begin</span> <span class="comment">// 非满只写不读</span></span><br><span class="line">				FIFO_RAM[wr_addr] &lt;= data_in;</span><br><span class="line">				wr_addr_p &lt;= wr_addr_p + <span class="number">1'b1</span>;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			<span class="number">2'b01</span>:<span class="keyword">if</span>(~empty) <span class="keyword">begin</span> <span class="comment">// 非空只读不写</span></span><br><span class="line">				data_out &lt;= FIFO_RAM[rd_addr];</span><br><span class="line">				rd_addr_p &lt;= rd_addr_p + <span class="number">1'b1</span>;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			<span class="number">2'b11</span>:<span class="keyword">if</span>(~full &amp;&amp; ~empty)<span class="keyword">begin</span> <span class="comment">// 非满非空又读又写</span></span><br><span class="line">				FIFO_RAM[wr_addr] &lt;= data_in;</span><br><span class="line">				wr_addr_p &lt;= wr_addr_p + <span class="number">1'b1</span>;</span><br><span class="line"> </span><br><span class="line">				data_out &lt;= FIFO_RAM[rd_addr];</span><br><span class="line">				rd_addr_p &lt;= rd_addr_p + <span class="number">1'b1</span>;</span><br><span class="line">            <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span>(~full) <span class="keyword">begin</span></span><br><span class="line">   				FIFO_RAM[wr_addr] &lt;= data_in;</span><br><span class="line">				wr_addr_p &lt;= wr_addr_p + <span class="number">1'b1</span>;             </span><br><span class="line">            <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                data_out &lt;= FIFO_RAM[rd_addr];</span><br><span class="line">				rd_addr_p &lt;= rd_addr_p + <span class="number">1'b1</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">		<span class="keyword">endcase</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 判断空满</span></span><br><span class="line"><span class="keyword">assign</span> full = (wr_addr_p == &#123;~rd_addr_p[address_width],rd_addr_p[address_width-<span class="number">1</span>:<span class="number">0</span>]&#125;);<span class="comment">// 最高位不同，其余各位相同</span></span><br><span class="line"><span class="keyword">assign</span> empty = (wr_addr_p == rd_addr_p);<span class="comment">// 所有位都相同</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<h1 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/08/19/IC%E9%AA%8C%E8%AF%81-APB_VIP/" rel="next" title="APB_VIP">
+                <i class="fa fa-chevron-left"></i> APB_VIP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/12/07/java-springmvc/" rel="prev" title="java-spring">
+                java-spring <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xujunjie'blog" />
+            
+              <p class="site-author-name" itemprop="name">xujunjie'blog</p>
+              <p class="site-description motion-element" itemprop="description">使一个人有限的生命更加有效也即等于延长了人的生命</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#跨时钟域和亚稳态"><span class="nav-text">跨时钟域和亚稳态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#亚稳态"><span class="nav-text">亚稳态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨时钟域"><span class="nav-text">跨时钟域</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同步复位和异步复位"><span class="nav-text">同步复位和异步复位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-fifo的空满检测"><span class="nav-text">1. fifo的空满检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-同步fifo代码"><span class="nav-text">2. 同步fifo代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流水线"><span class="nav-text">流水线</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xujunjie'blog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

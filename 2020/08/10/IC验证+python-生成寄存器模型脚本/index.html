@@ -86,8 +86,10 @@
 <meta property="og:site_name" content="悦来客栈">
 <meta property="og:description" content="又找到了新的好玩的东西，首先是寄存器信息的标准化编辑">
 <meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210804103240.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210805215607.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20210805215542.png">
 <meta property="article:published_time" content="2020-08-10T11:54:23.000Z">
-<meta property="article:modified_time" content="2021-08-29T02:12:48.524Z">
+<meta property="article:modified_time" content="2021-09-14T01:45:45.049Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="脚本">
 <meta name="twitter:card" content="summary">
@@ -325,8 +327,8 @@
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-08-29T10:12:48+08:00" content="2021-08-29">
-                          2021-08-29
+                     <time itemprop="dateUpdated" datetime="2021-09-14T09:45:45+08:00" content="2021-09-14">
+                          2021-09-14
                      </time>
                  </span>
              
@@ -410,7 +412,26 @@
 </li>
 </ul>
 <h1 id="3-代码"><a href="#3-代码" class="headerlink" title="3. 代码"></a>3. 代码</h1><p>gitee：<a href="https://gitee.com/biongd/rgmGenerate" target="_blank" rel="noopener">https://gitee.com/biongd/rgmGenerate</a></p>
-<h2 id="3-1-csv操作"><a href="#3-1-csv操作" class="headerlink" title="3.1 csv操作"></a>3.1 csv操作</h2><p>读：</p>
+<h2 id="3-1-pandas对csv的处理："><a href="#3-1-pandas对csv的处理：" class="headerlink" title="3.1 pandas对csv的处理："></a>3.1 pandas对csv的处理：</h2><p>csv文件名：<code>&#39;0v.csv&#39;</code></p>
+<ul>
+<li><p>读取csv文件，返回DataFrame类型对象</p>
+</li>
+<li><p>去除前面几行无用信息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reader.drop(range(<span class="number">1</span>,<span class="number">2</span>),axis=<span class="number">0</span>,inplace=<span class="literal">True</span>)</span><br><span class="line">reader.to_csv(<span class="string">'0_0v.csv'</span>,index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存文件，删除表头</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reader.to_csv(<span class="string">'0v.csv'</span>, header=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">reader = pd.read_csv(<span class="string">'0v.csv'</span>)</span><br><span class="line">print(reader)</span><br><span class="line">reader.drop(range(<span class="number">0</span>,<span class="number">6</span>),axis=<span class="number">0</span>,inplace=<span class="literal">True</span>)</span><br><span class="line">reader.to_csv(<span class="string">'0v.csv'</span>, header=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p>源文件：</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210805215607.png" alt="image-20210805215607522"></p>
+<p>处理后：</p>
+<p>把最后一行换位<code>reader.to_csv(&#39;0_0v.csv&#39;,index=False)</code>，就能把序号给删掉</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20210805215542.png" alt="image-20210805215542111"></p>
+<h2 id="3-2-csv操作"><a href="#3-2-csv操作" class="headerlink" title="3.2 csv操作"></a>3.2 csv操作</h2><p>读：</p>
 <ul>
 <li>reader：按行读，输出嵌套列表，内层列表为每一行的值</li>
 </ul>
@@ -544,7 +565,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -599,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-寄存器格式"><span class="nav-text">1. 寄存器格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-思路"><span class="nav-text">2. 思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-代码"><span class="nav-text">3. 代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-csv操作"><span class="nav-text">3.1 csv操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-寄存器格式"><span class="nav-text">1. 寄存器格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-思路"><span class="nav-text">2. 思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-代码"><span class="nav-text">3. 代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-pandas对csv的处理："><span class="nav-text">3.1 pandas对csv的处理：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-csv操作"><span class="nav-text">3.2 csv操作</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -624,7 +645,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
