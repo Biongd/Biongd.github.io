@@ -79,19 +79,21 @@
 
 
 
-<meta name="description" content="每次看学习视频时听到各种java相关词汇不够清楚总是会生出畏难情绪，其实好多东西学起来比算法总要简单的多了，这里就对每次碰到的不理解的词的概念和用法进行总结，对未来这一概念的学习应该也会有较大帮助。">
+<meta name="description" content="今天进入高并发解决专题的学习，首先是代理服务器Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java-必备词汇">
-<meta property="og:url" content="http://yoursite.com/2020/11/06/java-%E5%BF%85%E5%A4%87%E8%AF%8D%E6%B1%87/index.html">
+<meta property="og:title" content="java-Nginx入门">
+<meta property="og:url" content="http://yoursite.com/2022/01/10/java-Nginx%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="悦来客栈">
-<meta property="og:description" content="每次看学习视频时听到各种java相关词汇不够清楚总是会生出畏难情绪，其实好多东西学起来比算法总要简单的多了，这里就对每次碰到的不理解的词的概念和用法进行总结，对未来这一概念的学习应该也会有较大帮助。">
-<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20201106151907.png">
-<meta property="article:published_time" content="2020-11-06T06:54:02.000Z">
-<meta property="article:modified_time" content="2021-08-29T02:12:48.552Z">
+<meta property="og:description" content="今天进入高并发解决专题的学习，首先是代理服务器Nginx">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190511170603322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5Njc3ODY3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20220110152115.png">
+<meta property="og:image" content="https://gitee.com/biongd/img/raw/master/img/20220110152252.png">
+<meta property="article:published_time" content="2022-01-10T03:59:02.000Z">
+<meta property="article:modified_time" content="2022-01-10T11:27:40.298Z">
 <meta property="article:author" content="xujunjie&#39;blog">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/biongd/img/raw/master/img/20201106151907.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190511170603322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5Njc3ODY3,size_16,color_FFFFFF,t_70">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/11/06/java-必备词汇/"/>
+  <link rel="canonical" href="http://yoursite.com/2022/01/10/java-Nginx入门/"/>
 
 
 
 
 
-  <title>java-必备词汇 | 悦来客栈</title>
+  <title>java-Nginx入门 | 悦来客栈</title>
   
 
 
@@ -288,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/06/java-%E5%BF%85%E5%A4%87%E8%AF%8D%E6%B1%87/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/10/java-Nginx%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xujunjie'blog">
@@ -305,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java-必备词汇</h1>
+          <h1 class="post-title" itemprop="name headline">java-Nginx入门</h1>
         
 
         <div class="post-meta">
@@ -318,15 +320,15 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-06T14:54:02+08:00">
-                2020-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-10T11:59:02+08:00">
+                2022-01-10
               </time>
             
             
                 <span class="post-updated">
                      &nbsp; | &nbsp; 更新于
-                     <time itemprop="dateUpdated" datetime="2021-08-29T10:12:48+08:00" content="2021-08-29">
-                          2021-08-29
+                     <time itemprop="dateUpdated" datetime="2022-01-10T19:27:40+08:00" content="2022-01-10">
+                          2022-01-10
                      </time>
                  </span>
              
@@ -386,34 +388,54 @@
       
 
       
-        <p>每次看学习视频时听到各种java相关词汇不够清楚总是会生出畏难情绪，其实好多东西学起来比算法总要简单的多了，这里就对每次碰到的不理解的词的概念和用法进行总结，对未来这一概念的学习应该也会有较大帮助。</p>
+        <p>今天进入高并发解决专题的学习，首先是代理服务器Nginx</p>
 <a id="more"></a>
-<h1 id="1-javaSE、javaEE、javaME的区别"><a href="#1-javaSE、javaEE、javaME的区别" class="headerlink" title="1. javaSE、javaEE、javaME的区别"></a>1. javaSE、javaEE、javaME的区别</h1><ul>
-<li><p>Java SE：标准版Java SE（Java Platform，Standard Edition）。</p>
-<p>以前称为2SE。 <strong>它允许开发和部署在桌面，服务器，嵌入式环境和实时环境中使用的Java应用程序</strong>。JavaSE包含了支持JavaWeb服务开发的类，并为Java Platform,Enterprise Edition(Java EE)提供了基础。</p>
+<h1 id="1-Nginx介绍"><a href="#1-Nginx介绍" class="headerlink" title="1. Nginx介绍"></a>1. Nginx介绍</h1><p>Nginx 是⼀款⾼性能的 http 服务器/反向代理服务器及电⼦邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师伊⼽尔·⻄索夫（Igor Sysoev）所开发，官⽅测试 </p>
+<p>nginx 能够⽀⽀撑 5 万并发链接，并且cpu、内存等资源消耗却⾮常低，运⾏⾮常稳定。</p>
+<p>Nginx应⽤场景：</p>
+<ol>
+<li><p>http 服务器。Nginx 是⼀个 http 服务可以独⽴提供 http 服务。可以做⽹⻚静态服务器。</p>
 </li>
-<li><p>Java EE：企业版Java EE（Java Platform，Enterprise Edition）。</p>
-<p>以前称为J2EE。 <strong>企业版本帮助开发和部署可移植，健壮，可伸缩且安全的服务器端Java应用程序</strong>。Java EE 是在 Java SE 的基础上构建的，它提供 Web 服务、组件模型、管理和通信 API，可以用来实现企业级的面向服务体系结构（service-oriented architecture，SOA）和 Web 2.0 应用程序。</p>
+<li><p>虚拟主机。可以实现在⼀台服务器虚拟出多个⽹站。例如个⼈⽹站使⽤的虚拟主机。</p>
 </li>
-<li><p>Java ME：微型版Java ME（Java Platform，Micro Edition）。</p>
-<p>以前称为J2ME。 <strong>Java ME为在移动设备和嵌入式设备（笔记手机，PDA，电视机顶盒和打印机）上运行的应用程序提供一个健壮且灵活的环境</strong>。Java ME 包括灵活的用户界面、健壮的安全模型、许多内置的网络协议以及对可以动态下载的连网和离线应用程序的丰富支持。基于 Java ME 规范的应用程序只需编写一次，就可以用于许多设备，而且可以利用每个设备的本机功能。</p>
+<li><p>反向代理，负载均衡。当⽹站的访问量达到⼀定程度后，单台服务器不能满⾜⽤户的请求时，需要⽤多台服务器集群可以使⽤ nginx 做反向代理。并且多台服务器</p>
+<p>可以平均分担负载，不会因为某台服务器负载⾼宕机⽽某台服务器闲置的情况。</p>
 </li>
-</ul>
-<p>简单说，<strong>javaEE是企业级开发使用的，一般用作web后端的服务器开发</strong>；<strong>javaME是手机客户端开发和设备嵌入式开发</strong>；<strong>javaSE是基础。</strong></p>
-<h1 id="2-SDK和JDK的区别、JDK和JRE的区别"><a href="#2-SDK和JDK的区别、JDK和JRE的区别" class="headerlink" title="2. SDK和JDK的区别、JDK和JRE的区别"></a>2. SDK和JDK的区别、JDK和JRE的区别</h1><ul>
-<li><font color = "green">Oracle官网有JavaSE JDK，有Java EE SDK，那么它们有什么区别呢？</font>
-
-<p>​      SDK（Software Development Kit） <strong>软件开发工具包，是一个相当广泛的名词</strong>， <strong>可以这么说辅助开发某一类软件的相关文档，范例和工具的集合都可以叫做“SDK”</strong>。SDK是一系列文件的组合，它为软件的开发提供了一个平台。</p>
-<p>​        JDK（Java Development Kit）Java 开发工具包，是针对Java开发的产品。 <strong>JDK是SDK的一个子集</strong>，因为它是开发java程序的一个平台，开发其他程序的SDK可以没有JDK。比如你下载了一个软件平台eclipse-SDK-3.2.2-win32.zip，它本身里面是没有JDK的。但是只要开发Java程序就必须使用JDK（Java EE和Java SE）。</p>
+</ol>
+<p>Nginx因为它的稳定性、丰富的模块库、灵活的配置和低系统资源的消耗而闻名．业界一致认为它是Apache2.2＋mod_proxy_balancer的轻量级代替者，不仅因为响应静态页面的速度非常快，而且它的模块数量是Apache的2/3。对proxy和rewrite模块的支持很彻底，还支持mod_fcgi、ssl、vhosts ，适合用做mongrel clusters前端HTTP响应。<br>nginx和Apache一样用模块化设计，nginx模块包括内置模块和第三方模块，其中内置模块中包含主模块和事件模块。<br>nginx处理请求逻辑图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190511170603322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5Njc3ODY3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><strong>nginx 的优点：</strong></p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">高并发。静态小文件</span><br><span class="line">占用资源少。<span class="number">2</span>万并发、<span class="number">10</span>个线程，内存消耗几百M。</span><br><span class="line">功能种类比较多。web,cache,proxy。每一个功能都不是特别强。</span><br><span class="line">支持epoll模型，使得nginx可以支持高并发。</span><br><span class="line">nginx 配合动态服务和Apache有区别。（FASTCGI 接口)</span><br><span class="line">利用nginx可以对IP限速，可以限制连接数。</span><br><span class="line">配置简单，更灵活。</span><br></pre></td></tr></table></figure>
+<p><strong>nginx应用场合:</strong></p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">静态服务器(图片，视频服务)，另个lighttpd。并发几万，html，js，css，flv，jpg，gif等。</span><br><span class="line">动态服务，nginx—fastcgi 方式运行PHP，jsp。(PHP并发约<span class="number">500</span><span class="number">-1500</span>，MySQL 并发约<span class="number">300</span><span class="number">-1500</span>）。</span><br><span class="line">反向代理，负载均衡。日pv2000W以下，都可直接用nginx做代理。</span><br><span class="line">缓存服务。类似 SQUID,VARNISH。</span><br></pre></td></tr></table></figure>
+<h1 id="2-Nginx安装"><a href="#2-Nginx安装" class="headerlink" title="2. Nginx安装"></a>2. Nginx安装</h1><p>这⾥使⽤docker安装nginx，linux如何安装nginx参考⽂档Nginx在Linux下的安装.md</p>
+<ol>
+<li><p>搜索nginx镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search nginx</span><br></pre></td></tr></table></figure>
 </li>
-<li><font color = "green">JDK和JRE 的区别？</font>
-
-<p>​    <strong>JRE(Java Runtime Enviroment)是Java的运行环境</strong>。 <strong>面向Java程序的使用者，而不是开发者</strong>。如果你仅下载并安装了JRE，那么你的系统只能运行Java程序。JRE是运行Java程序所必须环境的集合，包含JVM标准实现及 Java核心类库。它包括Java虚拟机、Java平台核心类和支持文件。 <strong>它不包含开发工具(编译器、调试器等)</strong>。</p>
-<p>​    <strong>JDK(Java Development Kit)又称J2SDK(Java2 Software Development Kit)，是Java开发工具包</strong>，它提供了Java的开发环境(提供了编译器javac等工具，用于将java文件编译为class文件)和运行环境(提  供了JVM和Runtime辅助包，用于解析class文件使其得到运行)。如果你下载并安装了JDK，那么你不仅可以开发Java程序，也同时拥有了运行Java程序的平台。 <strong>JDK是整个Java的核心，包括了Java运行环境(JRE)，一堆Java工具tools.jar和Java标准类库 (rt.jar)</strong>。</p>
+<li><p>拉取nginx镜像</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker pull nginx</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><img src="https://gitee.com/biongd/img/raw/master/img/20201106151907.png" alt="img"></p>
+<li><p>创建容器，设置端⼝映射、⽬录映射</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 在/root⽬录下创建nginx⽬录⽤于存储nginx数据信息</span><br><span class="line"><span class="built_in">mkdir</span> ~/nginx</span><br><span class="line"><span class="keyword">cd</span> ~/nginx</span><br><span class="line"><span class="built_in">mkdir</span> <span class="keyword">conf</span></span><br><span class="line"><span class="keyword">cd</span> <span class="keyword">conf</span></span><br><span class="line"># 在~/nginx/<span class="keyword">conf</span>/下创建nginx.<span class="keyword">conf</span>⽂件,粘贴下⾯内容</span><br><span class="line"><span class="keyword">vim</span> nginx.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">user nginx;</span><br><span class="line">worker_processes 1;</span><br><span class="line">error_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log warn;</span><br><span class="line">pid &#x2F;var&#x2F;run&#x2F;nginx.pid;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections 1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include &#x2F;etc&#x2F;nginx&#x2F;mime.types;</span><br><span class="line">    default_type application&#x2F;octet-stream;</span><br><span class="line">    log_format main &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span><br><span class="line">    &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span><br><span class="line">    &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;</span><br><span class="line">    access_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log main;</span><br><span class="line">    sendfile on;</span><br><span class="line">    #tcp_nopush on;</span><br><span class="line">    keepalive_timeout 65;</span><br><span class="line">    #gzip on;</span><br><span class="line">    include &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>~/nginx/conf.d/80.conf</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>; <span class="comment"># 监听的端⼝</span></span><br><span class="line">    <span class="attribute">server_name</span> localhost; <span class="comment"># 域名或ip</span></span><br><span class="line">    <span class="attribute">location</span> / &#123; <span class="comment"># 访问路径配置</span></span><br><span class="line">        <span class="attribute">root</span> /usr/share/nginx/html;<span class="comment"># 根⽬录</span></span><br><span class="line">        <span class="attribute">index</span> index.html index.htm; <span class="comment"># 默认⾸⻚</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html; <span class="comment"># 错误⻚⾯</span></span><br><span class="line">    <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">        <span class="attribute">root</span> html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -id --name=c_nginx \</span><br><span class="line">-<span class="selector-tag">p</span> <span class="number">80</span>:<span class="number">80</span> \</span><br><span class="line">-<span class="selector-tag">p</span> <span class="number">81</span>:<span class="number">81</span> \</span><br><span class="line">-<span class="selector-tag">p</span> <span class="number">82</span>:<span class="number">82</span> \</span><br><span class="line">-v <span class="variable">$PWD</span>/conf/nginx<span class="selector-class">.conf</span>:/etc/nginx/nginx<span class="selector-class">.conf</span> \</span><br><span class="line">-v <span class="variable">$PWD</span>/conf<span class="selector-class">.d</span>:/etc/nginx/conf<span class="selector-class">.d</span> \</span><br><span class="line">-v <span class="variable">$PWD</span>/logs:/var/log/nginx \</span><br><span class="line">-v <span class="variable">$PWD</span>/<span class="selector-tag">html</span>:/usr/share/nginx/<span class="selector-tag">html</span> \</span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<p><strong>-p 80:80：</strong>将容器的 80端⼝映射到宿主机的 80 端⼝。</p>
+<p><strong>-v \$PWD/conf/nginx.conf:/etc/nginx/nginx.conf：</strong>将主机当前⽬录下的/conf/nginx.conf 挂载到容器的 :/etc/nginx/nginx.conf。配置⽬录</p>
+<p><strong>-v \$PWD/logs:/var/log/nginx：</strong>将主机当前⽬录下的 logs ⽬录挂载到容器的/var/log/nginx。⽇志⽬录</p>
 </li>
-</ul>
+<li><p>检查相应文件是否存在和正确配置</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20220110152115.png" alt="image-20220110152108131"></p>
+</li>
+<li><p>重启</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker restart c_nginx</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问nginx服务器的80端口</p>
+<p><img src="https://gitee.com/biongd/img/raw/master/img/20220110152252.png" alt="image-20220110152252722"></p>
+</li>
+</ol>
 
       
     </div>
@@ -444,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/10/26/Github+PicGo%E5%88%B6%E4%BD%9C%E5%9B%BE%E5%BA%8A%E5%B9%B6%E7%94%B1typora%E4%B8%8A%E4%BC%A0/" rel="next" title="PicGo+Github制作图床并由typora上传">
-                <i class="fa fa-chevron-left"></i> PicGo+Github制作图床并由typora上传
+              <a href="/2022/01/07/java-dubbo/" rel="next" title="java-分布式架构dubbo">
+                <i class="fa fa-chevron-left"></i> java-分布式架构dubbo
               </a>
             
           </div>
@@ -454,8 +476,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/11/06/%E8%AF%AD%E8%A8%80-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式">
-                设计模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/01/10/java-Nginx%E6%8B%94%E9%AB%98/" rel="prev" title="java-Nginx拔高">
+                java-Nginx拔高 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-javaSE、javaEE、javaME的区别"><span class="nav-text">1. javaSE、javaEE、javaME的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-SDK和JDK的区别、JDK和JRE的区别"><span class="nav-text">2. SDK和JDK的区别、JDK和JRE的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Nginx介绍"><span class="nav-text">1. Nginx介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Nginx安装"><span class="nav-text">2. Nginx安装</span></a></li></ol></div>
             
 
           </div>
